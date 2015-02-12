@@ -31,7 +31,7 @@ public class OptitrackListener : MonoBehaviour
 		for (int i = 0; i < OptitrackManagement.DirectMulticastSocketClient.GetStreemData()._nRigidBodies; i++)
         {
 			//Assign cube
-            //Debug.Log("entrei");
+            Debug.Log("entrei");
 			if (i == 0)
 			{
                 //Debug.Log("Assigned");
