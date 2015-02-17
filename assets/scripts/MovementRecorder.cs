@@ -82,6 +82,7 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = true;
         print("Started Recording");
         startTime = Time.time;
+        GameObject.Find("Optitrack").SendMessage("setTracking", true);
         InvokeRepeating("Record", 0f, 1f / FPS);
 
     }
@@ -105,9 +106,9 @@ public class MovementRecorder : MonoBehaviour {
         entry_no = 0;
         Target.position = _MovementLog.Get(0)._position;
         Target.rotation = _MovementLog.Get(0)._rotation;
+        GameObject.Find("Optitrack").SendMessage("setTracking", false);
         InvokeRepeating("StartPlaying", 0f, 1f / FPS);
-
-
+        
     }
 
     public void StartPlaying() {
