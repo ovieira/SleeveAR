@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Security.Cryptography;
 
 public class SceneManager : MonoBehaviour {
 
@@ -19,8 +20,12 @@ public class SceneManager : MonoBehaviour {
         Application.LoadLevel("Learning");
     }
 
-    public void LoadTeachingPhase()
+    public void LoadAudioPhase()
     {
         Application.LoadLevel("Sound");        
+    }
+
+    public void LoadVisualPhase() {
+        Application.LoadLevel("Visual");
     }
 }

@@ -57,11 +57,11 @@ public class OptitrackListener : MonoBehaviour
         for (int i = 0; i < OptitrackManagement.DirectMulticastSocketClient.GetStreemData()._nRigidBodies; i++)
         {
             //Assign cube
-            Debug.Log("entrei");
+            //Debug.Log("entrei");
             if (i == 0)
             {
 
-                Debug.Log("Assigned");
+                //Debug.Log("Assigned");
                 if (rigidBodies[i].RigidBodyGameObject == null)
                 {
                     //associa o objecto a este rigidbody
@@ -73,7 +73,7 @@ public class OptitrackListener : MonoBehaviour
                 rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
                 
                 
-                Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
+                //Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
             }
         }
         //DONE :)
