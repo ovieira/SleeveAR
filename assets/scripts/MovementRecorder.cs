@@ -167,7 +167,8 @@ public class MovementRecorder : MonoBehaviour {
 
         switch (FileFormat) {
             case FileFormatEnum.XML:
-                _MovementLog = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                //_MovementLog = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                _MovementLog = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
                 break;
             case FileFormatEnum.JSON:
                 JSONLoad();

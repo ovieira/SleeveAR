@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using OptitrackManagement;
+using UnityEngine.UI;
 
 public class OptitrackListener : MonoBehaviour
 {
@@ -9,16 +10,32 @@ public class OptitrackListener : MonoBehaviour
 	//escala por causa do Unity
 	public float optiTrackPosMultiplyer = 10.0f;
     public bool canTrack;
-	
+
+    public Toggle _toggle;
+
 	~OptitrackListener()
 	{
 		OptitrackManagement.DirectMulticastSocketClient.Close();
 	}
 	// Use this for initialization
-	void Start ()
+	public void Start ()
 	{
         OptitrackManagement.DirectMulticastSocketClient.Start();
+        _toggle.onValueChanged.AddListener(setTracking);
 	}
+
+    private void setTracking(bool b)
+    {
+        canTrack = b;
+        if (canTrack)
+        {
+            OptitrackManagement.DirectMulticastSocketClient.Start();            
+        }
+        else
+        {
+            OptitrackManagement.DirectMulticastSocketClient.Close();            
+        }
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -43,7 +60,8 @@ public class OptitrackListener : MonoBehaviour
             Debug.Log("entrei");
             if (i == 0)
             {
-                //Debug.Log("Assigned");
+
+                Debug.Log("Assigned");
                 if (rigidBodies[i].RigidBodyGameObject == null)
                 {
                     //associa o objecto a este rigidbody
@@ -53,14 +71,14 @@ public class OptitrackListener : MonoBehaviour
                 rigidBodies[i].RigidBodyGameObject.transform.position =
                     Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1))*optiTrackPosMultiplyer;
                 rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
-                //Debug.Log(rigidBodies[i].ID);
+                
+                
+                Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
             }
         }
         //DONE :)
+
     }
 
-    public void setTracking(bool b)
-    {
-        canTrack = b;
-    }
+    
 }
