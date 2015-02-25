@@ -13,10 +13,10 @@ public class OffsetScript : MonoBehaviour {
     public float offX, offY;
     public float projection_width;
     public float projection_depth;
-    public float mX, mZ,X,Y;
+    public float mX, mY,X,Y;
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 	
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class OffsetScript : MonoBehaviour {
 
 
 
-        this.transform.position = new Vector3(pX, 0, pZ);
+        this.transform.position = new Vector3(pX, 0,pZ);
 	}
 
     void OnGUI()
@@ -41,7 +41,7 @@ public class OffsetScript : MonoBehaviour {
         //GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 20, 150f, 30f), p.x + "," + p.y + " , " + p.z));
         Vector3 pp = Camera.main.ScreenToWorldPoint(p);
         mX = pp.x;
-        mZ = pp.z;
+        mY = pp.y;
         GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 30, 150f, 40f), pp.x + "," + pp.y + " , " + pp.z);
 
         GUI.Label(new Rect(p.x - 50, Screen.height - p.y + 30, 150f, 40f),  pp.x + "," + pp.y + " , " + pp.z);
