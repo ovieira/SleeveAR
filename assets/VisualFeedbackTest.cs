@@ -5,7 +5,7 @@ public class VisualFeedbackTest : MonoBehaviour {
 
     public Transform cube, sphere,projector, shadowSphere;
 
-    public Vector3 offset;
+    public float offset;
  
 	// Use this for initialization
 	void Start ()
@@ -22,7 +22,7 @@ public class VisualFeedbackTest : MonoBehaviour {
         if(Physics.Raycast(r,out hit))
 	    {
 	        Vector3 v = hit.point;
-	        shadowSphere.position = v+offset;
+	        shadowSphere.position = v + (cube.transform.up*-1 * offset);
             //Debug.DrawLine(r.origin,hit.point,Color.white);
 	    }
         //_Sprite.position = cube.position + offset;
