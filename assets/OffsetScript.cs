@@ -25,8 +25,8 @@ public class OffsetScript : MonoBehaviour {
 
 	    ratio = unity_world_width/unity_world_depth;
 
-        pX = cube.position.x * offX + X;
-        pZ = cube.position.z * offY + Y;
+        pX = ManagerTracking.instance.getRigidBody(0).position.x * offX + X;
+        pZ = ManagerTracking.instance.getRigidBody(0).position.z * offY + Y;
 
 
 

@@ -20,7 +20,7 @@ public class OptitrackListener : MonoBehaviour
 	// Use this for initialization
 	public void Start ()
 	{
-        OptitrackManagement.DirectMulticastSocketClient.Start();
+        OptitrackManagement.DirectMulticastSocketClient.Close();
         _toggle.onValueChanged.AddListener(setTracking);
 	}
 
