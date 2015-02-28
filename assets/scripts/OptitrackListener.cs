@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OptitrackListener : MonoBehaviour
 {
-    public GameObject cube;
+    public GameObject[] cube;
 	
 	//escala por causa do Unity
 	public float optiTrackPosMultiplyer = 10.0f;
@@ -65,7 +65,7 @@ public class OptitrackListener : MonoBehaviour
                 if (rigidBodies[i].RigidBodyGameObject == null)
                 {
                     //associa o objecto a este rigidbody
-                    rigidBodies[i].RigidBodyGameObject = cube;
+                    rigidBodies[i].RigidBodyGameObject = cube[i];
                 }
                 before = rigidBodies[i].pos;
                 //Debug.Log("antes" + rigidBodies[i].pos);
@@ -77,6 +77,24 @@ public class OptitrackListener : MonoBehaviour
                 
                 //Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
             }
+
+            if (i == 1) {
+
+                //Debug.Log("Assigned");
+                if (rigidBodies[i].RigidBodyGameObject == null) {
+                    //associa o objecto a este rigidbody
+                    rigidBodies[i].RigidBodyGameObject = cube[i];
+                }
+                before = rigidBodies[i].pos;
+                //Debug.Log("antes" + rigidBodies[i].pos);
+                rigidBodies[i].RigidBodyGameObject.transform.position =
+                    Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1)) * optiTrackPosMultiplyer;
+                //Debug.Log("depois" + rigidBodies[i].RigidBodyGameObject.transform.position);
+                rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
+
+
+                //Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
+            }
         }
         //DONE :)
 
@@ -84,8 +102,8 @@ public class OptitrackListener : MonoBehaviour
 
     void OnGUI()
     {
-        Vector3 p = Camera.main.WorldToScreenPoint(cube.transform.position);
-        GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 60, 150f, 50f), cube.transform.position.x + "," + cube.transform.position.y + " , " + cube.transform.position.z);
-        GUI.Label(new Rect(p.x - 50, Screen.height - p.y + 40, 150f, 50f), cube.transform.position.x + "," + cube.transform.position.y + " , " + cube.transform.position.z);
+        //Vector3 p = Camera.main.WorldToScreenPoint(cube.transform.position);
+        //GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 60, 150f, 50f), cube.transform.position.x + "," + cube.transform.position.y + " , " + cube.transform.position.z);
+        //GUI.Label(new Rect(p.x - 50, Screen.height - p.y + 40, 150f, 50f), cube.transform.position.x + "," + cube.transform.position.y + " , " + cube.transform.position.z);
     }
 }

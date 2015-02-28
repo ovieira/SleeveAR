@@ -6,7 +6,7 @@ public class ManagerTracking : MonoBehaviour {
     [SerializeField]
     private GameObject[] _assignedRigidBodies;
 
-    private int count;
+    public int count;
 
 	// Use this for initialization
 	void Start () {

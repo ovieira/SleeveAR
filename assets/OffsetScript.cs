@@ -3,7 +3,9 @@ using System.Collections;
 
 public class OffsetScript : MonoBehaviour {
 
-    public Transform cube;
+    //public Transform cube;
+
+    public GameObject[] _offsetObjects;
 
     public float pX, pY, pZ;
 
@@ -25,12 +27,13 @@ public class OffsetScript : MonoBehaviour {
 
 	    ratio = unity_world_width/unity_world_depth;
 
-        pX = ManagerTracking.instance.getRigidBody(0).position.x * offX + X;
-        pZ = ManagerTracking.instance.getRigidBody(0).position.z * offY + Y;
+	    for (int i = 0; i < ManagerTracking.instance.count; i++)
+	    {
+            pX = ManagerTracking.instance.getRigidBody(i).position.x * offX + X;
+            pZ = ManagerTracking.instance.getRigidBody(i).position.z * offY + Y;
 
-
-
-        this.transform.position = new Vector3(pX, 0,pZ);
+            _offsetObjects[i].transform.position = new Vector3(pX, 0, pZ);
+	    }
 	}
 
     void OnGUI()
