@@ -24,4 +24,10 @@ public class GravityDemoScript : MonoBehaviour {
             _balls[i].rigidbody.AddForce((Target.position - _balls[i].transform.position) * factor,ForceMode.Force);
         }
     }
+
+
+    //Vector3 PhysicsAttraction()
+    //{
+        
+    //}
 }

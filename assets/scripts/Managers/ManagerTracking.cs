@@ -3,16 +3,36 @@ using System.Collections;
 
 public class ManagerTracking : MonoBehaviour {
 
+    public enum TrackingDevice
+    {
+        OPTITRACK,
+        KINECT
+    }
+
+    [SerializeField]
+    protected GameObject _Optitrack, _Kinect;
+
+    [SerializeField]
+    protected TrackingDevice _TrackingDevice;
+
     [SerializeField]
     private GameObject[] _assignedRigidBodies;
 
-    public int count;
+    public int count { get; set; }
 
 	// Use this for initialization
 	void Start () {
         count = _assignedRigidBodies.Length;
+	    InitializeTrackingDevice();
 	    InitializeProperties();
 	}
+
+    private void InitializeTrackingDevice() {
+        if (_Optitrack != null) 
+            _Optitrack.SetActive(_TrackingDevice == TrackingDevice.OPTITRACK);
+        if (_Kinect != null) 
+            _Kinect.SetActive(_TrackingDevice == TrackingDevice.KINECT);
+    }
 
     #region Properties
 
