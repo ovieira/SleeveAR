@@ -17,6 +17,7 @@ public class UdpListener : MonoBehaviour {
 	private UdpClient _udpClient;
 	private IPEndPoint _anyIP;
 	private List<string> _stringsToParse;
+    public string KinectID;
 
 	void Start () {
 		Debug.Log("[UDP Broadcast] Start");
@@ -54,7 +55,13 @@ public class UdpListener : MonoBehaviour {
             //TrackerMessage message = new TrackerMessage(stringToParse);
 
             //Debug.Log(stringToParse);
-            _KinectListener.Parse(stringToParse);
+
+            string[] splited = stringToParse.Split('/');
+		    if (splited[1] == "kid="+KinectID)
+		    {
+                _KinectListener.Parse(splited[2]);
+		        
+		    }
             
 			//if (message.ParseState == TrackerMessageParseState.WellFormed)
 			//{

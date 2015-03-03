@@ -10,7 +10,7 @@ public class GravityDemoScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         for (int i = 0; i < _balls.Length; i++) {
-            _balls[i].rigidbody.AddForce(Random.Range(0, 3), Random.Range(0, 3), Random.Range(0, 3));
+            _balls[i].rigidbody.velocity = new Vector3(Random.Range(0, 3), 0, Random.Range(0, 3));
         }
 	}
 	
@@ -21,13 +21,15 @@ public class GravityDemoScript : MonoBehaviour {
 
     void FixedUpdate() {
         for (int i = 0; i < _balls.Length; i++) {
-            _balls[i].rigidbody.AddForce((Target.position - _balls[i].transform.position) * factor,ForceMode.Force);
+            //_balls[i].rigidbody.AddForce((Target.position - _balls[i].transform.position) * factor,ForceMode.Force);
+            _balls[i].rigidbody.AddForce(PhysicsAttraction(_balls[i].rigidbody, Target.rigidbody));
         }
     }
 
 
-    //Vector3 PhysicsAttraction()
-    //{
-        
-    //}
+    Vector3 PhysicsAttraction(Rigidbody a, Rigidbody b)
+    {
+        return (a.mass*b.mass)/Vector3.Distance(a.transform.position, b.transform.position)*
+               (b.transform.position - a.transform.position).normalized;
+    }
 }

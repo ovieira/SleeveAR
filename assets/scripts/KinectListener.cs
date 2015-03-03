@@ -15,19 +15,33 @@ public class KinectListener : MonoBehaviour {
     }
 
     public void Parse(string message) {
-        string[] splited = message.Split('/');
-        string joints_aux = splited[2];
-        string[] joints = joints_aux.Split(';');
+        
+        //Debug.Log(splited);
+        //string joints_aux = splited[2];
+        string[] joints = message.Split(';');
 
         for (int i = 0; i < joints.Length; i++) {
             string[] _s = joints[i].Split('=');
             if (JointInfo.ContainsKey(_s[0])) {
+                if (_s.Length > 1)
                 JointInfo[_s[0]] = _s[1];
             }
             else {
+                if (_s.Length>1)
                 JointInfo.Add(_s[0], _s[1]);
             }
         }
-        Debug.Log("lol");
+        //Debug.Log("lol");
+    }
+
+    void OnGUI()
+    {
+        
+        int i = 0;
+        foreach (KeyValuePair<string, string> keyValuePair in JointInfo)
+        {
+            GUI.Label(new Rect(Screen.width - 400, i * 20 + 15, 400, 100), "" + keyValuePair.Key + " : " + keyValuePair.Value);
+            i++;
+        }
     }
 }
