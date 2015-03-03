@@ -60,7 +60,6 @@ public class UdpListener : MonoBehaviour {
 		    if (splited[1] == "kid="+KinectID)
 		    {
                 _KinectListener.Parse(splited[2]);
-		        
 		    }
             
 			//if (message.ParseState == TrackerMessageParseState.WellFormed)
