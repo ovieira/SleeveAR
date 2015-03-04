@@ -7,22 +7,22 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-public class TimeCoord {
+public class Joint {
 
-    //public TimeCoord(DateTime t, Vector3 v) {
+    //public Joint(DateTime t, Vector3 v) {
     //    _time = t;
     //    _position = v;
     //}
 
-    internal TimeCoord() { }
+    internal Joint() { }
 
-    public TimeCoord(DateTime d, Vector3 p, Quaternion q) {
+    public Joint(DateTime d, Vector3 p, Quaternion q) {
         _time = d;
         _position = p;
         _rotation = q;
     }
 
-    public TimeCoord(DateTime d, float x, float y, float z, float qx, float qy, float qz, float qw) {
+    public Joint(DateTime d, float x, float y, float z, float qx, float qy, float qz, float qw) {
         _time = d;
         _position = new Vector3(x, y, z);
         _rotation = new Quaternion(qx, qy, qz, qw);
@@ -67,5 +67,32 @@ public class TimeCoord {
         _time = d;
         _position = new Vector3(x, y, z);
         _rotation = new Quaternion(qx, qy, qz, qw);
+    }
+
+    public void UpdateJoint(string iType, string value) {
+        if (iType == "P") {
+            _position = ParsePosition(value);;
+        }
+        else if (iType == "O")
+        {
+            _rotation = ParseRotation(value);
+        }
+    }
+
+    private Quaternion ParseRotation(string _string) {
+        string[] s = _string.Split(':');
+        float x = float.Parse(s[0]);
+        float y = float.Parse(s[1]);
+        float z = float.Parse(s[2]);
+        float w = float.Parse(s[3]);
+        return new Quaternion(x,y,z,w);
+    }
+
+    private Vector3 ParsePosition(string _string) {
+        string[] s = _string.Split(':');
+        float x = float.Parse(s[0]);
+        float y = float.Parse(s[1]);
+        float z = float.Parse(s[2]);
+        return new Vector3(x, y, z);
     }
 }

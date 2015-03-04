@@ -39,7 +39,7 @@ public class MovementRecorder : MonoBehaviour {
             Debug.Log("Nothing to Record");
             canRecord = false;
         }
-        //Positions = new List<TimeCoord>();
+        //Positions = new List<Joint>();
     }
 
     void Update() {
@@ -71,7 +71,7 @@ public class MovementRecorder : MonoBehaviour {
         if (Time.time - startTime >= 10) {
             StopRecording();
         }
-        _MovementLog.Add(new TimeCoord(DateTime.Now, Target.position,Target.rotation));
+        _MovementLog.Add(new Joint(DateTime.Now, Target.position,Target.rotation));
     }
 
     public void OnClickRecordButton() {
@@ -114,7 +114,7 @@ public class MovementRecorder : MonoBehaviour {
     public void StartPlaying() {
         if (entry_no < _MovementLog._log.Count)
         {
-            TimeCoord tc = _MovementLog.Get(entry_no++);
+            Joint tc = _MovementLog.Get(entry_no++);
             auxPos = tc._position;
             auxRot = tc._rotation;
         }

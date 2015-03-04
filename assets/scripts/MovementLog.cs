@@ -12,14 +12,14 @@ public class MovementLog {
 
 
     [XmlArray("TimeCoords")]
-    [XmlArrayItem("TimeCoord")]
-    public List<TimeCoord> _log = new List<TimeCoord>();
+    [XmlArrayItem("Joint")]
+    public List<Joint> _log = new List<Joint>();
 
-    public void Add(TimeCoord t) {
+    public void Add(Joint t) {
         _log.Add(t);
     }
 
-    public TimeCoord Get(int index)
+    public Joint Get(int index)
     {
        return _log[index];
     }
