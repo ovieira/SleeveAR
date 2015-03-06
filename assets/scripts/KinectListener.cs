@@ -3,45 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KinectListener : MonoBehaviour {
+
     private Dictionary<string, string> JointInfoString;
     private Dictionary<string, Joint> JointInfo;
 
     public string[] _jointsRequired;
+    public GameObject[] _RigidBodies;
 
     private List<string> _JointsRequired;
 
-    //public struct Joint {
-    //    public Vector3 position, rotation;
-
-    //    public Joint(Vector3 p, Vector3 r) {
-    //        this.position = p;
-    //        this.rotation = r;
-    //    }
-
-    //    public Joint(string p, string r) {
-    //        this.position = ParsePosition(p);
-    //        this.rotation = ParsePosition(r);
-    //    }
-
-    //    public void UpdateJoint(string iType, string value) {
-    //        Vector3 v = ParsePosition(value);
-    //        if (iType == "P") {
-    //            this.position = v;
-    //        }
-    //        else if (iType == "O") {
-    //            this.rotation = v;
-    //        }
-    //    }
-
-    //    //public override string ToString()
-    //    //{
-    //    //    string 
-    //    //}
-    //}
-
-   
-
-    // Use this for initialization
+    #region Life Cycle
     private void Start() {
         JointInfoString = new Dictionary<string, string>();
         JointInfo = new Dictionary<string, Joint>();
@@ -50,14 +21,32 @@ public class KinectListener : MonoBehaviour {
             JointInfoString.Add(s, "");
             string js = s.Substring(0, s.Length - 1);
             if (!JointInfo.ContainsKey(js))
-                JointInfo.Add(s.Substring(0, s.Length-1), new Joint());
+                JointInfo.Add(s.Substring(0, s.Length - 1), new Joint());
         }
     }
 
-    // Update is called once per frame
     private void Update() {
+        UpdateRigidBodies();
+    } 
+    #endregion
+
+    #region GameObjects Update
+    private void UpdateRigidBodies() {
+        int i = 0;
+        foreach (KeyValuePair<string, Joint> _joint in JointInfo) {
+            UpdateGameObjectTransform(i, _joint.Value);
+            i++;
+        }
+
     }
 
+    private void UpdateGameObjectTransform(int i, Joint joint) {
+        _RigidBodies[i].transform.position = joint._position;
+        _RigidBodies[i].transform.rotation = joint._rotation;
+    } 
+    #endregion
+
+    #region Kinect Message Parser
     public void Parse(string message) {
 
         //Debug.Log(splited);
@@ -71,20 +60,47 @@ public class KinectListener : MonoBehaviour {
             }
         }
         //Debug.Log("lol");
-    }
+    } 
+    #endregion
 
+    #region Joint Dictionary Update
     public void UpdateJoint(string jID, string iType, string value) {
         JointInfo[jID].UpdateJoint(iType, value);
     }
 
-    public void UpdateJoint(string ID, string value)
-    {
+    public void UpdateJoint(string ID, string value) {
         string jointID = ID.Substring(0, ID.Length - 1);
         string infoType = ID.Substring(ID.Length - 1, 1);
         JointInfoString[ID] = value;
 
         UpdateJoint(jointID, infoType, value);
-    }
+    } 
+    #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void OnGUI() {
 
