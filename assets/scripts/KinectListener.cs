@@ -12,6 +12,8 @@ public class KinectListener : MonoBehaviour {
 
     private List<string> _JointsRequired;
 
+    public Transform KinectCenter;
+
     #region Life Cycle
     private void Start() {
         JointInfoString = new Dictionary<string, string>();
@@ -41,7 +43,7 @@ public class KinectListener : MonoBehaviour {
     }
 
     private void UpdateGameObjectTransform(int i, Joint joint) {
-        _RigidBodies[i].transform.position = joint._position;
+        _RigidBodies[i].transform.position = joint._position - KinectCenter.transform.position;
         _RigidBodies[i].transform.rotation = joint._rotation;
     } 
     #endregion
