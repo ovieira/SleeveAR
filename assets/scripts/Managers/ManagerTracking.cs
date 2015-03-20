@@ -37,6 +37,7 @@ public class ManagerTracking : MonoBehaviour {
     #region Properties
 
     protected Transform[] _transforms;
+    public Vector3 [] _floorTransforms;
 
     public Transform getRigidBody(int index) {
         if (index >= count) {
@@ -50,6 +51,7 @@ public class ManagerTracking : MonoBehaviour {
     private void InitializeProperties()
     {
         _transforms = new Transform[count];
+        _floorTransforms = new Vector3[count];
         for (int i = 0; i < count; i++) {
             _transforms[i] = _assignedRigidBodies[i].transform;
         }

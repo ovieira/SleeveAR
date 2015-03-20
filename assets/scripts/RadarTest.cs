@@ -32,7 +32,7 @@ public class RadarTest : MonoBehaviour {
 
         if (!stop) {
             if (lastPlay >= Interval) {
-                audio.PlayOneShot(RadarClip);
+                GetComponent<AudioSource>().PlayOneShot(RadarClip);
                 lastPlay = 0;
             }
         }
@@ -42,12 +42,12 @@ public class RadarTest : MonoBehaviour {
     private void setInterval() {
         //Interval = Mathf.Clamp(Mathf.Abs(Model.position.y - Tracked.position.y), 0.1f, 2f);
         Interval = Mathf.Abs(XMLHandler.instance._CurrentLog.Get(_modelIndex)._position.y - Tracked.position.y) / IntervalFactor;
-        Model.renderer.material.color = Color.Lerp(Color.green, Color.red, Interval);
+        Model.GetComponent<Renderer>().material.color = Color.Lerp(Color.green, Color.red, Interval);
         if (Interval < Threshold ) {
             if (stop == false) {
                 stop = true;
-                if(!audio.isPlaying)
-                    audio.PlayOneShot(CorrectClip); 
+                if(!GetComponent<AudioSource>().isPlaying)
+                    GetComponent<AudioSource>().PlayOneShot(CorrectClip); 
             }
             //_modelIndex+=1;
             Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex)._position;

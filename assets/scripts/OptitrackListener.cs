@@ -61,7 +61,7 @@ public class OptitrackListener : MonoBehaviour
             before = rigidBodies[i].pos;
             //Debug.Log("antes" + rigidBodies[i].pos);
             rigidBodies[i].RigidBodyGameObject.transform.position =
-                Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1)) * optiTrackPosMultiplyer;
+                Vector3.Scale(rigidBodies[i].pos, new Vector3(1, 1, -1)) * optiTrackPosMultiplyer;
             //Debug.Log("depois" + rigidBodies[i].RigidBodyGameObject.transform.position);
             rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
         }

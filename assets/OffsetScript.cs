@@ -33,6 +33,7 @@ public class OffsetScript : MonoBehaviour {
             pZ = ManagerTracking.instance.getRigidBody(i).position.z * offY + Y;
 
             _offsetObjects[i].transform.position = new Vector3(pX, 0, pZ);
+	        ManagerTracking.instance._floorTransforms[i] = new Vector3(pX, 0, pZ);
 	    }
 	}
 

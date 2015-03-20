@@ -24,7 +24,7 @@ public class PitchTest : MonoBehaviour
 	    {
 	        if (_play)
 	        {
-                audio.PlayOneShot(audioclip);
+                GetComponent<AudioSource>().PlayOneShot(audioclip);
                 //StartCoroutine (WaitMethod ());
 	        }
 	        else
@@ -41,12 +41,12 @@ public class PitchTest : MonoBehaviour
 
     IEnumerator WaitMethod() {
         yield return new WaitForSeconds(2f);
-        audio.PlayOneShot(audioclip);
+        GetComponent<AudioSource>().PlayOneShot(audioclip);
     }
 
     private void changePitch() {
         //Debug.Log(target.transform.position.y);
-        audio.pitch = map(target.transform.position.y, 0, 10, 0, 1);
+        GetComponent<AudioSource>().pitch = map(target.transform.position.y, 0, 10, 0, 1);
     }
 
     float map(float s, float a1, float a2, float b1, float b2) {
