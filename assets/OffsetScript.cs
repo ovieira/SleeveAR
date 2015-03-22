@@ -25,15 +25,12 @@ public class OffsetScript : MonoBehaviour {
 	void Update ()
 	{
 
-	    ratio = unity_world_width/unity_world_depth;
+        //ratio = unity_world_width/unity_world_depth;
 
 	    for (int i = 0; i < ManagerTracking.instance.count; i++)
 	    {
-            pX = ManagerTracking.instance.getRigidBody(i).position.x * offX + X;
-            pZ = ManagerTracking.instance.getRigidBody(i).position.z * offY + Y;
 
-            _offsetObjects[i].transform.position = new Vector3(pX, 0, pZ);
-	        ManagerTracking.instance._floorTransforms[i] = new Vector3(pX, 0, pZ);
+	        _offsetObjects[i].transform.position = ManagerTracking.instance.PositionFloor[i];
 	    }
 	}
 

@@ -39,7 +39,10 @@ public class ManagerTracking : MonoBehaviour {
     protected Transform[] _transforms;
     public Vector3 [] _floorTransforms;
 
-    public Transform getRigidBody(int index) {
+    public Vector3[] PositionFloor, PositionProjected;
+    public Transform Projector;
+
+    public Transform getRigidBodyTransform(int index) {
         if (index >= count) {
             Debug.Log("ManagerTracking: index out of bounds");
             return null;
@@ -52,6 +55,8 @@ public class ManagerTracking : MonoBehaviour {
     {
         _transforms = new Transform[count];
         _floorTransforms = new Vector3[count];
+        PositionFloor = new Vector3[count];
+        PositionProjected = new Vector3[count];
         for (int i = 0; i < count; i++) {
             _transforms[i] = _assignedRigidBodies[i].transform;
         }
@@ -59,10 +64,43 @@ public class ManagerTracking : MonoBehaviour {
 
     #endregion
 
+    void Update()
+    {
+        updateFloorPositions();
+        updateProjectionPosition();
+    }
+
+    private void updateProjectionPosition() {
+        for (int i = 0; i < count; i++) {
+            Vector3 rb_pos = getRigidBodyTransform(i).transform.position;
+            Vector3 floor_pos = PositionFloor[i];
+            Vector3 posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
+            Vector3 dir = posTarget - Projector.position;
+            Ray r = new Ray(Projector.position, dir);
+            RaycastHit hit;
+            if (Physics.Raycast(r, out hit)) {
+                PositionProjected[i] = hit.point;
+            }
+        }
+    }
+
+    private void updateFloorPositions() {
+        for (int i = 0; i < count; i++) {
+            float pX = getRigidBodyTransform(i).position.x * offX + X;
+            float pZ = getRigidBodyTransform(i).position.z * offY + Y;
+
+            PositionFloor[i] = new Vector3(pX, 0, pZ);
+        }
+    }
+
 
     #region SINGLETON
 
     private static ManagerTracking _instance;
+    private float offX = 0.64f;
+    private float offY = 0.635f;
+    private float X = 0.16f;
+    private float Y = -0.04f;
 
     public static ManagerTracking instance {
         get {
