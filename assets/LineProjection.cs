@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VisualFeedbackTest : MonoBehaviour {
+public class LineProjection : MonoBehaviour {
 
-    public Transform cube, sphere,projector, shadowSphere;
-
-    public float offset;
     public LineRenderer _Line;
  
 	// Use this for initialization
