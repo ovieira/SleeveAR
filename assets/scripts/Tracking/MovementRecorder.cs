@@ -1,15 +1,24 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Xml;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 using UnityEngine.UI;
+using FullSerializer;
 
 [XmlRoot("MovementLog")]
+
 public class MovementRecorder : MonoBehaviour {
+
+
+
+    //struct
+
+
+
+
+
+
+
 
 
     public MovementLog _MovementLog = new MovementLog();
@@ -138,7 +147,16 @@ public class MovementRecorder : MonoBehaviour {
 
     #region JSON
     private void JSONSave() {
-        throw new NotImplementedException();
+
+        fsSerializer _serializer = new fsSerializer();
+
+        fsData data;
+
+        _serializer.TrySerialize(typeof(MovementLog), _MovementLog, out data).AssertSuccessWithoutWarnings();
+
+        Debug.Log(fsJsonPrinter.CompressedJson(data));
+
+
     } 
     #endregion
 
@@ -198,4 +216,11 @@ public class MovementRecorder : MonoBehaviour {
     #endregion
 
     #endregion
+
+
+    [ContextMenu("TestJson")]
+    public void testJson()
+    {
+        JSONSave();
+    }
 }
