@@ -23,7 +23,7 @@ public class RadarTest : MonoBehaviour {
         Interval = 1;
         lastPlay = 0;
         _modelIndex = 0;
-        Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex)._position;
+        Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex).position;
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class RadarTest : MonoBehaviour {
 
     private void setInterval() {
         //Interval = Mathf.Clamp(Mathf.Abs(Model.position.y - Tracked.position.y), 0.1f, 2f);
-        Interval = Mathf.Abs(XMLHandler.instance._CurrentLog.Get(_modelIndex)._position.y - Tracked.position.y) / IntervalFactor;
+        Interval = Mathf.Abs(XMLHandler.instance._CurrentLog.Get(_modelIndex).position.y - Tracked.position.y) / IntervalFactor;
         Model.GetComponent<Renderer>().material.color = Color.Lerp(Color.green, Color.red, Interval);
         if (Interval < Threshold ) {
             if (stop == false) {
@@ -50,7 +50,7 @@ public class RadarTest : MonoBehaviour {
                     GetComponent<AudioSource>().PlayOneShot(CorrectClip); 
             }
             //_modelIndex+=1;
-            Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex)._position;
+            Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex).position;
             return;
         }
         if (Interval>Threshold)

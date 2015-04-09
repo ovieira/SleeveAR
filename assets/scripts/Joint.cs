@@ -6,93 +6,87 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using FullSerializer;
 
 public class Joint {
 
-    //public Joint(DateTime t, Vector3 v) {
-    //    _time = t;
-    //    _position = v;
+    public Joint()
+    {
+        position = new Vector3(69,69,69);
+        rotation = new Quaternion(69,69,69,69);
+    }
+
+    public Joint(Vector3 p, Quaternion q) {
+        position = p;
+        rotation = q;
+    }
+
+    //public Joint(float x, float y, float z, float qx, float qy, float qz, float qw) {
+    //    position = new Vector3(x, y, z);
+    //    rotation = new Quaternion(qx, qy, qz, qw);
     //}
 
-    internal Joint() { }
+    //#region Position Attributes
+    //[XmlAttribute("X")]
+    //public float _x;
 
-    public Joint(DateTime d, Vector3 p, Quaternion q) {
-        _time = d;
-        _position = p;
-        _rotation = q;
-    }
+    //[XmlAttribute("Y")]
+    //public float _y;
 
-    public Joint(DateTime d, float x, float y, float z, float qx, float qy, float qz, float qw) {
-        _time = d;
-        _position = new Vector3(x, y, z);
-        _rotation = new Quaternion(qx, qy, qz, qw);
-    }
+    //[XmlAttribute("Z")]
+    //public float _z; 
+    //#endregion
 
-    #region TimeStamp Attributes
-    [XmlAttribute("Time")]
-    public DateTime _time; 
-    #endregion
-
-    #region Position Attributes
-    [XmlAttribute("X")]
-    public float _x;
-
-    [XmlAttribute("Y")]
-    public float _y;
-
-    [XmlAttribute("Z")]
-    public float _z; 
-    #endregion
-
-    #region Rotation Attributes
+    //#region Rotation Attributes
     
-    [XmlAttribute("QX")]
-    public float _qx;
+    //[XmlAttribute("QX")]
+    //public float _qx;
 
-    [XmlAttribute("QY")]
-    public float _qy;
+    //[XmlAttribute("QY")]
+    //public float _qy;
 
-    [XmlAttribute("QZ")]
-    public float _qz;
+    //[XmlAttribute("QZ")]
+    //public float _qz;
 
-    [XmlAttribute("QW")]
-    public float _qw;
+    //[XmlAttribute("QW")]
+    //public float _qw;
 
-    #endregion
+    //#endregion
 
-    public Vector3 _position;
-    public Quaternion _rotation;
+    [fsProperty]
+    public Vector3 position { get; set; }
+    [fsProperty]
+    public Quaternion rotation { get; set; }
     
-    public void Add(DateTime d,float x, float y, float z,float qx, float qy, float qz, float qw) {
-        _time = d;
-        _position = new Vector3(x, y, z);
-        _rotation = new Quaternion(qx, qy, qz, qw);
+    public void Add(float x, float y, float z,float qx, float qy, float qz, float qw) {
+        position = new Vector3(x, y, z);
+        rotation = new Quaternion(qx, qy, qz, qw);
     }
 
-    public void UpdateJoint(string iType, string value) {
-        if (iType == "P") {
-            _position = ParsePosition(value);;
-        }
-        else if (iType == "O")
-        {
-            _rotation = ParseRotation(value);
-        }
-    }
+    //public void UpdateJoint(string iType, string value) {
+    //    if (iType == "P") {
+    //        position = ParsePosition(value);;
+    //    }
+    //    else if (iType == "O")
+    //    {
+    //        rotation = ParseRotation(value);
+    //    }
+    //}
 
-    private Quaternion ParseRotation(string _string) {
-        string[] s = _string.Split(':');
-        float x = float.Parse(s[0]);
-        float y = float.Parse(s[1]);
-        float z = float.Parse(s[2]);
-        float w = float.Parse(s[3]);
-        return new Quaternion(x,y,z,w);
-    }
+    //private Quaternion ParseRotation(string _string) {
+    //    string[] s = _string.Split(':');
+    //    float x = float.Parse(s[0]);
+    //    float y = float.Parse(s[1]);
+    //    float z = float.Parse(s[2]);
+    //    float w = float.Parse(s[3]);
+    //    return new Quaternion(x,y,z,w);
+    //}
 
-    private Vector3 ParsePosition(string _string) {
-        string[] s = _string.Split(':');
-        float x = float.Parse(s[0]);
-        float y = float.Parse(s[1]);
-        float z = float.Parse(s[2]);
-        return new Vector3(x, y, z);
-    }
+    //private Vector3 ParsePosition(string _string) {
+    //    string[] s = _string.Split(':');
+    //    float x = float.Parse(s[0]);
+    //    float y = float.Parse(s[1]);
+    //    float z = float.Parse(s[2]);
+    //    return new Vector3(x, y, z);
+    //}
 }

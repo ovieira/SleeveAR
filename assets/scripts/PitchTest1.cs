@@ -26,7 +26,7 @@ public class PitchTest1 : MonoBehaviour
         Interval = 1;
         lastPlay = 0;
         _modelIndex = 0;
-        Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex)._position;
+        Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex).position;
         GetComponent<AudioSource>().PlayOneShot(audioclip);
     }
 
@@ -47,7 +47,7 @@ public class PitchTest1 : MonoBehaviour
 
     private void setInterval() {
         //Interval = Mathf.Clamp(Mathf.Abs(Model.position.y - Tracked.position.y), 0.1f, 2f);
-        dist = (XMLHandler.instance._CurrentLog.Get(_modelIndex)._position.y - Tracked.position.y) / IntervalFactor;
+        dist = (XMLHandler.instance._CurrentLog.Get(_modelIndex).position.y - Tracked.position.y) / IntervalFactor;
         Interval = Mathf.Abs(dist) ;
         Model.GetComponent<Renderer>().material.color = Color.Lerp(Color.green, Color.red, Interval);
         if (Interval < Threshold) {
@@ -56,7 +56,7 @@ public class PitchTest1 : MonoBehaviour
                 GetComponent<AudioSource>().pitch = 1;
             }
             _modelIndex += 1;
-            Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex)._position;
+            Model.position = XMLHandler.instance._CurrentLog.Get(_modelIndex).position;
             return;
         }
         if (Interval > Threshold) {

@@ -80,7 +80,7 @@ public class MovementRecorder : MonoBehaviour {
         if (Time.time - startTime >= 10) {
             StopRecording();
         }
-        _MovementLog.Add(new Joint(DateTime.Now, Target.position,Target.rotation));
+        _MovementLog.Add(new Joint(Target.position,Target.rotation));
     }
 
     public void OnClickRecordButton() {
@@ -104,7 +104,7 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = false;
         CancelInvoke("Record");
         print("Stopped Recording");
-        print("Entries Saved: " + _MovementLog._log.Count);
+        print("Entries Saved: " + _MovementLog.LogList.Count);
         print("Time:" + (Time.time - startTime));
     }
     #endregion
@@ -113,19 +113,19 @@ public class MovementRecorder : MonoBehaviour {
         print("play");
         canPlay = true;
         entry_no = 0;
-        Target.position = _MovementLog.Get(0)._position;
-        Target.rotation = _MovementLog.Get(0)._rotation;
+        Target.position = _MovementLog.Get(0).position;
+        Target.rotation = _MovementLog.Get(0).rotation;
         GameObject.Find("Optitrack").SendMessage("setTracking", false);
         InvokeRepeating("StartPlaying", 0f, 1f / FPS);
         
     }
 
     public void StartPlaying() {
-        if (entry_no < _MovementLog._log.Count)
+        if (entry_no < _MovementLog.LogList.Count)
         {
             Joint tc = _MovementLog.Get(entry_no++);
-            auxPos = tc._position;
-            auxRot = tc._rotation;
+            auxPos = tc.position;
+            auxRot = tc.rotation;
         }
         else {
             canPlay = false;
@@ -133,35 +133,34 @@ public class MovementRecorder : MonoBehaviour {
         }
     }
 
-    #region Save
+
     public void OnClickSaveButton() {
         switch (FileFormat) {
             case FileFormatEnum.XML:
-                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad+".xml"));
                 break;
             case FileFormatEnum.JSON:
-                JSONSave();
+                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad+".json"));
                 break;
         }
     }
 
-    #region JSON
-    private void JSONSave() {
+    public void OnClickLoadButton() {
+        switch (FileFormat) {
+            case FileFormatEnum.XML:
+                //_MovementLog = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                _MovementLog = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                break;
+            case FileFormatEnum.JSON:
+                _MovementLog = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                break;
+        }
 
-        fsSerializer _serializer = new fsSerializer();
-
-        fsData data;
-
-        _serializer.TrySerialize(typeof(MovementLog), _MovementLog, out data).AssertSuccessWithoutWarnings();
-
-        Debug.Log(fsJsonPrinter.CompressedJson(data));
-
-
-    } 
-    #endregion
-
+        _InputField.text = "";
+    }
 
     #region XML
+
     public void XMLSave(string fileName) {
         print("Saving file to: " + fileName);
         try {
@@ -172,37 +171,10 @@ public class MovementRecorder : MonoBehaviour {
             }
         }
         catch (IOException e) {
-            Debug.Log(e.Message);            
+            Debug.Log(e.Message);
         }
-    } 
-    #endregion
-
-    #endregion
-
-    #region Load
-
-    public void OnClickLoadButton() {
-
-        switch (FileFormat) {
-            case FileFormatEnum.XML:
-                //_MovementLog = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                _MovementLog = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                break;
-            case FileFormatEnum.JSON:
-                JSONLoad();
-                break;
-        }
-
-        _InputField.text = "";
     }
 
-    #region JSON
-    private void JSONLoad() {
-        throw new NotImplementedException();
-    } 
-    #endregion
-
-    #region XML
     public MovementLog XMLLoadFromFile(string fileName) {
         print("Loading file : " + _FileToLoad);
 
@@ -215,12 +187,57 @@ public class MovementRecorder : MonoBehaviour {
     } 
     #endregion
 
-    #endregion
+    #region JSON
 
+    private void JSONSave(string fileName) {
+        try {
+            using (FileStream stream = new FileStream(fileName, FileMode.CreateNew)) {
+                using (StreamWriter writer = new StreamWriter(stream)) {
+                    fsSerializer _serializer = new fsSerializer();
+                    fsData data;
+                    _serializer.TrySerialize(typeof(MovementLog), _MovementLog, out data).AssertSuccessWithoutWarnings();
+                    writer.Write(data.ToString());
+                    print("Done!");
+                    writer.Flush();
+                }
+            }
+        }
+        catch (IOException e) {
+            Debug.Log(e.Message);
+        }
+    }
+
+    private MovementLog JSONLoad(string fileName) {
+        print("Loading file : " + fileName);
+        using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
+            using (StreamReader reader = new StreamReader(stream)) {
+                fsSerializer _serializer = new fsSerializer();
+
+                // step 1: parse the JSON data
+                fsData data = fsJsonParser.Parse(reader.ReadToEnd());
+
+                // step 2: deserialize the data
+                object deserialized = null;
+                _serializer.TryDeserialize(data, typeof(MovementLog), ref deserialized).AssertSuccessWithoutWarnings();
+
+                return (MovementLog)deserialized; 
+            }
+        }
+    }   
+
+    #endregion
 
     [ContextMenu("TestJson")]
     public void testJson()
     {
-        JSONSave();
+        _MovementLog.testPopulate();
+        JSONSave(Path.Combine(Application.dataPath + "/Recordings","loool.json"));
+    }
+
+    [ContextMenu("TestJsonLoad")]
+    public void testJsonLoad()
+    {
+      _MovementLog = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
+        Debug.Log("Done");
     }
 }

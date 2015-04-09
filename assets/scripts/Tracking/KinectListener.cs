@@ -43,8 +43,8 @@ public class KinectListener : MonoBehaviour {
     }
 
     private void UpdateGameObjectTransform(int i, Joint joint) {
-        _RigidBodies[i].transform.position = joint._position - KinectCenter.transform.position;
-        _RigidBodies[i].transform.rotation = joint._rotation;
+        _RigidBodies[i].transform.position = joint.position - KinectCenter.transform.position;
+        _RigidBodies[i].transform.rotation = joint.rotation;
     } 
     #endregion
 
@@ -67,7 +67,7 @@ public class KinectListener : MonoBehaviour {
 
     #region Joint Dictionary Update
     public void UpdateJoint(string jID, string iType, string value) {
-        JointInfo[jID].UpdateJoint(iType, value);
+        //JointInfo[jID].UpdateJoint(iType, value);
     }
 
     public void UpdateJoint(string ID, string value) {
@@ -109,8 +109,8 @@ public class KinectListener : MonoBehaviour {
         int i = 0;
         foreach (KeyValuePair<string, Joint> keyValuePair in JointInfo) {
             GUI.Label(new Rect(Screen.width - 400, i * 40 + 15, 400, 100), "" + keyValuePair.Key + ":");
-            GUI.Label(new Rect(Screen.width - 300, i * 40 + 15, 400, 100), "P: " + keyValuePair.Value._position);
-            GUI.Label(new Rect(Screen.width - 300, i * 40 + 30, 400, 100), "O: " + keyValuePair.Value._rotation);
+            GUI.Label(new Rect(Screen.width - 300, i * 40 + 15, 400, 100), "P: " + keyValuePair.Value.position);
+            GUI.Label(new Rect(Screen.width - 300, i * 40 + 30, 400, 100), "O: " + keyValuePair.Value.rotation);
             i++;
         }
     }
