@@ -8,12 +8,14 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using FullSerializer;
 
+/// <summary>
+/// Represents a single instant of a human joint with its position and rotation.
+/// </summary>
 public class Joint {
 
-    public Joint()
-    {
-        position = new Vector3(69,69,69);
-        rotation = new Quaternion(69,69,69,69);
+    public Joint() {
+        position = new Vector3();
+        rotation = Quaternion.identity;
     }
 
     public Joint(Vector3 p, Quaternion q) {
@@ -21,44 +23,31 @@ public class Joint {
         rotation = q;
     }
 
-    //public Joint(float x, float y, float z, float qx, float qy, float qz, float qw) {
-    //    position = new Vector3(x, y, z);
-    //    rotation = new Quaternion(qx, qy, qz, qw);
-    //}
+    public Joint(Transform t)
+    {
+        position = t.position;
+        rotation = t.rotation;
+    }
 
-    //#region Position Attributes
-    //[XmlAttribute("X")]
-    //public float _x;
+    public Joint(GameObject g)
+    {
+        position = g.transform.position;
+        rotation = g.transform.rotation;
+    }
 
-    //[XmlAttribute("Y")]
-    //public float _y;
-
-    //[XmlAttribute("Z")]
-    //public float _z; 
-    //#endregion
-
-    //#region Rotation Attributes
-    
-    //[XmlAttribute("QX")]
-    //public float _qx;
-
-    //[XmlAttribute("QY")]
-    //public float _qy;
-
-    //[XmlAttribute("QZ")]
-    //public float _qz;
-
-    //[XmlAttribute("QW")]
-    //public float _qw;
-
-    //#endregion
-
+    /// <summary>
+    /// Joint position
+    /// </summary>
     [fsProperty]
     public Vector3 position { get; set; }
+
+    /// <summary>
+    /// Joint rotation
+    /// </summary>
     [fsProperty]
     public Quaternion rotation { get; set; }
-    
-    public void Add(float x, float y, float z,float qx, float qy, float qz, float qw) {
+
+    public void Add(float x, float y, float z, float qx, float qy, float qz, float qw) {
         position = new Vector3(x, y, z);
         rotation = new Quaternion(qx, qy, qz, qw);
     }

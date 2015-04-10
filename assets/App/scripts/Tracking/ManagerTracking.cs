@@ -42,6 +42,8 @@ public class ManagerTracking : MonoBehaviour {
     public Vector3[] PositionFloor, PositionProjected;
     public Transform Projector;
 
+    private JointsGroup _currentJointsGroup;
+
     public Transform getRigidBodyTransform(int index) {
         if (index >= count) {
             Debug.Log("ManagerTracking: index out of bounds");
@@ -66,9 +68,12 @@ public class ManagerTracking : MonoBehaviour {
 
     void Update()
     {
+        //updateJointGroup();
         updateFloorPositions();
         updateProjectionPosition();
     }
+
+    
 
     private void updateProjectionPosition() {
         for (int i = 0; i < count; i++) {
@@ -92,6 +97,15 @@ public class ManagerTracking : MonoBehaviour {
             PositionFloor[i] = new Vector3(pX, 0, pZ);
         }
     }
+
+    #region JointsGroup
+
+    public JointsGroup getJointGroup()
+    {
+        return new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
+    }
+
+    #endregion
 
 
     #region SINGLETON

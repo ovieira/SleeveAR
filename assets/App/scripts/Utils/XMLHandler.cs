@@ -10,28 +10,28 @@ public class XMLHandler : MonoBehaviour
 
     private static XMLHandler _instance;
 
-    public MovementLog _CurrentLog { get; set; }
+    public ExerciseModel _CurrentLog { get; set; }
 
 
-    public static MovementLog Load(string fileName) {
+    public static ExerciseModel Load(string fileName) {
         print("Loading : " + fileName);
 
         using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
-            XmlSerializer XML = new XmlSerializer(typeof(MovementLog));
+            XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
             print("Done!");
-            MovementLog temp = (MovementLog)XML.Deserialize(stream);
+            ExerciseModel temp = (ExerciseModel)XML.Deserialize(stream);
             XMLHandler.instance._CurrentLog = temp;
             return temp;
         }
 
     }
 
-    public static void Save(string fileName, MovementLog _MovementLog) {
+    public static void Save(string fileName, ExerciseModel exerciseModel) {
         print("Saving : " + fileName);
         try {
             using (FileStream stream = new FileStream(fileName, FileMode.CreateNew)) {
-                XmlSerializer XML = new XmlSerializer(typeof(MovementLog));
-                XML.Serialize(stream, _MovementLog);
+                XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
+                XML.Serialize(stream, exerciseModel);
                 print("Done!");
             }
         }

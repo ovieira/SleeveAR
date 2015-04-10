@@ -5,23 +5,11 @@ using System.Xml.Serialization;
 using UnityEngine.UI;
 using FullSerializer;
 
-[XmlRoot("MovementLog")]
+[XmlRoot("ExerciseModel")]
 
 public class MovementRecorder : MonoBehaviour {
 
-
-
-    //struct
-
-
-
-
-
-
-
-
-
-    public MovementLog _MovementLog = new MovementLog();
+    public ExerciseModel exerciseModel = new ExerciseModel();
 
     public enum FileFormatEnum {
         XML,
@@ -80,7 +68,11 @@ public class MovementRecorder : MonoBehaviour {
         if (Time.time - startTime >= 10) {
             StopRecording();
         }
-        _MovementLog.Add(new Joint(Target.position,Target.rotation));
+        //exerciseModel.Add(new Joint(Target.position,Target.rotation));
+        for (int i = 0; i < ManagerTracking.instance.count; i++)
+        {
+            
+        }
     }
 
     public void OnClickRecordButton() {
@@ -104,33 +96,36 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = false;
         CancelInvoke("Record");
         print("Stopped Recording");
-        print("Entries Saved: " + _MovementLog.LogList.Count);
+        print("Entries Saved: " + exerciseModel._exerciseModel.Count);
         print("Time:" + (Time.time - startTime));
     }
     #endregion
 
-    public void OnClickPlayButton() {
-        print("play");
-        canPlay = true;
-        entry_no = 0;
-        Target.position = _MovementLog.Get(0).position;
-        Target.rotation = _MovementLog.Get(0).rotation;
-        GameObject.Find("Optitrack").SendMessage("setTracking", false);
-        InvokeRepeating("StartPlaying", 0f, 1f / FPS);
-        
+    public void OnClickPlayButton()
+    {
+        throw new NotImplementedException();
+        //print("play");
+        //canPlay = true;
+        //entry_no = 0;
+        //Target.position = exerciseModel.Get(0).position;
+        //Target.rotation = exerciseModel.Get(0).rotation;
+        //GameObject.Find("Optitrack").SendMessage("setTracking", false);
+        //InvokeRepeating("StartPlaying", 0f, 1f / FPS);   
     }
-
+     
     public void StartPlaying() {
-        if (entry_no < _MovementLog.LogList.Count)
-        {
-            Joint tc = _MovementLog.Get(entry_no++);
-            auxPos = tc.position;
-            auxRot = tc.rotation;
-        }
-        else {
-            canPlay = false;
-            CancelInvoke("StartPlaying");
-        }
+        throw new NotImplementedException();
+
+        //if (entry_no < exerciseModel.LogList.Count)
+        //{
+        //    Joint tc = exerciseModel.Get(entry_no++);
+        //    auxPos = tc.position;
+        //    auxRot = tc.rotation;
+        //}
+        //else {
+        //    canPlay = false;
+        //    CancelInvoke("StartPlaying");
+        //}
     }
 
 
@@ -148,11 +143,11 @@ public class MovementRecorder : MonoBehaviour {
     public void OnClickLoadButton() {
         switch (FileFormat) {
             case FileFormatEnum.XML:
-                //_MovementLog = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                _MovementLog = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                //exerciseModel = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                exerciseModel = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
                 break;
             case FileFormatEnum.JSON:
-                _MovementLog = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
                 break;
         }
 
@@ -165,8 +160,8 @@ public class MovementRecorder : MonoBehaviour {
         print("Saving file to: " + fileName);
         try {
             using (FileStream stream = new FileStream(fileName, FileMode.CreateNew)) {
-                XmlSerializer XML = new XmlSerializer(typeof(MovementLog));
-                XML.Serialize(stream, _MovementLog);
+                XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
+                XML.Serialize(stream, exerciseModel);
                 print("Done!");
             }
         }
@@ -175,13 +170,13 @@ public class MovementRecorder : MonoBehaviour {
         }
     }
 
-    public MovementLog XMLLoadFromFile(string fileName) {
+    public ExerciseModel XMLLoadFromFile(string fileName) {
         print("Loading file : " + _FileToLoad);
 
         using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
-            XmlSerializer XML = new XmlSerializer(typeof(MovementLog));
+            XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
             print("Done!");
-            return (MovementLog)XML.Deserialize(stream);
+            return (ExerciseModel)XML.Deserialize(stream);
         }
 
     } 
@@ -195,7 +190,7 @@ public class MovementRecorder : MonoBehaviour {
                 using (StreamWriter writer = new StreamWriter(stream)) {
                     fsSerializer _serializer = new fsSerializer();
                     fsData data;
-                    _serializer.TrySerialize(typeof(MovementLog), _MovementLog, out data).AssertSuccessWithoutWarnings();
+                    _serializer.TrySerialize(typeof(ExerciseModel), exerciseModel, out data).AssertSuccessWithoutWarnings();
                     writer.Write(data.ToString());
                     print("Done!");
                     writer.Flush();
@@ -207,7 +202,7 @@ public class MovementRecorder : MonoBehaviour {
         }
     }
 
-    private MovementLog JSONLoad(string fileName) {
+    private ExerciseModel JSONLoad(string fileName) {
         print("Loading file : " + fileName);
         using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
             using (StreamReader reader = new StreamReader(stream)) {
@@ -218,9 +213,9 @@ public class MovementRecorder : MonoBehaviour {
 
                 // step 2: deserialize the data
                 object deserialized = null;
-                _serializer.TryDeserialize(data, typeof(MovementLog), ref deserialized).AssertSuccessWithoutWarnings();
+                _serializer.TryDeserialize(data, typeof(ExerciseModel), ref deserialized).AssertSuccessWithoutWarnings();
 
-                return (MovementLog)deserialized; 
+                return (ExerciseModel)deserialized; 
             }
         }
     }   
@@ -230,14 +225,14 @@ public class MovementRecorder : MonoBehaviour {
     [ContextMenu("TestJson")]
     public void testJson()
     {
-        _MovementLog.testPopulate();
+        exerciseModel.testPopulate();
         JSONSave(Path.Combine(Application.dataPath + "/Recordings","loool.json"));
     }
 
     [ContextMenu("TestJsonLoad")]
     public void testJsonLoad()
     {
-      _MovementLog = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
+      exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
         Debug.Log("Done");
     }
 }
