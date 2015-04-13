@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Xml.Serialization;
@@ -18,8 +19,8 @@ public class MovementRecorder : MonoBehaviour {
 
     public FileFormatEnum FileFormat;
 
-    public Transform Target;
-
+    #region variables
+    public GameObject JointRepresentationPrefab;
     public int FPS = 24;
     private bool canRecord = false;
     private float startTime;
@@ -29,27 +30,34 @@ public class MovementRecorder : MonoBehaviour {
     public InputField _InputField;
     public Quaternion auxRot;
     public string _FileToLoad { get; set; }
+    public Material greenMat;
+    private List<Transform> _replayPrefabs = new List<Transform>();
+    private JointsGroup currentJointgroup;
+    #endregion
 
     // Use this for initialization
     void Start() {
-        if (Target == null) {
-            Debug.Log("Nothing to Record");
-            canRecord = false;
-        }
+        //if (Target == null) {
+        //    Debug.Log("Nothing to Record");
+        //    canRecord = false;
+        //}
         //Positions = new List<Joint>();
     }
 
     void Update() {
         if (canPlay) {
-            Target.position = Vector3.Lerp(Target.position, auxPos, 1f / FPS);
-            Target.rotation = Quaternion.Lerp(Target.rotation, auxRot, 1f/FPS);
+            for (int i = 0; i < _replayPrefabs.Count; i++)
+            {
+                Joint j = currentJointgroup.jointsList[i];
+                _replayPrefabs[i].position = j.position;
+                _replayPrefabs[i].rotation = j.rotation;
+            }
         }
     }
 
     // Update is called once per frame
     void LateUpdate() {
-        //KeyboardHandler();
-        //if (canRecord) Record();
+        KeyboardHandler();
     }
 
     #region KeyboardHandler
@@ -68,11 +76,7 @@ public class MovementRecorder : MonoBehaviour {
         if (Time.time - startTime >= 10) {
             StopRecording();
         }
-        //exerciseModel.Add(new Joint(Target.position,Target.rotation));
-        for (int i = 0; i < ManagerTracking.instance.count; i++)
-        {
-            
-        }
+        exerciseModel.Add(ManagerTracking.instance.getCurrentJointGroup());
     }
 
     public void OnClickRecordButton() {
@@ -83,7 +87,6 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = true;
         print("Started Recording");
         startTime = Time.time;
-        GameObject.Find("Optitrack").SendMessage("setTracking", true);
         InvokeRepeating("Record", 0f, 1f / FPS);
 
     }
@@ -101,20 +104,36 @@ public class MovementRecorder : MonoBehaviour {
     }
     #endregion
 
-    public void OnClickPlayButton()
-    {
-        throw new NotImplementedException();
-        //print("play");
-        //canPlay = true;
-        //entry_no = 0;
+    public void OnClickPlayButton() {
+        //throw new NotImplementedException();
+
+
+
+        print("play");
+        canPlay = true;
+        entry_no = 0;
+
+        for (int i = 0; i < ManagerTracking.instance.count; i++)
+        {
+            GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
+            ob.GetComponent<Renderer>().material = greenMat;
+            _replayPrefabs.Add(ob.transform);
+        }
+        ManagerTracking.instance.setTracking(false);
         //Target.position = exerciseModel.Get(0).position;
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
-        //InvokeRepeating("StartPlaying", 0f, 1f / FPS);   
+
+        InvokeRepeating("StartPlaying", 0f, 1f / FPS);   
     }
-     
+
     public void StartPlaying() {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+
+        if (entry_no < exerciseModel._exerciseModel.Count)
+        {
+           currentJointgroup =  exerciseModel.Get(entry_no);
+        }
 
         //if (entry_no < exerciseModel.LogList.Count)
         //{
@@ -132,10 +151,10 @@ public class MovementRecorder : MonoBehaviour {
     public void OnClickSaveButton() {
         switch (FileFormat) {
             case FileFormatEnum.XML:
-                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad+".xml"));
+                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad + ".xml"));
                 break;
             case FileFormatEnum.JSON:
-                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad+".json"));
+                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad + ".json"));
                 break;
         }
     }
@@ -179,7 +198,7 @@ public class MovementRecorder : MonoBehaviour {
             return (ExerciseModel)XML.Deserialize(stream);
         }
 
-    } 
+    }
     #endregion
 
     #region JSON
@@ -215,24 +234,22 @@ public class MovementRecorder : MonoBehaviour {
                 object deserialized = null;
                 _serializer.TryDeserialize(data, typeof(ExerciseModel), ref deserialized).AssertSuccessWithoutWarnings();
 
-                return (ExerciseModel)deserialized; 
+                return (ExerciseModel)deserialized;
             }
         }
-    }   
+    }
 
     #endregion
 
     [ContextMenu("TestJson")]
-    public void testJson()
-    {
+    public void testJson() {
         exerciseModel.testPopulate();
-        JSONSave(Path.Combine(Application.dataPath + "/Recordings","loool.json"));
+        JSONSave(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
     }
 
     [ContextMenu("TestJsonLoad")]
-    public void testJsonLoad()
-    {
-      exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
+    public void testJsonLoad() {
+        exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
         Debug.Log("Done");
     }
 }

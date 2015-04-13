@@ -100,7 +100,7 @@ public class ManagerTracking : MonoBehaviour {
 
     #region JointsGroup
 
-    public JointsGroup getJointGroup()
+    public JointsGroup getCurrentJointGroup()
     {
         return new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
     }
@@ -127,4 +127,9 @@ public class ManagerTracking : MonoBehaviour {
 
     #endregion
 
+
+    public void setTracking(bool p) {
+        _Optitrack.SetActive(p);
+        //_Kinect.SetActive(p);
+    }
 }
