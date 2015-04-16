@@ -42,6 +42,13 @@ public class MovementRecorder : MonoBehaviour {
         //    canRecord = false;
         //}
         //Positions = new List<Joint>();
+
+        for (int i = 0; i < ManagerTracking.instance.count; i++) {
+            GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
+            ob.GetComponent<Renderer>().material = greenMat;
+            ob.SetActive(false);
+            _replayPrefabs.Add(ob.transform);
+        }
     }
 
     void Update() {
@@ -107,24 +114,21 @@ public class MovementRecorder : MonoBehaviour {
     public void OnClickPlayButton() {
         //throw new NotImplementedException();
 
-
+        foreach (Transform replayPrefab in _replayPrefabs)
+        {
+            replayPrefab.gameObject.SetActive(true);
+        }
 
         print("play");
-        canPlay = true;
         entry_no = 0;
-
-        for (int i = 0; i < ManagerTracking.instance.count; i++)
-        {
-            GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
-            ob.GetComponent<Renderer>().material = greenMat;
-            _replayPrefabs.Add(ob.transform);
-        }
         ManagerTracking.instance.setTracking(false);
         //Target.position = exerciseModel.Get(0).position;
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
+        StartPlaying();
+        InvokeRepeating("StartPlaying", 0f, 1f / FPS);
+        canPlay = true;
 
-        InvokeRepeating("StartPlaying", 0f, 1f / FPS);   
     }
 
     public void StartPlaying() {
@@ -133,6 +137,7 @@ public class MovementRecorder : MonoBehaviour {
         if (entry_no < exerciseModel._exerciseModel.Count)
         {
            currentJointgroup =  exerciseModel.Get(entry_no);
+            entry_no++;
         }
 
         //if (entry_no < exerciseModel.LogList.Count)

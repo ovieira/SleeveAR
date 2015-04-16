@@ -20,11 +20,15 @@ public class ManagerTracking : MonoBehaviour {
 
     public int count { get; set; }
 
+    public void Awake() {
+        count = _assignedRigidBodies.Length;
+        InitializeTrackingDevice();
+        InitializeProperties();
+    }
+
 	// Use this for initialization
 	void Start () {
-        count = _assignedRigidBodies.Length;
-	    InitializeTrackingDevice();
-	    InitializeProperties();
+        
 	}
 
     private void InitializeTrackingDevice() {
@@ -77,7 +81,7 @@ public class ManagerTracking : MonoBehaviour {
 
     private void updateProjectionPosition() {
         for (int i = 0; i < count; i++) {
-            Vector3 rb_pos = getRigidBodyTransform(i).transform.position;
+            Vector3 rb_pos = getRigidBodyTransform(i).position;
             Vector3 floor_pos = PositionFloor[i];
             Vector3 posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
             Vector3 dir = posTarget - Projector.position;
@@ -102,7 +106,11 @@ public class ManagerTracking : MonoBehaviour {
 
     public JointsGroup getCurrentJointGroup()
     {
-        return new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
+        JointsGroup jg = new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
+
+        jg.Print();
+
+        return jg;
     }
 
     #endregion

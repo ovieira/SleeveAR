@@ -50,4 +50,11 @@ public class JointsGroup
         jointsList.Add(new Joint(t2));
         jointsList.Add(new Joint(t3));
     }
+
+   public void Print() {
+        foreach (Joint joint in jointsList)
+        {
+            joint.Print();
+        }
+    }
 }

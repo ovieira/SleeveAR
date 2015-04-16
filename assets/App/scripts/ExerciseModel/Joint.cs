@@ -78,4 +78,8 @@ public class Joint {
     //    float z = float.Parse(s[2]);
     //    return new Vector3(x, y, z);
     //}
+
+    public void Print() {
+        Debug.Log("P: " + position + "|| R: "+ rotation);
+    }
 }
