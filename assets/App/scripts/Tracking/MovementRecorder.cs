@@ -156,10 +156,10 @@ public class MovementRecorder : MonoBehaviour {
     public void OnClickSaveButton() {
         switch (FileFormat) {
             case FileFormatEnum.XML:
-                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad + ".xml"));
+                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
                 break;
             case FileFormatEnum.JSON:
-                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad + ".json"));
+                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
                 break;
         }
     }
@@ -209,14 +209,25 @@ public class MovementRecorder : MonoBehaviour {
     #region JSON
 
     private void JSONSave(string fileName) {
-        try {
-            using (FileStream stream = new FileStream(fileName, FileMode.CreateNew)) {
+        try
+        {
+            if (File.Exists(fileName + ".json"))
+            {
+                int i = 1;
+                while (File.Exists(fileName + i + ".json"))
+                {
+                    i++;
+                }
+                fileName = fileName + i;
+            }
+
+            using (FileStream stream = new FileStream(fileName+".json", FileMode.CreateNew)) {
                 using (StreamWriter writer = new StreamWriter(stream)) {
                     fsSerializer _serializer = new fsSerializer();
                     fsData data;
                     _serializer.TrySerialize(typeof(ExerciseModel), exerciseModel, out data).AssertSuccessWithoutWarnings();
                     writer.Write(data.ToString());
-                    print("Done!");
+                    print("Saved! : " + fileName);
                     writer.Flush();
                 }
             }
@@ -228,7 +239,7 @@ public class MovementRecorder : MonoBehaviour {
 
     private ExerciseModel JSONLoad(string fileName) {
         print("Loading file : " + fileName);
-        using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
+        using (FileStream stream = new FileStream(fileName + ".json", FileMode.Open)) {
             using (StreamReader reader = new StreamReader(stream)) {
                 fsSerializer _serializer = new fsSerializer();
 
@@ -249,12 +260,12 @@ public class MovementRecorder : MonoBehaviour {
     [ContextMenu("TestJson")]
     public void testJson() {
         exerciseModel.testPopulate();
-        JSONSave(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
+        JSONSave(Path.Combine(Application.dataPath + "/Recordings", "loool"));
     }
 
     [ContextMenu("TestJsonLoad")]
     public void testJsonLoad() {
-        exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool.json"));
+        exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool"));
         Debug.Log("Done");
     }
 }

@@ -35,7 +35,7 @@ public class ExerciseModel {
     public void testPopulate() {
         Debug.Log("Started Populate");
         for (int i = 0; i < 10000; i++) {
-            Joint j = new Joint(new Vector3(i, i, i), new Quaternion(i,i,i,1));
+            Joint j = new Joint(new Vector3(i, i, i), new Quaternion(i*5,i*5,i*5,1));
             JointsGroup jg = new JointsGroup(j, j, j);
             _exerciseModel.Add(jg);
         }
