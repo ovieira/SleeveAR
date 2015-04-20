@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <ExerciseModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Joints>
-    <Joint Time="2015-02-17T18:37:46.1395733+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+  <SingleJoints>
+    <SingleJoint Time="2015-02-17T18:37:46.1395733+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.224542</y>
@@ -18,8 +18,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1395733+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1395733+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.224542</y>
@@ -36,8 +36,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1715839+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1715839+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.224542</y>
@@ -54,8 +54,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.224542</y>
@@ -72,8 +72,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.26526737</y>
@@ -90,8 +90,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1725842+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.26526737</y>
@@ -108,8 +108,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.26526737</y>
@@ -126,8 +126,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.37721872</y>
@@ -144,8 +144,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.1886079+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.37721872</y>
@@ -162,8 +162,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.37721872</y>
@@ -180,8 +180,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.41851473</y>
@@ -198,8 +198,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2046162+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.41851473</y>
@@ -216,8 +216,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2216236+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2216236+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.459768</y>
@@ -234,8 +234,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2216236+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2216236+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.459768</y>
@@ -252,8 +252,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.459768</y>
@@ -270,8 +270,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.50165367</y>
@@ -288,8 +288,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2386454+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.50165367</y>
@@ -306,8 +306,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.50165367</y>
@@ -324,8 +324,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.543945</y>
@@ -342,8 +342,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2546862+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.543945</y>
@@ -360,8 +360,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.543945</y>
@@ -378,8 +378,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.58376265</y>
@@ -396,8 +396,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.271688+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.58376265</y>
@@ -414,8 +414,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.58376265</y>
@@ -432,8 +432,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.62584639</y>
@@ -450,8 +450,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.2876984+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.62584639</y>
@@ -468,8 +468,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.3047216+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.3047216+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.665532</y>
@@ -486,8 +486,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.3047216+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.3047216+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.665532</y>
@@ -504,8 +504,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.3207333+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.3207333+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.665532</y>
@@ -522,8 +522,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.3377338+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.3377338+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.747513</y>
@@ -540,8 +540,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.3867838+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.3867838+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.8293066</y>
@@ -558,8 +558,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.4198431+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.4198431+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.95203972</y>
@@ -576,8 +576,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.4698776+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.4698776+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.03293657</y>
@@ -594,8 +594,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.5029022+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.5029022+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.153989</y>
@@ -612,8 +612,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.5528866+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.5528866+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.235069</y>
@@ -630,8 +630,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.5859613+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.5859613+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.35602856</y>
@@ -648,8 +648,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.6359586+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.6359586+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.47361851</y>
@@ -666,8 +666,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.6690255+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.6690255+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.55256939</y>
@@ -684,8 +684,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.7190134+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.7190134+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.670631</y>
@@ -702,8 +702,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.7520778+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.7520778+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.748071</y>
@@ -720,8 +720,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.8011086+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.8011086+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.86468458</y>
@@ -738,8 +738,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.8511118+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.8511118+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.941092</y>
@@ -756,8 +756,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.8841334+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.8841334+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.055833</y>
@@ -774,8 +774,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.9341705+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.9341705+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.130721</y>
@@ -792,8 +792,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:46.9672315+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:46.9672315+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.205132</y>
@@ -810,8 +810,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.0172138+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.0172138+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.315112</y>
@@ -828,8 +828,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.0502401+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.0502401+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.389511</y>
@@ -846,8 +846,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.0992871+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.0992871+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.53325748</y>
@@ -864,8 +864,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.1323109+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.1323109+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.604202</y>
@@ -882,8 +882,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.1823462+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.1823462+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.710106</y>
@@ -900,8 +900,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.2153687+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.2153687+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.779098</y>
@@ -918,8 +918,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.2654023+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.2654023+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.84726954</y>
@@ -936,8 +936,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.2984128+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.2984128+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.94774961</y>
@@ -954,8 +954,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.3484597+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.3484597+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.015453</y>
@@ -972,8 +972,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.3814848+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.3814848+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.112448</y>
@@ -990,8 +990,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.4315073+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.4315073+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.17684</y>
@@ -1008,8 +1008,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.4645435+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.4645435+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.272188</y>
@@ -1026,8 +1026,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.5135644+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.5135644+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.334122</y>
@@ -1044,8 +1044,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.5465882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.5465882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.395259</y>
@@ -1062,8 +1062,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.5966235+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.5966235+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.514992</y>
@@ -1080,8 +1080,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.6296481+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.6296481+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.573412</y>
@@ -1098,8 +1098,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.6796826+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.6796826+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.660795</y>
@@ -1116,8 +1116,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.7127055+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.7127055+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.715149</y>
@@ -1134,8 +1134,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.7627409+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.7627409+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.797437</y>
@@ -1152,8 +1152,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.7957646+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.7957646+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.850612</y>
@@ -1170,8 +1170,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.8447988+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.8447988+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.902832</y>
@@ -1188,8 +1188,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.8788357+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.8788357+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.979703</y>
@@ -1206,8 +1206,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.9278703+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.9278703+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.029138</y>
@@ -1224,8 +1224,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:47.9608808+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:47.9608808+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.101932</y>
@@ -1242,8 +1242,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.009915+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.009915+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.148611</y>
@@ -1260,8 +1260,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.0439412+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.0439412+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.217098</y>
@@ -1278,8 +1278,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.094027+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.094027+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.281778</y>
@@ -1296,8 +1296,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.1269982+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.1269982+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.323796</y>
@@ -1314,8 +1314,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.1760426+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.1760426+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.384853</y>
@@ -1332,8 +1332,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.2260831+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.2260831+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.424274</y>
@@ -1350,8 +1350,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.2591064+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.2591064+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.48119</y>
@@ -1368,8 +1368,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.3091298+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.3091298+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.517227</y>
@@ -1386,8 +1386,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.3421656+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.3421656+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.568619</y>
@@ -1404,8 +1404,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.3922+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.3922+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.602336</y>
@@ -1422,8 +1422,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.4252567+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.4252567+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.633947</y>
@@ -1440,8 +1440,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.474243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.474243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.678682</y>
@@ -1458,8 +1458,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.508288+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.508288+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.707261</y>
@@ -1476,8 +1476,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.5573021+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.5573021+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.747758</y>
@@ -1494,8 +1494,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.5903785+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.5903785+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.785523</y>
@@ -1512,8 +1512,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.6403604+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.6403604+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.820268</y>
@@ -1530,8 +1530,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.6733995+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.6733995+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.841115</y>
@@ -1548,8 +1548,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.7234729+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.7234729+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.870698</y>
@@ -1566,8 +1566,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.7564612+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.7564612+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.888737</y>
@@ -1584,8 +1584,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.8065282+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.8065282+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.905443</y>
@@ -1602,8 +1602,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.8395015+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.8395015+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.928014</y>
@@ -1620,8 +1620,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.8885366+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.8885366+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.941307</y>
@@ -1638,8 +1638,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.921574+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.921574+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.958876</y>
@@ -1656,8 +1656,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:48.9716465+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:48.9716465+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.968763</y>
@@ -1674,8 +1674,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.004657+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.004657+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.981183</y>
@@ -1692,8 +1692,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.0546539+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.0546539+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.987644</y>
@@ -1710,8 +1710,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.0877268+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.0877268+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.994782</y>
@@ -1728,8 +1728,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.1377618+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.1377618+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.998924</y>
@@ -1746,8 +1746,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.1707509+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.1707509+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.999955</y>
@@ -1764,8 +1764,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.2197727+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.2197727+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.998923</y>
@@ -1782,8 +1782,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.252852+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.252852+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.996524</y>
@@ -1800,8 +1800,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.3028433+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.3028433+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.990296</y>
@@ -1818,8 +1818,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.3358624+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.3358624+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.984477</y>
@@ -1836,8 +1836,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.3859384+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.3859384+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.977313</y>
@@ -1854,8 +1854,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.4189262+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.4189262+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.963841</y>
@@ -1872,8 +1872,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.4689983+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.4689983+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.953244</y>
@@ -1890,8 +1890,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.5019695+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.5019695+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.935019</y>
@@ -1908,8 +1908,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.5520048+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.5520048+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.920682</y>
@@ -1926,8 +1926,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.6010548+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.6010548+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.88900852</y>
@@ -1944,8 +1944,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.6340623+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.6340623+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.87070751</y>
@@ -1962,8 +1962,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.6841131+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.6841131+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.841438</y>
@@ -1980,8 +1980,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.717136+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.717136+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.819579</y>
@@ -1998,8 +1998,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.7672081+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.7672081+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.79695</y>
@@ -2016,8 +2016,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.800181+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.800181+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.76091</y>
@@ -2034,8 +2034,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.8492182+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.8492182+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.734952</y>
@@ -2052,8 +2052,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.8832538+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.8832538+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.693408</y>
@@ -2070,8 +2070,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.9323243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.9323243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.664297</y>
@@ -2088,8 +2088,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:49.9653122+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:49.9653122+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.63391</y>
@@ -2106,8 +2106,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.0153834+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.0153834+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.585537</y>
@@ -2124,8 +2124,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.04837+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.04837+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.551959</y>
@@ -2142,8 +2142,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.0984057+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.0984057+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.481154</y>
@@ -2160,8 +2160,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.1314274+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.1314274+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.44380951</y>
@@ -2178,8 +2178,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.1814657+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.1814657+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.385301</y>
@@ -2196,8 +2196,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.2134879+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.2134879+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.34505</y>
@@ -2214,8 +2214,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.263522+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.263522+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.281756</y>
@@ -2232,8 +2232,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.2975819+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.2975819+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.238562</y>
@@ -2250,8 +2250,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.3465815+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.3465815+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.194135</y>
@@ -2268,8 +2268,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.3796412+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.3796412+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.124723</y>
@@ -2286,8 +2286,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.4296372+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.4296372+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.077599</y>
@@ -2304,8 +2304,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.4626998+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.4626998+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.00502</y>
@@ -2322,8 +2322,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.5127343+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.5127343+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.954882</y>
@@ -2340,8 +2340,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.5457213+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.5457213+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.90277</y>
@@ -2358,8 +2358,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.5957549+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.5957549+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.797559</y>
@@ -2376,8 +2376,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.628765+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.628765+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.743333</y>
@@ -2394,8 +2394,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.6777997+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.6777997+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.65924</y>
@@ -2412,8 +2412,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.7108264+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.7108264+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.602448</y>
@@ -2430,8 +2430,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.7608797+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.7608797+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.515932</y>
@@ -2448,8 +2448,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.7938876+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.7938876+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.456562</y>
@@ -2466,8 +2466,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.8429689+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.8429689+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.365702</y>
@@ -2484,8 +2484,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.8769553+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.8769553+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.304012</y>
@@ -2502,8 +2502,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.9259882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.9259882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.241388</y>
@@ -2520,8 +2520,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:50.9760107+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:50.9760107+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.145657</y>
@@ -2538,8 +2538,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.0090473+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.0090473+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.080982</y>
@@ -2556,8 +2556,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.0590882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.0590882+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.981643</y>
@@ -2574,8 +2574,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.0921449+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.0921449+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.88013172</y>
@@ -2592,8 +2592,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.1421426+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.1421426+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.779063</y>
@@ -2610,8 +2610,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.1751668+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.1751668+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.709879</y>
@@ -2628,8 +2628,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.2251898+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.2251898+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.639895</y>
@@ -2646,8 +2646,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.2582101+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.2582101+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.53326273</y>
@@ -2664,8 +2664,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.3072623+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.3072623+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.461775</y>
@@ -2682,8 +2682,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.3413209+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.3413209+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.35227</y>
@@ -2700,8 +2700,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.3903543+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.3903543+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.278854</y>
@@ -2718,8 +2718,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.423328+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.423328+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.166876</y>
@@ -2736,8 +2736,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.4734142+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.4734142+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.092197</y>
@@ -2754,8 +2754,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.5064012+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.5064012+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.01693964</y>
@@ -2772,8 +2772,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.556422+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.556422+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.901971</y>
@@ -2790,8 +2790,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.5894599+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.5894599+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.787943</y>
@@ -2808,8 +2808,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.6394798+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.6394798+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.670744</y>
@@ -2826,8 +2826,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.6725177+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.6725177+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.592525</y>
@@ -2844,8 +2844,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.7215545+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.7215545+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.473524</y>
@@ -2862,8 +2862,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.7545744+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.7545744+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.39447975</y>
@@ -2880,8 +2880,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.8045961+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.8045961+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.273981</y>
@@ -2898,8 +2898,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.8376724+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.8376724+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.193828</y>
@@ -2916,8 +2916,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.8877061+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.8877061+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.113553</y>
@@ -2934,8 +2934,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.9207298+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.9207298+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.99351835</y>
@@ -2952,8 +2952,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:51.9707284+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:51.9707284+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.9122014</y>
@@ -2970,8 +2970,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.003738+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.003738+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.789528</y>
@@ -2988,8 +2988,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.0527906+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.0527906+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.707872</y>
@@ -3006,8 +3006,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.0858503+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.0858503+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.58383942</y>
@@ -3024,8 +3024,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.1358844+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.1358844+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.459413</y>
@@ -3042,8 +3042,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.1689077+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.1689077+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.377058</y>
@@ -3060,8 +3060,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.2189443+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.2189443+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.254559</y>
@@ -3078,8 +3078,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.2519681+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.2519681+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.17180872</y>
@@ -3096,8 +3096,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.3019666+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.3019666+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.047139</y>
@@ -3114,8 +3114,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.3510026+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.3510026+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.035324</y>
@@ -3132,8 +3132,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.3840242+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.3840242+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.15945625</y>
@@ -3150,8 +3150,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.4340967+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.4340967+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.24291039</y>
@@ -3168,8 +3168,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.4671192+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.4671192+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.325383</y>
@@ -3186,8 +3186,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.5171186+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.5171186+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.450049</y>
@@ -3204,8 +3204,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.5501248+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.5501248+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.532237</y>
@@ -3222,8 +3222,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.6001593+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.6001593+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.69610739</y>
@@ -3240,8 +3240,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.6331814+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.6331814+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.77767944</y>
@@ -3258,8 +3258,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.6822327+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.6822327+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.90101337</y>
@@ -3276,8 +3276,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.7152594+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.7152594+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>5.98215055</y>
@@ -3294,8 +3294,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.7652875+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.7652875+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.06282473</y>
@@ -3312,8 +3312,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.7983126+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.7983126+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.18467665</y>
@@ -3330,8 +3330,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.848356+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.848356+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.26389933</y>
@@ -3348,8 +3348,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.8813563+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.8813563+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.383688</y>
@@ -3366,8 +3366,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.9313916+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.9313916+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.46308661</y>
@@ -3384,8 +3384,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:52.9634142+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:52.9634142+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.58366346</y>
@@ -3402,8 +3402,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.0134517+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.0134517+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.659792</y>
@@ -3420,8 +3420,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.047474+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.047474+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.73769951</y>
@@ -3438,8 +3438,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.0965292+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.0965292+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.89323664</y>
@@ -3456,8 +3456,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.1305327+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.1305327+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>6.96929073</y>
@@ -3474,8 +3474,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.1795674+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.1795674+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.083766</y>
@@ -3492,8 +3492,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.2126104+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.2126104+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.1570816</y>
@@ -3510,8 +3510,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.262641+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.262641+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.26849174</y>
@@ -3528,8 +3528,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.2956643+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.2956643+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.34198856</y>
@@ -3546,8 +3546,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.3457364+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.3457364+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.414851</y>
@@ -3564,8 +3564,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.3787585+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.3787585+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.523077</y>
@@ -3582,8 +3582,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.4277427+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.4277427+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.594064</y>
@@ -3600,8 +3600,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.4607656+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.4607656+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.700166</y>
@@ -3618,8 +3618,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.5108527+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.5108527+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.769241</y>
@@ -3636,8 +3636,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.543876+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.543876+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.87254953</y>
@@ -3654,8 +3654,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.5938613+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.5938613+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>7.97223473</y>
@@ -3672,8 +3672,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.6438971+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.6438971+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.071569</y>
@@ -3690,8 +3690,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.6769187+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.6769187+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.136285</y>
@@ -3708,8 +3708,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.7259905+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.7259905+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.200249</y>
@@ -3726,8 +3726,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.7590143+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.7590143+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.295394</y>
@@ -3744,8 +3744,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.8090479+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.8090479+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.357025</y>
@@ -3762,8 +3762,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.8421085+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.8421085+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.448608</y>
@@ -3780,8 +3780,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.8921425+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.8921425+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.508017</y>
@@ -3798,8 +3798,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.9251509+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.9251509+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.566379</y>
@@ -3816,8 +3816,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:53.9752008+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:53.9752008+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.652943</y>
@@ -3834,8 +3834,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.0082091+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.0082091+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.708764</y>
@@ -3852,8 +3852,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.0572442+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.0572442+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.789974</y>
@@ -3870,8 +3870,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.0912836+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.0912836+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.870252</y>
@@ -3888,8 +3888,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.1403037+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.1403037+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.948315</y>
@@ -3906,8 +3906,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.1733407+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.1733407+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>8.998393</y>
@@ -3924,8 +3924,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.223365+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.223365+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.072149</y>
@@ -3942,8 +3942,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.256393+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.256393+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.119526</y>
@@ -3960,8 +3960,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.3064348+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.3064348+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.165788</y>
@@ -3978,8 +3978,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.339494+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.339494+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.2323885</y>
@@ -3996,8 +3996,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.3885304+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.3885304+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.275915</y>
@@ -4014,8 +4014,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.4225048+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.4225048+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.339163</y>
@@ -4032,8 +4032,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.4715514+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.4715514+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.379631</y>
@@ -4050,8 +4050,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.5046124+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.5046124+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.438565</y>
@@ -4068,8 +4068,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.5546486+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.5546486+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.475961</y>
@@ -4086,8 +4086,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.5876702+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.5876702+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.530378</y>
@@ -4104,8 +4104,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.6376538+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.6376538+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.580898</y>
@@ -4122,8 +4122,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.670678+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.670678+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.613466</y>
@@ -4140,8 +4140,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.7207129+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.7207129+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.660097</y>
@@ -4158,8 +4158,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.7527864+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.7527864+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.68942</y>
@@ -4176,8 +4176,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.8027854+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.8027854+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.731309</y>
@@ -4194,8 +4194,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.8368453+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.8368453+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.757337</y>
@@ -4212,8 +4212,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.8858466+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.8858466+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.782159</y>
@@ -4230,8 +4230,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.9188674+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.9188674+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.817154</y>
@@ -4248,8 +4248,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:54.9688903+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:54.9688903+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.838631</y>
@@ -4266,8 +4266,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.0189749+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.0189749+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.86819649</y>
@@ -4284,8 +4284,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.0519781+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.0519781+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.886775</y>
@@ -4302,8 +4302,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.1009956+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.1009956+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.919019</y>
@@ -4320,8 +4320,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.134057+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.134057+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.933136</y>
@@ -4338,8 +4338,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.184056+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.184056+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.951772</y>
@@ -4356,8 +4356,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.2171157+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.2171157+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.96274</y>
@@ -4374,8 +4374,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.2671493+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.2671493+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.972121</y>
@@ -4392,8 +4392,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.3001243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.3001243+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.983598</y>
@@ -4410,8 +4410,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.3501913+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.3501913+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.989726</y>
@@ -4428,8 +4428,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.3831954+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.3831954+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.99607849</y>
@@ -4446,8 +4446,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.4322672+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.4322672+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.99867249</y>
@@ -4464,8 +4464,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.4662712+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.4662712+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.999895</y>
@@ -4482,8 +4482,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.5153268+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.5153268+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.999151</y>
@@ -4500,8 +4500,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.5483484+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.5483484+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.996945</y>
@@ -4518,8 +4518,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.5983478+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.5983478+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.988418</y>
@@ -4536,8 +4536,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.6313557+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.6313557+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.981964</y>
@@ -4554,8 +4554,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.681406+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.681406+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.97005749</y>
@@ -4572,8 +4572,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.7144302+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.7144302+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.960324</y>
@@ -4590,8 +4590,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.7634995+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.7634995+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.943082</y>
@@ -4608,8 +4608,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.7975235+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.7975235+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.930004</y>
@@ -4626,8 +4626,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.8465411+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.8465411+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.91555</y>
@@ -4644,8 +4644,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.8805326+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.8805326+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.891135</y>
@@ -4662,8 +4662,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.9295809+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.9295809+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.873345</y>
@@ -4680,8 +4680,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:55.9626419+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:55.9626419+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.843855</y>
@@ -4698,8 +4698,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:56.0126772+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:56.0126772+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.822692</y>
@@ -4716,8 +4716,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:56.0456634+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:56.0456634+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.800228</y>
@@ -4734,8 +4734,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:56.0957338+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:56.0957338+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.751411</y>
@@ -4752,8 +4752,8 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-    <Joint Time="2015-02-17T18:37:56.1347241+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
+    </SingleJoint>
+    <SingleJoint Time="2015-02-17T18:37:56.1347241+00:00" X="0" Y="0" Z="0" QX="0" QY="0" QZ="0" QW="0">
       <position>
         <x>0</x>
         <y>9.72506</y>
@@ -4770,6 +4770,6 @@
           <z>0</z>
         </eulerAngles>
       </rotation>
-    </Joint>
-  </Joints>
+    </SingleJoint>
+  </SingleJoints>
 </ExerciseModel>

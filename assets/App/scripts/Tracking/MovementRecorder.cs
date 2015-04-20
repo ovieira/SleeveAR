@@ -41,7 +41,7 @@ public class MovementRecorder : MonoBehaviour {
         //    Debug.Log("Nothing to Record");
         //    canRecord = false;
         //}
-        //Positions = new List<Joint>();
+        //Positions = new List<SingleJoint>();
 
         for (int i = 0; i < ManagerTracking.instance.count; i++) {
             GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
@@ -55,7 +55,7 @@ public class MovementRecorder : MonoBehaviour {
         if (canPlay) {
             for (int i = 0; i < _replayPrefabs.Count; i++)
             {
-                Joint j = currentJointgroup.jointsList[i];
+                SingleJoint j = currentJointgroup.jointsList[i];
                 _replayPrefabs[i].position = j.position;
                 _replayPrefabs[i].rotation = j.rotation;
             }
@@ -142,7 +142,7 @@ public class MovementRecorder : MonoBehaviour {
 
         //if (entry_no < exerciseModel.LogList.Count)
         //{
-        //    Joint tc = exerciseModel.Get(entry_no++);
+        //    SingleJoint tc = exerciseModel.Get(entry_no++);
         //    auxPos = tc.position;
         //    auxRot = tc.rotation;
         //}

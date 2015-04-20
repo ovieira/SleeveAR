@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinectListener : MonoBehaviour {
 
     private Dictionary<string, string> JointInfoString;
-    private Dictionary<string, Joint> JointInfo;
+    private Dictionary<string, SingleJoint> JointInfo;
 
     public string[] _jointsRequired;
     public GameObject[] _RigidBodies;
@@ -17,13 +17,13 @@ public class KinectListener : MonoBehaviour {
     #region Life Cycle
     private void Start() {
         JointInfoString = new Dictionary<string, string>();
-        JointInfo = new Dictionary<string, Joint>();
+        JointInfo = new Dictionary<string, SingleJoint>();
         _JointsRequired = new List<string>(_jointsRequired);
         foreach (string s in _JointsRequired) {
             JointInfoString.Add(s, "");
             string js = s.Substring(0, s.Length - 1);
             if (!JointInfo.ContainsKey(js))
-                JointInfo.Add(s.Substring(0, s.Length - 1), new Joint());
+                JointInfo.Add(s.Substring(0, s.Length - 1), new SingleJoint());
         }
     }
 
@@ -35,16 +35,16 @@ public class KinectListener : MonoBehaviour {
     #region GameObjects Update
     private void UpdateRigidBodies() {
         int i = 0;
-        foreach (KeyValuePair<string, Joint> _joint in JointInfo) {
+        foreach (KeyValuePair<string, SingleJoint> _joint in JointInfo) {
             UpdateGameObjectTransform(i, _joint.Value);
             i++;
         }
 
     }
 
-    private void UpdateGameObjectTransform(int i, Joint joint) {
-        _RigidBodies[i].transform.position = joint.position - KinectCenter.transform.position;
-        _RigidBodies[i].transform.rotation = joint.rotation;
+    private void UpdateGameObjectTransform(int i, SingleJoint singleJoint) {
+        _RigidBodies[i].transform.position = singleJoint.position - KinectCenter.transform.position;
+        _RigidBodies[i].transform.rotation = singleJoint.rotation;
     } 
     #endregion
 
@@ -65,7 +65,7 @@ public class KinectListener : MonoBehaviour {
     } 
     #endregion
 
-    #region Joint Dictionary Update
+    #region SingleJoint Dictionary Update
     public void UpdateJoint(string jID, string iType, string value) {
         //JointInfo[jID].UpdateJoint(iType, value);
     }
@@ -107,7 +107,7 @@ public class KinectListener : MonoBehaviour {
     void OnGUI() {
 
         int i = 0;
-        foreach (KeyValuePair<string, Joint> keyValuePair in JointInfo) {
+        foreach (KeyValuePair<string, SingleJoint> keyValuePair in JointInfo) {
             GUI.Label(new Rect(Screen.width - 400, i * 40 + 15, 400, 100), "" + keyValuePair.Key + ":");
             GUI.Label(new Rect(Screen.width - 300, i * 40 + 15, 400, 100), "P: " + keyValuePair.Value.position);
             GUI.Label(new Rect(Screen.width - 300, i * 40 + 30, 400, 100), "O: " + keyValuePair.Value.rotation);

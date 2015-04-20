@@ -10,7 +10,7 @@ using FullSerializer;
 public class JointsGroup
 {
 
-    [fsProperty] public List<Joint> jointsList = new List<Joint>(3);
+    [fsProperty] public List<SingleJoint> jointsList = new List<SingleJoint>(3);
 
     /// <summary>
     /// Constructor with Joints
@@ -18,7 +18,7 @@ public class JointsGroup
     /// <param name="j1"></param>
     /// <param name="j2"></param>
     /// <param name="j3"></param>
-    public JointsGroup(Joint j1, Joint j2, Joint j3)
+    public JointsGroup(SingleJoint j1, SingleJoint j2, SingleJoint j3)
     {
         jointsList.Add(j1);
         jointsList.Add(j2);
@@ -33,9 +33,9 @@ public class JointsGroup
     /// <param name="g3"></param>
     public JointsGroup(GameObject g1, GameObject g2, GameObject g3)
     {
-        jointsList.Add(new Joint(g1));
-        jointsList.Add(new Joint(g2));
-        jointsList.Add(new Joint(g3));
+        jointsList.Add(new SingleJoint(g1));
+        jointsList.Add(new SingleJoint(g2));
+        jointsList.Add(new SingleJoint(g3));
     }
 
     /// <summary>
@@ -46,13 +46,13 @@ public class JointsGroup
     /// <param name="t3"></param>
     public JointsGroup(Transform t1, Transform t2, Transform t3)
     {
-        jointsList.Add(new Joint(t1));
-        jointsList.Add(new Joint(t2));
-        jointsList.Add(new Joint(t3));
+        jointsList.Add(new SingleJoint(t1));
+        jointsList.Add(new SingleJoint(t2));
+        jointsList.Add(new SingleJoint(t3));
     }
 
    public void Print() {
-        foreach (Joint joint in jointsList)
+        foreach (SingleJoint joint in jointsList)
         {
             joint.Print();
         }

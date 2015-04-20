@@ -1,53 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FullSerializer;
 using UnityEngine;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using FullSerializer;
 
 /// <summary>
-/// Represents a single instant of a human joint with its position and rotation.
+///     Represents a single instant of a human joint with its position and rotation.
 /// </summary>
-public class Joint {
-
-    public Joint() {
+public class SingleJoint
+{
+    public SingleJoint()
+    {
         position = new Vector3();
         rotation = Quaternion.identity;
     }
 
-    public Joint(Vector3 p, Quaternion q) {
+    public SingleJoint(Vector3 p, Quaternion q)
+    {
         position = p;
         rotation = q;
     }
 
-    public Joint(Transform t)
+    public SingleJoint(Transform t)
     {
         position = t.position;
         rotation = t.rotation;
     }
 
-    public Joint(GameObject g)
+    public SingleJoint(GameObject g)
     {
         position = g.transform.position;
         rotation = g.transform.rotation;
     }
 
     /// <summary>
-    /// Joint position
+    ///     SingleJoint position
     /// </summary>
     [fsProperty]
     public Vector3 position { get; set; }
 
     /// <summary>
-    /// Joint rotation
+    ///     SingleJoint rotation
     /// </summary>
     [fsProperty]
     public Quaternion rotation { get; set; }
 
-    public void Add(float x, float y, float z, float qx, float qy, float qz, float qw) {
+    public void Add(float x, float y, float z, float qx, float qy, float qz, float qw)
+    {
         position = new Vector3(x, y, z);
         rotation = new Quaternion(qx, qy, qz, qw);
     }
@@ -79,7 +75,8 @@ public class Joint {
     //    return new Vector3(x, y, z);
     //}
 
-    public void Print() {
-        Debug.Log("P: " + position + "|| R: "+ rotation);
+    public void Print()
+    {
+        Debug.Log("P: " + position + "|| R: " + rotation);
     }
 }
