@@ -1,44 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-using System.Xml;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
-using FullSerializer;
+using UnityEngine;
 
 [XmlRoot("ExerciseModel")]
-public class ExerciseModel {
-
+public class ExerciseModel
+{
     public List<JointsGroup> _exerciseModel = new List<JointsGroup>();
-
     //public Dictionary<int, singleJointLi> ();
 
 
     /// <summary>
-    /// Adds JointGroup to current exerciseModel
+    ///     Adds JointGroup to current exerciseModel
     /// </summary>
     /// <param name="jointsGroup"></param>
-    public void Add(JointsGroup jointsGroup) {
+    public void Add(JointsGroup jointsGroup)
+    {
         _exerciseModel.Add(jointsGroup);
     }
 
     /// <summary>
-    /// Return JointGroup at index position
+    ///     Return JointGroup at index position
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
-    public JointsGroup Get(int index) {
+    public JointsGroup Get(int index)
+    {
         return _exerciseModel[index];
     }
 
-    public void testPopulate() {
+    public void testPopulate()
+    {
         Debug.Log("Started Populate");
-        for (int i = 0; i < 10000; i++) {
-            SingleJoint j = new SingleJoint(new Vector3(i, i, i), new Quaternion(i*5,i*5,i*5,1));
-            JointsGroup jg = new JointsGroup(j, j, j);
+        for (var i = 0; i < 10000; i++)
+        {
+            var j = new SingleJoint(new Vector3(i, i, i), new Quaternion(i*5, i*5, i*5, 1));
+            var jg = new JointsGroup(j, j, j);
             _exerciseModel.Add(jg);
         }
     }
 }
-

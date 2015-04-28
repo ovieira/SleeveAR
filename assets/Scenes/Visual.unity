@@ -425,7 +425,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c4624f9424bea47aebca454a5425c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1127324214
+--- !u!120 &1036868209 stripped
+LineRenderer:
+  m_PrefabParentObject: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1527041095}
+--- !u!4 &1127324214 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434722, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_PrefabInternal: {fileID: 45002290}
@@ -494,7 +499,7 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4294967295
   m_UseWorldSpace: 0
---- !u!4 &1296296903
+--- !u!4 &1296296903 stripped
 Transform:
   m_PrefabParentObject: {fileID: 496086, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_PrefabInternal: {fileID: 45002290}
@@ -679,6 +684,26 @@ Prefab:
       propertyPath: m_Name
       value: VisualFeedback
       objectReference: {fileID: 0}
+    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: m_Parameters.startWidth
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: m_Parameters.endWidth
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: m_Parameters.m_StartColor.rgba
+      value: 4278782463
+      objectReference: {fileID: 0}
+    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: m_Parameters.m_EndColor.rgba
+      value: 4278321904
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 1036868209}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_IsPrefabParent: 0
@@ -812,7 +837,7 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4294967295
   m_UseWorldSpace: 0
---- !u!4 &1861782930
+--- !u!4 &1861782930 stripped
 Transform:
   m_PrefabParentObject: {fileID: 461156, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_PrefabInternal: {fileID: 45002290}

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ManagerTracking : MonoBehaviour
 {
@@ -11,18 +12,19 @@ public class ManagerTracking : MonoBehaviour
     [SerializeField] private GameObject[] _assignedRigidBodies;
     [SerializeField] protected GameObject _Optitrack, _Kinect;
     [SerializeField] protected TrackingDevice _TrackingDevice;
+    [SerializeField] protected Text _FpsText;
     public int count { get; set; }
+    private int fpsCount;
+    private float timerCount = 0;
+    private float timeaux;
+
+
 
     public void Awake()
     {
         count = _assignedRigidBodies.Length;
         InitializeTrackingDevice();
         InitializeProperties();
-    }
-
-    // Use this for initialization
-    private void Start()
-    {
     }
 
     private void InitializeTrackingDevice()
@@ -36,8 +38,23 @@ public class ManagerTracking : MonoBehaviour
     private void Update()
     {
         //updateJointGroup();
+        timeaux = Time.time;
         updateFloorPositions();
         updateProjectionPosition();
+        timeaux = Time.time - timeaux;
+        updateFPSCount();
+    }
+
+    /// <summary>
+    /// Time spent calculating tracking information on each frame, Average Time Calculation Tracking Info (ATCTI)
+    /// </summary>
+    private void updateFPSCount()
+    {
+        timerCount += timeaux;
+
+        float _fps = timerCount / (float)Time.frameCount;
+        Debug.Log(_fps.ToString());
+        _FpsText.text = "ATCTI: " + _fps.ToString();
     }
 
     private void updateProjectionPosition()

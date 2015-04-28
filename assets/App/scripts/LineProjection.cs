@@ -1,37 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class LineProjection : MonoBehaviour {
+public class LineProjection : MonoBehaviour
+{
+    public LineRenderer lineRenderer;
+    //public Color c1, c2;
 
-    public LineRenderer _Line;
- 
-	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-        
+    public void Start() {
+        //lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        //lineRenderer.SetColors(c1, c2);
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
         //_Sprite.position = cube.position + offset;
+        //lineRenderer.SetColors(c1, c2);
 
-	    for (int i = 0; i < ManagerTracking.instance.count; i++)
-	    {
-            //Vector3 rb_pos = ManagerTracking.instance.getRigidBodyTransform(i).transform.position;
-            //Vector3 floor_pos = ManagerTracking.instance._floorTransforms[i];
-            //Vector3 posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
-            //Vector3 dir = posTarget - projector.position;
-            //Ray r = new Ray(projector.position, dir);
-            //RaycastHit hit;
-            //if (Physics.Raycast(r, out hit)) {
-            //    Vector3 v = hit.point;
-            //    _Line.SetPosition(i, v*offset);
-            //    //shadowSphere.position = v + (cube.transform.up * -1 * offset);
-            //    Debug.DrawLine(r.origin,hit.point,Color.white);
-            //}
-	        _Line.SetPosition(i, ManagerTracking.instance.PositionProjected[i]);
-	    }
-
-	}
+        for (var i = 0; i < ManagerTracking.instance.count; i++)
+        {
+            lineRenderer.SetPosition(i, ManagerTracking.instance.PositionProjected[i]);
+        }
+    }
 }

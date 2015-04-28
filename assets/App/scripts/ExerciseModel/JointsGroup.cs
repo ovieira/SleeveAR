@@ -1,19 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FullSerializer;
-
+using UnityEngine;
 
 /// <summary>
-/// Represents a single instant of a group of Joints.
+///     Represents a single instant of a group of Joints.
 /// </summary>
 public class JointsGroup
 {
-
     [fsProperty] public List<SingleJoint> jointsList = new List<SingleJoint>(3);
 
     /// <summary>
-    /// Constructor with Joints
+    ///     Constructor with Joints
     /// </summary>
     /// <param name="j1"></param>
     /// <param name="j2"></param>
@@ -26,7 +23,7 @@ public class JointsGroup
     }
 
     /// <summary>
-    /// Constructor with GameObjects
+    ///     Constructor with GameObjects
     /// </summary>
     /// <param name="g1"></param>
     /// <param name="g2"></param>
@@ -39,7 +36,7 @@ public class JointsGroup
     }
 
     /// <summary>
-    /// Constructor with Transforms
+    ///     Constructor with Transforms
     /// </summary>
     /// <param name="t1"></param>
     /// <param name="t2"></param>
@@ -51,8 +48,9 @@ public class JointsGroup
         jointsList.Add(new SingleJoint(t3));
     }
 
-   public void Print() {
-        foreach (SingleJoint joint in jointsList)
+    public void Print()
+    {
+        foreach (var joint in jointsList)
         {
             joint.Print();
         }
