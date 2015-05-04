@@ -35,14 +35,14 @@ public class ManagerTracking : MonoBehaviour
             _Kinect.SetActive(_TrackingDevice == TrackingDevice.KINECT);
     }
 
-    private void Update()
+    public void Update()
     {
         //updateJointGroup();
         timeaux = Time.time;
         updateFloorPositions();
         updateLightProjectionPosition();
         timeaux = Time.time - timeaux;
-        updateFPSCount();
+       // updateFPSCount();
         _jointAngle.text = ""+getCurrentJointGroup().angle;
     }
 
@@ -58,20 +58,49 @@ public class ManagerTracking : MonoBehaviour
         _FpsText.text = "ATCTI: " + _fps.ToString();
     }
 
+
+    //This one uses transforms directly
+    //private void updateLightProjectionPosition()
+    //{
+    //    for (var i = 0; i < count; i++)
+    //    {
+    //        var rb_pos = getRigidBodyTransform(i).position;
+    //        var floor_pos = PositionFloor[i];
+    //        var posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
+    //        var dir = posTarget - Projector.position;
+    //        var r = new Ray(Projector.position, dir);
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(r, out hit))
+    //        {
+    //            PositionProjected[i] = hit.point;
+    //        }
+    //    }
+    //}
+
+    //this one uses current joint group
     private void updateLightProjectionPosition()
     {
+        var _jointGroup = getCurrentJointGroup();
         for (var i = 0; i < count; i++)
         {
-            var rb_pos = getRigidBodyTransform(i).position;
+            var rb_pos = _jointGroup.jointsList[i].position;
             var floor_pos = PositionFloor[i];
             var posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
             var dir = posTarget - Projector.position;
             var r = new Ray(Projector.position, dir);
             RaycastHit hit;
-            if (Physics.Raycast(r, out hit))
-            {
+            if (Physics.Raycast(r, out hit)) {
                 PositionProjected[i] = hit.point;
             }
+
+            var rb_posWithOffset = _jointGroup.jointsList[i].positionWithOffset;
+            posTarget = new Vector3(floor_pos.x, rb_posWithOffset.y, floor_pos.z);
+            dir = posTarget - Projector.position;
+            r = new Ray(Projector.position, dir);
+            if (Physics.Raycast(r, out hit)) {
+                PositionProjectedWithOffset[i] = hit.point;
+            }
+
         }
     }
 
@@ -115,7 +144,7 @@ public class ManagerTracking : MonoBehaviour
     protected Transform[] _transforms;
     public Vector3[] _floorTransforms;
 
-    public Vector3[] PositionFloor, PositionProjected;
+    public Vector3[] PositionFloor, PositionProjected, PositionProjectedWithOffset;
     public Transform Projector;
 
     private JointsGroup _currentJointsGroup;
@@ -137,6 +166,7 @@ public class ManagerTracking : MonoBehaviour
         _floorTransforms = new Vector3[count];
         PositionFloor = new Vector3[count];
         PositionProjected = new Vector3[count];
+        PositionProjectedWithOffset = new Vector3[count];
         for (var i = 0; i < count; i++)
         {
             _transforms[i] = _assignedRigidBodies[i].transform;

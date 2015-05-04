@@ -142,6 +142,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11491420, guid: b2e882c195129b545be8de3992991151, type: 2}
+      propertyPath: _jointAngle
+      value: 
+      objectReference: {fileID: 1470247579}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_IsPrefabParent: 0
@@ -576,6 +580,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1470247579 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453124, guid: 89753d0f1b841b842af09e4a2ac640ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 2007938765}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1476898298
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +714,18 @@ Prefab:
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 1036868209}
+    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: white
+      value: 
+      objectReference: {fileID: 2100000, guid: 427128ee21866e149bf22c4dff888c67, type: 2}
+    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: red
+      value: 
+      objectReference: {fileID: 2100000, guid: ffe2b8428f75ad847a3c111d02400824, type: 2}
+    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: LineRendererPrefab
+      value: 
+      objectReference: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_IsPrefabParent: 0
