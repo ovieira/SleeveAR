@@ -429,11 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c4624f9424bea47aebca454a5425c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &1036868209 stripped
-LineRenderer:
-  m_PrefabParentObject: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1527041095}
 --- !u!4 &1127324214 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434722, guid: b2e882c195129b545be8de3992991151, type: 2}
@@ -713,7 +708,7 @@ Prefab:
     - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
       propertyPath: lineRenderer
       value: 
-      objectReference: {fileID: 1036868209}
+      objectReference: {fileID: 0}
     - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
       propertyPath: white
       value: 
@@ -726,7 +721,8 @@ Prefab:
       propertyPath: LineRendererPrefab
       value: 
       objectReference: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1629800720
