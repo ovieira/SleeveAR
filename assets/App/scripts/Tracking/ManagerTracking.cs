@@ -17,7 +17,7 @@ public class ManagerTracking : MonoBehaviour
     private int fpsCount;
     private float timerCount = 0;
     private float timeaux;
-
+    public Text _jointAngle;
 
 
     public void Awake()
@@ -40,9 +40,10 @@ public class ManagerTracking : MonoBehaviour
         //updateJointGroup();
         timeaux = Time.time;
         updateFloorPositions();
-        updateProjectionPosition();
+        updateLightProjectionPosition();
         timeaux = Time.time - timeaux;
         updateFPSCount();
+        _jointAngle.text = ""+getCurrentJointGroup().angle;
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ public class ManagerTracking : MonoBehaviour
         _FpsText.text = "ATCTI: " + _fps.ToString();
     }
 
-    private void updateProjectionPosition()
+    private void updateLightProjectionPosition()
     {
         for (var i = 0; i < count; i++)
         {
@@ -93,6 +94,7 @@ public class ManagerTracking : MonoBehaviour
     /// <returns></returns>
     public JointsGroup getCurrentJointGroup()
     {
+
         var jg = new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
 
         jg.Print();

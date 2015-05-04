@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class SingleJoint
 {
+    protected Vector3 _position;
+    public float OffsetMagnitude = 0.05f;
+
     public SingleJoint()
     {
         position = new Vector3();
@@ -34,7 +37,22 @@ public class SingleJoint
     ///     SingleJoint position
     /// </summary>
     [fsProperty]
-    public Vector3 position { get; set; }
+    public Vector3 position
+    {
+        get { return _position; }
+        set
+        {
+            _position = value;
+            var _up = rotation*Vector3.up;
+            positionWithOffset = _position - _up*OffsetMagnitude;
+        }
+    }
+
+    /// <summary>
+    ///     joint position with up vector offset applied
+    /// </summary>
+    [fsProperty]
+    public Vector3 positionWithOffset { get; set; }
 
     /// <summary>
     ///     SingleJoint rotation
