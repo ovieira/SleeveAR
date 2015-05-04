@@ -7,7 +7,25 @@ using UnityEngine;
 /// </summary>
 public class JointsGroup
 {
-    [fsProperty] public List<SingleJoint> jointsList = new List<SingleJoint>(3);
+    #region Public Variables
+
+    /// <summary>
+    /// List of individual joints that represent the JointGroup
+    /// </summary>
+    [fsProperty]
+    public List<SingleJoint> jointsList = new List<SingleJoint>(3);
+
+    [fsProperty]
+    public float angle; 
+
+    #endregion
+
+    #region Private Variables
+
+    private Vector3 v1, v2;
+    
+    #endregion
+
 
     /// <summary>
     ///     Constructor with Joints
@@ -20,6 +38,7 @@ public class JointsGroup
         jointsList.Add(j1);
         jointsList.Add(j2);
         jointsList.Add(j3);
+        CalculateJointGroupAngle();
     }
 
     /// <summary>
@@ -33,6 +52,7 @@ public class JointsGroup
         jointsList.Add(new SingleJoint(g1));
         jointsList.Add(new SingleJoint(g2));
         jointsList.Add(new SingleJoint(g3));
+        CalculateJointGroupAngle();
     }
 
     /// <summary>
@@ -46,6 +66,7 @@ public class JointsGroup
         jointsList.Add(new SingleJoint(t1));
         jointsList.Add(new SingleJoint(t2));
         jointsList.Add(new SingleJoint(t3));
+        CalculateJointGroupAngle();
     }
 
     public void Print()
@@ -54,5 +75,13 @@ public class JointsGroup
         {
             joint.Print();
         }
+        Debug.Log("Angle: " + angle);
+    }
+
+    private void CalculateJointGroupAngle()
+    {
+        v1 = jointsList[1].position - jointsList[0].position;
+        v2 = jointsList[2].position - jointsList[1].position;
+        angle = Vector3.Angle(v1, v2);
     }
 }
