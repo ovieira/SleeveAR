@@ -172,6 +172,8 @@ public class MovementRecorder : MonoBehaviour {
                 break;
             case FileFormatEnum.JSON:
                 exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
+                exerciseModel.label = _FileToLoad;
+                ManagerExercise.instance.loadedExerciseModel = exerciseModel;
                 break;
         }
 

@@ -4,7 +4,7 @@ using System.Collections;
 //using NatNetML;
 using OptitrackManagement;
 
-public class OptitrackManager : MonoBehaviour
+public class ManagerOptitrack : MonoBehaviour
 {
     public GameObject markerObject;
 
@@ -14,9 +14,9 @@ public class OptitrackManager : MonoBehaviour
     private Vector3 _moveVector;
     public bool _deinitValue = false;
 
-    ~OptitrackManager()
+    ~ManagerOptitrack()
     {
-        Debug.Log("OptitrackManager: Destruct");
+        Debug.Log("ManagerOptitrack: Destruct");
         OptitrackManagement.DirectMulticastSocketClient.Close();
     }
 

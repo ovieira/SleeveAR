@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Security.Cryptography;
 
-public class SceneManager : MonoBehaviour {
+public class ManagerScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

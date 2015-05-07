@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
 [XmlRoot("ExerciseModel")]
 public class ExerciseModel
 {
+    public String label;
+
+
     public List<JointsGroup> _exerciseModel = new List<JointsGroup>();
     //public Dictionary<int, singleJointLi> ();
 

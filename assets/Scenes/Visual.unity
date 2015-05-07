@@ -646,6 +646,11 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4294967295
   m_UseWorldSpace: 0
+--- !u!20 &1512179955 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2013788, guid: 8cfd5edbcbfb460449fd64b165b20199,
+    type: 2}
+  m_PrefabInternal: {fileID: 639693827}
 --- !u!1001 &1527041095
 Prefab:
   m_ObjectHideFlags: 0
@@ -689,42 +694,32 @@ Prefab:
       propertyPath: m_Name
       value: VisualFeedback
       objectReference: {fileID: 0}
-    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_Parameters.startWidth
-      value: .0199999996
+    - target: {fileID: 177680, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_Parameters.endWidth
-      value: .0199999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_Parameters.m_StartColor.rgba
-      value: 4278782463
-      objectReference: {fileID: 0}
-    - target: {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_Parameters.m_EndColor.rgba
-      value: 4278321904
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: lineRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: white
-      value: 
-      objectReference: {fileID: 2100000, guid: 427128ee21866e149bf22c4dff888c67, type: 2}
-    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: red
-      value: 
-      objectReference: {fileID: 2100000, guid: ffe2b8428f75ad847a3c111d02400824, type: 2}
-    - target: {fileID: 11441784, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: LineRendererPrefab
-      value: 
-      objectReference: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
-    m_RemovedComponents:
-    - {fileID: 12099402, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1527041096 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 131166, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
+  m_PrefabInternal: {fileID: 1527041095}
+--- !u!114 &1527041097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527041096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4cc4d901f631447826a4cf0813289c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 0
+  LineRendererPrefab: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
+  white: {fileID: 2100000, guid: 4a89bcdbb0c165f438e0d4dacfb053ea, type: 2}
+  _camera: {fileID: 1512179955}
 --- !u!1 &1629800720
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +919,45 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4294967295
   m_UseWorldSpace: 0
+--- !u!1 &1948761265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1948761267}
+  - 114: {fileID: 1948761266}
+  m_Layer: 0
+  m_Name: ExerciseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1948761266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948761265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51399e243dedae749ad2d549d4033e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1948761267
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948761265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .913693428, y: 4.41579203e-18, z: -.198869586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1001 &2007938765
 Prefab:
   m_ObjectHideFlags: 0
