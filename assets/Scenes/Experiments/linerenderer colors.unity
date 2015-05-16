@@ -135,10 +135,10 @@ LineRenderer:
     endWidth: .0500000007
     m_StartColor:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4292607793
     m_EndColor:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190335
   m_UseWorldSpace: 0
 --- !u!4 &466881717
 Transform:

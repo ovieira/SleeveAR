@@ -1,36 +1,82 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class LineProjection : MonoBehaviour {
-    private LineRenderer lineRenderer, lineRendererWithOffset;
 
-    public Material white, red;
-    public GameObject LineRendererPrefab;
-    //public Color c1, c2;
+    #region Prefabs
+    public GameObject LineRendererPrefab; 
+    #endregion
 
-    public void Start() {
-        //lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-        //lineRenderer.SetColors(c1, c2);
+    #region LineRenderers
 
+    protected LineRenderer lineRenderer, lineRendererOffset; 
+
+    #endregion
+
+    #region Lifecycle
+    // Use this for initialization
+    public virtual void Start() {
+
+        /** /
+       var go = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
+       go.transform.parent = this.transform;
+       lineRenderer = go.GetComponent<LineRenderer>();
+
+       var go2 = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
+       go2.transform.parent = this.transform;
+       lineRendererWithOffset = go2.GetComponent<LineRenderer>();
+
+       lineRendererWithOffset.material = red;
+       /**/
         var go = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
         go.transform.parent = this.transform;
         lineRenderer = go.GetComponent<LineRenderer>();
+        lineRenderer.SetColors(Color.white, Color.white);
 
         var go2 = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
         go2.transform.parent = this.transform;
-        lineRendererWithOffset = go2.GetComponent<LineRenderer>();
-
-        lineRendererWithOffset.material = red;
+        lineRendererOffset = go2.GetComponent<LineRenderer>();
+        lineRendererOffset.SetColors(Color.red, Color.red);
+        /**/
 
     }
 
     // Update is called once per frame
-    private void Update() {
-        //_Sprite.position = cube.position + offset;
-        //lineRenderer.SetColors(c1, c2);
+    public virtual void Update() {
 
-        for (var i = 0; i < ManagerTracking.instance.count; i++) {
-            lineRenderer.SetPosition(i, ManagerTracking.instance.PositionProjected[i]);
-            lineRendererWithOffset.SetPosition(i, ManagerTracking.instance.PositionProjectedWithOffset[i]);
-        }
     }
+    #endregion
+
+    #region Update Position
+    /// <summary>
+    /// Updates LineRenderer Vertex position
+    /// </summary>
+    /// <param name="lr"></param>
+    protected void UpdateLineRendererPosition(LineRenderer lr) {
+        for (var i = 0; i < ManagerTracking.instance.count; i++) {
+            lr.SetPosition(i, ManagerTracking.instance.PositionProjectedWithOffset[i]);
+        }
+    } 
+    #endregion
+
+
+
+
+    #region Update Color
+    /// <summary>
+    /// Changes full line renderer color
+    /// </summary>
+    /// <param name="lr"></param>
+    /// <param name="c"></param>
+    protected void UpdateLineRendererColor(LineRenderer lr, Color c) {
+        lr.SetColors(c,c);
+    }
+
+    protected void UpdateLineRendererColor(LineRenderer lr, Color c1, Color c2)
+    {
+        lr.SetColors(c1, c2);
+    }
+    
+    #endregion
+
 }
