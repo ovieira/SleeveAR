@@ -12,7 +12,6 @@ public class LineProjection : MonoBehaviour {
 
     #endregion
 
-    public Color ambientColor = RenderSettings.ambientLight;
 
    
 
@@ -22,6 +21,7 @@ public class LineProjection : MonoBehaviour {
 
     // Use this for initialization
     public virtual void Start() {
+
 
         /** /
        var go = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);

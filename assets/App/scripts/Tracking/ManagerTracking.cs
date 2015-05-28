@@ -22,6 +22,8 @@ public class ManagerTracking : MonoBehaviour
 
     public void Awake()
     {
+        RenderSettings.ambientLight = Color.white;
+    
         count = _assignedRigidBodies.Length;
         InitializeTrackingDevice();
         InitializeProperties();
