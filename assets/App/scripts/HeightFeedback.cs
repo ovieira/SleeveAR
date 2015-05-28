@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class HeightFeedback : LineProjection {
+    public override void Start()
+    {
+        base.Start();
+    }
 
     public enum HeightFeedbackMode {
         Color,
@@ -9,15 +12,19 @@ public class HeightFeedback : LineProjection {
     }
 
     public HeightFeedbackMode _mode;
-    public float targetHeight;
-    private Color targetColor;
 
-    public override void Update()
-    {
+    [Range(0f, 3f)]
+    public float targetHeight;
+    
+    //private Color targetColor;
+
+    public override void Update() {
         base.Update();
         UpdateLineRendererPosition(lineRenderer);
         float diff =
             Mathf.Abs((targetHeight - ManagerTracking.instance.getCurrentJointGroup().jointsList[0].positionWithOffset.y));
+        Color c = Color.Lerp(Color.green, Color.red, diff);
+        UpdateLineRendererColor(lineRenderer, c);
     }
 
     //// Use this for initialization

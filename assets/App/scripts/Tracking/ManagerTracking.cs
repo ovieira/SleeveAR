@@ -14,7 +14,7 @@ public class ManagerTracking : MonoBehaviour
     [SerializeField] protected TrackingDevice _TrackingDevice;
     [SerializeField] protected Text _FpsText;
     public int count { get; set; }
-    private int fpsCount;
+    //private int fpsCount;
     private float timerCount = 0;
     private float timeaux;
     public Text _jointAngle;

@@ -1,19 +1,25 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class LineProjection : MonoBehaviour {
 
     #region Prefabs
-    public GameObject LineRendererPrefab; 
+    public GameObject LineRendererPrefab;
     #endregion
 
     #region LineRenderers
 
-    protected LineRenderer lineRenderer, lineRendererOffset; 
+    protected LineRenderer lineRenderer, lineRendererOffset;
 
     #endregion
 
+    public Color ambientColor = RenderSettings.ambientLight;
+
+   
+
     #region Lifecycle
+
+
+
     // Use this for initialization
     public virtual void Start() {
 
@@ -42,8 +48,8 @@ public class LineProjection : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public virtual void Update() {
-
+    public virtual void Update()
+    {
     }
     #endregion
 
@@ -56,7 +62,7 @@ public class LineProjection : MonoBehaviour {
         for (var i = 0; i < ManagerTracking.instance.count; i++) {
             lr.SetPosition(i, ManagerTracking.instance.PositionProjectedWithOffset[i]);
         }
-    } 
+    }
     #endregion
 
 
@@ -69,14 +75,13 @@ public class LineProjection : MonoBehaviour {
     /// <param name="lr"></param>
     /// <param name="c"></param>
     protected void UpdateLineRendererColor(LineRenderer lr, Color c) {
-        lr.SetColors(c,c);
+        lr.SetColors(c, c);
     }
 
-    protected void UpdateLineRendererColor(LineRenderer lr, Color c1, Color c2)
-    {
+    protected void UpdateLineRendererColor(LineRenderer lr, Color c1, Color c2) {
         lr.SetColors(c1, c2);
     }
-    
+
     #endregion
 
 }
