@@ -689,35 +689,9 @@ Prefab:
       propertyPath: m_Name
       value: VisualFeedback
       objectReference: {fileID: 0}
-    - target: {fileID: 177680, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 131166, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1527041096 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 131166, guid: 801f5ac5294ee1746a77f22e512affd6, type: 2}
-  m_PrefabInternal: {fileID: 1527041095}
---- !u!114 &1527041097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1527041096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae4cc4d901f631447826a4cf0813289c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineRendererPrefab: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
-  _mode: 0
-  targetHeight: 1.00999999
 --- !u!1 &1629800720
 GameObject:
   m_ObjectHideFlags: 0

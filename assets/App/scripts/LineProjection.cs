@@ -22,18 +22,6 @@ public class LineProjection : MonoBehaviour {
     // Use this for initialization
     public virtual void Start() {
 
-
-        /** /
-       var go = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
-       go.transform.parent = this.transform;
-       lineRenderer = go.GetComponent<LineRenderer>();
-
-       var go2 = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
-       go2.transform.parent = this.transform;
-       lineRendererWithOffset = go2.GetComponent<LineRenderer>();
-
-       lineRendererWithOffset.material = red;
-       /**/
         var go = (GameObject)Instantiate(LineRendererPrefab, Vector3.zero, Quaternion.identity);
         go.transform.parent = this.transform;
         lineRenderer = go.GetComponent<LineRenderer>();
@@ -83,5 +71,9 @@ public class LineProjection : MonoBehaviour {
     }
 
     #endregion
+
+   protected float map(float s, float a1, float a2, float b1, float b2) {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
 
 }
