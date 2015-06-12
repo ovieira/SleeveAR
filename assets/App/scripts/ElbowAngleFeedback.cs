@@ -8,6 +8,7 @@ public class ElbowAngleFeedback : MonoBehaviour {
 
         targetAngle = angle;
         currentAngle = 0;
+        circleSpriteRenderer.color = Color.red;
     }
 
     // Update is called once per frame
@@ -16,6 +17,10 @@ public class ElbowAngleFeedback : MonoBehaviour {
 
         if (_projectOnBody)
             this.transform.position = ManagerTracking.instance.PositionProjectedWithOffset[1];
+
+        Color c = Color.Lerp(Color.green, Color.red, computeLerp());
+
+        circleSpriteRenderer.color = c;
     }
     #endregion
 
@@ -49,15 +54,24 @@ public class ElbowAngleFeedback : MonoBehaviour {
 
     #endregion
 
-    [ContextMenu("lol")]
-    public void lol() {
-        currentAngle = 0;
-        targetAngle = 90;
-    }
-
-    #region Project on body
+    #region ProjectOnBody
 
     public bool _projectOnBody;
+
+    #endregion
+
+    protected float computeLerp() {
+        float diff = Mathf.Abs(targetAngle - currentAngle);
+        return map(diff, 0, targetAngle, 0, 1);
+    }
+
+    protected float map(float s, float a1, float a2, float b1, float b2) {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
+
+    #region SpriteRenderer
+
+    public SpriteRenderer circleSpriteRenderer, targetBarSpriteRenderer, currentBarSpriteRenderer;
 
     #endregion
 }
