@@ -16,7 +16,7 @@ public class SimpleAngleFeedback : LineProjection
 	    UpdateLineRendererPosition(lineRenderer);
 
 	    float diff = computeLerp();
-        Debug.Log(diff);
+       // Debug.Log(diff);
 	    Color c = Color.Lerp(Color.green, Color.red, diff);
 	    UpdateLineRendererColor(lineRenderer, c);
 	}

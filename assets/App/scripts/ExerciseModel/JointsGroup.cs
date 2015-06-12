@@ -75,7 +75,7 @@ public class JointsGroup
         {
             joint.Print();
         }
-        Debug.Log("Angle: " + angle);
+       // Debug.Log("Angle: " + angle);
     }
 
     private void CalculateJointGroupAngle()
