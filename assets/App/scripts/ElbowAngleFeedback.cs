@@ -9,18 +9,25 @@ public class ElbowAngleFeedback : MonoBehaviour {
         targetAngle = angle;
         currentAngle = 0;
         circleSpriteRenderer.color = Color.red;
+        _managerTracking = ManagerTracking.instance;
     }
 
     // Update is called once per frame
     void Update() {
-        currentAngle = ManagerTracking.instance.getCurrentJointGroup().angle;
+        currentAngle = _managerTracking.getCurrentJointGroup().angle;
 
         if (_projectOnBody)
-            this.transform.position = ManagerTracking.instance.PositionProjectedWithOffset[1];
+            this.transform.position = _managerTracking.PositionProjectedWithOffset[1];
 
         Color c = Color.Lerp(Color.green, Color.red, computeLerp());
 
         circleSpriteRenderer.color = c;
+
+        Vector3 armDir = _managerTracking.PositionProjectedWithOffset[1] -
+                         _managerTracking.PositionProjectedWithOffset[0];
+        Vector2 a = new Vector2(armDir.x, armDir.z);
+        float _extraAngle = Vector2.Angle(Vector2.up, a);
+        this.transform.eulerAngles =new Vector3(90,90+_extraAngle, 0);
     }
     #endregion
 
@@ -72,6 +79,11 @@ public class ElbowAngleFeedback : MonoBehaviour {
     #region SpriteRenderer
 
     public SpriteRenderer circleSpriteRenderer, targetBarSpriteRenderer, currentBarSpriteRenderer;
+
+    #endregion
+
+    #region Manager Tracking
+    protected ManagerTracking _managerTracking;
 
     #endregion
 }
