@@ -24,7 +24,7 @@ public class Calibration : MonoBehaviour {
     {
         _mt = ManagerTracking.instance;
         _dw = UIDebugWindow.instance;
-        //_dw.debuggedObject = _calibrationSprite.gameObject;
+        _dw.debuggedObject = _calibrationSprite[0].gameObject;
 
     }
 

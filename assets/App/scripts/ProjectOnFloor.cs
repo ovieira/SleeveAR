@@ -22,6 +22,7 @@ public class ProjectOnFloor : MonoBehaviour {
         for (int i = 0; i < ManagerTracking.instance.count; i++)
         {
             GameObject obj = (GameObject) Instantiate(_Prefab, Vector3.zero, Quaternion.identity);
+            obj.name = i + "";
             obj.transform.parent = this.transform;
             _floorObjects.Add(obj.transform);
         }

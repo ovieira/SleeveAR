@@ -83,12 +83,14 @@ public class ManagerTracking : MonoBehaviour
 
     private void updateFloorPositions()
     {
+        Transform[] _positions = getRigidBodyTransforms();
+
         for (var i = 0; i < count; i++)
         {
-            var pX = getRigidBodyTransform(i).position.x*offX + X;
-            var pZ = getRigidBodyTransform(i).position.z*offY + Y;
+            var pX = _positions[i].position.x * factorX + offset.x;
+            var pZ = _positions[i].position.z * factorZ + offset.z;
 
-            PositionFloor[i] = new Vector3(pX, 0, pZ);
+            PositionFloor[i] = new Vector3(pX, 0, pZ); 
         }
     }
 
@@ -137,6 +139,11 @@ public class ManagerTracking : MonoBehaviour
         return _transforms[index];
     }
 
+    public Transform[] getRigidBodyTransforms()
+    {
+        return _transforms;
+    }
+
     private void InitializeProperties()
     {
         _transforms = new Transform[count];
@@ -155,10 +162,9 @@ public class ManagerTracking : MonoBehaviour
     #region SINGLETON
 
     private static ManagerTracking _instance;
-    public float offX = 0.64f;
-    public float offY = 0.635f;
-    public float X = 0.16f;
-    public float Y = -0.04f;
+    public Vector3 offset = new Vector3(0.2f,0,-0.075f);
+    public float factorX = 1f;
+    public float factorZ = 1.05f;
 
     public static ManagerTracking instance
     {
