@@ -14,10 +14,6 @@ public class ManagerTracking : MonoBehaviour
     [SerializeField] protected TrackingDevice _TrackingDevice;
     [SerializeField] protected Text _FpsText;
     public int count { get; set; }
-    //private int fpsCount;
-    private float timerCount = 0;
-    private float timeaux;
-    public Text _jointAngle;
 
 
     public void Awake()
@@ -40,43 +36,23 @@ public class ManagerTracking : MonoBehaviour
     public void Update()
     {
         //updateJointGroup();
-        timeaux = Time.time;
+        //timeaux = Time.time;
         updateFloorPositions();
         updateLightProjectionPosition();
-        timeaux = Time.time - timeaux;
+        //timeaux = Time.time - timeaux;
        // updateFPSCount();
-        _jointAngle.text = ""+getCurrentJointGroup().angle;
     }
 
     /// <summary>
     /// Time spent calculating tracking information on each frame, Average Time Calculation Tracking Info (ATCTI)
     /// </summary>
-    private void updateFPSCount()
-    {
-        timerCount += timeaux;
-
-        float _fps = timerCount / (float)Time.frameCount;
-        Debug.Log(_fps.ToString());
-        _FpsText.text = "ATCTI: " + _fps.ToString();
-    }
-
-
-    //This one uses transforms directly
-    //private void updateLightProjectionPosition()
+    //private void updateFPSCount()
     //{
-    //    for (var i = 0; i < count; i++)
-    //    {
-    //        var rb_pos = getRigidBodyTransform(i).position;
-    //        var floor_pos = PositionFloor[i];
-    //        var posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
-    //        var dir = posTarget - Projector.position;
-    //        var r = new Ray(Projector.position, dir);
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(r, out hit))
-    //        {
-    //            PositionProjected[i] = hit.point;
-    //        }
-    //    }
+    //    timerCount += timeaux;
+
+    //    float _fps = timerCount / (float)Time.frameCount;
+    //    Debug.Log(_fps.ToString());
+    //    _FpsText.text = "ATCTI: " + _fps.ToString();
     //}
 
     //this one uses current joint group
@@ -102,7 +78,6 @@ public class ManagerTracking : MonoBehaviour
             if (Physics.Raycast(r, out hit)) {
                 PositionProjectedWithOffset[i] = hit.point;
             }
-
         }
     }
 
@@ -180,10 +155,10 @@ public class ManagerTracking : MonoBehaviour
     #region SINGLETON
 
     private static ManagerTracking _instance;
-    private readonly float offX = 0.64f;
-    private readonly float offY = 0.635f;
-    private readonly float X = 0.16f;
-    private readonly float Y = -0.04f;
+    public float offX = 0.64f;
+    public float offY = 0.635f;
+    public float X = 0.16f;
+    public float Y = -0.04f;
 
     public static ManagerTracking instance
     {
