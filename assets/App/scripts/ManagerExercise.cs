@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ManagerExercise : MonoBehaviour {
 
@@ -23,6 +24,25 @@ public class ManagerExercise : MonoBehaviour {
 
     #endregion
 
+    #region Iterator
+
+    public event EventHandler<EventArgs> onCurrentIndexChanged, onFinishedExercise; 
+
+    protected int _currentIndex;
+
+    public int currentIndex
+    {
+        get { return this._currentIndex; }
+        set
+        {
+            if (this._currentIndex == value) return;
+            if (value >= _loadedExerciseModel._exerciseModel.Count) Utils.LaunchEvent(this, onFinishedExercise);
+            this._currentIndex = value;
+            Utils.LaunchEvent(this, onCurrentIndexChanged);
+        }
+    }
+
+    #endregion
 
     #region Singleton
 

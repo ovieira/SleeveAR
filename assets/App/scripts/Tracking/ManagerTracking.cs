@@ -198,16 +198,16 @@ public class ManagerTracking : MonoBehaviour
 
     protected bool _lol = false;
     public delegate void ChangedEventHandler(object sender, EventArgs e);
-    public event ChangedEventHandler Changed;
+    public event EventHandler<EventArgs> Changed;
 
+ 
     public bool lol
     {
         get { return this._lol; }
         set
         {
             this._lol = value;
-            if (Changed != null)
-                Changed(this,new EventArgs());
+            Utils.LaunchEvent(this, Changed);
         }
     }
 
