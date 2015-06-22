@@ -130,6 +130,14 @@ Prefab:
       propertyPath: _jointAngle
       value: 
       objectReference: {fileID: 1470247579}
+    - target: {fileID: 467182, guid: b2e882c195129b545be8de3992991151, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 467182, guid: b2e882c195129b545be8de3992991151, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.33999991
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_IsPrefabParent: 0

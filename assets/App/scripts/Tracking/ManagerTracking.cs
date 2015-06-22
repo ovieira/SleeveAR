@@ -1,69 +1,68 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ManagerTracking : MonoBehaviour
 {
-    public enum TrackingDevice
-    {
+    #region Vars and Refs
+    public enum TrackingDevice {
         OPTITRACK,
         KINECT
     }
 
-    [SerializeField] private GameObject[] _assignedRigidBodies;
-    [SerializeField] protected GameObject _Optitrack, _Kinect;
-    [SerializeField] protected TrackingDevice _TrackingDevice;
-    [SerializeField] protected Text _FpsText;
+    [SerializeField]
+    private GameObject[] _assignedRigidBodies;
+    [SerializeField]
+    protected GameObject _Optitrack, _Kinect;
+    [SerializeField]
+    protected TrackingDevice _TrackingDevice;
     public int count { get; set; }
 
+    #endregion
 
-    public void Awake()
-    {
+    #region LifeCycle
+    public void Awake() {
         RenderSettings.ambientLight = Color.white;
-    
+
         count = _assignedRigidBodies.Length;
         InitializeTrackingDevice();
         InitializeProperties();
     }
 
-    private void InitializeTrackingDevice()
+    public void Start()
     {
+        StartCoroutine(updateFloorPositionsRoutine());
+        StartCoroutine(updateLightProjectionPositionRoutine());
+    }
+
+    private void InitializeTrackingDevice() {
         if (_Optitrack != null)
             _Optitrack.SetActive(_TrackingDevice == TrackingDevice.OPTITRACK);
         if (_Kinect != null)
             _Kinect.SetActive(_TrackingDevice == TrackingDevice.KINECT);
     }
 
-    public void Update()
-    {
-        //updateJointGroup();
-        //timeaux = Time.time;
-        updateFloorPositions();
-        updateLightProjectionPosition();
-        //timeaux = Time.time - timeaux;
-       // updateFPSCount();
+
+    public void Update() {
+        //updateFloorPositions();
+        //updateLightProjectionPosition();
     }
 
-    /// <summary>
-    /// Time spent calculating tracking information on each frame, Average Time Calculation Tracking Info (ATCTI)
-    /// </summary>
-    //private void updateFPSCount()
-    //{
-    //    timerCount += timeaux;
+    public void setTracking(bool p) {
+        _Optitrack.SetActive(p);
+        //_Kinect.SetActive(p);
+    }
+    #endregion
 
-    //    float _fps = timerCount / (float)Time.frameCount;
-    //    Debug.Log(_fps.ToString());
-    //    _FpsText.text = "ATCTI: " + _fps.ToString();
-    //}
-
+    #region Positions Update
     //this one uses current joint group
-    private void updateLightProjectionPosition()
-    {
+    private void updateLightProjectionPosition() {
         var _jointGroup = getCurrentJointGroup();
-        for (var i = 0; i < count; i++)
-        {
-            var rb_pos = _jointGroup.jointsList[i].position;
-            var floor_pos = PositionFloor[i];
-            var posTarget = new Vector3(floor_pos.x, rb_pos.y, floor_pos.z);
+        for (var i = 0; i < count; i++) {
+            var rigidbodyPosition = _jointGroup.jointsList[i].position;
+            var floorPosition = PositionFloor[i];
+            var posTarget = new Vector3(floorPosition.x, rigidbodyPosition.y, floorPosition.z);
             var dir = posTarget - Projector.position;
             var r = new Ray(Projector.position, dir);
             RaycastHit hit;
@@ -71,8 +70,10 @@ public class ManagerTracking : MonoBehaviour
                 PositionProjected[i] = hit.point;
             }
 
-            var rb_posWithOffset = _jointGroup.jointsList[i].positionWithOffset;
-            posTarget = new Vector3(floor_pos.x, rb_posWithOffset.y, floor_pos.z);
+            var _joint = _jointGroup.jointsList[i];
+            var rot = _joint.rotation * Vector3.up;
+            var rb_posWithOffset = _joint.position - rot * ProjectionOffset;
+            posTarget = new Vector3(floorPosition.x, rb_posWithOffset.y, floorPosition.z);
             dir = posTarget - Projector.position;
             r = new Ray(Projector.position, dir);
             if (Physics.Raycast(r, out hit)) {
@@ -81,18 +82,32 @@ public class ManagerTracking : MonoBehaviour
         }
     }
 
-    private void updateFloorPositions()
-    {
+    private void updateFloorPositions() {
         Transform[] _positions = getRigidBodyTransforms();
 
-        for (var i = 0; i < count; i++)
-        {
+        for (var i = 0; i < count; i++) {
             var pX = _positions[i].position.x * factorX + offset.x;
             var pZ = _positions[i].position.z * factorZ + offset.z;
 
-            PositionFloor[i] = new Vector3(pX, 0, pZ); 
+            PositionFloor[i] = new Vector3(pX, 0, pZ);
         }
     }
+
+    IEnumerator updateFloorPositionsRoutine()
+    {
+        while (true)
+        {
+            updateFloorPositions();
+            yield return null;
+        }
+    }
+    IEnumerator updateLightProjectionPositionRoutine() {
+        while (true) {
+            updateLightProjectionPosition();
+            yield return null;
+        }
+    }
+    #endregion
 
     #region JointsGroup
 
@@ -105,18 +120,14 @@ public class ManagerTracking : MonoBehaviour
 
         var jg = new JointsGroup(_transforms[0], _transforms[1], _transforms[2]);
 
-        jg.Print();
+        //jg.Print();
 
         return jg;
     }
 
     #endregion
 
-    public void setTracking(bool p)
-    {
-        _Optitrack.SetActive(p);
-        //_Kinect.SetActive(p);
-    }
+   
 
     #region Properties
 
@@ -166,6 +177,9 @@ public class ManagerTracking : MonoBehaviour
     public float factorX = 1f;
     public float factorZ = 1.05f;
 
+    
+    public float ProjectionOffset = 0.05f;
+
     public static ManagerTracking instance
     {
         get
@@ -179,4 +193,27 @@ public class ManagerTracking : MonoBehaviour
     }
 
     #endregion
+
+
+
+    protected bool _lol = false;
+    public delegate void ChangedEventHandler(object sender, EventArgs e);
+    public event ChangedEventHandler Changed;
+
+    public bool lol
+    {
+        get { return this._lol; }
+        set
+        {
+            this._lol = value;
+            if (Changed != null)
+                Changed(this,new EventArgs());
+        }
+    }
+
+    [ContextMenu("muda")]
+    public void muda()
+    {
+        this.lol = true;
+    }
 }

@@ -13,8 +13,12 @@ public class Calibration : MonoBehaviour {
     [Range(0.5f, 1.5f)]
     public float factorX, factorY;
 
+    [Range(0f,1f)]
+    public float _projectionOffset;
+
     //
-    public GameObject[] _calibrationSprite;
+    public GameObject[] _floorCalibrationSprite;
+    public GameObject[] _bodyCalibrationSprite;
     #endregion
 
 
@@ -24,8 +28,12 @@ public class Calibration : MonoBehaviour {
     {
         _mt = ManagerTracking.instance;
         _dw = UIDebugWindow.instance;
-        _dw.debuggedObject = _calibrationSprite[0].gameObject;
+        _dw.debuggedObject = _floorCalibrationSprite[0].gameObject;
+        _mt.Changed += this._onChanged;
+    }
 
+    private void _onChanged(object sender, System.EventArgs e) {
+        Debug.Log("mudou");
     }
 
     public void Update()
@@ -34,11 +42,17 @@ public class Calibration : MonoBehaviour {
         //Vector3 positionTimesFactor = new Vector3(position.x * factorX, position.y, position.z * factorY);
         //_calibrationSprite.transform.position = positionTimesFactor + offset;
 
-        for (int i = 0; i < _calibrationSprite.Length; i++) {
+        for (int i = 0; i < _floorCalibrationSprite.Length; i++) {
             Vector3 position = _mt.getRigidBodyTransform(i).position;
             Vector3 positionTimesFactor = new Vector3(position.x * factorX, position.y, position.z * factorY);
-            _calibrationSprite[i].transform.position = positionTimesFactor + offset;
+            _floorCalibrationSprite[i].transform.position = positionTimesFactor + offset;
         }
+
+        for (int i = 0; i < _bodyCalibrationSprite.Length; i++)
+        {
+            _bodyCalibrationSprite[i].transform.position = _mt.PositionProjectedWithOffset[i];
+        }
+        _mt.ProjectionOffset = _projectionOffset;
     }
 
     #endregion
