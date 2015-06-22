@@ -36,12 +36,27 @@ public class ManagerExercise : MonoBehaviour {
         set
         {
             if (this._currentIndex == value) return;
-            if (value >= _loadedExerciseModel._exerciseModel.Count) Utils.LaunchEvent(this, onFinishedExercise);
+            if (value >= _loadedExerciseModel._exerciseModel.Count) {
+                Utils.LaunchEvent(this, onFinishedExercise);
+                return;
+            }
             this._currentIndex = value;
+            currentJointsGroup = _loadedExerciseModel._exerciseModel[currentIndex];
             Utils.LaunchEvent(this, onCurrentIndexChanged);
         }
     }
 
+    protected JointsGroup _currentJointsGroup;
+
+    public JointsGroup currentJointsGroup
+    {
+        get { return this._currentJointsGroup; }
+        set
+        {
+            this._currentJointsGroup = value;
+            //sendevent?
+        }
+    }
     #endregion
 
     #region Singleton
