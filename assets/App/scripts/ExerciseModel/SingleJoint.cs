@@ -95,6 +95,6 @@ public class SingleJoint
 
     public void Print()
     {
-       // Debug.Log("P: " + position + "|| R: " + rotation);
+       Debug.Log("P: " + position + "|| R: " + rotation);
     }
 }
