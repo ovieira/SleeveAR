@@ -106,7 +106,7 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = false;
         CancelInvoke("Record");
         print("Stopped Recording");
-        print("Entries Saved: " + exerciseModel._exerciseModel.Count);
+        print("Entries Saved: " + exerciseModel.exerciseModel.Count);
         print("Time:" + (Time.time - startTime));
     }
     #endregion
@@ -134,7 +134,7 @@ public class MovementRecorder : MonoBehaviour {
     public void StartPlaying() {
         //throw new NotImplementedException();
 
-        if (entry_no < exerciseModel._exerciseModel.Count)
+        if (entry_no < exerciseModel.exerciseModel.Count)
         {
            currentJointgroup =  exerciseModel.Get(entry_no);
             entry_no++;

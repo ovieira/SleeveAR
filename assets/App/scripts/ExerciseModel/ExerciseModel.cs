@@ -9,7 +9,7 @@ public class ExerciseModel
     public String label;
 
 
-    public List<JointsGroup> _exerciseModel = new List<JointsGroup>();
+    public List<JointsGroup> exerciseModel = new List<JointsGroup>();
     //public Dictionary<int, singleJointLi> ();
 
 
@@ -19,7 +19,7 @@ public class ExerciseModel
     /// <param name="jointsGroup"></param>
     public void Add(JointsGroup jointsGroup)
     {
-        _exerciseModel.Add(jointsGroup);
+        exerciseModel.Add(jointsGroup);
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public class ExerciseModel
     /// <returns></returns>
     public JointsGroup Get(int index)
     {
-        return _exerciseModel[index];
+        return exerciseModel[index];
     }
 
     public void testPopulate()
@@ -39,7 +39,7 @@ public class ExerciseModel
         {
             var j = new SingleJoint(new Vector3(i, i, i), new Quaternion(i*5, i*5, i*5, 1));
             var jg = new JointsGroup(j, j, j);
-            _exerciseModel.Add(jg);
+            exerciseModel.Add(jg);
         }
     }
 }

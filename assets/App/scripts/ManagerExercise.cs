@@ -36,16 +36,18 @@ public class ManagerExercise : MonoBehaviour {
         set
         {
             if (this._currentIndex == value) return;
-            if (value >= _loadedExerciseModel._exerciseModel.Count) {
+            if (value >= _loadedExerciseModel.exerciseModel.Count) {
                 Utils.LaunchEvent(this, onFinishedExercise);
                 return;
             }
             this._currentIndex = value;
-            currentJointsGroup = _loadedExerciseModel._exerciseModel[currentIndex];
+            currentJointsGroup = _loadedExerciseModel.exerciseModel[currentIndex];
             Utils.LaunchEvent(this, onCurrentIndexChanged);
         }
     }
 
+    public event EventHandler<EventArgs> onCurrentJointGroupChanged; 
+    
     protected JointsGroup _currentJointsGroup;
 
     public JointsGroup currentJointsGroup
@@ -54,7 +56,7 @@ public class ManagerExercise : MonoBehaviour {
         set
         {
             this._currentJointsGroup = value;
-            //sendevent?
+            Utils.LaunchEvent(this, onCurrentJointGroupChanged);
         }
     }
     #endregion
