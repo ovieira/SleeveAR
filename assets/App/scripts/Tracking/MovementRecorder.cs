@@ -84,6 +84,7 @@ public class MovementRecorder : MonoBehaviour {
             StopRecording();
         }
         exerciseModel.Add(ManagerTracking.instance.getCurrentJointGroup());
+        Debug.Log("Recording Data");
     }
 
     public void OnClickRecordButton() {
@@ -94,7 +95,8 @@ public class MovementRecorder : MonoBehaviour {
         //canRecord = true;
         print("Started Recording");
         startTime = Time.time;
-        InvokeRepeating("Record", 0f, 1f / FPS);
+        GetComponent<AudioSource>().PlayOneShot(OneTwoThree);
+        InvokeRepeating("Record", 3f, 1f / FPS);
 
     }
 
@@ -270,4 +272,6 @@ public class MovementRecorder : MonoBehaviour {
         exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool"));
         Debug.Log("Done");
     }
+
+    public AudioClip OneTwoThree;
 }
