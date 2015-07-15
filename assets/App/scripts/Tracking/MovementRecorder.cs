@@ -94,10 +94,20 @@ public class MovementRecorder : MonoBehaviour {
     private void StartRecording() {
         //canRecord = true;
         print("Started Recording");
-        startTime = Time.time;
-        GetComponent<AudioSource>().PlayOneShot(OneTwoThree);
-        InvokeRepeating("Record", 3f, 1f / FPS);
+        
+        Invoke("playWarningSound", _CountdownTime-3f);
+        Invoke("setUpTimer", _CountdownTime);
+        InvokeRepeating("Record", _CountdownTime, 1f / FPS);
+    }
 
+    private void playWarningSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(OneTwoThree);
+    }
+
+    private void setUpTimer()
+    {
+        startTime = Time.time;
     }
 
     public void OnClickStopButton() {
@@ -274,4 +284,5 @@ public class MovementRecorder : MonoBehaviour {
     }
 
     public AudioClip OneTwoThree;
+    public float _CountdownTime;
 }

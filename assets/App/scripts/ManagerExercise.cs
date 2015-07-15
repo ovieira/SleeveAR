@@ -5,7 +5,8 @@ public class ManagerExercise {
 
     #region ExerciseModel
 
-    private ExerciseModel _loadedExerciseModel;
+    protected ExerciseModel _loadedExerciseModel;
+    protected EventHandler<EventArgs> onExerciseLoaded;
 
     public ExerciseModel loadedExerciseModel {
         get {
@@ -18,6 +19,7 @@ public class ManagerExercise {
         set {
             if (value != null && value != _loadedExerciseModel) {
                 _loadedExerciseModel = value;
+                Utils.LaunchEvent(this, onExerciseLoaded);
             }
         }
     }
@@ -64,6 +66,7 @@ public class ManagerExercise {
     #region Singleton
 
     private static ManagerExercise _instance;
+
 
     public static ManagerExercise instance {
         get {

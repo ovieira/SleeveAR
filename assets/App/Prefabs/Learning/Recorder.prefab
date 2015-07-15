@@ -779,6 +779,7 @@ MonoBehaviour:
   auxRot: {x: 0, y: 0, z: 0, w: 0}
   greenMat: {fileID: 2100000, guid: d63e718ae3913fe49ba25fbca832be7b, type: 2}
   OneTwoThree: {fileID: 8300000, guid: 0808b546b287b644eb67b356ac2c23cf, type: 3}
+  _CountdownTime: 6
 --- !u!114 &11423092
 MonoBehaviour:
   m_ObjectHideFlags: 1
