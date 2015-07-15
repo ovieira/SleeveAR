@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class ManagerExercise : MonoBehaviour {
+public class ManagerExercise {
 
     #region ExerciseModel
 
@@ -68,7 +68,7 @@ public class ManagerExercise : MonoBehaviour {
     public static ManagerExercise instance {
         get {
             if (_instance == null) {
-                _instance = FindObjectOfType<ManagerExercise>();
+                _instance = new ManagerExercise();
             }
             return _instance;
         }

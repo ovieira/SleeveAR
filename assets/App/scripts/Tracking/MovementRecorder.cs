@@ -64,7 +64,7 @@ public class MovementRecorder : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate() {
-        KeyboardHandler();
+        //KeyboardHandler();
     }
 
     #region KeyboardHandler

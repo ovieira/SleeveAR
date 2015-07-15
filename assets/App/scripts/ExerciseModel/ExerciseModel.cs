@@ -32,10 +32,17 @@ public class ExerciseModel
         return exerciseModel[index];
     }
 
+
+    public void print()
+    {
+        Debug.Log("Name: " + this.label);
+        Debug.Log("Entries: " + this.exerciseModel.Count );
+    }
+
     public void testPopulate()
     {
         Debug.Log("Started Populate");
-        for (var i = 0; i < 10000; i++)
+        for (var i = 0; i < 10; i++)
         {
             var j = new SingleJoint(new Vector3(i, i, i), new Quaternion(i*5, i*5, i*5, 1));
             var jg = new JointsGroup(j, j, j);
