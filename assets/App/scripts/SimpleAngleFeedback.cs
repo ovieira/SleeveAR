@@ -23,7 +23,7 @@ public class SimpleAngleFeedback : LineProjection
 
     protected float computeLerp()
     {
-        float currentAngle = ManagerTracking.instance.getCurrentJointGroup().angle;
+        float currentAngle = ServiceTracking.instance.getCurrentJointGroup().angle;
         float diff = Mathf.Abs(targetAngle - currentAngle);
         return map(diff, 0, targetAngle, 0, 1);
     }

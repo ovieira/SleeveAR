@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManagerTracking : MonoBehaviour
+public class ServiceTracking : MonoBehaviour
 {
     #region Vars and Refs
     public enum TrackingDevice {
@@ -127,8 +127,6 @@ public class ManagerTracking : MonoBehaviour
 
     #endregion
 
-   
-
     #region Properties
 
     protected Transform[] _transforms;
@@ -143,7 +141,7 @@ public class ManagerTracking : MonoBehaviour
     {
         if (index >= count)
         {
-            Debug.Log("ManagerTracking: index out of bounds");
+            Debug.Log("ServiceTracking: index out of bounds");
             return null;
         }
 
@@ -170,9 +168,31 @@ public class ManagerTracking : MonoBehaviour
 
     #endregion
 
+    #region Enable Tracking
+
+    public EventHandler<EventArgs> onTrackingToggleChanged;
+
+    protected bool _tracking;
+
+    public bool tracking
+    {
+        get
+        {
+            return this._tracking;
+        }
+        set
+        {
+            if (this._tracking == value) return;
+            this._tracking = value;
+            Utils.LaunchEvent(this, onTrackingToggleChanged);
+        }
+    }
+
+    #endregion
+
     #region SINGLETON
 
-    private static ManagerTracking _instance;
+    private static ServiceTracking _instance;
     public Vector3 offset = new Vector3(0.2f,0,-0.075f);
     public float factorX = 1f;
     public float factorZ = 1.05f;
@@ -180,13 +200,13 @@ public class ManagerTracking : MonoBehaviour
     
     public float ProjectionOffset = 0.05f;
 
-    public static ManagerTracking instance
+    public static ServiceTracking instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<ManagerTracking>();
+                _instance = FindObjectOfType<ServiceTracking>();
             }
             return _instance;
         }
@@ -194,26 +214,4 @@ public class ManagerTracking : MonoBehaviour
 
     #endregion
 
-
-
-    protected bool _lol = false;
-    public delegate void ChangedEventHandler(object sender, EventArgs e);
-    public event EventHandler<EventArgs> Changed;
-
- 
-    public bool lol
-    {
-        get { return this._lol; }
-        set
-        {
-            this._lol = value;
-            Utils.LaunchEvent(this, Changed);
-        }
-    }
-
-    [ContextMenu("muda")]
-    public void muda()
-    {
-        this.lol = true;
-    }
 }

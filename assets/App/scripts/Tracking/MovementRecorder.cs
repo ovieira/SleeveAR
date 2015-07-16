@@ -28,20 +28,22 @@ public class MovementRecorder : MonoBehaviour {
     public Material greenMat;
     private List<Transform> _replayPrefabs = new List<Transform>();
     private JointsGroup currentJointgroup;
+    public AudioClip OneTwoThree;
+    public float _CountdownTime;
     #endregion
 
     #region LifeCycle
-    void Awake() {
+    void Awake()
+    {
         ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
+
+        CreateServiceMedia();
     }
 
-    private void _onSelectedExerciseChanged(object sender, EventArgs e) {
-        exerciseModel = ServiceExercise.instance.selected;
-    }
+   
 
-    // Use this for initialization
     void Start() {
-        for (int i = 0; i < ManagerTracking.instance.count; i++) {
+        for (int i = 0; i < ServiceTracking.instance.count; i++) {
             GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
             ob.GetComponent<Renderer>().material = greenMat;
             ob.SetActive(false);
@@ -62,7 +64,58 @@ public class MovementRecorder : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate() {
         //KeyboardHandler();
-    } 
+    }
+
+    public void OnDestroy() {
+        DestroyServiceMedia();
+
+        ServiceExercise.instance.onSelectedExerciseChanged -= this._onSelectedExerciseChanged;
+
+    }
+    #endregion
+
+    #region Service Exercise
+
+    private void _onSelectedExerciseChanged(object sender, EventArgs e) {
+        exerciseModel = ServiceExercise.instance.selected;
+    }
+
+    #endregion
+
+    #region Service Media
+    private void CreateServiceMedia() {
+        ServiceMedia.instance.onStartPlaying += this._onStartPlaying;
+        ServiceMedia.instance.onStartRecording += this._onStartRecording;
+        ServiceMedia.instance.onStopRecording += this._onStopRecording;
+    }
+
+    private void DestroyServiceMedia() {
+        ServiceMedia.instance.onStopRecording -= this._onStopRecording;
+        ServiceMedia.instance.onStartRecording -= this._onStartRecording;
+        ServiceMedia.instance.onStartPlaying -= this._onStartPlaying;
+    }
+
+    private void _onStopRecording(object sender, EventArgs e) {
+        StopRecording();
+    }
+
+    private void _onStartRecording(object sender, EventArgs e) {
+        if (ServiceTracking.instance.tracking == false)
+        {
+            Debug.LogWarning("Tracking is not enabled");
+        }
+        StartRecording();
+    }
+
+    private void _onStartPlaying(object sender, EventArgs e) {
+        if (ServiceExercise.instance.selected == null)
+        {
+            Debug.LogError("No exercise loaded to play :(");
+            return;
+        }
+        StartPlaying();
+    }
+
     #endregion
 
     #region KeyboardHandler
@@ -77,20 +130,16 @@ public class MovementRecorder : MonoBehaviour {
     #endregion
 
     #region Recording
+
     private void Record() {
         if (Time.time - startTime >= 10) {
             StopRecording();
         }
-        exerciseModel.Add(ManagerTracking.instance.getCurrentJointGroup());
+        exerciseModel.Add(ServiceTracking.instance.getCurrentJointGroup());
         Debug.Log("Recording Data");
     }
 
-    public void OnClickRecordButton() {
-        StartRecording();
-    }
-
     private void StartRecording() {
-        //canRecord = true;
         print("Started Recording");
         
         Invoke("playWarningSound", _CountdownTime-3f);
@@ -108,12 +157,7 @@ public class MovementRecorder : MonoBehaviour {
         startTime = Time.time;
     }
 
-    public void OnClickStopButton() {
-        StopRecording();
-    }
-
     private void StopRecording() {
-        //canRecord = false;
         CancelInvoke("Record");
         ServiceExercise.instance.selected = exerciseModel;
 
@@ -124,7 +168,7 @@ public class MovementRecorder : MonoBehaviour {
     #endregion
 
     #region Playing
-    public void OnClickPlayButton() {
+    public void StartPlaying() {
         //throw new NotImplementedException();
 
         foreach (Transform replayPrefab in _replayPrefabs) {
@@ -132,19 +176,19 @@ public class MovementRecorder : MonoBehaviour {
         }
 
         entry_no = 0;
-        ManagerTracking.instance.setTracking(false);
+        ServiceTracking.instance.setTracking(false);
         print("playing exercise: " + exerciseModel.label);
 
         //Target.position = exerciseModel.Get(0).position;
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
-        StartPlaying();
-        InvokeRepeating("StartPlaying", 0f, 1f / FPS);
+        IterateExercise();
+        InvokeRepeating("IterateExercise", 0f, 1f / FPS);
         canPlay = true;
 
     }
 
-    public void StartPlaying() {
+    public void IterateExercise() {
 
         if (entry_no < exerciseModel.exerciseModel.Count) {
             currentJointgroup = exerciseModel.Get(entry_no);
@@ -154,6 +198,5 @@ public class MovementRecorder : MonoBehaviour {
     } 
     #endregion
 
-    public AudioClip OneTwoThree;
-    public float _CountdownTime;
+  
 }

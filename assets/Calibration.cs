@@ -26,15 +26,11 @@ public class Calibration : MonoBehaviour {
 
     public void Start()
     {
-        _mt = ManagerTracking.instance;
+        _mt = ServiceTracking.instance;
         _dw = UIDebugWindow.instance;
         _dw.debuggedObject = _floorCalibrationSprite[0].gameObject;
-        _mt.Changed += this._onChanged;
     }
 
-    private void _onChanged(object sender, System.EventArgs e) {
-        Debug.Log("mudou");
-    }
 
     public void Update()
     {
@@ -62,7 +58,7 @@ public class Calibration : MonoBehaviour {
 
     #region Manager Tracking
 
-    protected ManagerTracking _mt;
+    protected ServiceTracking _mt;
     protected UIDebugWindow _dw;
 
     #endregion

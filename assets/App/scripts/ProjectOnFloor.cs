@@ -19,7 +19,7 @@ public class ProjectOnFloor : MonoBehaviour {
 	}
 
     private void InstantiateFloorObjects() {
-        for (int i = 0; i < ManagerTracking.instance.count; i++)
+        for (int i = 0; i < ServiceTracking.instance.count; i++)
         {
             GameObject obj = (GameObject) Instantiate(_Prefab, Vector3.zero, Quaternion.identity);
             obj.name = i + "";
@@ -36,9 +36,9 @@ public class ProjectOnFloor : MonoBehaviour {
 
     private void UpdatePositions()
     {
-        for (int i = 0; i < ManagerTracking.instance.count; i++)
+        for (int i = 0; i < ServiceTracking.instance.count; i++)
         {
-            _floorObjects[i].position = ManagerTracking.instance.PositionFloor[i];
+            _floorObjects[i].position = ServiceTracking.instance.PositionFloor[i];
         }
     }
 

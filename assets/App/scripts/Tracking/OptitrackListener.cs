@@ -22,11 +22,13 @@ public class OptitrackListener : MonoBehaviour
     // Use this for initialization
     public void Start() {
         OptitrackManagement.DirectMulticastSocketClient.Close();
-        _toggle.onValueChanged.AddListener(setTracking);
+        ServiceTracking.instance.onTrackingToggleChanged += this._onTrackingToggleChanged;
+        //_toggle.onValueChanged.AddListener(setTracking);
     }
 
-    private void setTracking(bool b) {
-        canTrack = b;
+    private void _onTrackingToggleChanged(object sender, System.EventArgs e)
+    {
+        canTrack = ServiceTracking.instance.tracking;
         if (canTrack) {
             OptitrackManagement.DirectMulticastSocketClient.Start();
         }
@@ -65,51 +67,6 @@ public class OptitrackListener : MonoBehaviour
             //Debug.Log("depois" + rigidBodies[i].RigidBodyGameObject.transform.position);
             rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
         }
-
-        /*for (int i = 0; i < OptitrackManagement.DirectMulticastSocketClient.GetStreemData()._nRigidBodies; i++)
-        {
-            //Assign _RigidBodies
-            //Debug.Log("entrei");
-            if (i == 0)
-            {
-
-                //Debug.Log("Assigned");
-                if (rigidBodies[i].RigidBodyGameObject == null)
-                {
-                    //associa o objecto a este rigidbody
-                    rigidBodies[i].RigidBodyGameObject = _GameObjects[i];
-                }
-                before = rigidBodies[i].pos;
-                //Debug.Log("antes" + rigidBodies[i].pos);
-                rigidBodies[i].RigidBodyGameObject.transform.position =
-                    Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1))*optiTrackPosMultiplyer;
-                //Debug.Log("depois" + rigidBodies[i].RigidBodyGameObject.transform.position);
-                rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
-                
-                
-                //Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
-            }
-
-            if (i == 1) {
-
-                //Debug.Log("Assigned");
-                if (rigidBodies[i].RigidBodyGameObject == null) {
-                    //associa o objecto a este rigidbody
-                    rigidBodies[i].RigidBodyGameObject = _GameObjects[i];
-                }
-                before = rigidBodies[i].pos;
-                //Debug.Log("antes" + rigidBodies[i].pos);
-                rigidBodies[i].RigidBodyGameObject.transform.position =
-                    Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1)) * optiTrackPosMultiplyer;
-                //Debug.Log("depois" + rigidBodies[i].RigidBodyGameObject.transform.position);
-                rigidBodies[i].RigidBodyGameObject.transform.rotation = Quaternion.Inverse(rigidBodies[i].ori);
-
-
-                //Debug.Log(rigidBodies[i].RigidBodyGameObject.transform.position);
-            }
-        }*/
-        //DONE :)
-
     } 
     #endregion
 

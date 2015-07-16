@@ -28,7 +28,7 @@ public class SimpleHeightFeedback : LineProjection {
     }
 
     private float computeLerp() {
-        float diff = Mathf.Abs((targetHeight - ManagerTracking.instance.getCurrentJointGroup().jointsList[0].positionWithOffset.y));
+        float diff = Mathf.Abs((targetHeight - ServiceTracking.instance.getCurrentJointGroup().jointsList[0].positionWithOffset.y));
         return map(diff, 0, targetHeight, 0, 1);
     }
 

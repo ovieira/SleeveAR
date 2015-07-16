@@ -32,7 +32,7 @@ public class LineProjection : MonoBehaviour {
         lineRendererOffset = go2.GetComponent<LineRenderer>();
         lineRendererOffset.SetColors(Color.red, Color.red);
         /**/
-        _managerTracking = ManagerTracking.instance;
+        serviceTracking = ServiceTracking.instance;
     }
 
     // Update is called once per frame
@@ -47,8 +47,8 @@ public class LineProjection : MonoBehaviour {
     /// </summary>
     /// <param name="lr"></param>
     protected void UpdateLineRendererPosition(LineRenderer lr) {
-        for (var i = 0; i < _managerTracking.count; i++) {
-            lr.SetPosition(i, _managerTracking.PositionProjectedWithOffset[i]);
+        for (var i = 0; i < serviceTracking.count; i++) {
+            lr.SetPosition(i, serviceTracking.PositionProjectedWithOffset[i]);
         }
     }
     #endregion
@@ -78,7 +78,7 @@ public class LineProjection : MonoBehaviour {
 
 
    #region Manager Tracking
-   protected ManagerTracking _managerTracking;
+   protected ServiceTracking serviceTracking;
 
    #endregion
 }
