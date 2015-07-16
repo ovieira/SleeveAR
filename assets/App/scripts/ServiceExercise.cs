@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-public class ManagerExercise {
+public class ServiceExercise {
 
     #region ExerciseModel
 
     protected ExerciseModel _loadedExerciseModel;
-    protected EventHandler<EventArgs> onExerciseLoaded;
+    public EventHandler<EventArgs> onSelectedExerciseChanged;
 
-    public ExerciseModel loadedExerciseModel {
+    public ExerciseModel selected {
         get {
             if (_loadedExerciseModel == null) {
                 Debug.LogWarning("No exercise loaded");
@@ -19,7 +19,7 @@ public class ManagerExercise {
         set {
             if (value != null && value != _loadedExerciseModel) {
                 _loadedExerciseModel = value;
-                Utils.LaunchEvent(this, onExerciseLoaded);
+                Utils.LaunchEvent(this, onSelectedExerciseChanged);
             }
         }
     }
@@ -65,13 +65,13 @@ public class ManagerExercise {
 
     #region Singleton
 
-    private static ManagerExercise _instance;
+    private static ServiceExercise _instance;
 
 
-    public static ManagerExercise instance {
+    public static ServiceExercise instance {
         get {
             if (_instance == null) {
-                _instance = new ManagerExercise();
+                _instance = new ServiceExercise();
             }
             return _instance;
         }

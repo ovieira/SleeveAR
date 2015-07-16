@@ -10,16 +10,11 @@ using FullSerializer;
 
 public class MovementRecorder : MonoBehaviour {
 
-    public ExerciseModel exerciseModel = new ExerciseModel();
 
-    public enum FileFormatEnum {
-        XML,
-        JSON
-    }
-
-    public FileFormatEnum FileFormat;
 
     #region variables
+    public ExerciseModel exerciseModel = new ExerciseModel();
+
     public GameObject JointRepresentationPrefab;
     public int FPS = 24;
     private bool canRecord = false;
@@ -35,14 +30,17 @@ public class MovementRecorder : MonoBehaviour {
     private JointsGroup currentJointgroup;
     #endregion
 
+    #region LifeCycle
+    void Awake() {
+        ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
+    }
+
+    private void _onSelectedExerciseChanged(object sender, EventArgs e) {
+        exerciseModel = ServiceExercise.instance.selected;
+    }
+
     // Use this for initialization
     void Start() {
-        //if (Target == null) {
-        //    Debug.Log("Nothing to Record");
-        //    canRecord = false;
-        //}
-        //Positions = new List<SingleJoint>();
-
         for (int i = 0; i < ManagerTracking.instance.count; i++) {
             GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
             ob.GetComponent<Renderer>().material = greenMat;
@@ -53,8 +51,7 @@ public class MovementRecorder : MonoBehaviour {
 
     void Update() {
         if (canPlay) {
-            for (int i = 0; i < _replayPrefabs.Count; i++)
-            {
+            for (int i = 0; i < _replayPrefabs.Count; i++) {
                 SingleJoint j = currentJointgroup.jointsList[i];
                 _replayPrefabs[i].position = j.position;
                 _replayPrefabs[i].rotation = j.rotation;
@@ -65,7 +62,8 @@ public class MovementRecorder : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate() {
         //KeyboardHandler();
-    }
+    } 
+    #endregion
 
     #region KeyboardHandler
     private void KeyboardHandler() {
@@ -117,23 +115,26 @@ public class MovementRecorder : MonoBehaviour {
     private void StopRecording() {
         //canRecord = false;
         CancelInvoke("Record");
+        ServiceExercise.instance.selected = exerciseModel;
+
         print("Stopped Recording");
         print("Entries Saved: " + exerciseModel.exerciseModel.Count);
         print("Time:" + (Time.time - startTime));
     }
     #endregion
 
+    #region Playing
     public void OnClickPlayButton() {
         //throw new NotImplementedException();
 
-        foreach (Transform replayPrefab in _replayPrefabs)
-        {
+        foreach (Transform replayPrefab in _replayPrefabs) {
             replayPrefab.gameObject.SetActive(true);
         }
 
-        print("play");
         entry_no = 0;
         ManagerTracking.instance.setTracking(false);
+        print("playing exercise: " + exerciseModel.label);
+
         //Target.position = exerciseModel.Get(0).position;
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
@@ -144,144 +145,14 @@ public class MovementRecorder : MonoBehaviour {
     }
 
     public void StartPlaying() {
-        //throw new NotImplementedException();
 
-        if (entry_no < exerciseModel.exerciseModel.Count)
-        {
-           currentJointgroup =  exerciseModel.Get(entry_no);
+        if (entry_no < exerciseModel.exerciseModel.Count) {
+            currentJointgroup = exerciseModel.Get(entry_no);
             entry_no++;
         }
 
-        //if (entry_no < exerciseModel.LogList.Count)
-        //{
-        //    SingleJoint tc = exerciseModel.Get(entry_no++);
-        //    auxPos = tc.position;
-        //    auxRot = tc.rotation;
-        //}
-        //else {
-        //    canPlay = false;
-        //    CancelInvoke("StartPlaying");
-        //}
-    }
-
-
-    public void OnClickSaveButton() {
-        switch (FileFormat) {
-            case FileFormatEnum.XML:
-                XMLSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                break;
-            case FileFormatEnum.JSON:
-                JSONSave(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                break;
-        }
-    }
-
-    public void OnClickLoadButton() {
-        switch (FileFormat) {
-            case FileFormatEnum.XML:
-                //exerciseModel = XMLLoadFromFile(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                exerciseModel = XMLHandler.Load(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                break;
-            case FileFormatEnum.JSON:
-                exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", _FileToLoad));
-                exerciseModel.label = _FileToLoad;
-                ManagerExercise.instance.loadedExerciseModel = exerciseModel;
-                break;
-        }
-
-        _InputField.text = "";
-    }
-
-    #region XML
-
-    public void XMLSave(string fileName) {
-        print("Saving file to: " + fileName);
-        try {
-            using (FileStream stream = new FileStream(fileName, FileMode.CreateNew)) {
-                XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
-                XML.Serialize(stream, exerciseModel);
-                print("Done!");
-            }
-        }
-        catch (IOException e) {
-            Debug.Log(e.Message);
-        }
-    }
-
-    public ExerciseModel XMLLoadFromFile(string fileName) {
-        print("Loading file : " + _FileToLoad);
-
-        using (FileStream stream = new FileStream(fileName, FileMode.Open)) {
-            XmlSerializer XML = new XmlSerializer(typeof(ExerciseModel));
-            print("Done!");
-            return (ExerciseModel)XML.Deserialize(stream);
-        }
-
-    }
+    } 
     #endregion
-
-    #region JSON
-
-    private void JSONSave(string fileName) {
-        try
-        {
-            if (File.Exists(fileName + ".json"))
-            {
-                int i = 1;
-                while (File.Exists(fileName + i + ".json"))
-                {
-                    i++;
-                }
-                fileName = fileName + i;
-            }
-
-            using (FileStream stream = new FileStream(fileName+".json", FileMode.CreateNew)) {
-                using (StreamWriter writer = new StreamWriter(stream)) {
-                    fsSerializer _serializer = new fsSerializer();
-                    fsData data;
-                    _serializer.TrySerialize(typeof(ExerciseModel), exerciseModel, out data).AssertSuccessWithoutWarnings();
-                    writer.Write(data.ToString());
-                    print("Saved! : " + fileName);
-                    writer.Flush();
-                }
-            }
-        }
-        catch (IOException e) {
-            Debug.Log(e.Message);
-        }
-    }
-
-    private ExerciseModel JSONLoad(string fileName) {
-        print("Loading file : " + fileName);
-        using (FileStream stream = new FileStream(fileName + ".json", FileMode.Open)) {
-            using (StreamReader reader = new StreamReader(stream)) {
-                fsSerializer _serializer = new fsSerializer();
-
-                // step 1: parse the JSON data
-                fsData data = fsJsonParser.Parse(reader.ReadToEnd());
-
-                // step 2: deserialize the data
-                object deserialized = null;
-                _serializer.TryDeserialize(data, typeof(ExerciseModel), ref deserialized).AssertSuccessWithoutWarnings();
-
-                return (ExerciseModel)deserialized;
-            }
-        }
-    }
-
-    #endregion
-
-    [ContextMenu("TestJson")]
-    public void testJson() {
-        exerciseModel.testPopulate();
-        JSONSave(Path.Combine(Application.dataPath + "/Recordings", "loool"));
-    }
-
-    [ContextMenu("TestJsonLoad")]
-    public void testJsonLoad() {
-        exerciseModel = JSONLoad(Path.Combine(Application.dataPath + "/Recordings", "loool"));
-        Debug.Log("Done");
-    }
 
     public AudioClip OneTwoThree;
     public float _CountdownTime;
