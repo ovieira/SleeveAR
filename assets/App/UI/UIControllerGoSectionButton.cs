@@ -9,17 +9,13 @@ public class UIControllerGoSectionButton : MonoBehaviour {
     public ServiceSection.Section _section;
     #endregion
 
-
-	// Use this for initialization
-	void Start ()
-	{
-	    button.onClicked += this._onClicked;
-	}
-
-    private void _onClicked(object sender, System.EventArgs e)
+    #region LifeCycle
+    // Use this for initialization
+    private void Start()
     {
-        ServiceSection.instance.selected = _section;
+        button.onClicked += this._onClicked;
     }
+#endregion
 
     #region Button
 
@@ -28,5 +24,8 @@ public class UIControllerGoSectionButton : MonoBehaviour {
         get { return this.GetComponent<UIButton>(); }
     }
 
+    private void _onClicked(object sender, System.EventArgs e) {
+        ServiceSection.instance.selected = _section;
+    }
     #endregion
 }
