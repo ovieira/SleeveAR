@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIControllerSections : MonoBehaviour {
-
-
-
+public class ControllerSections : MonoBehaviour {
 
     #region LifeCycle
     // Use this for initialization
@@ -12,22 +9,22 @@ public class UIControllerSections : MonoBehaviour {
         ServiceSection.instance.onSectionChanged += this._onSectionChanged;
     }
 
-    void Start()
-    {
-        createSection(UILearningPrefab);
+    void Start() {
+        currentSection = this.GetComponentInChildren<ViewSection>();
+
+        createSection(LearningSectionPrefab);
     }
 
     #endregion
 
     #region Service Section
-    private void _onSectionChanged(object sender, System.EventArgs e)
-    {
+    private void _onSectionChanged(object sender, System.EventArgs e) {
         switch (ServiceSection.instance.selected) {
             case ServiceSection.Section.LEARNING:
-                createSection(UILearningPrefab);
+                createSection(LearningSectionPrefab);
                 break;
             case ServiceSection.Section.TEACHING:
-                createSection(UITeachingPrefab);
+                createSection(TeachingSectionPrefab);
                 break;
             default:
                 break;
@@ -35,30 +32,30 @@ public class UIControllerSections : MonoBehaviour {
     }
     #endregion
 
-    private void createSection(GameObject prefab)
-    {
-        UIViewSection currentSection = this.GetComponentInChildren<UIViewSection>();
+    private void createSection(GameObject prefab) {
 
-        if (currentSection == null) 
+        if (currentSection == null)
             instantiateSection(prefab);
-        else
-        {
+        else {
             Destroy(currentSection.gameObject);
             instantiateSection(prefab);
         }
     }
 
     private void instantiateSection(GameObject prefab) {
-        
+
         GameObject ob = Instantiate(prefab);
-        ob.transform.SetParent(this.transform, false);
+        currentSection = ob.GetComponent<ViewSection>();
+        //ob.transform.SetParent(this.transform);
+        ob.transform.parent = this.transform;
     }
 
 
     #region Prefabs
 
-    public GameObject UILearningPrefab;
-    public GameObject UITeachingPrefab;
+    public GameObject LearningSectionPrefab;
+    public GameObject TeachingSectionPrefab;
+    private ViewSection currentSection;
 
     #endregion
 }

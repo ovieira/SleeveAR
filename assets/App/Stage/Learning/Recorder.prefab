@@ -771,7 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c7ae76df2749f4e84f836d1448e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileFormat: 1
   JointRepresentationPrefab: {fileID: 170558, guid: 8c24e262b7d6b4d43b97f3faf05f34d6,
     type: 2}
   FPS: 24

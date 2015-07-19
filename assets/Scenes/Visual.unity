@@ -272,6 +272,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1340731401
 MonoBehaviour:
@@ -367,45 +368,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 461156, guid: b2e882c195129b545be8de3992991151, type: 2}
   m_PrefabInternal: {fileID: 45002290}
---- !u!1 &1948761265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1948761267}
-  - 114: {fileID: 1948761266}
-  m_Layer: 0
-  m_Name: ExerciseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1948761266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1948761265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51399e243dedae749ad2d549d4033e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1948761267
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1948761265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .913693428, y: 4.41579203e-18, z: -.198869586}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &2007938765
 Prefab:
   m_ObjectHideFlags: 0
