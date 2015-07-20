@@ -42,6 +42,10 @@ public class ControllerExercise : Controller {
 
         Debug.Log(jg.angle + " : " + goal.angle);
 
+        if (Utils.IsApproximately(jg.angle, goal.angle, 1f))
+        {
+            Debug.Log("TA PARECIDO");
+        }
         //get single joints angle
 
         //if close enough to initial position, launch reachedInitialPosition Event and stop coroutine

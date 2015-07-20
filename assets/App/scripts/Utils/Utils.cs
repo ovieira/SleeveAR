@@ -30,4 +30,16 @@ public class Utils {
 
     #endregion
 
+    #region Floats Comparison
+
+    public static bool IsApproximately(float a, float b)
+    {
+        return IsApproximately(a,b,0.02f);
+    }
+
+    public static bool IsApproximately(float a, float b, float threshold)
+    {
+        return Mathf.Abs(a - b) < threshold;
+    }
+    #endregion
 }
