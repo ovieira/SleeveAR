@@ -28,35 +28,30 @@ public class ServiceExercise {
 
     #region Iterator
 
-    public event EventHandler<EventArgs> onCurrentIndexChanged, onFinishedExercise; 
+    public event EventHandler<EventArgs> onCurrentIndexChanged, onFinishedExercise;
 
-    protected int _currentIndex;
+    protected int _index;
 
-    public int currentIndex
-    {
-        get { return this._currentIndex; }
-        set
-        {
-            if (this._currentIndex == value) return;
+    public int index {
+        get { return this._index; }
+        set {
             if (value >= _loadedExerciseModel.exerciseModel.Count) {
                 Utils.LaunchEvent(this, onFinishedExercise);
                 return;
             }
-            this._currentIndex = value;
-            currentJointsGroup = _loadedExerciseModel.exerciseModel[currentIndex];
+            this._index = value;
+            currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
             Utils.LaunchEvent(this, onCurrentIndexChanged);
         }
     }
 
-    public event EventHandler<EventArgs> onCurrentJointGroupChanged; 
-    
+    public event EventHandler<EventArgs> onCurrentJointGroupChanged;
+
     protected JointsGroup _currentJointsGroup;
 
-    public JointsGroup currentJointsGroup
-    {
+    public JointsGroup currentJointsGroup {
         get { return this._currentJointsGroup; }
-        set
-        {
+        set {
             this._currentJointsGroup = value;
             Utils.LaunchEvent(this, onCurrentJointGroupChanged);
         }
@@ -77,6 +72,22 @@ public class ServiceExercise {
         }
     }
 
+    #endregion
+
+    #region Start Exercise
+
+    public EventHandler<EventArgs> onStart;
+
+    private bool _start;
+
+    public bool start {
+        get { return _start; }
+        set {
+            _start = value;
+            if (_start)
+                Utils.LaunchEvent(this, onStart);
+        }
+    }
     #endregion
 
 }

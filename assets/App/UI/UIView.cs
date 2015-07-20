@@ -12,6 +12,9 @@ public class UIView : MonoBehaviour {
             iTween.EaseType.easeInOutSine, "onUpdate", "onComplete");
 
         iTween.ValueTo(this.gameObject, hashValueTo);
+
+        this.canvasGroup.interactable = true;
+        this.canvasGroup.blocksRaycasts = true;
     }
 
     public void hide() {
@@ -19,6 +22,9 @@ public class UIView : MonoBehaviour {
             iTween.EaseType.easeInOutSine, "onUpdate", "onComplete");
 
         iTween.ValueTo(this.gameObject, hashValueTo);
+
+        this.canvasGroup.interactable = false;
+        this.canvasGroup.blocksRaycasts = false;
     }
 
     #endregion

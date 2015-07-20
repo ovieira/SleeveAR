@@ -12,6 +12,10 @@ public class UIControllerStartExerciseButton : MonoBehaviour {
 	     ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
 
         if (ServiceExercise.instance.selected == null) this.view.hide();
+        else
+        {
+            this.view.show();
+        }
     }
 
 
@@ -48,7 +52,8 @@ public class UIControllerStartExerciseButton : MonoBehaviour {
     }
 
     private void _onClicked(object sender, EventArgs e) {
-        throw new NotImplementedException();
+       this.view.hide();
+        ServiceExercise.instance.start = true;
     }
     #endregion
 }
