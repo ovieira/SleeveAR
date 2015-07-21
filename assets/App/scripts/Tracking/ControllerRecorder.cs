@@ -6,9 +6,7 @@ using System.Xml.Serialization;
 using UnityEngine.UI;
 using FullSerializer;
 
-[XmlRoot("ExerciseModel")]
-
-public class MovementRecorder : MonoBehaviour {
+public class ControllerRecorder : Controller {
 
 
 
@@ -16,39 +14,51 @@ public class MovementRecorder : MonoBehaviour {
     public ExerciseModel exerciseModel = new ExerciseModel();
 
     public GameObject JointRepresentationPrefab;
-    public int FPS = 24;
     private bool canRecord = false;
-    private float startTime;
-    private Vector3 auxPos;
     private bool canPlay = false;
     private int entry_no;
-    public InputField _InputField;
-    public Quaternion auxRot;
     public string _FileToLoad { get; set; }
     public Material greenMat;
     private List<Transform> _replayPrefabs = new List<Transform>();
     private JointsGroup currentJointgroup;
-    public AudioClip OneTwoThree;
+
+
+    //Time
+
+    private float startTime;
+    [Header("Time Variables")]
+
     public float _CountdownTime;
+
+    public int capturesPerSecond = 24;
+
+    [Space(10)]
+    public AudioClip OneTwoThree;
+
     #endregion
 
     #region LifeCycle
-    void Awake()
-    {
+    void Awake() {
         ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
 
         CreateServiceMedia();
+
+
     }
 
-   
-
-    void Start() {
+    protected override void Start() {
+        base.Start();
         for (int i = 0; i < ServiceTracking.instance.count; i++) {
             GameObject ob = (GameObject)Instantiate(JointRepresentationPrefab, Vector3.zero, Quaternion.identity);
+            ob.transform.parent = this.transform;
             ob.GetComponent<Renderer>().material = greenMat;
             ob.SetActive(false);
             _replayPrefabs.Add(ob.transform);
         }
+
+        if (serviceExercise.selected == null) return;
+        exerciseModel = serviceExercise.selected;
+
     }
 
     void Update() {
@@ -59,11 +69,6 @@ public class MovementRecorder : MonoBehaviour {
                 _replayPrefabs[i].rotation = j.rotation;
             }
         }
-    }
-
-    // Update is called once per frame
-    void LateUpdate() {
-        //KeyboardHandler();
     }
 
     public void OnDestroy() {
@@ -100,16 +105,14 @@ public class MovementRecorder : MonoBehaviour {
     }
 
     private void _onStartRecording(object sender, EventArgs e) {
-        if (ServiceTracking.instance.tracking == false)
-        {
+        if (ServiceTracking.instance.tracking == false) {
             Debug.LogWarning("Tracking is not enabled");
         }
         StartRecording();
     }
 
     private void _onStartPlaying(object sender, EventArgs e) {
-        if (ServiceExercise.instance.selected == null)
-        {
+        if (ServiceExercise.instance.selected == null) {
             Debug.LogError("No exercise loaded to play :(");
             return;
         }
@@ -141,19 +144,17 @@ public class MovementRecorder : MonoBehaviour {
 
     private void StartRecording() {
         print("Started Recording");
-        
-        Invoke("playWarningSound", _CountdownTime-3f);
+
+        Invoke("playWarningSound", _CountdownTime - 3f);
         Invoke("setUpTimer", _CountdownTime);
-        InvokeRepeating("Record", _CountdownTime, 1f / FPS);
+        InvokeRepeating("Record", _CountdownTime, 1f / capturesPerSecond);
     }
 
-    private void playWarningSound()
-    {
+    private void playWarningSound() {
         GetComponent<AudioSource>().PlayOneShot(OneTwoThree);
     }
 
-    private void setUpTimer()
-    {
+    private void setUpTimer() {
         startTime = Time.time;
     }
 
@@ -183,7 +184,7 @@ public class MovementRecorder : MonoBehaviour {
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
         IterateExercise();
-        InvokeRepeating("IterateExercise", 0f, 1f / FPS);
+        InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);
         canPlay = true;
 
     }
@@ -195,8 +196,8 @@ public class MovementRecorder : MonoBehaviour {
             entry_no++;
         }
 
-    } 
+    }
     #endregion
 
-  
+
 }
