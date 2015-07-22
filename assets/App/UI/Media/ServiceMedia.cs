@@ -22,7 +22,7 @@ public class ServiceMedia {
 
     #region Play
 
-    public EventHandler<EventArgs> onStartPlaying;
+    public event EventHandler<EventArgs> onStartPlaying;
 
     public void Play()
     {

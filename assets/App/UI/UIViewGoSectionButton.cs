@@ -1,15 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIViewGoSectionButton : MonoBehaviour {
+public class UIViewGoSectionButton : UIView {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    #region Show/Hide
+
+    public void show()
+    {
+        show(this.rectTransform.anchoredPosition.x, 0f,1f,0f, iTween.EaseType.easeInOutSine);
+    }
+
+    public void hide()
+    {
+        hide(this.rectTransform.anchoredPosition.x, -60f, 1f, 0f, iTween.EaseType.easeInOutSine);
+    }
+
+
+    protected override void onUpdate(float progress)
+    {
+        base.onUpdate(progress);
+        this.rectTransform.anchoredPosition = new Vector2(progress, 0);
+    }
+
+    #endregion
+
 }

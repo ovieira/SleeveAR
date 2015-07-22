@@ -1,54 +1,82 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(CanvasGroup))]
+//[RequireComponent(typeof(CanvasGroup))]
 public class UIView : MonoBehaviour {
 
     #region Show/Hide
 
-    public void show()
+
+    #region Show
+    public void show(float from, float to, float time, float delay, iTween.EaseType easetype, string onupdate,
+       string oncomplete) {
+        Hashtable hashValueTo = Utils.HashValueTo(this.gameObject.name + "show", from, to, time, delay, easetype, onupdate, oncomplete);
+
+        iTween.ValueTo(this.gameObject, hashValueTo);
+    }
+
+    public void show(float from, float to, float time, float delay)
     {
-        Hashtable hashValueTo = Utils.HashValueTo(this.gameObject.name + "show", this.canvasGroup.alpha, 1f, 1f, 0f,
-            iTween.EaseType.easeInOutSine, "onUpdate", "onComplete");
-
-        iTween.ValueTo(this.gameObject, hashValueTo);
-
-        this.canvasGroup.interactable = true;
-        this.canvasGroup.blocksRaycasts = true;
+        show(from,to,time,delay,iTween.EaseType.linear, "onUpdate", "onShowCompleted");
     }
 
-    public void hide() {
-        Hashtable hashValueTo = Utils.HashValueTo(this.gameObject.name + "hide", this.canvasGroup.alpha, 0f, 1f, 0f,
-            iTween.EaseType.easeInOutSine, "onUpdate", "onComplete");
-
-        iTween.ValueTo(this.gameObject, hashValueTo);
-
-        this.canvasGroup.interactable = false;
-        this.canvasGroup.blocksRaycasts = false;
+    public void show(float from, float to, float time, float delay, iTween.EaseType easetype) {
+        show(from, to, time, delay, easetype, "onUpdate", "onShowCompleted");
     }
 
+    protected virtual void onShowCompleted() {
+
+    }
     #endregion
 
 
+    #region Hide
+    public void hide(float from, float to, float time, float delay, iTween.EaseType easetype, string onupdate,
+       string oncomplete) {
+        Hashtable hashValueTo = Utils.HashValueTo(this.gameObject.name + "show", from, to, time, delay, easetype, onupdate, oncomplete);
+
+        iTween.ValueTo(this.gameObject, hashValueTo);
+
+    }
+
+    public void hide(float from, float to, float time, float delay) {
+        hide(from, to, time, delay, iTween.EaseType.linear, "onUpdate", "onHideCompleted");
+    }
+
+    public void hide(float from, float to, float time, float delay, iTween.EaseType easetype) {
+        hide(from, to, time, delay, easetype, "onUpdate", "onHideCompleted");
+    }
+
+    protected virtual void onHideCompleted() {
+
+    }
+    #endregion
+
+
+    #endregion
+
     #region iTween Callback Functions
 
-    protected void onUpdate(float progress)
-    {
-        this.canvasGroup.alpha = progress;
+    protected virtual void onUpdate(float progress) {
+        //this.canvasGroup.alpha = progress;
     }
 
-    protected void onComplete()
-    {
-        
-    }
+   
     #endregion
 
     #region CanvasGroup
 
-    protected CanvasGroup canvasGroup
-    {
+    protected CanvasGroup canvasGroup {
         get { return this.GetComponent<CanvasGroup>(); }
     }
 
+    #endregion
+
+    #region RectTransform
+
+    protected RectTransform rectTransform
+    {
+        get { return this.GetComponent<RectTransform>(); }
+    }
     #endregion
 }

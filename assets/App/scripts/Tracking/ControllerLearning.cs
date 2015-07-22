@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using UnityEngine.UI;
 using FullSerializer;
 
-public class ControllerRecorder : Controller {
+public class ControllerLearning : Controller {
 
 
 
@@ -42,8 +42,6 @@ public class ControllerRecorder : Controller {
         ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
 
         CreateServiceMedia();
-
-
     }
 
     protected override void Start() {
@@ -176,7 +174,7 @@ public class ControllerRecorder : Controller {
             replayPrefab.gameObject.SetActive(true);
         }
 
-        entry_no = 0;
+        serviceExercise.index = 0;
         ServiceTracking.instance.setTracking(false);
         print("playing exercise: " + exerciseModel.label);
 
@@ -184,6 +182,7 @@ public class ControllerRecorder : Controller {
         //Target.rotation = exerciseModel.Get(0).rotation;
         //GameObject.Find("Optitrack").SendMessage("setTracking", false);
         IterateExercise();
+        CancelInvoke("IterateExercise");
         InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);
         canPlay = true;
 
@@ -191,11 +190,16 @@ public class ControllerRecorder : Controller {
 
     public void IterateExercise() {
 
-        if (entry_no < exerciseModel.exerciseModel.Count) {
-            currentJointgroup = exerciseModel.Get(entry_no);
-            entry_no++;
-        }
-
+        
+        //if (entry_no < exerciseModel.exerciseModel.Count) {
+        //    currentJointgroup = exerciseModel.Get(entry_no);
+        //    entry_no++;
+        //}
+        
+        currentJointgroup = serviceExercise.currentJointsGroup;
+        serviceExercise.index++;
+        entry_no = serviceExercise.index;
+        
     }
     #endregion
 
