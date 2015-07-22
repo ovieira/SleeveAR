@@ -9,10 +9,12 @@ public class UIControllerExerciseSlider : Controller {
     protected override void Start()
     {
         base.Start();
-	    ServiceMedia.instance.onStartPlaying += _onStartPlaying;
+	    //ServiceMedia.instance.onStartPlaying += _onStartPlaying;
         serviceExercise.onFinishedExercise += _onFinishedExercise;
 	    serviceExercise.onCurrentIndexChanged += _onIndexChanged;
 	    serviceExercise.onSelectedExerciseChanged += _onExercisedLoaded;
+
+        slider.onValueChanged.AddListener(_onValueChanged);
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,8 @@ public class UIControllerExerciseSlider : Controller {
     {
         slider.minValue = 0;
         slider.maxValue = serviceExercise.selected.exerciseModel.Count; //TODO: serviceExercise must have total entries saved in property
+        this.view.show();
+
     }
     #region View
 
@@ -49,6 +53,12 @@ public class UIControllerExerciseSlider : Controller {
     #region Slider
 
     public Slider slider;
+
+
+    protected void _onValueChanged(float value)
+    {
+        serviceExercise.index = (int)value;
+    }
 
     #endregion
 }

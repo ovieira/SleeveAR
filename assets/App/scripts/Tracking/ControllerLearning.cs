@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -40,7 +41,7 @@ public class ControllerLearning : Controller {
     #region LifeCycle
     void Awake() {
         ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
-
+        ServiceExercise.instance.onCurrentIndexChanged += this._onCurrentIndexChanged;
         CreateServiceMedia();
     }
 
@@ -60,13 +61,13 @@ public class ControllerLearning : Controller {
     }
 
     void Update() {
-        if (canPlay) {
-            for (int i = 0; i < _replayPrefabs.Count; i++) {
-                SingleJoint j = currentJointgroup.jointsList[i];
-                _replayPrefabs[i].position = j.position;
-                _replayPrefabs[i].rotation = j.rotation;
-            }
-        }
+        //if (canPlay) {
+        //    for (int i = 0; i < _replayPrefabs.Count; i++) {
+        //        SingleJoint j = currentJointgroup.jointsList[i];
+        //        _replayPrefabs[i].position = j.position;
+        //        _replayPrefabs[i].rotation = j.rotation;
+        //    }
+        //}
     }
 
     public void OnDestroy() {
@@ -81,7 +82,21 @@ public class ControllerLearning : Controller {
 
     private void _onSelectedExerciseChanged(object sender, EventArgs e) {
         exerciseModel = ServiceExercise.instance.selected;
+
+        StopAllCoroutines();
+        StartCoroutine(UpdateReplayJoints());
+
+        foreach (Transform replayPrefab in _replayPrefabs) {
+            replayPrefab.gameObject.SetActive(true);
+        }
     }
+
+    private void _onCurrentIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+
 
     #endregion
 
@@ -170,23 +185,37 @@ public class ControllerLearning : Controller {
     public void StartPlaying() {
         //throw new NotImplementedException();
 
-        foreach (Transform replayPrefab in _replayPrefabs) {
-            replayPrefab.gameObject.SetActive(true);
+       
+
+        if (serviceExercise.index == serviceExercise.count - 1)
+        {
+            serviceExercise.index = 0;
         }
 
-        serviceExercise.index = 0;
         ServiceTracking.instance.setTracking(false);
         print("playing exercise: " + exerciseModel.label);
-
-        //Target.position = exerciseModel.Get(0).position;
-        //Target.rotation = exerciseModel.Get(0).rotation;
-        //GameObject.Find("Optitrack").SendMessage("setTracking", false);
-        IterateExercise();
-        CancelInvoke("IterateExercise");
-        InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);
-        canPlay = true;
+        //IterateExercise();
+        //CancelInvoke("IterateExercise");
+        //InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);
+       // canPlay = true;
 
     }
+
+    IEnumerator UpdateReplayJoints()
+    {
+        while (true)
+        {
+            JointsGroup jg = serviceExercise.currentJointsGroup;
+            for (int i = 0; i < _replayPrefabs.Count; i++)
+            {
+                SingleJoint j = jg.jointsList[i];
+                _replayPrefabs[i].position = j.position;
+                _replayPrefabs[i].rotation = j.rotation;
+            }
+            yield return null;
+        }
+    }
+
 
     public void IterateExercise() {
 

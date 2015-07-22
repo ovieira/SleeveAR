@@ -19,9 +19,31 @@ public class ServiceExercise {
         set {
             if (value != null && value != _loadedExerciseModel) {
                 _loadedExerciseModel = value;
+                this.count = value.exerciseModel.Count;
+                this.index = 0;
+                currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
                 Utils.LaunchEvent(this, onSelectedExerciseChanged);
             }
         }
+    }
+
+    #endregion
+
+    #region Count
+
+    protected int _count;
+
+    public int count
+    {
+        get
+        {
+            if (this.selected == null) return 0;
+            else
+            {
+                return _count;
+            }
+        }
+        private set { _count = value; }
     }
 
     #endregion
@@ -35,10 +57,11 @@ public class ServiceExercise {
     public int index {
         get { return this._index; }
         set {
-            if (value >= _loadedExerciseModel.exerciseModel.Count) {
+            if (value >= this.count) {
                 Utils.LaunchEvent(this, onFinishedExercise);
                 return;
             }
+            if (this._index == value) return;
             this._index = value;
             currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
             Utils.LaunchEvent(this, onCurrentIndexChanged);
