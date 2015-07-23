@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11474330}
   - 114: {fileID: 11420890}
   - 114: {fileID: 11431884}
+  - 114: {fileID: 11406634}
   m_Layer: 0
   m_Name: TeachingSection
   m_TagString: Untagged
@@ -30,6 +31,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11406634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd23ac00979b767478973a3026b0a21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleFeedback: {fileID: 167260, guid: 7477fd28a1066264493e3a652df10b63, type: 2}
+  HeightFeedback: {fileID: 0}
+  FloorFeedback: {fileID: 0}
 --- !u!114 &11420890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,7 +84,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: AngleFeedback
+      value: 
+      objectReference: {fileID: 167260, guid: 7477fd28a1066264493e3a652df10b63, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100622}

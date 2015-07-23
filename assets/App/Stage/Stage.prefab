@@ -11,13 +11,14 @@ GameObject:
   - 114: {fileID: 11477992}
   - 114: {fileID: 11471722}
   - 114: {fileID: 11476768}
+  - 114: {fileID: 11444202}
   m_Layer: 0
   m_Name: TeachingSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &111774
 GameObject:
   m_ObjectHideFlags: 1
@@ -1191,6 +1192,20 @@ MonoBehaviour:
   _CountdownTime: 6
   capturesPerSecond: 24
   OneTwoThree: {fileID: 8300000, guid: 0808b546b287b644eb67b356ac2c23cf, type: 3}
+--- !u!114 &11444202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd23ac00979b767478973a3026b0a21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleFeedback: {fileID: 167260, guid: 7477fd28a1066264493e3a652df10b63, type: 2}
+  HeightFeedback: {fileID: 0}
+  FloorFeedback: {fileID: 0}
 --- !u!114 &11452188
 MonoBehaviour:
   m_ObjectHideFlags: 1

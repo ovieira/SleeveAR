@@ -30,7 +30,7 @@ public class ControllerExercise : Controller {
     private void _onStart(object sender, EventArgs e) {
         ServiceExercise.instance.index = 0;
 
-        StartCoroutine(initialPosition());
+        StartCoroutine("initialPosition");
     }
 
     IEnumerator initialPosition() {
@@ -59,7 +59,7 @@ public class ControllerExercise : Controller {
     #region Service Teaching
 
     private void _onReachedInitialPosition(object sender, EventArgs e) {
-        StopCoroutine(initialPosition());
+        StopCoroutine("initialPosition");
         serviceAudio.PlayCorrect();
     }
 

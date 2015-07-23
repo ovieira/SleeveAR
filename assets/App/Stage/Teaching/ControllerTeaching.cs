@@ -1,24 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerTeaching : MonoBehaviour {
+public class ControllerTeaching : Controller {
 
     #region LifeCycle
     // Use this for initialization
-    void Start() {
-        ServiceTeaching.instance.reachedInitialPosition = false;
+    protected override void Start()
+    {
+        base.Start();
 
-        ServiceTeaching.instance.onReachedInitialPosition += this._onReachedInitialPosition; 
+        serviceTeaching.reachedInitialPosition = false;
 
-        ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
+        serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
+
+        serviceExercise.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
+
+        serviceExercise.onStart += this._onStart;
     }
 
 
-    // Update is called once per frame
-
-    void Update() {
-
-    }
+   
 
     #endregion
 
@@ -29,6 +30,16 @@ public class ControllerTeaching : MonoBehaviour {
         ServiceTeaching.instance.reachedInitialPosition = false;
     }
 
+    private void _onStart(object sender, System.EventArgs e) {
+        instantiatePrefab(AngleFeedback);
+    }
+
+    protected void instantiatePrefab(GameObject prefab)
+    {
+        GameObject ob = Instantiate(prefab);
+        ob.transform.SetParent(this.transform);
+    }
+
     #endregion
 
     #region Service Teaching
@@ -36,6 +47,14 @@ public class ControllerTeaching : MonoBehaviour {
     private void _onReachedInitialPosition(object sender, System.EventArgs e) {
         Debug.Log("Start guiding");
     }
+
+    #endregion
+
+    #region Guiding Prefabs
+
+    public GameObject AngleFeedback;
+    public GameObject HeightFeedback;
+    public GameObject FloorFeedback;
 
     #endregion
 }
