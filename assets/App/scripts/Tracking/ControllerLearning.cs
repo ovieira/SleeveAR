@@ -57,17 +57,13 @@ public class ControllerLearning : Controller {
 
         if (serviceExercise.selected == null) return;
         exerciseModel = serviceExercise.selected;
+        foreach (Transform replayPrefab in _replayPrefabs) {
+            replayPrefab.gameObject.SetActive(true);
+        }
+        StopAllCoroutines();
+        StartCoroutine(UpdateReplayJoints());
 
-    }
-
-    void Update() {
-        //if (canPlay) {
-        //    for (int i = 0; i < _replayPrefabs.Count; i++) {
-        //        SingleJoint j = currentJointgroup.jointsList[i];
-        //        _replayPrefabs[i].position = j.position;
-        //        _replayPrefabs[i].rotation = j.rotation;
-        //    }
-        //}
+        
     }
 
     public void OnDestroy() {
@@ -81,7 +77,7 @@ public class ControllerLearning : Controller {
     #region Service Exercise
 
     private void _onSelectedExerciseChanged(object sender, EventArgs e) {
-        exerciseModel = ServiceExercise.instance.selected;
+        exerciseModel = serviceExercise.selected;
 
         StopAllCoroutines();
         StartCoroutine(UpdateReplayJoints());
@@ -183,9 +179,6 @@ public class ControllerLearning : Controller {
 
     #region Playing
     public void StartPlaying() {
-        //throw new NotImplementedException();
-
-       
 
         if (serviceExercise.index == serviceExercise.count - 1)
         {
@@ -198,7 +191,7 @@ public class ControllerLearning : Controller {
         //CancelInvoke("IterateExercise");
         //InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);
        // canPlay = true;
-
+       
     }
 
     IEnumerator UpdateReplayJoints()

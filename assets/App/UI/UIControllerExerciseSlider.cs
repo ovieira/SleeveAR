@@ -5,42 +5,52 @@ using UnityEngine.UI;
 
 public class UIControllerExerciseSlider : Controller {
 
-	// Use this for initialization
-    protected override void Start()
-    {
+    #region LifeCycle
+    // Use this for initialization
+    protected override void Start() {
         base.Start();
-	    //ServiceMedia.instance.onStartPlaying += _onStartPlaying;
+        //ServiceMedia.instance.onStartPlaying += _onStartPlaying;
         serviceExercise.onFinishedExercise += _onFinishedExercise;
-	    serviceExercise.onCurrentIndexChanged += _onIndexChanged;
-	    serviceExercise.onSelectedExerciseChanged += _onExercisedLoaded;
+        serviceExercise.onCurrentIndexChanged += _onIndexChanged;
+        serviceExercise.onSelectedExerciseChanged += _onExercisedLoaded;
 
         slider.onValueChanged.AddListener(_onValueChanged);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+        if (serviceExercise.selected != null)
+        {
+            setMinMax(0,serviceExercise.count);
+            slider.value = serviceExercise.index;
+
+            this.view.show();
+        }
+    }
+
+    protected override void OnDestroy() {
+        base.OnDestroy();
+        slider.onValueChanged.RemoveListener(_onValueChanged);
+        serviceExercise.onSelectedExerciseChanged -= _onExercisedLoaded;
+        serviceExercise.onCurrentIndexChanged -= _onIndexChanged;
+        serviceExercise.onFinishedExercise -= _onFinishedExercise;
+
+    }
+
+    #endregion
 
 
-    protected void _onStartPlaying(object sender, EventArgs e)
-    {
+    protected void _onStartPlaying(object sender, EventArgs e) {
         this.view.show();
     }
 
     protected void _onFinishedExercise(object sender, EventArgs e) {
-        this.view.hide();
+        //this.view.hide();
     }
 
-    protected void _onIndexChanged(object sender, EventArgs e)
-    {
+    protected void _onIndexChanged(object sender, EventArgs e) {
         slider.value = serviceExercise.index;
     }
 
-    protected void _onExercisedLoaded(object sender, EventArgs e)
-    {
-        slider.minValue = 0;
-        slider.maxValue = serviceExercise.selected.exerciseModel.Count; //TODO: serviceExercise must have total entries saved in property
+    protected void _onExercisedLoaded(object sender, EventArgs e) {
+        this.setMinMax(0,serviceExercise.count); //TODO: serviceExercise must have total entries saved in property
         this.view.show();
 
     }
@@ -55,10 +65,13 @@ public class UIControllerExerciseSlider : Controller {
     public Slider slider;
 
 
-    protected void _onValueChanged(float value)
-    {
+    protected void _onValueChanged(float value) {
         serviceExercise.index = (int)value;
     }
 
+    protected void setMinMax(int min, int max) {
+        slider.minValue = min;
+        slider.maxValue = max;
+    }
     #endregion
 }

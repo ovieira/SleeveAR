@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIViewLoadButton : MonoBehaviour {
+public class UIViewLoadButton : UIView {
+    public override void show()
+    {
+        throw new System.NotImplementedException();
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override void hide()
+    {
+        throw new System.NotImplementedException();
+    }
 }

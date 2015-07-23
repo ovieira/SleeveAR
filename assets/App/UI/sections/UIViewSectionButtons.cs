@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIViewSectionButtons : MonoBehaviour {
+public class UIViewSectionButtons : UIView {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override void show()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void hide()
+    {
+        throw new System.NotImplementedException();
+    }
 }

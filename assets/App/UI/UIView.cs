@@ -2,10 +2,12 @@
 using System.Collections;
 
 //[RequireComponent(typeof(CanvasGroup))]
-public class UIView : MonoBehaviour {
+public abstract class UIView : MonoBehaviour, IUIView {
 
     #region Show/Hide
 
+    public abstract void show();
+    public abstract void hide();
 
     #region Show
     public void show(float from, float to, float time, float delay, iTween.EaseType easetype, string onupdate,

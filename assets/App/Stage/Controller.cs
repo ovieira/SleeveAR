@@ -12,6 +12,8 @@ public class Controller : MonoBehaviour {
         serviceTracking = ServiceTracking.instance;
     }
 
+    protected virtual void OnDestroy() { }
+
     #endregion
 
     #region Singletons
