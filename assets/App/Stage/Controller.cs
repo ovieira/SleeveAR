@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour {
         serviceExercise = ServiceExercise.instance;
         serviceTeaching = ServiceTeaching.instance;
         serviceTracking = ServiceTracking.instance;
+        serviceAudio = ServiceAudio.instance;
     }
 
     protected virtual void OnDestroy() { }
@@ -21,6 +22,7 @@ public class Controller : MonoBehaviour {
     protected ServiceExercise serviceExercise;
     protected ServiceTracking serviceTracking;
     protected ServiceTeaching serviceTeaching;
+    protected ServiceAudio serviceAudio;
 
     #endregion
 }

@@ -81,22 +81,6 @@ public class ServiceExercise {
     }
     #endregion
 
-    #region Singleton
-
-    private static ServiceExercise _instance;
-
-
-    public static ServiceExercise instance {
-        get {
-            if (_instance == null) {
-                _instance = new ServiceExercise();
-            }
-            return _instance;
-        }
-    }
-
-    #endregion
-
     #region Start Exercise
 
     public EventHandler<EventArgs> onStart;
@@ -113,4 +97,19 @@ public class ServiceExercise {
     }
     #endregion
 
+    #region Singleton
+
+    private static ServiceExercise _instance;
+
+
+    public static ServiceExercise instance {
+        get {
+            if (_instance == null) {
+                _instance = new ServiceExercise();
+            }
+            return _instance;
+        }
+    }
+
+    #endregion
 }
