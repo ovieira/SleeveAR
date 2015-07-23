@@ -42,4 +42,10 @@ public class Utils {
         return Mathf.Abs(a - b) < threshold;
     }
     #endregion
+
+    #region Map
+    public static float map(float s, float a1, float a2, float b1, float b2) {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
+    #endregion
 }
