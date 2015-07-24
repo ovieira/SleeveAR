@@ -6,7 +6,7 @@ public class ServiceMedia {
 
     #region Record
 
-    public EventHandler<EventArgs> onStartRecording, onStopRecording;
+    public event EventHandler<EventArgs> onStartRecording, onStopRecording;
 
     public void Record()
     {

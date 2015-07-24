@@ -13,20 +13,17 @@ public class UIViewStartExerciseButton : UIView {
         this.hide(this.canvasGroup.alpha, 0, 1f, 0f);
     }
 
-    protected override void onShowCompleted() {
-        base.onShowCompleted();
+    public override void onShowCompleted() {
         //Debug.Log("Show Completed");
     }
 
 
-    protected override void onHideCompleted()
+    public override void onHideCompleted()
     {
-        base.onHideCompleted();
         //Debug.Log("hide completed");
     }
 
-    protected override void onUpdate(float progress) {
-        base.onUpdate(progress);
+    public override void onUpdate(float progress) {
         this.canvasGroup.alpha = progress;
     }
 

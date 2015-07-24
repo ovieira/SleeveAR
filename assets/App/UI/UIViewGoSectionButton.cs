@@ -26,10 +26,19 @@ public class UIViewGoSectionButton : UIView {
     }
 
 
-    protected override void onUpdate(float progress)
+    public override void onHideCompleted()
     {
-        base.onUpdate(progress);
+        throw new System.NotImplementedException();
+    }
+
+    public override void onUpdate(float progress)
+    {
         this.rectTransform.anchoredPosition = new Vector2(progress, 0);
+    }
+
+    public override void onShowCompleted()
+    {
+        throw new System.NotImplementedException();
     }
 
     #endregion

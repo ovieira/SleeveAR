@@ -6,7 +6,7 @@ public class ServiceExercise {
     #region ExerciseModel
 
     protected ExerciseModel _loadedExerciseModel;
-    public EventHandler<EventArgs> onSelectedExerciseChanged;
+    public event EventHandler<EventArgs> onSelectedExerciseChanged;
 
     public ExerciseModel selected {
         get {
@@ -83,7 +83,7 @@ public class ServiceExercise {
 
     #region Start Exercise
 
-    public EventHandler<EventArgs> onStart;
+    public event EventHandler<EventArgs> onStart;
 
     private bool _start;
 

@@ -11,7 +11,27 @@ public class ServiceAudio {
     public void PlayCorrect()
     {
         Utils.LaunchEvent(this, onPlayCorrect);
-    } 
+    }
+
+    #endregion
+
+    #region CountDown
+
+    public event EventHandler<EventArgs> onPlayCountDown;
+
+    public void PlayCountDown() {
+        Utils.LaunchEvent(this, onPlayCountDown);
+    }
+
+    #endregion
+
+    #region Stop
+
+    public event EventHandler<EventArgs> onStopAudio;
+
+    public void StopAudio() {
+        Utils.LaunchEvent(this, onStopAudio);
+    }
 
     #endregion
 

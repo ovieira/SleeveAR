@@ -9,9 +9,9 @@ public class ControllerTeaching : Controller {
     {
         base.Start();
 
-        serviceTeaching.reachedInitialPosition = false;
+        serviceTeaching.initialPositionCompleted = false;
 
-        serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
+        serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
 
         serviceExercise.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
 
@@ -19,7 +19,16 @@ public class ControllerTeaching : Controller {
     }
 
 
-   
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        serviceExercise.onStart -= this._onStart;
+        serviceExercise.onSelectedExerciseChanged -= this._onSelectedExerciseChanged;
+
+        serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;
+
+
+    }
 
     #endregion
 
@@ -27,7 +36,7 @@ public class ControllerTeaching : Controller {
 
     private void _onSelectedExerciseChanged(object sender, System.EventArgs e)
     {
-        ServiceTeaching.instance.reachedInitialPosition = false;
+        ServiceTeaching.instance.initialPositionCompleted = false;
     }
 
     private void _onStart(object sender, System.EventArgs e) {
@@ -44,7 +53,7 @@ public class ControllerTeaching : Controller {
 
     #region Service Teaching
 
-    private void _onReachedInitialPosition(object sender, System.EventArgs e) {
+    private void _onInitialPositionCompleted(object sender, System.EventArgs e) {
         Debug.Log("Start guiding");
     }
 

@@ -170,7 +170,7 @@ public class ServiceTracking : MonoBehaviour
 
     #region Enable Tracking
 
-    public EventHandler<EventArgs> onTrackingToggleChanged;
+    public event EventHandler<EventArgs> onTrackingToggleChanged;
 
     protected bool _tracking;
 

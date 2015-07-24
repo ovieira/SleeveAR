@@ -26,9 +26,7 @@ public abstract class UIView : MonoBehaviour, IUIView {
         show(from, to, time, delay, easetype, "onUpdate", "onShowCompleted");
     }
 
-    protected virtual void onShowCompleted() {
-
-    }
+    public abstract void onShowCompleted();
     #endregion
 
 
@@ -49,9 +47,7 @@ public abstract class UIView : MonoBehaviour, IUIView {
         hide(from, to, time, delay, easetype, "onUpdate", "onHideCompleted");
     }
 
-    protected virtual void onHideCompleted() {
-
-    }
+    public abstract void onHideCompleted();
     #endregion
 
 
@@ -59,9 +55,7 @@ public abstract class UIView : MonoBehaviour, IUIView {
 
     #region iTween Callback Functions
 
-    protected virtual void onUpdate(float progress) {
-        //this.canvasGroup.alpha = progress;
-    }
+    public abstract void onUpdate(float progress);
 
    
     #endregion

@@ -12,7 +12,7 @@ public class ServiceSection {
     }
 
 
-    public EventHandler<EventArgs> onSectionChanged; 
+    public event EventHandler<EventArgs> onSectionChanged; 
     protected Section _selected;
 
     public Section selected
