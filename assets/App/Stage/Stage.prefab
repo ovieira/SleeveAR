@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &111774
 GameObject:
   m_ObjectHideFlags: 1
@@ -91,6 +91,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404284}
+  - 114: {fileID: 11457750}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -186,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &144572
 GameObject:
   m_ObjectHideFlags: 1
@@ -503,7 +504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.22599995, y: .779999971, z: 0}
+  m_LocalPosition: {x: .708000004, y: .779999971, z: .626999974}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 440672}
@@ -1221,6 +1222,20 @@ MonoBehaviour:
     type: 2}
   TeachingSectionPrefab: {fileID: 100622, guid: e824416e23fd8e54ca55186e2ebbe918,
     type: 2}
+--- !u!114 &11457750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d70f48f578d5e547a5b3b4dd7cf0ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Prefab: {fileID: 154004, guid: b3885cf5aa9854d4c87c785c95202956, type: 2}
+  mX: 0
+  mY: 0
 --- !u!114 &11458936
 MonoBehaviour:
   m_ObjectHideFlags: 1
