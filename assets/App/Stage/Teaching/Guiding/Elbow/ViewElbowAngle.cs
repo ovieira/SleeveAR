@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class ViewElbowAngle : MonoBehaviour {
 
+    #region LifeCycle
     // Use this for initialization
     void Start() {
 
@@ -23,19 +25,22 @@ public class ViewElbowAngle : MonoBehaviour {
         currentBar.localEulerAngles = new Vector3(0, -180 - currentAngle, 0);
         targetBar.localEulerAngles = new Vector3(0, -180 - targetAngle, 0);
 
-        this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
+        //this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
+        this.container.localEulerAngles = new Vector3(0, -90 + _extraAngle, 0);
 
-    }
+    } 
+    #endregion
 
-    public float curr, tar, currsum, tarsum;
     #region Current/Target
 
+    [NonSerialized]
     public float currentAngle, targetAngle;
 
     #endregion
 
     #region Arm Direction
 
+    [NonSerialized]
     public Vector3 armDirection;
 
     #endregion
@@ -58,5 +63,9 @@ public class ViewElbowAngle : MonoBehaviour {
         return Utils.map(diff, 0, targetAngle, 0, 1);
     }
 
+    #region Container
 
+    public Transform container;
+
+    #endregion
 }

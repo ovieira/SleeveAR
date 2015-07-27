@@ -39,8 +39,6 @@ public class ControllerElbowAngle : Controller {
 
     #endregion
 
-
-
     #region View
 
     public ViewElbowAngle view;

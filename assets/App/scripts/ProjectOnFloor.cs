@@ -11,7 +11,6 @@ public class ProjectOnFloor : MonoBehaviour {
 
     private List<Transform> _floorObjects = new List<Transform>(); 
 
-    public float mX, mY;
 	// Use this for initialization
 	void Start ()
 	{
@@ -40,19 +39,5 @@ public class ProjectOnFloor : MonoBehaviour {
         {
             _floorObjects[i].position = ServiceTracking.instance.PositionFloor[i];
         }
-    }
-
-    void OnGUI()
-    {
-        Vector3 p = Input.mousePosition;
-      
-        //Debug.Log(p);
-        //GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 20, 150f, 30f), p.x + "," + p.y + " , " + p.z));
-        Vector3 pp = Camera.main.ScreenToWorldPoint(p);
-        mX = pp.x;
-        mY = pp.y;
-        GUI.Label(new Rect(p.x - 50, Screen.height - p.y - 30, 150f, 40f), pp.x + "," + pp.y + " , " + pp.z);
-
-        GUI.Label(new Rect(p.x - 50, Screen.height - p.y + 30, 150f, 40f),  pp.x + "," + pp.y + " , " + pp.z);
     }
 }

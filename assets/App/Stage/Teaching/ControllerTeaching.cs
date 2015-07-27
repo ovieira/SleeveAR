@@ -18,7 +18,6 @@ public class ControllerTeaching : Controller {
         serviceExercise.onStart += this._onStart;
     }
 
-
     protected override void OnDestroy()
     {
         base.OnDestroy();

@@ -214,4 +214,15 @@ public class ServiceTracking : MonoBehaviour
 
     #endregion
 
+    #region RigidBodies
+
+    public void setRigidBodiesRenderer(bool b)
+    {
+        foreach (var assignedRigidBody in _assignedRigidBodies)
+        {
+            assignedRigidBody.GetComponent<MeshRenderer>().enabled = b;
+        }
+    }
+
+    #endregion
 }
