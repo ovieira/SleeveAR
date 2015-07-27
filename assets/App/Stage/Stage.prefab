@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &111774
 GameObject:
   m_ObjectHideFlags: 1
@@ -503,8 +503,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .708000004, y: .779999971, z: .626999974}
+  m_LocalRotation: {x: 0, y: 0, z: -.344482988, w: .938792586}
+  m_LocalPosition: {x: 1.10066438, y: .450608522, z: .023}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 440672}
@@ -616,8 +616,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .202999994, y: .783999979, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.344482988, w: .938792586}
+  m_LocalPosition: {x: .325335503, y: 1.11339128, z: 0}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 465222}
@@ -736,8 +736,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111774}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .755999982, y: .779999971, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.344482988, w: .938792586}
+  m_LocalPosition: {x: .744500756, y: .752662361, z: 0}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 464234}
@@ -808,7 +808,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -856,7 +856,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -880,7 +880,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1234,8 +1234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prefab: {fileID: 154004, guid: b3885cf5aa9854d4c87c785c95202956, type: 2}
-  mX: 0
-  mY: 0
 --- !u!114 &11458936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1286,6 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPositionTimer: 3
   angleComparisonThreshold: 3
+  heightComparisonThreshold: .200000003
 --- !u!114 &11477992
 MonoBehaviour:
   m_ObjectHideFlags: 1

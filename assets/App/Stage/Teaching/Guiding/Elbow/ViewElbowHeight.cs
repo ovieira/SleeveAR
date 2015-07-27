@@ -14,15 +14,15 @@ public class ViewElbowHeight : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        float heightDiff = currentHeight.y - targetHeight.y;
-
+        float heightDiff = currentHeight - targetHeight;
+        Debug.Log(heightDiff);
         this.dottedCircle.localPosition = new Vector3(0,0, heightDiff);
     } 
     #endregion
 
     #region Current/Target
 
-    public Vector3 currentHeight, targetHeight;
+    public float currentHeight, targetHeight;
 
     protected Vector3 defaultPosition;
 

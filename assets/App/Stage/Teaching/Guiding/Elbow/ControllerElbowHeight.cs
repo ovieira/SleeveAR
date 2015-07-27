@@ -14,13 +14,13 @@ public class ControllerElbowHeight : Controller {
         if (serviceExercise.selected != null)
         {
             JointsGroup jg = serviceExercise.currentJointsGroup;
-            this.view.targetHeight = jg.jointsList[1].position - jg.jointsList[0].position;
+            this.view.targetHeight = jg.getHeight();
         }
     }
 
-    public void Update() {
-        this.view.currentHeight = serviceTracking.getRigidBodyTransform(1).position -
-                         serviceTracking.getRigidBodyTransform(0).position;
+    public void Update()
+    {
+        this.view.currentHeight = serviceTracking.getCurrentJointGroup().getHeight();
         //this.view.currentAngle = serviceTracking.getCurrentJointGroup().angle;
     }
 

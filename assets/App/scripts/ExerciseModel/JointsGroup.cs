@@ -82,6 +82,13 @@ public class JointsGroup
     {
         v1 = jointsList[1].position - jointsList[0].position;
         v2 = jointsList[2].position - jointsList[1].position;
+        v1.Normalize();
+        v2.Normalize();
         angle = Vector3.Angle(v1, v2);
+    }
+
+    public float getHeight()
+    {
+        return v1.y;
     }
 }
