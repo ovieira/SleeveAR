@@ -28,12 +28,15 @@ public class ControllerExercise : Controller {
     }
     #endregion
 
+    #region Service Exercise
     private void _onStart(object sender, EventArgs e) {
         ServiceExercise.instance.index = 0;
 
         StartCoroutine("initialPosition");
-    }
+    } 
+    #endregion
 
+    #region Position Comparisons
     IEnumerator initialPosition() {
         while (true) {
             checkInitialPosition();
@@ -46,7 +49,7 @@ public class ControllerExercise : Controller {
         JointsGroup jg = serviceTracking.getCurrentJointGroup();
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
-        if (checkAngle(jg, goal) &&  checkHeight(jg, goal)) {
+        if (checkAngle(jg, goal) && checkHeight(jg, goal)) {
             //Debug.Log("TA PARECIDO");
             serviceTeaching.isOnInitialPosition = true;
             if (initialPositionTimer <= 0)
@@ -66,15 +69,14 @@ public class ControllerExercise : Controller {
         //if close enough to initial position, launch initialPositionCompleted Event and stop coroutine
     }
 
-    private bool checkHeight(JointsGroup jg, JointsGroup goal)
-    {
+    private bool checkHeight(JointsGroup jg, JointsGroup goal) {
         return Utils.IsApproximately(jg.getHeight() - goal.getHeight(), 0, heightComparisonThreshold);
     }
 
-    private bool checkAngle(JointsGroup jg, JointsGroup goal)
-    {
+    private bool checkAngle(JointsGroup jg, JointsGroup goal) {
         return Utils.IsApproximately(jg.angle, goal.angle, angleComparisonThreshold);
-    }
+    } 
+    #endregion
 
     #region Service Teaching
 

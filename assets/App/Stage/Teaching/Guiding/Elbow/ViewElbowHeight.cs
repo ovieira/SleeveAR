@@ -3,8 +3,18 @@ using UnityEngine;
 using System.Collections;
 
 public class ViewElbowHeight : MonoBehaviour {
+   
 
     #region LifeCycle
+    public void Awake()
+    {
+        GameObject go = Instantiate(dottedCirclePrefab);
+        dottedCircle = go.transform;
+        dottedCircle.SetParent(this.transform);
+        dottedCircle.localPosition = Vector3.zero;
+    }
+
+
     // Use this for initialization
     void Start()
     {
@@ -16,7 +26,8 @@ public class ViewElbowHeight : MonoBehaviour {
     {
         float heightDiff = currentHeight - targetHeight;
         Debug.Log(heightDiff);
-        this.dottedCircle.localPosition = new Vector3(0,0, heightDiff);
+        this.dottedCircle.localPosition = new Vector3(this.dottedCircle.localPosition.x, this.dottedCircle.localPosition.y, heightDiff);
+        this.dottedCircle.localScale = new Vector3(0.032f, 0.032f, 0.032f) / ((this.dottedCircle.localPosition.magnitude) + 1);
     } 
     #endregion
 
@@ -28,9 +39,10 @@ public class ViewElbowHeight : MonoBehaviour {
 
     #endregion
 
-    #region Arm Direction
+    #region Dotted Circle
 
-    public Transform dottedCircle;
+    protected Transform dottedCircle;
+    public GameObject dottedCirclePrefab;
 
     #endregion
 

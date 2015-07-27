@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FullSerializer;
 using UnityEngine;
 
@@ -22,7 +23,8 @@ public class JointsGroup
 
     #region Private Variables
 
-    private Vector3 v1, v2;
+    [NonSerialized]
+    public Vector3 upperArmDirection, foreArmDirection;
     
     #endregion
 
@@ -80,15 +82,15 @@ public class JointsGroup
 
     private void CalculateJointGroupAngle()
     {
-        v1 = jointsList[1].position - jointsList[0].position;
-        v2 = jointsList[2].position - jointsList[1].position;
-        v1.Normalize();
-        v2.Normalize();
-        angle = Vector3.Angle(v1, v2);
+        upperArmDirection = jointsList[1].position - jointsList[0].position;
+        foreArmDirection = jointsList[2].position - jointsList[1].position;
+        upperArmDirection.Normalize();
+        foreArmDirection.Normalize();
+        angle = Vector3.Angle(upperArmDirection, foreArmDirection);
     }
 
     public float getHeight()
     {
-        return v1.y;
+        return upperArmDirection.y;
     }
 }
