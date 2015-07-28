@@ -168,6 +168,7 @@ public class ControllerLearning : Controller {
     }
 
     private void StopRecording() {
+        serviceAudio.PlayCorrect();
         CancelInvoke("Record");
         ServiceExercise.instance.selected = exerciseModel;
 
