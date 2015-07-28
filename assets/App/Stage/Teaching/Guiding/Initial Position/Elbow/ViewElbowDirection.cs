@@ -21,7 +21,7 @@ public class ViewElbowDirection : MonoBehaviour {
     void Update() {
         float directiontDiff = currentDirection.x - targetDirection.x;
         Debug.Log(directiontDiff);
-        this.dottedCircle.localPosition = new Vector3(-directiontDiff, this.dottedCircle.localPosition.y, this.dottedCircle.localPosition.z);
+        this.dottedCircle.localPosition = new Vector3(directiontDiff, this.dottedCircle.localPosition.y, this.dottedCircle.localPosition.z);
         this.dottedCircle.localScale = new Vector3(0.032f, 0.032f, 0.032f) / ((this.dottedCircle.localPosition.magnitude) + 1);
     }
     #endregion
