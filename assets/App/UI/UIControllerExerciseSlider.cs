@@ -50,7 +50,7 @@ public class UIControllerExerciseSlider : Controller {
     }
 
     protected void _onExercisedLoaded(object sender, EventArgs e) {
-        this.setMinMax(0,serviceExercise.count); //TODO: serviceExercise must have total entries saved in property
+        this.setMinMax(0,serviceExercise.count); 
         this.view.show();
 
     }

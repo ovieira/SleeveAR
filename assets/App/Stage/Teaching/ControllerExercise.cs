@@ -13,12 +13,10 @@ public class ControllerExercise : Controller {
         serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
     }
 
-    // Update is called once per frame
-    private void Update() {
 
-    }
 
-    public void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         //StopAllCoroutines();
 
         serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;

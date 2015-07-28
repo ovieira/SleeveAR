@@ -12,7 +12,7 @@ public class OptitrackListener : MonoBehaviour
     public bool canTrack;
 
     public Toggle _toggle;
-    private Vector3 before;
+    //private Vector3 before;
 
 
     #region Life Cycle
@@ -60,7 +60,7 @@ public class OptitrackListener : MonoBehaviour
             if (rigidBodies[i].RigidBodyGameObject == null) {
                 rigidBodies[i].RigidBodyGameObject = _GameObjects[i];
             }
-            before = rigidBodies[i].pos;
+            //before = rigidBodies[i].pos;
             //Debug.Log("antes" + rigidBodies[i].pos);
             rigidBodies[i].RigidBodyGameObject.transform.position =
                 Vector3.Scale(rigidBodies[i].pos, new Vector3(-1, 1, 1)) * optiTrackPosMultiplyer;

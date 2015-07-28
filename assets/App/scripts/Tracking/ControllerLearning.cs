@@ -15,13 +15,11 @@ public class ControllerLearning : Controller {
     public ExerciseModel exerciseModel = new ExerciseModel();
 
     public GameObject JointRepresentationPrefab;
-    private bool canRecord = false;
-    private bool canPlay = false;
-    private int entry_no;
+    //private int entry_no;
     public string _FileToLoad { get; set; }
     public Material greenMat;
     private List<Transform> _replayPrefabs = new List<Transform>();
-    private JointsGroup currentJointgroup;
+    //private JointsGroup currentJointgroup;
 
 
     //Time
@@ -39,7 +37,8 @@ public class ControllerLearning : Controller {
     #endregion
 
     #region LifeCycle
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
         ServiceExercise.instance.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
         ServiceExercise.instance.onCurrentIndexChanged += this._onCurrentIndexChanged;
         CreateServiceMedia();
@@ -66,7 +65,8 @@ public class ControllerLearning : Controller {
         
     }
 
-    public void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         DestroyServiceMedia();
 
         ServiceExercise.instance.onSelectedExerciseChanged -= this._onSelectedExerciseChanged;
@@ -218,9 +218,9 @@ public class ControllerLearning : Controller {
         //    entry_no++;
         //}
         
-        currentJointgroup = serviceExercise.currentJointsGroup;
+        //currentJointgroup = serviceExercise.currentJointsGroup;
         serviceExercise.index++;
-        entry_no = serviceExercise.index;
+        //entry_no = serviceExercise.index;
         
     }
     #endregion

@@ -8,7 +8,8 @@ public class ServiceGuideInitialPosition {
 
     public enum Mode {
         Unidirectional,
-        Bidirectional
+        Bidirectional,
+        ArrowsDirection
     }
     public event EventHandler<EventArgs> onModeChanged; 
 
