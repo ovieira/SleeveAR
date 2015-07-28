@@ -93,4 +93,10 @@ public class JointsGroup
     {
         return upperArmDirection.y;
     }
+
+    public Vector3 getUpperArmDirection()
+    {
+        upperArmDirection = (jointsList[1].position - jointsList[0].position).normalized;
+        return upperArmDirection;
+    }
 }

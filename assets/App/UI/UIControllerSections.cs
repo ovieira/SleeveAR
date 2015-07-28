@@ -10,6 +10,8 @@ public class UIControllerSections : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         ServiceSection.instance.onSectionChanged += this._onSectionChanged;
+
+        Utils.DestroyAllChildren(this.transform);
     }
 
     void Start()

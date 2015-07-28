@@ -1,15 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIControllerFileManager : MonoBehaviour {
+public class UIControllerFileManager : Controller {
+    #region LifeCycle
+    protected override void Start() {
+        base.Start();
+        serviceSection.onSectionChanged += this._onSectionChanged;
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private void _onSectionChanged(object sender, System.EventArgs e)
+    {
+        if (serviceSection.selected == ServiceSection.Section.LEARNING)
+            this.view.show();
+        else
+            this.view.hide();
+
+    }
+
+    protected override void OnDestroy() {
+        base.OnDestroy();
+        serviceSection.onSectionChanged -= this._onSectionChanged;
+
+    } 
+    #endregion
+
+
+    #region View
+
+    public UIViewFileManager view;
+
+    #endregion
 }

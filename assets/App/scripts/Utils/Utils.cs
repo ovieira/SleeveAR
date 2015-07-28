@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Utils {
+public class Utils : MonoBehaviour{
 
     #region Events
     public static void LaunchEvent(object _sender, EventHandler<EventArgs> _event) {
@@ -47,5 +47,22 @@ public class Utils {
     public static float map(float s, float a1, float a2, float b1, float b2) {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
+    #endregion
+
+    #region Transform
+
+    public static void DestroyAllChildren(Transform t)
+    {
+        foreach (Transform childTransform in t) {
+            Destroy(childTransform.gameObject);
+        }
+    }
+
+    public static void AddChildren(Transform t, GameObject prefab, bool worldPositionStays = false)
+    {
+        GameObject ob = Instantiate(prefab);
+        ob.transform.SetParent(t,worldPositionStays);
+    }
+
     #endregion
 }

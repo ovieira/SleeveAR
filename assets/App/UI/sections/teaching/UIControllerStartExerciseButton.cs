@@ -27,8 +27,6 @@ public class UIControllerStartExerciseButton : MonoBehaviour {
    
     #endregion
 
-   
-
     #region Service Exercise
 
     private void _onSelectedExerciseChanged(object sender, System.EventArgs e) {

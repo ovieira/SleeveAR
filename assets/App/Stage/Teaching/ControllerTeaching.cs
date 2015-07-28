@@ -16,6 +16,10 @@ public class ControllerTeaching : Controller {
         serviceExercise.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
 
         serviceExercise.onStart += this._onStart;
+
+        Utils.DestroyAllChildren(this.transform);
+
+        Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 
     protected override void OnDestroy()
@@ -39,7 +43,8 @@ public class ControllerTeaching : Controller {
     }
 
     private void _onStart(object sender, System.EventArgs e) {
-        instantiatePrefab(AngleFeedback);
+        //instantiatePrefab(initialPositionGuidance);
+       // Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 
     protected void instantiatePrefab(GameObject prefab)
@@ -59,6 +64,9 @@ public class ControllerTeaching : Controller {
     #endregion
 
     #region Guiding Prefabs
+
+    public GameObject initialPositionGuidance;
+    public GameObject MovementGuidance;
 
     public GameObject AngleFeedback;
     public GameObject HeightFeedback;

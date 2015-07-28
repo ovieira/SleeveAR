@@ -42,6 +42,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd23ac00979b767478973a3026b0a21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPositionGuidance: {fileID: 150164, guid: 83e87898ae4f39a47b38b00470de9496,
+    type: 2}
+  MovementGuidance: {fileID: 0}
   AngleFeedback: {fileID: 167260, guid: 7477fd28a1066264493e3a652df10b63, type: 2}
   HeightFeedback: {fileID: 0}
   FloorFeedback: {fileID: 0}
@@ -69,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPositionTimer: 3
   angleComparisonThreshold: 3
+  heightComparisonThreshold: .200000003
 --- !u!114 &11474330
 MonoBehaviour:
   m_ObjectHideFlags: 1
