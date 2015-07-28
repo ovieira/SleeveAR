@@ -40,8 +40,8 @@ GameObject:
   - 4: {fileID: 433890}
   - 114: {fileID: 11471310}
   - 114: {fileID: 11408988}
-  - 114: {fileID: 11468076}
-  - 114: {fileID: 11452968}
+  - 114: {fileID: 11403684}
+  - 114: {fileID: 11413722}
   m_Layer: 0
   m_Name: AngleBidirectional
   m_TagString: Untagged
@@ -202,6 +202,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445376}
   m_RootOrder: 0
+--- !u!114 &11403684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f353d5c9aa3b134ea51274c015f268c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11413722}
 --- !u!114 &11408988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +232,7 @@ MonoBehaviour:
   targetBarSpriteRenderer: {fileID: 21292932}
   currentBarSpriteRenderer: {fileID: 21218340}
   container: {fileID: 400322}
---- !u!114 &11452968
+--- !u!114 &11413722
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -228,24 +240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 167260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2beddc029eb97d84fb5c303a2031a9bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c06a890126311c47aaec14e68a4e459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHeight: 0
-  targetHeight: 0
+  current: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
   dottedCirclePrefab: {fileID: 121698, guid: 5acf8ede8e1e406428e94ee5b242dee8, type: 2}
---- !u!114 &11468076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2f946c6a29aaa43ab2d9330cf1e7f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 11452968}
 --- !u!114 &11471310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +346,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: view
       value: 
-      objectReference: {fileID: 11452968}
+      objectReference: {fileID: 11413722}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: .0299999993
@@ -359,6 +359,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .0299999993
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dottedCirclePrefab
+      value: 
+      objectReference: {fileID: 121698, guid: 5acf8ede8e1e406428e94ee5b242dee8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167260}

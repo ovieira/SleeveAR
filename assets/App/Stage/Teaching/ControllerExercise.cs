@@ -49,7 +49,7 @@ public class ControllerExercise : Controller {
         JointsGroup jg = serviceTracking.getCurrentJointGroup();
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
-        if (checkAngle(jg, goal) && checkHeight(jg, goal)) {
+        if (checkAngle(jg, goal) && checkHeight(jg, goal) && checkDirection(jg,goal)) {
             //Debug.Log("TA PARECIDO");
             serviceTeaching.isOnInitialPosition = true;
             if (initialPositionTimer <= 0)
@@ -67,6 +67,10 @@ public class ControllerExercise : Controller {
         //get single joints angle
 
         //if close enough to initial position, launch initialPositionCompleted Event and stop coroutine
+    }
+
+    private bool checkDirection(JointsGroup jg, JointsGroup goal) {
+        return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
     }
 
     private bool checkHeight(JointsGroup jg, JointsGroup goal) {
@@ -110,6 +114,8 @@ public class ControllerExercise : Controller {
     public float angleComparisonThreshold;
 
     public float heightComparisonThreshold;
+
+    public float directionComparisonThreshold;
 
     #endregion
 }

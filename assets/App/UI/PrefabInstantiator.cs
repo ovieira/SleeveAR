@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UIInstantiator : MonoBehaviour {
+public class PrefabInstantiator : MonoBehaviour {
 
 
     #region Prefab
