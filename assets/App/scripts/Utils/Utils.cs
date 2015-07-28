@@ -58,10 +58,11 @@ public class Utils : MonoBehaviour{
         }
     }
 
-    public static void AddChildren(Transform t, GameObject prefab, bool worldPositionStays = false)
+    public static GameObject AddChildren(Transform t, GameObject prefab, bool worldPositionStays = false)
     {
         GameObject ob = Instantiate(prefab);
         ob.transform.SetParent(t,worldPositionStays);
+        return ob;
     }
 
     #endregion

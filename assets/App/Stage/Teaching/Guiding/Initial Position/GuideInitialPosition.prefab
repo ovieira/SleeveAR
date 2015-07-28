@@ -41,6 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnidirectionalPrefab: {fileID: 161208, guid: 5b2c6d0fe3dd5b04a83e90fde2932d6b, type: 2}
   BidirectionalPrefab: {fileID: 188868, guid: b07d97a3f013a204a9009d02d90eb1d3, type: 2}
+  ArrowsPrefab: {fileID: 113838, guid: 89ad3ff8057534347ba42d4de9dffe44, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

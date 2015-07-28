@@ -1,25 +1,21 @@
 ﻿using System;
 using UnityEngine;
 
-public class ControllerGuideInitialPosition : Controller
-{
+public class ControllerGuideInitialPosition : Controller {
     #region LifeCycle
 
-    protected override void Start()
-    {
+    protected override void Start() {
         base.Start();
         ServiceGuideInitialPosition.instance.onModeChanged += _onModeChanged;
         serviceExercise.onStart += _onStart;
 
     }
 
-    private void _onStart(object sender, EventArgs e)
-    {
+    private void _onStart(object sender, EventArgs e) {
         updateChildren();
     }
 
-    protected override void OnDestroy()
-    {
+    protected override void OnDestroy() {
         base.OnDestroy();
         ServiceGuideInitialPosition.instance.onModeChanged -= _onModeChanged;
         serviceExercise.onStart -= _onStart;
@@ -29,16 +25,13 @@ public class ControllerGuideInitialPosition : Controller
 
     #region Service Guide IP
 
-    private void _onModeChanged(object sender, EventArgs e)
-    {
+    private void _onModeChanged(object sender, EventArgs e) {
         if (serviceExercise.start)
             updateChildren();
     }
 
-    private void updateChildren()
-    {
-        switch (ServiceGuideInitialPosition.instance.selected)
-        {
+    private void updateChildren() {
+        switch (ServiceGuideInitialPosition.instance.selected) {
             case ServiceGuideInitialPosition.Mode.Unidirectional:
                 Utils.DestroyAllChildren(transform);
                 Utils.AddChildren(transform, UnidirectionalPrefab);
@@ -46,6 +39,10 @@ public class ControllerGuideInitialPosition : Controller
             case ServiceGuideInitialPosition.Mode.Bidirectional:
                 Utils.DestroyAllChildren(transform);
                 Utils.AddChildren(transform, BidirectionalPrefab);
+                break;
+            case ServiceGuideInitialPosition.Mode.ArrowsDirection:
+                Utils.DestroyAllChildren(transform);
+                Utils.AddChildren(transform, ArrowsPrefab);
                 break;
             default:
                 break;
