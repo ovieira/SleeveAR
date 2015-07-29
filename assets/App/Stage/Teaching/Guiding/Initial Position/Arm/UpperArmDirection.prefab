@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11461290}
   - 114: {fileID: 11424102}
   m_Layer: 0
-  m_Name: ArmDirection
+  m_Name: UpperArmDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,6 @@ MonoBehaviour:
   currentArmPosition: []
   target: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
-  arrowsCount: 1
   arrowSprite: {fileID: 0}
   arrowPrefab: {fileID: 170812, guid: d4dd60c1485ffda40a7c3488f0bcc4f9, type: 2}
 --- !u!114 &11461290

@@ -66,7 +66,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &125770
 GameObject:
   m_ObjectHideFlags: 1
@@ -1135,9 +1135,6 @@ MonoBehaviour:
   initialPositionGuidance: {fileID: 150164, guid: 83e87898ae4f39a47b38b00470de9496,
     type: 2}
   MovementGuidance: {fileID: 0}
-  AngleFeedback: {fileID: 167260, guid: 7477fd28a1066264493e3a652df10b63, type: 2}
-  HeightFeedback: {fileID: 0}
-  FloorFeedback: {fileID: 0}
 --- !u!114 &11409322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1339,7 +1336,7 @@ MonoBehaviour:
   offset: {x: .200000003, y: 0, z: -.075000003}
   factorX: 1
   factorZ: 1.04999995
-  ProjectionOffset: .0500000007
+  ProjectionOffset: .0599999987
 --- !u!114 &11499624
 MonoBehaviour:
   m_ObjectHideFlags: 1

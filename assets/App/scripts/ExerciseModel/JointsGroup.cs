@@ -94,9 +94,13 @@ public class JointsGroup
         return upperArmDirection.y;
     }
 
-    public Vector3 getUpperArmDirection()
-    {
+    public Vector3 getUpperArmDirection() {//TODO: if already calculated, just return direction
         upperArmDirection = (jointsList[1].position - jointsList[0].position).normalized;
         return upperArmDirection;
+    }
+
+    public Vector3 getForeArmDirection() { //TODO: if already calculated, just return direction
+        foreArmDirection = (jointsList[2].position - jointsList[1].position).normalized;
+        return foreArmDirection;
     }
 }

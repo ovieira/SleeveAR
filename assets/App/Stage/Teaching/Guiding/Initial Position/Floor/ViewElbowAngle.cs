@@ -22,8 +22,8 @@ public class ViewElbowAngle : MonoBehaviour {
 
         Vector2 a = new Vector2(armDirection.x, armDirection.z);
         float _extraAngle = Vector2.Angle(Vector2.up, a);
-        currentBar.localEulerAngles = new Vector3(0, -180 - currentAngle, 0);
-        targetBar.localEulerAngles = new Vector3(0, -180 - targetAngle, 0);
+        currentBar.localEulerAngles = new Vector3(0, -180 - current, 0);
+        targetBar.localEulerAngles = new Vector3(0, -180 - target, 0);
 
         //this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
         this.container.localEulerAngles = new Vector3(0, -90 + _extraAngle, 0);
@@ -34,7 +34,7 @@ public class ViewElbowAngle : MonoBehaviour {
     #region Current/Target
 
     [NonSerialized]
-    public float currentAngle, targetAngle;
+    public float current, target;
 
     #endregion
 
@@ -59,8 +59,8 @@ public class ViewElbowAngle : MonoBehaviour {
     #endregion
 
     protected float computeLerp() {
-        float diff = Mathf.Abs(targetAngle - currentAngle);
-        return Utils.map(diff, 0, targetAngle, 0, 1);
+        float diff = Mathf.Abs(target - current);
+        return Utils.map(diff, 0, target, 0, 1);
     }
 
     #region Container

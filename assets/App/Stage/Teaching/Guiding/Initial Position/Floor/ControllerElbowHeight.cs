@@ -21,7 +21,7 @@ public class ControllerElbowHeight : Controller {
     public void Update()
     {
         this.view.currentHeight = serviceTracking.getCurrentJointGroup().getHeight();
-        //this.view.currentAngle = serviceTracking.getCurrentJointGroup().angle;
+        //this.view.current = serviceTracking.getCurrentJointGroup().angle;
     }
 
     protected override void OnDestroy() {
@@ -35,7 +35,7 @@ public class ControllerElbowHeight : Controller {
     #region Service Exercise
 
     protected void _onCurrentJointGroupChanged(object sender, EventArgs e) {
-        //this.view.targetAngle = serviceExercise.currentJointsGroup.angle;
+        //this.view.target = serviceExercise.currentJointsGroup.angle;
     }
 
     #endregion

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerArrowDirection : Controller {
+public class ControllerArrowUpperArmDirection : Controller {
 
     #region LifeCycle
     protected override void Start() {
@@ -31,7 +31,7 @@ public class ControllerArrowDirection : Controller {
 
     #region View
 
-    public ViewArrowDirection view;
+    public ViewArrowUpperArmDirection view;
 
     #endregion
 }

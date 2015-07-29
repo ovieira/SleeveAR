@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class ControllerElbowAngle : Controller {
 
     #region LifeCycle
@@ -12,7 +13,7 @@ public class ControllerElbowAngle : Controller {
         serviceExercise.onCurrentJointGroupChanged += this._onCurrentJointGroupChanged;
 
         if (serviceExercise.selected != null) {
-            this.view.targetAngle = serviceExercise.currentJointsGroup.angle;
+            this.view.target = serviceExercise.currentJointsGroup.angle;
         }
     }
 
@@ -20,7 +21,7 @@ public class ControllerElbowAngle : Controller {
     {
         this.view.armDirection = (serviceTracking.PositionProjectedWithOffset[1] -
                          serviceTracking.PositionProjectedWithOffset[0]).normalized;
-        this.view.currentAngle = serviceTracking.getCurrentJointGroup().angle;
+        this.view.current = serviceTracking.getCurrentJointGroup().angle;
     }
 
     protected override void OnDestroy() {
@@ -34,7 +35,7 @@ public class ControllerElbowAngle : Controller {
     #region Service Exercise
 
     protected void _onCurrentJointGroupChanged(object sender, EventArgs e) {
-        this.view.targetAngle = serviceExercise.currentJointsGroup.angle;
+        this.view.target = serviceExercise.currentJointsGroup.angle;
     }
 
     #endregion

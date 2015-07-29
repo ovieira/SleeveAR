@@ -67,11 +67,6 @@ public class ControllerTeaching : Controller {
 
     public GameObject initialPositionGuidance;
     public GameObject MovementGuidance;
-
-    public GameObject AngleFeedback;
-    public GameObject HeightFeedback;
-    public GameObject FloorFeedback;
-
     #endregion
 
    

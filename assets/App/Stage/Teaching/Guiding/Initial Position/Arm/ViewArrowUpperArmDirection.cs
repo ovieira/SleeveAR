@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ViewArrowDirection : MonoBehaviour {
+public class ViewArrowUpperArmDirection : MonoBehaviour {
     
 
 	// Use this for initialization
@@ -18,14 +18,21 @@ public class ViewArrowDirection : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-	    Vector3 middleUpperArmPosition = (currentArmPosition[1] + currentArmPosition[0])/2f;
+        Vector3 middleUpperArmPosition = (currentArmPosition[1] + currentArmPosition[0]) / 2f;
+        //Vector3 middleForeArmPosition = (currentArmPosition[2] + currentArmPosition[1]) / 2f;
         Vector2 a = new Vector2(target.x, target.z);
         float _angle = Vector2.Angle(Vector2.up, a);
-	    foreach (var t in arrowsTransform)
-	    {
-	        t.position = middleUpperArmPosition;
-            t.localEulerAngles = new Vector3(0,_angle,0);
-	    }
+        //foreach (var t in arrowsTransform)
+        //{
+        //    t.position = middleUpperArmPosition;
+        //    t.localEulerAngles = new Vector3(0,_angle,0);
+        //}
+
+        arrowsTransform[0].position = middleUpperArmPosition;
+        arrowsTransform[0].localEulerAngles = new Vector3(0, _angle, 0);
+
+        //arrowsTransform[1].position = middleForeArmPosition;
+        //arrowsTransform[1].localEulerAngles = new Vector3(0, _angle, 0);
 	}
 
     #region Tracking
@@ -44,7 +51,7 @@ public class ViewArrowDirection : MonoBehaviour {
 
     #region Arrow
 
-    public int arrowsCount = 1;
+    protected int arrowsCount = 1;
 
     protected List<Transform> arrowsTransform = new List<Transform>(); 
 

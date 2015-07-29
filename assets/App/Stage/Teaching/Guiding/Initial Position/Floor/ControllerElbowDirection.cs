@@ -33,7 +33,7 @@ public class ControllerElbowDirection : Controller {
     #region Service Exercise
 
     protected void _onCurrentJointGroupChanged(object sender, EventArgs e) {
-        //this.view.targetAngle = serviceExercise.currentJointsGroup.angle;
+        //this.view.target = serviceExercise.currentJointsGroup.angle;
     }
 
     #endregion
