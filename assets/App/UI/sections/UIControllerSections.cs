@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerSections : Controller {
+public class UIControllerSections : Controller {
 
     #region LifeCycle
     // Use this for initialization
@@ -13,7 +13,7 @@ public class ControllerSections : Controller {
 
     protected override void Start() {
         base.Start();
-        this.createSection(LearningSectionPrefab);
+        this.createSection(UILearningPrefab);
     }
 
     protected override void OnDestroy() {
@@ -27,10 +27,10 @@ public class ControllerSections : Controller {
     private void _onSectionChanged(object sender, System.EventArgs e) {
         switch (ServiceSection.instance.selected) {
             case ServiceSection.Section.LEARNING:
-                createSection(LearningSectionPrefab);
+                createSection(UILearningPrefab);
                 break;
             case ServiceSection.Section.TEACHING:
-                createSection(TeachingSectionPrefab);
+                createSection(UITeachingPrefab);
                 break;
             default:
                 break;
@@ -45,8 +45,8 @@ public class ControllerSections : Controller {
 
     #region Prefabs
 
-    public GameObject LearningSectionPrefab;
-    public GameObject TeachingSectionPrefab;
+    public GameObject UILearningPrefab;
+    public GameObject UITeachingPrefab;
 
     #endregion
 }
