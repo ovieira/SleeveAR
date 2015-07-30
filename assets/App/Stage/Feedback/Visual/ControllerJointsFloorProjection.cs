@@ -28,7 +28,7 @@ public class ControllerJointsFloorProjection : Controller {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	protected void Update ()
 	{
 	    UpdatePositions();
 	}

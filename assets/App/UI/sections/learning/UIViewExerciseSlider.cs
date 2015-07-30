@@ -12,12 +12,10 @@ public class UIViewExerciseSlider : UIView {
 
     public override void onShowCompleted()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void onHideCompleted()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void hide() {

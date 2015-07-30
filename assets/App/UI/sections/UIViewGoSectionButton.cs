@@ -28,7 +28,6 @@ public class UIViewGoSectionButton : UIView {
 
     public override void onHideCompleted()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void onUpdate(float progress)
@@ -38,7 +37,6 @@ public class UIViewGoSectionButton : UIView {
 
     public override void onShowCompleted()
     {
-        throw new System.NotImplementedException();
     }
 
     #endregion

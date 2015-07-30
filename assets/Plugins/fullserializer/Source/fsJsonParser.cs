@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace FullSerializer {
-    // TODO: properly propagate warnings/etc for fsResult states
 
     /// <summary>
     /// A simple recursive descent parser for JSON.

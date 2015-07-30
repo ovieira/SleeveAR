@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerSections : Controller {
+public class ControllerSection : Controller {
 
     #region LifeCycle
     // Use this for initialization

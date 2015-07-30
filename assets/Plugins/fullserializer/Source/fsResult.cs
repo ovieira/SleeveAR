@@ -101,7 +101,6 @@ namespace FullSerializer {
             };
         }
 
-        // TODO: how to make sure this is only used as +=?
 
         /// <summary>
         /// Only use this as +=!

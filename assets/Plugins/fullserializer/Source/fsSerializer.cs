@@ -279,7 +279,6 @@ namespace FullSerializer {
                     "multiple fsConverters -- please construct a new instance for " + converter);
             }
 
-            // TODO: wrap inside of a ConverterManager so we can control _converters and _cachedConverters lifetime
             _converters.Insert(0, converter);
             converter.Serializer = this;
 
@@ -607,7 +606,7 @@ namespace FullSerializer {
                 // NOTE: object references are handled at stage 1
 
                 // If this is a definition, then we have a serialization invariant that this is the
-                // first time we have encountered the object (TODO: verify in the deserialization logic)
+                // first time we have encountered the object ()
 
                 // Since at this stage in the deserialization process we already have access to the
                 // object instance, so we just need to sync the object id to the references database
