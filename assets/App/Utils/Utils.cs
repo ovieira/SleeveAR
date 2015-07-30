@@ -32,19 +32,20 @@ public class Utils : MonoBehaviour{
 
     #region Floats Comparison
 
-    public static bool IsApproximately(float a, float b)
+    public static bool IsApproximately(float a, float b, float threshold = 0.02f)
     {
-        return IsApproximately(a,b,0.02f);
+        return Mathf.Abs(a - b) <= threshold;
     }
 
-    public static bool IsApproximately(float a, float b, float threshold)
+    public static bool IsApproximately(Vector3 a, Vector3 b, float threshold = 0.02f)
     {
-        return Mathf.Abs(a - b) < threshold;
+        return (IsApproximately(a.x, b.x, threshold) && IsApproximately(a.y, b.y, threshold) &&
+                IsApproximately(a.z, b.z, threshold));
     }
     #endregion
 
     #region Map
-    public static float map(float s, float a1, float a2, float b1, float b2) {
+    public static float Map(float s, float a1, float a2, float b1, float b2) {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
     #endregion

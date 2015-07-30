@@ -60,7 +60,7 @@ public class ViewElbowAngle : MonoBehaviour {
 
     protected float computeLerp() {
         float diff = Mathf.Abs(target - current);
-        return Utils.map(diff, 0, target, 0, 1);
+        return Utils.Map(diff, 0, target, 0, 1);
     }
 
     #region Container

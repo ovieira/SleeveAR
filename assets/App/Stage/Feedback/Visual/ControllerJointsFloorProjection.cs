@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[DisallowMultipleComponent]
-public class ProjectOnFloor : MonoBehaviour {
+public class ControllerJointsFloorProjection : Controller {
 
     //public Transform cube;
 
@@ -12,13 +11,14 @@ public class ProjectOnFloor : MonoBehaviour {
     private List<Transform> _floorObjects = new List<Transform>(); 
 
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
 	{
+        base.Start();
 	    InstantiateFloorObjects();
 	}
 
     private void InstantiateFloorObjects() {
-        for (int i = 0; i < ServiceTracking.instance.count; i++)
+        for (int i = 0; i < serviceTracking.count; i++)
         {
             GameObject obj = (GameObject) Instantiate(_Prefab, Vector3.zero, Quaternion.identity);
             obj.name = i + "";
@@ -35,9 +35,9 @@ public class ProjectOnFloor : MonoBehaviour {
 
     private void UpdatePositions()
     {
-        for (int i = 0; i < ServiceTracking.instance.count; i++)
+        for (int i = 0; i < serviceTracking.count; i++)
         {
-            _floorObjects[i].position = ServiceTracking.instance.PositionFloor[i];
+            _floorObjects[i].position = serviceTracking.PositionFloor[i];
         }
     }
 }
