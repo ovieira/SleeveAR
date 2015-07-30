@@ -1,41 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &151320
+--- !u!1 &190818
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 451320}
-  - 114: {fileID: 11451320}
-  - 82: {fileID: 8251320}
-  - 114: {fileID: 11451322}
+  - 4: {fileID: 487666}
+  - 114: {fileID: 11474136}
+  - 82: {fileID: 8232166}
   m_Layer: 0
-  m_Name: SoundManipulator
+  m_Name: LearningSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &451320
+--- !u!4 &487666
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151320}
+  m_GameObject: {fileID: 190818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.73627663, y: 4.16040754, z: -.884906769}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8251320
+--- !u!82 &8232166
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151320}
+  m_GameObject: {fileID: 190818}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -73,7 +72,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -99,37 +98,23 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11451320
+--- !u!114 &11474136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151320}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b283336f5b5231b48a2aa0ba616070eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  audioclip: {fileID: 8300000, guid: 329644e9f588dbf43ab1df4a0985b654, type: 3}
---- !u!114 &11451322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151320}
+  m_GameObject: {fileID: 190818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69892dfbf0700f44481862e69e716b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 46c7ae76df2749f4e84f836d1448e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
-  Tracked: {fileID: 0}
-  RadarClip: {fileID: 8300000, guid: b99fc9033bbdfe74fb3369bcc7e48410, type: 3}
-  CorrectClip: {fileID: 8300000, guid: 06f563f45f665a240816c5adf22c83cd, type: 3}
-  Interval: 0
-  Threshold: .100000001
-  IntervalFactor: 0
+  JointRepresentationPrefab: {fileID: 170558, guid: 8c24e262b7d6b4d43b97f3faf05f34d6,
+    type: 2}
+  greenMat: {fileID: 2100000, guid: d63e718ae3913fe49ba25fbca832be7b, type: 2}
+  _CountdownTime: 6
+  capturesPerSecond: 24
+  OneTwoThree: {fileID: 8300000, guid: 0808b546b287b644eb67b356ac2c23cf, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -139,5 +124,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 151320}
+  m_RootGameObject: {fileID: 190818}
   m_IsPrefabParent: 1

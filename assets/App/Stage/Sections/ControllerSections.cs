@@ -10,9 +10,8 @@ public class ControllerSections : MonoBehaviour {
     }
 
     void Start() {
-        currentSection = this.GetComponentInChildren<ViewSection>();
-
-        createSection(LearningSectionPrefab);
+        Utils.DestroyAllChildren(this.transform);
+        this.createSection(LearningSectionPrefab);    
     }
 
     #endregion
@@ -32,30 +31,16 @@ public class ControllerSections : MonoBehaviour {
     }
     #endregion
 
-    private void createSection(GameObject prefab) {
-
-        if (currentSection == null)
-            instantiateSection(prefab);
-        else {
-            Destroy(currentSection.gameObject);
-            instantiateSection(prefab);
-        }
+    private void createSection(GameObject prefab)
+    {
+        Utils.DestroyAllChildren(this.transform);
+        Utils.AddChildren(this.transform, prefab);
     }
-
-    private void instantiateSection(GameObject prefab) {
-
-        GameObject ob = Instantiate(prefab);
-        currentSection = ob.GetComponent<ViewSection>();
-        //ob.transform.SetParent(this.transform);
-        ob.transform.parent = this.transform;
-    }
-
 
     #region Prefabs
 
     public GameObject LearningSectionPrefab;
     public GameObject TeachingSectionPrefab;
-    private ViewSection currentSection;
 
     #endregion
 }
