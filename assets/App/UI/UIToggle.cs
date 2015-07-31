@@ -1,19 +1,28 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
+[RequireComponent(typeof (Toggle))]
+public class UIToggle : MonoBehaviour
+{
+    #region Toggle
 
-[RequireComponent(typeof(Toggle))]
+    protected Toggle toggle
+    {
+        get { return GetComponent<Toggle>(); }
+    }
 
-public class UIToggle : MonoBehaviour {
+    #endregion
 
     #region LifeCycle
+
     // Use this for initialization
-    void Start() {
-        this.toggle.onValueChanged.AddListener(this._valueChanged);
-        value = this.toggle.isOn;
+    private void Start()
+    {
+        toggle.onValueChanged.AddListener(_valueChanged);
+        value = toggle.isOn;
     }
+
     #endregion
 
     #region On Value Changed
@@ -25,17 +34,22 @@ public class UIToggle : MonoBehaviour {
         value = v;
         Utils.LaunchEvent(this, onValueChanged);
     }
+
     #endregion
 
     #region Value
 
-    public bool value;
+    private bool _value;
 
-    #endregion
-
-    #region Toggle
-    protected Toggle toggle {
-        get { return this.GetComponent<Toggle>(); }
+    public bool value
+    {
+        get { return _value; }
+        set
+        {
+            _value = value;
+            toggle.isOn = value;
+        }
     }
+
     #endregion
 }

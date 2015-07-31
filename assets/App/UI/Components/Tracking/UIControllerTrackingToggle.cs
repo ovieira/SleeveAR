@@ -4,28 +4,37 @@ using System.Collections;
 
 public class UIControllerTrackingToggle : Controller {
 
-	// Use this for initialization
-    protected override void Start()
-    {
+    #region LifeCycle
+    // Use this for initialization
+    protected override void Start() {
         base.Start();
         this.toggle.onValueChanged += this._onValueChanged;
-
+        serviceTracking.onTrackingToggleChanged += this._onTrackingChanged;
     }
 
-    protected override void OnDestroy()
-    {
+    protected override void OnDestroy() {
         base.OnDestroy();
         this.toggle.onValueChanged -= this._onValueChanged;
+        serviceTracking.onTrackingToggleChanged -= this._onTrackingChanged;
 
     }
 
-    protected void _onValueChanged(object sender, EventArgs e)
+    #endregion
+
+    #region Service Tracking
+    private void _onTrackingChanged(object sender, EventArgs e)
     {
+        toggle.value = serviceTracking.tracking;
+    } 
+    #endregion
+
+    #region Toggle
+    protected void _onValueChanged(object sender, EventArgs e) {
         serviceTracking.tracking = toggle.value;
     }
 
-    protected UIToggle toggle
-    {
+    protected UIToggle toggle {
         get { return this.GetComponent<UIToggle>(); }
-    }
+    } 
+    #endregion
 }
