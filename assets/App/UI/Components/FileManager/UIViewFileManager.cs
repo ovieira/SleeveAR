@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIViewFileManager : UIView {
     #region Show/Hide
@@ -26,6 +27,12 @@ public class UIViewFileManager : UIView {
     public override void onUpdate(float progress) {
         this.canvasGroup.alpha = progress;
     }
+
+    #endregion
+
+    #region Input Field
+
+    public InputField inputField;
 
     #endregion
 }
