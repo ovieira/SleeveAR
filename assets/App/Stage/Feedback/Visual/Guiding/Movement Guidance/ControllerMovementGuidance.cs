@@ -23,7 +23,7 @@ public class ControllerMovementGuidance : Controller {
 
     #region Service Exercise
     protected void _onCurrentIndexChanged(object sender, System.EventArgs e) {
-    
+        
     } 
     #endregion
 }
