@@ -26,7 +26,6 @@ public class ServiceGuideInitialPosition {
     }
     #endregion
 
-
     #region Singleton
 
     private static ServiceGuideInitialPosition _instance;

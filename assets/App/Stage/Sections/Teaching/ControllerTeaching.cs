@@ -59,6 +59,9 @@ public class ControllerTeaching : Controller {
 
     private void _onInitialPositionCompleted(object sender, System.EventArgs e) {
         Debug.Log("Start guiding");
+        Utils.DestroyAllChildren(this.transform);
+        Utils.AddChildren(this.transform, MovementGuidance);
+
     }
 
     #endregion

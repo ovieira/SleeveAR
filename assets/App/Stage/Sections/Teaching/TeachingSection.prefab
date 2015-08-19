@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPositionGuidance: {fileID: 150164, guid: 83e87898ae4f39a47b38b00470de9496,
     type: 2}
-  MovementGuidance: {fileID: 0}
+  MovementGuidance: {fileID: 161804, guid: 997b3a6b6379d6b4d835d4cdd62d7350, type: 2}
 --- !u!114 &11431884
 MonoBehaviour:
   m_ObjectHideFlags: 1

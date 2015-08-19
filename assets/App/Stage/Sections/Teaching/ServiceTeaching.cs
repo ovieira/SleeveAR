@@ -39,6 +39,12 @@ public class ServiceTeaching {
 
     #endregion
 
+    #region Guidance
+
+
+
+    #endregion
+
     #region Singleton
 
     private static ServiceTeaching _instance;

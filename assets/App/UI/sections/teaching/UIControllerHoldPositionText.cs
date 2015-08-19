@@ -9,6 +9,7 @@ public class UIControllerHoldPositionText : Controller {
     protected override void Start() {
         base.Start();
         serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
+        serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
     }
 
     protected override void OnDestroy() {
@@ -16,6 +17,7 @@ public class UIControllerHoldPositionText : Controller {
         serviceTeaching.onReachedInitialPosition -= this._onReachedInitialPosition;
 
     }
+
     #endregion
 
     #region Service Teaching
@@ -31,6 +33,12 @@ public class UIControllerHoldPositionText : Controller {
             //serviceAudio.StopAudio();
             this.view.hide();
         }
+    }
+
+    private void _onInitialPositionCompleted(object sender, EventArgs e)
+    {
+        this.view.text.text = "Begin!";
+        this.view.hide(3f);
     }
 
     #endregion
