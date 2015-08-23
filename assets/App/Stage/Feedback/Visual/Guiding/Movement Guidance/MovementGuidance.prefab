@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d03babf6aa1d649a7a433f2590d151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlowArcPrefab: {fileID: 140758, guid: 950f630a726186641bb10c43830ac57c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
