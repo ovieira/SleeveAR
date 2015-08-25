@@ -11,34 +11,33 @@ public class ControllerFloorArc : Controller {
 
     #endregion
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         if (serviceExercise.selected != null)
             _exerciseModel = serviceExercise.selected;
+        serviceExercise.onCurrentIndexChanged += this._onIndexChanged;
     }
 
-    protected override void Start()
-    {
+
+
+    protected override void Start() {
         base.Start();
         var _list = new List<Vector3>();
-        for (int i = boundaryLeft; i < boundaryRight; i++)
-        {
+        for (int i = boundaryLeft; i < boundaryRight; i++) {
             _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
         }
         this.view.upperArmDirectionsList = new List<Vector3>(_list);
+        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]);
     }
 
-    void Update()
-    {
+    void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
         this.view.progress = this.progress;
     }
 
-    protected override void OnDestroy()
-    {
+    protected override void OnDestroy() {
         base.OnDestroy();
-        
+
     }
 
     #region Boundaries
@@ -53,6 +52,10 @@ public class ControllerFloorArc : Controller {
 
     #endregion
 
-    [Range(0,100)]
+    [Range(0, 100)]
     public int progress;
+
+    private void _onIndexChanged(object sender, System.EventArgs e) {
+        this.view.progress = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, 100);
+    }
 }

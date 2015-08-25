@@ -17,9 +17,8 @@ public abstract class UIView : MonoBehaviour, IUIView {
         iTween.ValueTo(this.gameObject, hashValueTo);
     }
 
-    public void show(float from, float to, float time, float delay)
-    {
-        show(from,to,time,delay,iTween.EaseType.linear, "onUpdate", "onShowCompleted");
+    public void show(float from, float to, float time, float delay) {
+        show(from, to, time, delay, iTween.EaseType.linear, "onUpdate", "onShowCompleted");
     }
 
     public void show(float from, float to, float time, float delay, iTween.EaseType easetype) {
@@ -57,7 +56,7 @@ public abstract class UIView : MonoBehaviour, IUIView {
 
     public abstract void onUpdate(float progress);
 
-   
+
     #endregion
 
     #region CanvasGroup
@@ -70,9 +69,16 @@ public abstract class UIView : MonoBehaviour, IUIView {
 
     #region RectTransform
 
-    protected RectTransform rectTransform
-    {
+    protected RectTransform rectTransform {
         get { return this.GetComponent<RectTransform>(); }
     }
     #endregion
+
+    public void OnDestroy() {
+        //iTween.StopByName(this.gameObject, this.gameObject.name + "show");
+        //iTween.StopByName(this.gameObject, this.gameObject.name + "hide");
+        iTween.Stop(this.gameObject);
+    }
+
+
 }

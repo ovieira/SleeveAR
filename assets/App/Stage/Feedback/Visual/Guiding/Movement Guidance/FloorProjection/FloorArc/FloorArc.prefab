@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5112dcb07b20c42b7dc1dc0f9600c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundaryLeft: 100
+  boundaryLeft: 0
   boundaryRight: 140
   view: {fileID: 11475644}
   progress: 0
@@ -196,7 +196,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: boundaryLeft
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: boundaryRight

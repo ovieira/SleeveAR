@@ -18,7 +18,7 @@ public class ControllerExercise : Controller {
     protected override void OnDestroy() {
         base.OnDestroy();
         //StopAllCoroutines();
-
+        serviceTeaching.onReachedInitialPosition -= this._onReachedInitialPosition;
         serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;
 
         serviceExercise.onStart -= this._onStart;
@@ -30,12 +30,14 @@ public class ControllerExercise : Controller {
     private void _onStart(object sender, EventArgs e) {
         ServiceExercise.instance.index = 0;
 
-        StartCoroutine("initialPosition");
-    } 
+        StartCoroutine("InitialPositionCoroutine");
+    }
     #endregion
 
     #region Position Comparisons
-    IEnumerator initialPosition() {
+
+    #region Initial Position
+    IEnumerator InitialPositionCoroutine() {
         while (true) {
             checkInitialPosition();
             yield return null;
@@ -47,7 +49,7 @@ public class ControllerExercise : Controller {
         JointsGroup jg = serviceTracking.getCurrentJointGroup();
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
-        if (checkAngle(jg, goal) && checkHeight(jg, goal) && checkDirection(jg,goal)) {
+        if (checkAngle(jg, goal) && checkHeight(jg, goal) && checkDirection(jg, goal)) {
             //Debug.Log("TA PARECIDO");
             serviceTeaching.isOnInitialPosition = true;
             if (initialPositionTimer <= 0)
@@ -66,6 +68,48 @@ public class ControllerExercise : Controller {
 
         //if close enough to initial position, launch initialPositionCompleted Event and stop coroutine
     }
+    #endregion
+
+    #region MovementGuidance
+
+    IEnumerator MovementGuidance() {
+        while (true) {
+            checkCurrentPosition();
+            yield return null;
+        }
+    }
+
+    private void checkCurrentPosition() {
+        //get arm angle
+        JointsGroup jg = serviceTracking.getCurrentJointGroup();
+        JointsGroup goal = serviceExercise.currentJointsGroup;
+
+        jg.Print();
+        goal.Print();
+        if (/*checkAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal)) {
+            //Debug.Log("TA PARECIDO");
+            //serviceTeaching.isOnInitialPosition = true;
+            //if (initialPositionTimer <= 0)
+            //    serviceTeaching.initialPositionCompleted = true;
+            //else {
+            //    initialPositionTimer -= Time.deltaTime;
+            //}
+            Debug.Log("index++");
+            serviceExercise.index++;
+        }
+        else {
+            //initialPositionTimer = 3f;
+            //serviceTeaching.isOnInitialPosition = false;
+
+        }
+        //Debug.Log(initialPositionTimer);
+        //get single joints angle
+
+        //if close enough to initial position, launch initialPositionCompleted Event and stop coroutine
+
+    }
+
+    #endregion
 
     private bool checkDirection(JointsGroup jg, JointsGroup goal) {
         return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
@@ -77,23 +121,22 @@ public class ControllerExercise : Controller {
 
     private bool checkAngle(JointsGroup jg, JointsGroup goal) {
         return Utils.IsApproximately(jg.angle, goal.angle, angleComparisonThreshold);
-    } 
+    }
     #endregion
 
     #region Service Teaching
 
     private void _onInitialPositionCompleted(object sender, EventArgs e) {
-        StopCoroutine("initialPosition");
+        StopCoroutine("InitialPositionCoroutine");
         serviceAudio.PlayCorrect();
+        StartCoroutine("MovementGuidance");
     }
 
     private void _onReachedInitialPosition(object sender, EventArgs e) {
-        if (serviceTeaching.isOnInitialPosition)
-        {
+        if (serviceTeaching.isOnInitialPosition) {
             serviceAudio.PlayCountDown();
         }
-        else
-        {
+        else {
             serviceAudio.StopAudio();
         }
     }
