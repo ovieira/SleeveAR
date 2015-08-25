@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ControllerFloorArc : Controller {
 
@@ -31,6 +32,7 @@ public class ControllerFloorArc : Controller {
     void Update()
     {
         this.view.basePosition = serviceTracking.PositionFloor[0];
+        this.view.progress = this.progress;
     }
 
     protected override void OnDestroy()
@@ -50,4 +52,7 @@ public class ControllerFloorArc : Controller {
     public ViewFloorArc view;
 
     #endregion
+
+    [Range(0,100)]
+    public int progress;
 }
