@@ -37,10 +37,47 @@ public class Utils : MonoBehaviour{
         return Mathf.Abs(a - b) <= threshold;
     }
 
-    public static bool IsApproximately(Vector3 a, Vector3 b, float threshold = 0.02f)
-    {
+    public static bool IsApproximately(Vector3 a, Vector3 b, float threshold = 0.02f) {
         return (IsApproximately(a.x, b.x, threshold) && IsApproximately(a.y, b.y, threshold) &&
                 IsApproximately(a.z, b.z, threshold));
+    }
+    #endregion
+
+    #region Vectors Comparison
+
+ //   public static bool IsApproximately(Vector3 a, Vector3 b, float threshold = 0.02f) {
+ //     //if they aren't the same length, don't bother checking the rest.
+ //     if(!Mathf.Approximately(a.magnitude, b.magnitude))
+ //           return false;
+ //     float cosAngleError = Mathf.Cos(threshold * Mathf.Deg2Rad);
+ //     //A value between -1 and 1 corresponding to the angle.
+ //     var cosAngle = Vector3.Dot(a.normalized, b.normalized);
+ //     //The dot product of normalized Vectors is equal to the cosine of the angle between them.
+ //     //So the closer they are, the closer the value will be to 1.  Opposite Vectors will be -1
+ //     //and orthogonal Vectors will be 0.
+ 
+ //     if(cosAngle >= cosAngleError) {
+ //     //If angle is greater, that means that the angle between the two vectors is less than the error allowed.
+ //            return true;
+ //     }
+ //     else 
+ //           return false;
+ //}
+
+ //   ar vectorOne : Vector3;
+ //var vectorTwo : Vector3;
+ //var percentageDifferenceAllowed : float = 0.01 // is 1%
+ //if( (vectorOne - vectorTwo).sqrMagnitude =< (vectorOne * percentageDifferenceAllowed).sqrtMagnitude ) {
+ //    Debug.Log( "They are less then 1% different" );
+ //    }
+    public static bool isEqual(Vector3 a, Vector3 b, float percentageError = 0.05f)
+    {
+        Debug.Log("" + (a - b).sqrMagnitude + "  " + (a * percentageError).sqrMagnitude);
+        if( (a - b).sqrMagnitude <= (a * percentageError).sqrMagnitude) {
+             Debug.Log( "They are less then 1% different" );
+            return true;
+        }
+        return false;
     }
     #endregion
 

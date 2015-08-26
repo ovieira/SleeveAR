@@ -20,6 +20,10 @@ public class ViewFloorArc : MonoBehaviour {
     void Update() {
         fullMovementLineRenderer.transform.position = currentLineRenderer.transform.position = basePosition;
         currentLineRenderer.transform.Translate(Vector3.up);
+        currentLineRenderer.SetVertexCount(this.progress);
+        for (int i = 0; i < this.progress; i++) {
+            currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
+        }
     }
 
     #region Full Movement Line Renderer
@@ -36,13 +40,16 @@ public class ViewFloorArc : MonoBehaviour {
     public int progress {
         get { return this._progress; }
         set {
-            int _value = (int)Utils.Map(value, 0, 100, 0, upperArmDirectionsList.Count);
-            _progress = _value;
-            updateCurrentLineRenderer();
+            //int _value = (int)Utils.Map(value, 0, 100, 0, upperArmDirectionsList.Count);
+            Debug.Log("Progress: " + value);
+            _progress = value;
+            _progress = Mathf.Clamp(_progress, 0, upperArmDirectionsList.Count-1);
+            //updateCurrentLineRenderer();
         }
     }
 
     private void updateCurrentLineRenderer() {
+
         currentLineRenderer.SetVertexCount(this.progress);
         for (int i = 0; i < this.progress; i++) {
             currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);

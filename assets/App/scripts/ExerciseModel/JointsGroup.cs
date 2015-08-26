@@ -78,6 +78,8 @@ public class JointsGroup
             joint.Print();
         }
         Debug.Log("Angle: " + angle);
+        Debug.Log("UpperArmDir: " + this.getUpperArmDirection());
+        Debug.Log("ForeArm: " + this.getForeArmDirection());
     }
 
     private void CalculateJointGroupAngle()
@@ -96,7 +98,10 @@ public class JointsGroup
 
     public Vector3 getUpperArmDirection() {
         if(upperArmDirection == Vector3.zero)
-            upperArmDirection = (jointsList[1].position - jointsList[0].position).normalized;
+            upperArmDirection = (jointsList[1].position - jointsList[0].position);
+        //Debug.Log("LOL"+upperArmDirection);
+        upperArmDirection.Normalize();
+        //Debug.Log(upperArmDirection);
         return upperArmDirection;
     }
 

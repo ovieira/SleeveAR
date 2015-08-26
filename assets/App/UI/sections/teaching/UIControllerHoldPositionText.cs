@@ -14,6 +14,9 @@ public class UIControllerHoldPositionText : Controller {
 
     protected override void OnDestroy() {
         base.OnDestroy();
+
+        serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;
+
         serviceTeaching.onReachedInitialPosition -= this._onReachedInitialPosition;
 
     }

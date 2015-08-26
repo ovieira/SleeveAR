@@ -32,7 +32,7 @@ public class ControllerFloorArc : Controller {
 
     void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
-        this.view.progress = this.progress;
+        //this.view.progress = this.progress;
     }
 
     protected override void OnDestroy() {
@@ -56,6 +56,10 @@ public class ControllerFloorArc : Controller {
     public int progress;
 
     private void _onIndexChanged(object sender, System.EventArgs e) {
-        this.view.progress = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, 100);
+        //this.view.progress = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, 100);
+        int a =  (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, boundaryRight - boundaryLeft);
+        Debug.Log("A" + a);
+        this.view.progress = a;
+        //this.view.progress = progress;
     }
 }
