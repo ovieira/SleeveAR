@@ -27,7 +27,7 @@ public class ControllerFloorArc : Controller {
             _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
         }
         this.view.upperArmDirectionsList = new List<Vector3>(_list);
-        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]);
+        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1])*3;
     }
 
     void Update() {
@@ -52,8 +52,7 @@ public class ControllerFloorArc : Controller {
 
     #endregion
 
-    [Range(0, 100)]
-    public int progress;
+    
 
     private void _onIndexChanged(object sender, System.EventArgs e) {
         //this.view.progress = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, 100);
