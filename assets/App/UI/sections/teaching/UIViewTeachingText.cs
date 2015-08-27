@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class UIViewHoldPositionText : UIView {
+public class UIViewTeachingText : UIView {
 
     public override void show() {
         show(this.canvasGroup.alpha, 1f, 0.5f, 0f);

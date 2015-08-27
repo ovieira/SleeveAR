@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class UIControllerHoldPositionText : Controller {
+public class UIControllerTeachingText : Controller {
 
 
     #region LifeCycle
@@ -10,6 +10,7 @@ public class UIControllerHoldPositionText : Controller {
         base.Start();
         serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
         serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
+        serviceTeaching.onFailingExerciseChanged += this._onFailingExerciseChanged;
     }
 
     protected override void OnDestroy() {
@@ -24,6 +25,18 @@ public class UIControllerHoldPositionText : Controller {
     #endregion
 
     #region Service Teaching
+
+    private void _onFailingExerciseChanged(object sender, EventArgs e) {
+        if (serviceTeaching.failingExercise)
+        {
+            this.view.text.text = "Restarting Exercise in 3 Seconds";
+            this.view.show();
+        }
+        else
+        {
+            this.view.hide();
+        }
+    }
 
     protected void _onReachedInitialPosition(object sender, EventArgs e)
     {
@@ -49,7 +62,7 @@ public class UIControllerHoldPositionText : Controller {
 
     #region View
 
-    public UIViewHoldPositionText view;
+    public UIViewTeachingText view;
 
     #endregion
 }

@@ -17,14 +17,25 @@ public class ControllerTeaching : Controller {
 
         serviceExercise.onStart += this._onStart;
 
+        serviceExercise.onCurrentIndexChanged += this._onCurrentIndexChanged;
+
+        serviceTeaching.onFailingExerciseChanged += this._onFailingExerciseChanged;
         Utils.DestroyAllChildren(this.transform);
 
         Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 
+    
+
     protected override void OnDestroy()
     {
         base.OnDestroy();
+
+        serviceTeaching.onFailingExerciseChanged -= this._onFailingExerciseChanged;
+
+
+        serviceExercise.onCurrentIndexChanged -= this._onCurrentIndexChanged;
+
         serviceExercise.onStart -= this._onStart;
         serviceExercise.onSelectedExerciseChanged -= this._onSelectedExerciseChanged;
 
@@ -47,13 +58,20 @@ public class ControllerTeaching : Controller {
        // Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 
+    private void _onCurrentIndexChanged(object sender, System.EventArgs e)
+    {
+        serviceTeaching.failingExercise = false;
+        CancelInvoke("FailingExercise");
+        Invoke("FailingExercise", 5f);
+    }
+
+    #endregion
+
     protected void instantiatePrefab(GameObject prefab)
     {
         GameObject ob = Instantiate(prefab);
         ob.transform.SetParent(this.transform);
     }
-
-    #endregion
 
     #region Service Teaching
 
@@ -64,6 +82,24 @@ public class ControllerTeaching : Controller {
 
     }
 
+    private void _onFailingExerciseChanged(object sender, System.EventArgs e) {
+        if (serviceTeaching.failingExercise)
+        {
+            serviceAudio.PlayCountDown();
+            Invoke("ResetExercise", 3f);
+        }
+        else
+        {
+            CancelInvoke("ResetExercise");    
+            serviceAudio.StopAudio();
+        }
+    }
+
+    protected void ResetExercise()
+    {
+        serviceExercise.index = 0;
+    }
+
     #endregion
 
     #region Guiding Prefabs
@@ -72,5 +108,9 @@ public class ControllerTeaching : Controller {
     public GameObject MovementGuidance;
     #endregion
 
+    protected void FailingExercise()
+    {
+        serviceTeaching.failingExercise = true;
+    }
    
 }

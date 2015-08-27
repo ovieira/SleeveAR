@@ -45,6 +45,26 @@ public class ServiceTeaching {
 
     #endregion
 
+    #region Failing
+
+    public event EventHandler<EventArgs> onFailingExerciseChanged; 
+
+    protected bool _failingExercise;
+
+    public bool failingExercise
+    {
+        get { return this._failingExercise; }
+
+        set
+        {
+            if (this._failingExercise == value) return;
+            this._failingExercise = value;
+            Utils.LaunchEvent(this, onFailingExerciseChanged);
+        }
+    }
+
+    #endregion
+
     #region Singleton
 
     private static ServiceTeaching _instance;
