@@ -6,19 +6,20 @@ using UnityEngine;
 [XmlRoot("ExerciseModel")]
 public class ExerciseModel
 {
-    public String label;
+    #region Label
+    public String label; 
+    #endregion
 
-
+    #region Exercise Model List
     public List<JointsGroup> exerciseModel = new List<JointsGroup>();
     //public Dictionary<int, singleJointLi> ();
-
-
+    
+    #region Getters/Setters
     /// <summary>
     ///     Adds JointGroup to current exerciseModel
     /// </summary>
     /// <param name="jointsGroup"></param>
-    public void Add(JointsGroup jointsGroup)
-    {
+    public void Add(JointsGroup jointsGroup) {
         exerciseModel.Add(jointsGroup);
     }
 
@@ -27,16 +28,46 @@ public class ExerciseModel
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
-    public JointsGroup Get(int index)
-    {
+    public JointsGroup Get(int index) {
         return exerciseModel[index];
     }
+    #endregion
+    #endregion
+
+    #region Exercise Parts
+
+    public List<Vector2> parts = new List<Vector2>();
+
+    public void addPart(int leftBound, int rightBound)
+    {
+        if (exerciseModel.Count == 0) return;
+        if (leftBound < 0 || rightBound < 0 || leftBound >= rightBound)
+        {
+            Debug.LogError("Invalid Exercise Bounds");
+            return;
+        }
+
+        parts.Add(new Vector2(leftBound,rightBound));
+        Debug.Log("Added Part:");
+        foreach (var part in parts)
+        {
+            Debug.Log(part);
+        }
+    }
+
+
+    #endregion
 
 
     public void print()
     {
         Debug.Log("Name: " + this.label);
         Debug.Log("Entries: " + this.exerciseModel.Count );
+        Debug.Log("Exercise Parts: ");
+        for (int i = 0; i < parts.Count; i++)
+        {
+            Debug.Log(parts[i]);
+        }
     }
 
     public void testPopulate()

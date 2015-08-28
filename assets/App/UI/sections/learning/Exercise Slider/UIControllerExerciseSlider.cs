@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 
 public class UIControllerExerciseSlider : Controller {
@@ -23,10 +25,16 @@ public class UIControllerExerciseSlider : Controller {
 
             this.view.show();
         }
+
+        addPartButton.onClicked += this._onAddPartButtonClicked;
     }
+
+    
 
     protected override void OnDestroy() {
         base.OnDestroy();
+        addPartButton.onClicked -= this._onAddPartButtonClicked;
+
         slider.onValueChanged.RemoveListener(_onValueChanged);
         serviceExercise.onSelectedExerciseChanged -= _onExercisedLoaded;
         serviceExercise.onCurrentIndexChanged -= _onIndexChanged;
@@ -52,7 +60,8 @@ public class UIControllerExerciseSlider : Controller {
     protected void _onExercisedLoaded(object sender, EventArgs e) {
         this.setMinMax(0,serviceExercise.count); 
         this.view.show();
-
+        this.view.parts = new List<Vector2>(serviceExercise.selected.parts);
+        this.view.showDividers();
     }
     #region View
 
@@ -71,7 +80,26 @@ public class UIControllerExerciseSlider : Controller {
 
     protected void setMinMax(int min, int max) {
         slider.minValue = min;
-        slider.maxValue = max;
+        this.view.maxValue = slider.maxValue = max;
     }
+    #endregion
+
+    #region Add Part
+
+    public UIButton addPartButton;
+
+    private void _onAddPartButtonClicked(object sender, EventArgs e) {
+        if (serviceExercise.selected.parts.Count == 0)
+        {
+            serviceExercise.selected.addPart(0, serviceExercise.index);
+        }
+        else
+        {
+            var lastPart = serviceExercise.selected.parts[serviceExercise.selected.parts.Count - 1];
+            serviceExercise.selected.addPart((int)lastPart.y, serviceExercise.index);
+        }
+        this.view.updateDividers();
+    }
+
     #endregion
 }

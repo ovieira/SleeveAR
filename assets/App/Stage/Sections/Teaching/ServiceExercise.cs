@@ -27,6 +27,13 @@ public class ServiceExercise {
         }
     }
 
+    protected int _part;
+
+    public int part
+    {
+        get { return this._part; }
+        set { this._part = value; }
+    }
     #endregion
 
     #region Count
