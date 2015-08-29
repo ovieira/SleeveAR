@@ -20,16 +20,23 @@ public class ControllerTeaching : Controller {
         serviceExercise.onCurrentIndexChanged += this._onCurrentIndexChanged;
 
         serviceTeaching.onFailingExerciseChanged += this._onFailingExerciseChanged;
+
+        serviceExercise.onFinishedExercise += this._onFinishedExercise;
         Utils.DestroyAllChildren(this.transform);
 
         Utils.AddChildren(this.transform, initialPositionGuidance);
     }
+
+   
 
     
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
+
+        serviceExercise.onFinishedExercise -= this._onFinishedExercise;
+
 
         serviceTeaching.onFailingExerciseChanged -= this._onFailingExerciseChanged;
 
@@ -74,6 +81,12 @@ public class ControllerTeaching : Controller {
     }
 
     #region Service Teaching
+
+    private void _onFinishedExercise(object sender, System.EventArgs e)
+    {
+        CancelInvoke("ResetExercise");
+        Utils.DestroyAllChildren(this.transform);
+    }
 
     private void _onInitialPositionCompleted(object sender, System.EventArgs e) {
         Debug.Log("Start guiding");

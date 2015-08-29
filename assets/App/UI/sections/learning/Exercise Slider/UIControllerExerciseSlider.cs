@@ -20,11 +20,12 @@ public class UIControllerExerciseSlider : Controller {
 
         if (serviceExercise.selected != null)
         {
-            setMinMax(0,serviceExercise.count);
+            setMinMax(0, serviceExercise.count);
             slider.value = serviceExercise.index;
 
             this.view.show();
         }
+        else this.view.hide();
 
         addPartButton.onClicked += this._onAddPartButtonClicked;
     }

@@ -7,12 +7,19 @@ public class ViewFloorArc : MonoBehaviour {
     public List<Vector3> upperArmDirectionsList = new List<Vector3>();
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         fullMovementLineRenderer.useWorldSpace = currentLineRenderer.useWorldSpace = false;
+        updateViewFloorArc();
+    }
+
+    public void updateViewFloorArc()
+    {
         currentLineRenderer.SetVertexCount(0);
         fullMovementLineRenderer.SetVertexCount(upperArmDirectionsList.Count);
-        for (int i = 0; i < upperArmDirectionsList.Count; i++) {
-            fullMovementLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
+        for (int i = 0; i < upperArmDirectionsList.Count; i++)
+        {
+            fullMovementLineRenderer.SetPosition(i, upperArmDirectionsList[i]*distance);
         }
     }
 

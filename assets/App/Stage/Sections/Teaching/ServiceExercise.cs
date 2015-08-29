@@ -22,17 +22,18 @@ public class ServiceExercise {
                 this.count = value.exerciseModel.Count;
                 this.index = 0;
                 currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
+                this.partIndex = 0;
+                currentPart = _loadedExerciseModel.parts[this.partIndex];
                 Utils.LaunchEvent(this, onSelectedExerciseChanged);
             }
         }
     }
 
-    protected int _part;
+    protected int PartIndex;
 
-    public int part
-    {
-        get { return this._part; }
-        set { this._part = value; }
+    public int partIndex {
+        get { return this.PartIndex; }
+        set { this.PartIndex = value; }
     }
     #endregion
 
@@ -68,6 +69,20 @@ public class ServiceExercise {
                 Utils.LaunchEvent(this, onFinishedExercise);
                 return;
             }
+
+            if (value >= this.currentPart.y || value <= this.currentPart.x)
+            {
+                for (int i = 0; i < selected.parts.Count; i++)
+                {
+                    var part = selected.parts[i];
+                    if (value >= part.x && value <= part.y)
+                    {
+                        this.partIndex = i;
+                        this.currentPart = part;
+                    }
+                }
+            }
+
             if (this._index == value) return;
             this._index = value;
             currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
@@ -86,6 +101,24 @@ public class ServiceExercise {
             Utils.LaunchEvent(this, onCurrentJointGroupChanged);
         }
     }
+
+    public event EventHandler<EventArgs> onCurrentPartChanged;
+
+    protected Vector2 _currentPart;
+
+    public Vector2 currentPart
+    {
+        get
+        {
+            return this._currentPart;
+        }
+        set
+        {
+            this._currentPart = value;
+            Utils.LaunchEvent(this, onCurrentPartChanged);
+        }
+    }
+
     #endregion
 
     #region Start Exercise
