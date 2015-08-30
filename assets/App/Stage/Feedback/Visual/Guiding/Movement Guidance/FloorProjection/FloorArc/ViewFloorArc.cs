@@ -6,21 +6,58 @@ public class ViewFloorArc : MonoBehaviour {
 
     public List<Vector3> upperArmDirectionsList = new List<Vector3>();
 
+    #region LifeCycle
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         fullMovementLineRenderer.useWorldSpace = currentLineRenderer.useWorldSpace = false;
-        updateViewFloorArc();
+       // updateViewFloorArc();
     }
 
-    public void updateViewFloorArc()
-    {
+    public void updateViewFloorArc() {
         currentLineRenderer.SetVertexCount(0);
         fullMovementLineRenderer.SetVertexCount(upperArmDirectionsList.Count);
+        //path.nodes = new List<Vector3>(upperArmDirectionsList.Count);
+
         for (int i = 0; i < upperArmDirectionsList.Count; i++)
         {
-            fullMovementLineRenderer.SetPosition(i, upperArmDirectionsList[i]*distance);
+            var pos = upperArmDirectionsList[i]*distance;
+            fullMovementLineRenderer.SetPosition(i, pos);
+            path.Add(pos+Vector3.up);
         }
+
+        //this.guideline.transform.localPosition = path[0];
+
+        for (int i = 0; i < guideline.Length; i++)
+        {
+            var ob = guideline[i];
+            ob.transform.localPosition = path[0];
+            Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i/10f, iTween.EaseType.easeInSine, true);
+            hashMoveTo.Add("looptype", iTween.LoopType.loop);
+            hashMoveTo.Add("movetopath", false);
+            iTween.MoveTo(ob, hashMoveTo);
+        }
+
+        
+
+        //Hashtable hashValueTo = Utils.HashValueTo(this.name, 0, path.Count-2, 5f, 0, iTween.EaseType.linear, "onupdate",
+        //    "oncomplete");
+        //iTween.ValueTo(this.gameObject, hashValueTo);
+    }
+
+    //protected void onupdate(int progress)
+    //{
+    //    //this.guideline.transform.localPosition = path[progress];
+    //    //this.guideline.transform.LookAt(path[progress+20]);
+    //}
+
+    protected void onstarttarget(GameObject ob)
+    {
+        ob.transform.localPosition = path[0];
+    }
+
+    protected void oncomplete(GameObject ob) {
+
+        ob.transform.localPosition = path[0];
     }
 
     // Update is called once per frame
@@ -31,7 +68,8 @@ public class ViewFloorArc : MonoBehaviour {
         for (int i = 0; i < this.progress; i++) {
             currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
         }
-    }
+    } 
+    #endregion
 
     #region Full Movement Line Renderer
     public LineRenderer fullMovementLineRenderer;
@@ -69,5 +107,17 @@ public class ViewFloorArc : MonoBehaviour {
     public Vector3 basePosition;
 
     public float distance;
+    #endregion
+
+    #region Path
+
+    public List<Vector3> path = new List<Vector3>();
+
+    #endregion
+
+    #region GuideLines
+
+    public GameObject[] guideline;
+
     #endregion
 }

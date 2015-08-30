@@ -28,6 +28,20 @@ public class Utils : MonoBehaviour{
         return hash;
     }
 
+    public static Hashtable HashMoveTo(string name, Vector3[] path, bool orienttopath, float time, float delay, iTween.EaseType easetype, bool islocal/*, string axis*/) {
+        Hashtable hash = new Hashtable();
+        hash.Add("name", name);
+        hash.Add("path", path);
+        //hash.Add("orienttopath", orienttopath);
+        hash.Add("islocal", islocal);
+        hash.Add("time", time);
+        hash.Add("delay", delay);
+        hash.Add("easetype", easetype);
+        //hash.Add("looktime", 0f);
+        hash.Add("lookahead", 0.3f);
+        return hash;
+    }
+
     #endregion
 
     #region Floats Comparison
@@ -72,7 +86,7 @@ public class Utils : MonoBehaviour{
  //    }
     public static bool isEqual(Vector3 a, Vector3 b, float percentageError = 0.05f)
     {
-        Debug.Log("" + (a - b).sqrMagnitude + "  " + (a * percentageError).sqrMagnitude);
+        //Debug.Log("" + (a - b).sqrMagnitude + "  " + (a * percentageError).sqrMagnitude);
         if( (a - b).sqrMagnitude <= (a * percentageError).sqrMagnitude) {
              Debug.Log( "They are less then 1% different" );
             return true;
