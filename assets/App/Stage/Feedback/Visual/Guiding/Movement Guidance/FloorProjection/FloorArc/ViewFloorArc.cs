@@ -10,7 +10,7 @@ public class ViewFloorArc : MonoBehaviour {
     // Use this for initialization
     void Start() {
         fullMovementLineRenderer.useWorldSpace = currentLineRenderer.useWorldSpace = false;
-       // updateViewFloorArc();
+        // updateViewFloorArc();
     }
 
     public void updateViewFloorArc() {
@@ -18,24 +18,26 @@ public class ViewFloorArc : MonoBehaviour {
         fullMovementLineRenderer.SetVertexCount(upperArmDirectionsList.Count);
         //path.nodes = new List<Vector3>(upperArmDirectionsList.Count);
         path.Clear();
-        for (int i = 0; i < upperArmDirectionsList.Count; i++)
-        {
-            var pos = upperArmDirectionsList[i]*distance;
+        for (int i = 0; i < upperArmDirectionsList.Count; i++) {
+            var pos = upperArmDirectionsList[i] * distance;
             fullMovementLineRenderer.SetPosition(i, pos);
-            path.Add(pos+Vector3.up);
+            path.Add(pos + Vector3.up);
         }
 
         //this.guideline.transform.localPosition = path[0];
 
-        for (int i = 0; i < guideline.Length; i++)
-        {
-            foreach (var o in guideline)
-            {
-                iTween.Stop(o);
-            }
+        startGuidelineAnimation();
+    }
+
+    private void startGuidelineAnimation() {
+        foreach (var o in guideline) {
+            iTween.Stop(o);
+        }
+        for (int i = 0; i < guideline.Length; i++) {
             var ob = guideline[i];
             ob.transform.localPosition = path[0];
-            Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i/10f, iTween.EaseType.easeInSine, true);
+            Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i / 10f,
+                iTween.EaseType.easeInSine, true);
             hashMoveTo.Add("looptype", iTween.LoopType.loop);
             hashMoveTo.Add("movetopath", false);
             iTween.MoveTo(ob, hashMoveTo);
@@ -57,11 +59,20 @@ public class ViewFloorArc : MonoBehaviour {
         var currentupperarmdir = currentJointsGroup.getUpperArmDirection();
         var goalupperarmdir = upperArmDirectionsList[progress];
 
+        Vector3 diff = currentupperarmdir - goalupperarmdir;
+
+        float directiontDiff = currentupperarmdir.x - goalupperarmdir.x;
         float heightDiff = currentupperarmdir.y - goalupperarmdir.y;
-        this.heightGuideLine.transform.position = currentLineRenderer.transform.position + upperArmDirectionsList[progress] * (distance + heightDiff);
 
+        var circlenextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * distance;
 
-    } 
+        //var dottednextPos = circlenextPos + new Vector3(directiontDiff, 0, heightDiff);
+        var dottednextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * (distance+heightDiff) + directiontDiff*Vector3.Cross(upperArmDirectionsList[progress],Vector3.down);
+
+        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 5);
+        this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position, dottednextPos, Time.deltaTime * 5);
+
+    }
     #endregion
 
     #region Full Movement Line Renderer
@@ -81,7 +92,7 @@ public class ViewFloorArc : MonoBehaviour {
             //int _value = (int)Utils.Map(value, 0, 100, 0, upperArmDirectionsList.Count);
             Debug.Log("Progress: " + value);
             _progress = value;
-            _progress = Mathf.Clamp(_progress, 0, upperArmDirectionsList.Count-1);
+            _progress = Mathf.Clamp(_progress, 0, upperArmDirectionsList.Count - 1);
             //updateCurrentLineRenderer();
         }
     }
@@ -116,7 +127,8 @@ public class ViewFloorArc : MonoBehaviour {
 
     #region Current Height
 
-    public GameObject heightGuideLine;
+    public GameObject circleGuideLine;
+    public GameObject dottedCircleGuideLine;
 
     #endregion
 

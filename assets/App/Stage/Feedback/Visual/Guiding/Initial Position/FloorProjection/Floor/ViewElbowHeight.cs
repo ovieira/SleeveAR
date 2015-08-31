@@ -25,7 +25,7 @@ public class ViewElbowHeight : MonoBehaviour {
     void Update()
     {
         float heightDiff = currentHeight - targetHeight;
-        //Debug.Log(heightDiff);
+        Debug.Log(heightDiff);
         this.dottedCircle.localPosition = new Vector3(this.dottedCircle.localPosition.x, this.dottedCircle.localPosition.y, heightDiff);
         this.dottedCircle.localScale = new Vector3(0.032f, 0.032f, 0.032f) / ((this.dottedCircle.localPosition.magnitude) + 1);
     } 

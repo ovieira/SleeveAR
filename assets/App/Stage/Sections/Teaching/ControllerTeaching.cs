@@ -74,7 +74,7 @@ public class ControllerTeaching : Controller {
     {
         serviceTeaching.failingExercise = false;
         CancelInvoke("FailingExercise");
-        Invoke("FailingExercise", 5f);
+        Invoke("FailingExercise", 10f);
     }
 
     #endregion

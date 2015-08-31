@@ -24,7 +24,7 @@ public class ControllerFloorArc : Controller {
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
-        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) * 3;
+        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) * 8;
 
         updateFloorArc();
     }

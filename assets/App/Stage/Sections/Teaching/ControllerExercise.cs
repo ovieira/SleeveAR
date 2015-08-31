@@ -86,7 +86,7 @@ public class ControllerExercise : Controller {
 
         //jg.Print();
         //goal.Print();
-        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal,0.1f)) {
+        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal, 0.05f)) {
             //Debug.Log("TA PARECIDO");
             //serviceTeaching.isOnInitialPosition = true;
             //if (initialPositionTimer <= 0)
