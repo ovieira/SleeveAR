@@ -24,6 +24,11 @@ public class ControllerTeaching : Controller {
         serviceExercise.onFinishedExercise += this._onFinishedExercise;
         Utils.DestroyAllChildren(this.transform);
 
+        if (serviceExercise.selected.parts.Count == 0)
+        {
+            serviceExercise.selected.addPart(0, serviceExercise.count-1);
+        }
+
         Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 

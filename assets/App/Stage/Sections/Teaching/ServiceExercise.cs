@@ -23,7 +23,10 @@ public class ServiceExercise {
                 this.index = 0;
                 currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
                 this.partIndex = 0;
-                currentPart = _loadedExerciseModel.parts[this.partIndex];
+
+                if (_loadedExerciseModel.parts.Count > 0) {
+                    currentPart = _loadedExerciseModel.parts[this.partIndex]; 
+                }
                 Utils.LaunchEvent(this, onSelectedExerciseChanged);
             }
         }
