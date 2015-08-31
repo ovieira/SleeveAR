@@ -45,6 +45,7 @@ public class ControllerFloorArc : Controller {
 
     void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
+        this.view.currentJointsGroup = serviceTracking.getCurrentJointGroup();
         //this.view.progress = this.progress;
     }
 

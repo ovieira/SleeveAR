@@ -20,8 +20,11 @@ public class UIControllerLoadButton : MonoBehaviour {
     {
         string filename = InputText.text;
         ExerciseModel exerciseModel = ServiceFileManager.instance.Load(filename);
-        ServiceExercise.instance.selected = exerciseModel;
-        exerciseModel.print();
+        if (exerciseModel != null)
+        {
+            ServiceExercise.instance.selected = exerciseModel;
+            exerciseModel.print();
+        }
     }
     #endregion
 

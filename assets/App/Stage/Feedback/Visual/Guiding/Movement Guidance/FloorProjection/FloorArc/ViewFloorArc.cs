@@ -17,7 +17,7 @@ public class ViewFloorArc : MonoBehaviour {
         currentLineRenderer.SetVertexCount(0);
         fullMovementLineRenderer.SetVertexCount(upperArmDirectionsList.Count);
         //path.nodes = new List<Vector3>(upperArmDirectionsList.Count);
-
+        path.Clear();
         for (int i = 0; i < upperArmDirectionsList.Count; i++)
         {
             var pos = upperArmDirectionsList[i]*distance;
@@ -29,6 +29,10 @@ public class ViewFloorArc : MonoBehaviour {
 
         for (int i = 0; i < guideline.Length; i++)
         {
+            foreach (var o in guideline)
+            {
+                iTween.Stop(o);
+            }
             var ob = guideline[i];
             ob.transform.localPosition = path[0];
             Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i/10f, iTween.EaseType.easeInSine, true);
@@ -36,38 +40,27 @@ public class ViewFloorArc : MonoBehaviour {
             hashMoveTo.Add("movetopath", false);
             iTween.MoveTo(ob, hashMoveTo);
         }
-
-        
-
-        //Hashtable hashValueTo = Utils.HashValueTo(this.name, 0, path.Count-2, 5f, 0, iTween.EaseType.linear, "onupdate",
-        //    "oncomplete");
-        //iTween.ValueTo(this.gameObject, hashValueTo);
-    }
-
-    //protected void onupdate(int progress)
-    //{
-    //    //this.guideline.transform.localPosition = path[progress];
-    //    //this.guideline.transform.LookAt(path[progress+20]);
-    //}
-
-    protected void onstarttarget(GameObject ob)
-    {
-        ob.transform.localPosition = path[0];
-    }
-
-    protected void oncomplete(GameObject ob) {
-
-        ob.transform.localPosition = path[0];
     }
 
     // Update is called once per frame
     void Update() {
         fullMovementLineRenderer.transform.position = currentLineRenderer.transform.position = basePosition;
+
         currentLineRenderer.transform.Translate(Vector3.up);
+
         currentLineRenderer.SetVertexCount(this.progress);
         for (int i = 0; i < this.progress; i++) {
             currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
         }
+
+        //heighguideline
+        var currentupperarmdir = currentJointsGroup.getUpperArmDirection();
+        var goalupperarmdir = upperArmDirectionsList[progress];
+
+        float heightDiff = currentupperarmdir.y - goalupperarmdir.y;
+        this.heightGuideLine.transform.position = currentLineRenderer.transform.position + upperArmDirectionsList[progress] * (distance + heightDiff);
+
+
     } 
     #endregion
 
@@ -118,6 +111,18 @@ public class ViewFloorArc : MonoBehaviour {
     #region GuideLines
 
     public GameObject[] guideline;
+
+    #endregion
+
+    #region Current Height
+
+    public GameObject heightGuideLine;
+
+    #endregion
+
+    #region Current Joints Group
+
+    public JointsGroup currentJointsGroup;
 
     #endregion
 }
