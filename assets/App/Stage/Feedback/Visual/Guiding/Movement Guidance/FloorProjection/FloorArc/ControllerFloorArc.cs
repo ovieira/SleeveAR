@@ -20,11 +20,12 @@ public class ControllerFloorArc : Controller {
         serviceExercise.onCurrentPartChanged += this._onCurrentPartChanged;
     }
 
-
+    public float distanceFactor;
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
-        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) * 8;
+        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
+                             distanceFactor;
 
         updateFloorArc();
     }
@@ -46,6 +47,8 @@ public class ControllerFloorArc : Controller {
     void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
         this.view.currentJointsGroup = serviceTracking.getCurrentJointGroup();
+        //this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
+        //                     distanceFactor;
         //this.view.progress = this.progress;
     }
 

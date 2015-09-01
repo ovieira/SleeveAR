@@ -40,13 +40,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlowArcPrefab: {fileID: 140758, guid: 950f630a726186641bb10c43830ac57c, type: 2}
+  ColorArm: {fileID: 147362, guid: f74efe52a2a2b344cb9e2625ca259459, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: ColorArm
+      value: 
+      objectReference: {fileID: 147362, guid: f74efe52a2a2b344cb9e2625ca259459, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161804}

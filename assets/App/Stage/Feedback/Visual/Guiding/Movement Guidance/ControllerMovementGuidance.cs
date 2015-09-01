@@ -14,6 +14,7 @@ public class ControllerMovementGuidance : Controller {
     protected override void Start() {
         base.Start();
         Utils.AddChildren(this.transform, FlowArcPrefab);
+        Utils.AddChildren(this.transform, ColorArm);
     }
 
     protected override void OnDestroy() {
@@ -33,6 +34,7 @@ public class ControllerMovementGuidance : Controller {
     [Header("Guiding Prefabs")] 
     
     public GameObject FlowArcPrefab;
+    public GameObject ColorArm;
 
     #endregion
 }
