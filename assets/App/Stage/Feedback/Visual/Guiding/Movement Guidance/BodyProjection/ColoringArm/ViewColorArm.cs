@@ -28,16 +28,44 @@ public class ViewColorArm : MonoBehaviour {
 
     private void updateColors()
     {
+        updateForeArmColor();
+        updateUpperArmColor();
+    }
+
+    private void updateUpperArmColor()
+    {
+        //var anglediff = Vector3.Angle(current.getUpperArmDirection(), target.getUpperArmDirection());
+        //upperArmColor = Color.Lerp(correctColor, wrongColor, anglediff);
+
+        var diff = Mathf.Abs(current.getUpperArmDirection().y - target.getUpperArmDirection().y);
+
+        //diff = Utils.Map(diff, 0, 5, 0, 1);
+        Debug.Log(diff);
+        upperArmColor = Color.Lerp(correctColor, wrongColor, diff);
+
+        upperArm.SetColors(upperArmColor, upperArmColor);
+
+    }
+
+    private void updateForeArmColor()
+    {
         float anglediff = current.angle - target.angle;
-        foreArmColor = Color.Lerp(correctColor,wrongColor,anglediff);
+        foreArmColor = Color.Lerp(correctColor, wrongColor, computeLerp());
 
         foreArm.SetColors(foreArmColor, foreArmColor);
+    }
+
+    protected float computeLerp() {
+        float diff = Mathf.Abs(target.angle - current.angle);
+        var lerp = Utils.Map(diff, 0, target.angle, 0, 1);
+        return lerp;
     }
 
     private void updatePositions() {
         updateLineRendererPosition(upperArm, currentArmPosition[0], currentArmPosition[1]);
         updateLineRendererPosition(foreArm, currentArmPosition[1], currentArmPosition[2]);
     }
+
 
     #region Current/Target
 
@@ -65,6 +93,7 @@ public class ViewColorArm : MonoBehaviour {
         lineRenderer.SetPosition(0, posa);
         lineRenderer.SetPosition(1, posb);
     }
+
 
     #endregion
 

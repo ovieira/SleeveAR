@@ -114,7 +114,7 @@ public class ControllerExercise : Controller {
         //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
         //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
         bool b = Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
-        Debug.Log("Direction: " + b);
+      //  Debug.Log("Direction: " + b);
         return b;
     }
 
@@ -122,19 +122,19 @@ public class ControllerExercise : Controller {
         //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
         //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
         bool b = Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
-        Debug.Log("Direction: " + b);
+     //   Debug.Log("Direction: " + b);
         return b;
     }
 
     private bool checkHeight(JointsGroup jg, JointsGroup goal) {
         bool b = Utils.IsApproximately(jg.getHeight(), goal.getHeight(), heightComparisonThreshold);
-        Debug.Log("Height: " + b);
+       // Debug.Log("Height: " + b);
         return b;
     }
 
     private bool checkJointAngle(JointsGroup jg, JointsGroup goal) {
         bool b = Utils.IsApproximately(jg.angle, goal.angle, angleComparisonThreshold);
-        Debug.Log("Angle: " + b);
+      //  Debug.Log("Angle: " + b);
         return b;
     }
     #endregion

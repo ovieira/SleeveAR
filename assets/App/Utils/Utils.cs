@@ -88,7 +88,7 @@ public class Utils : MonoBehaviour{
     {
         //Debug.Log("" + (a - b).sqrMagnitude + "  " + (a * percentageError).sqrMagnitude);
         if( (a - b).sqrMagnitude <= (a * percentageError).sqrMagnitude) {
-             Debug.Log( "They are less then 1% different" );
+//             Debug.Log( "They are less then 1% different" );
             return true;
         }
         return false;

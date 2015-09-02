@@ -7,6 +7,7 @@ public class ControllerColorArm : Controller {
     protected override void Awake() {
         base.Awake();
         serviceExercise.onCurrentJointGroupChanged += this._onCurrentJointGroupChanged;
+        this.view.target = serviceExercise.currentJointsGroup;
 
     }
 
