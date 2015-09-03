@@ -1,7 +1,4 @@
 ﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Security.Cryptography;
 
 public class ServiceSection {
 
@@ -46,17 +43,4 @@ public class ServiceSection {
 
     #endregion
 
-    //public void LoadLearningPhase()
-    //{
-    //    Application.LoadLevel("Learning");
-    //}
-
-    //public void LoadAudioPhase()
-    //{
-    //    Application.LoadLevel("Sound");        
-    //}
-
-    //public void LoadVisualPhase() {
-    //    Application.LoadLevel("Visual");
-    //}
 }

@@ -7,18 +7,18 @@ public class Controller : MonoBehaviour {
 
     #region LifeCycle
 
-    protected virtual void Awake()
-    {
+    protected virtual void Awake() {
         serviceExercise = ServiceExercise.instance;
         serviceTeaching = ServiceTeaching.instance;
         serviceTracking = ServiceTracking.instance;
         serviceAudio = ServiceAudio.instance;
         serviceSection = ServiceSection.instance;
+        ServiceDifficulty = ServiceDifficulty.instance;
     }
 
     // Use this for initialization
     protected virtual void Start() {
-        
+
     }
 
     protected virtual void OnDestroy() { }
@@ -32,6 +32,7 @@ public class Controller : MonoBehaviour {
     protected ServiceTeaching serviceTeaching;
     protected ServiceAudio serviceAudio;
     protected ServiceSection serviceSection;
+    protected ServiceDifficulty ServiceDifficulty;
 
     #endregion
 

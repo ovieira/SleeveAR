@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 406892}
   - 114: {fileID: 11431884}
   - 114: {fileID: 11406634}
+  - 114: {fileID: 11487622}
   m_Layer: 0
   m_Name: TeachingSection
   m_TagString: Untagged
@@ -58,6 +59,26 @@ MonoBehaviour:
   angleComparisonThreshold: 3
   heightComparisonThreshold: .200000003
   directionComparisonThreshold: .300000012
+--- !u!114 &11487622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c369070c7ddafd042bfabccc649c8757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EasyAngle: 0
+  EasyHeight: 0
+  EasyDirection: 0
+  MediumAngle: 0
+  MediumHeight: 0
+  MediumDirection: 0
+  HardAngle: 0
+  HardHeight: 0
+  HardDirection: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
