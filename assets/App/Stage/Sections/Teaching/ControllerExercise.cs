@@ -49,8 +49,13 @@ public class ControllerExercise : Controller {
         JointsGroup jg = serviceTracking.getCurrentJointGroup();
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
-        if (checkJointAngle(jg, goal) && checkHeight(jg, goal) && checkDirection(jg, goal)) {
-            //Debug.Log("TA PARECIDO");
+        Debug.DrawRay(this.transform.position, jg.getUpperArmDirection(), Color.red);
+        Debug.DrawRay(this.transform.position + jg.getUpperArmDirection(), jg.getForeArmDirection(), Color.red);
+
+        Debug.DrawRay(this.transform.position, goal.getUpperArmDirection(), Color.green);
+        Debug.DrawRay(this.transform.position + goal.getUpperArmDirection(), goal.getForeArmDirection(), Color.green);
+
+        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal)*/checkForeArmDirection(jg,goal, foreArmThreshold) && CheckUpperArmDirection(jg, goal, upperArmThreshold)) {
             serviceTeaching.isOnInitialPosition = true;
             if (initialPositionTimer <= 0)
                 serviceTeaching.initialPositionCompleted = true;
@@ -63,10 +68,6 @@ public class ControllerExercise : Controller {
             serviceTeaching.isOnInitialPosition = false;
 
         }
-        //Debug.Log(initialPositionTimer);
-        //get single joints angle
-
-        //if close enough to initial position, launch initialPositionCompleted Event and stop coroutine
     }
     #endregion
 
@@ -86,7 +87,7 @@ public class ControllerExercise : Controller {
 
         //jg.Print();
         //goal.Print();
-        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal, 2f)) {
+        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ CheckUpperArmDirection(jg, goal, 2f)) {
             //Debug.Log("TA PARECIDO");
             //serviceTeaching.isOnInitialPosition = true;
             //if (initialPositionTimer <= 0)
@@ -110,19 +111,20 @@ public class ControllerExercise : Controller {
     }
 
     #endregion
-    private bool checkDirection(JointsGroup jg, JointsGroup goal , float t) {
-        //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
-        //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
-        bool b = //Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
-            Utils.isEqualByAngle(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
-      //  Debug.Log("Direction: " + b);
-        return b;
+
+    private bool checkForeArmDirection(JointsGroup a, JointsGroup b, float t)
+    {
+        return Utils.IsApproximately(a.angle, b.angle, t);
     }
 
-    private bool checkDirection(JointsGroup jg, JointsGroup goal ) {
-        //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
-        //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
-        bool b = Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
+    private bool CheckUpperArmDirection(JointsGroup jg, JointsGroup goal , float t) {
+        return Utils.isEqualByAngle(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
+    }
+
+    private bool CheckUpperArmDirection(JointsGroup jg, JointsGroup goal ) {
+        //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, upperArmThreshold);
+        //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), upperArmThreshold);
+        bool b = Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), upperArmThreshold);
      //   Debug.Log("Direction: " + b);
         return b;
     }
@@ -172,7 +174,8 @@ public class ControllerExercise : Controller {
 
     public float heightComparisonThreshold;
 
-    public float directionComparisonThreshold;
+    public float upperArmThreshold;
+    public float foreArmThreshold;
 
     #endregion
 }

@@ -58,7 +58,8 @@ MonoBehaviour:
   initialPositionTimer: 3
   angleComparisonThreshold: 3
   heightComparisonThreshold: .200000003
-  directionComparisonThreshold: .300000012
+  upperArmThreshold: 5
+  foreArmThreshold: 5
 --- !u!114 &11487622
 MonoBehaviour:
   m_ObjectHideFlags: 1

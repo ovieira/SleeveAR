@@ -17,6 +17,13 @@ public class ControllerKeyboardHandler : Controller {
         {
             Debug.Log("not implemented");
         }
+
+        if (Input.GetKeyDown(test))
+        {
+            ServiceFileManager.instance.Load("front2");
+           // serviceSection.selected = ServiceSection.Section.TEACHING;
+            
+        }
     }
 
     #endregion
@@ -27,6 +34,7 @@ public class ControllerKeyboardHandler : Controller {
 
     public KeyCode enableTracking;
     public KeyCode projectFloorJoints;
+    public KeyCode test;
 
     #endregion
 }
