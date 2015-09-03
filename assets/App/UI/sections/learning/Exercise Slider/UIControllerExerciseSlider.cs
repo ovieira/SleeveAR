@@ -99,6 +99,7 @@ public class UIControllerExerciseSlider : Controller {
             var lastPart = serviceExercise.selected.parts[serviceExercise.selected.parts.Count - 1];
             serviceExercise.selected.addPart((int)lastPart.y, serviceExercise.index);
         }
+        this.view.parts = new List<Vector2>(serviceExercise.selected.parts);
         this.view.updateDividers();
     }
 

@@ -33,7 +33,7 @@ public class UIViewExerciseSlider : UIView {
 
     public List<Vector2> parts;
 
-    public GameObject fillArea;
+    public GameObject DividersArea;
     public GameObject divider;
 
     #endregion
@@ -48,13 +48,14 @@ public class UIViewExerciseSlider : UIView {
 
         foreach (var part in parts)
         {
-            GameObject ob = Utils.AddChildren(this.fillArea.transform, divider);
+            GameObject ob = Utils.AddChildren(this.DividersArea.transform, divider);
             var v = new Vector2(Utils.Map(part.y, 0, maxValue, -250, 250), 0);
             ob.GetComponent<RectTransform>().anchoredPosition = v;
         }
     }
 
     public void updateDividers() {
-        throw new System.NotImplementedException();
+        Utils.DestroyAllChildren(this.DividersArea.transform);
+        this.showDividers();
     }
 }

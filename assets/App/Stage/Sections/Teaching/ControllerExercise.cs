@@ -86,7 +86,7 @@ public class ControllerExercise : Controller {
 
         //jg.Print();
         //goal.Print();
-        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal, 0.05f)) {
+        if (/*checkJointAngle(jg, goal) && checkHeight(jg, goal) &&*/ checkDirection(jg, goal, 2f)) {
             //Debug.Log("TA PARECIDO");
             //serviceTeaching.isOnInitialPosition = true;
             //if (initialPositionTimer <= 0)
@@ -113,7 +113,8 @@ public class ControllerExercise : Controller {
     private bool checkDirection(JointsGroup jg, JointsGroup goal , float t) {
         //return Utils.IsApproximately(jg.getUpperArmDirection().x - goal.getUpperArmDirection().x, 0, directionComparisonThreshold);
         //bool b = Utils.IsApproximately(jg.getUpperArmDirection(), goal.getUpperArmDirection(), directionComparisonThreshold);
-        bool b = Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
+        bool b = //Utils.isEqual(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
+            Utils.isEqualByAngle(jg.getUpperArmDirection(), goal.getUpperArmDirection(), t);
       //  Debug.Log("Direction: " + b);
         return b;
     }
