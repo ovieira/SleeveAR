@@ -55,24 +55,22 @@ public class ViewFloorArc : MonoBehaviour {
             currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
         }
 
-        //heighguideline
+        
         var currentupperarmdir = currentJointsGroup.getUpperArmDirection();
         var goalupperarmdir = upperArmDirectionsList[progress];
-
         float directiontDiff = (currentupperarmdir.x - goalupperarmdir.x)*2;
         float heightDiff = (currentupperarmdir.y - goalupperarmdir.y)*2;
-
         var circlenextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * distance;
 
-        //var dottednextPos = circlenextPos + new Vector3(directiontDiff, 0, heightDiff);
-        var dottednextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * (distance+heightDiff) + directiontDiff*Vector3.Cross(upperArmDirectionsList[progress],Vector3.down);
-
-        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 5);
         /** /
-        this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position, dottednextPos, Time.deltaTime * 10);
+        var dottednextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * (distance+heightDiff) + directiontDiff*Vector3.Cross(upperArmDirectionsList[progress],Vector3.down);
+        /** /
+        var dottednextPos = currentLineRenderer.transform.position + Vector3.up + currentupperarmdir * (distance + heightDiff) + directiontDiff * Vector3.Cross(currentupperarmdir, Vector3.down);
         /**/
-        this.dottedCircleGuideLine.transform.position = dottednextPos;
+        var dottednextPos = currentLineRenderer.transform.position + Vector3.up + currentupperarmdir * (distance + heightDiff);
         /**/
+        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 5);
+        this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position,dottednextPos, Time.deltaTime*5);
     }
     #endregion
 

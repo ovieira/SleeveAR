@@ -12,12 +12,17 @@ public class UIControllerTeachingText : Controller {
         serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
         serviceTeaching.onFailingExerciseChanged += this._onFailingExerciseChanged;
         serviceExercise.onFinishedExercise += this._onFinishedExercise;
+        serviceTeaching.onFinishedRepetitions += this._onFinishedRepetitions;
     }
+
+
 
     
 
     protected override void OnDestroy() {
         base.OnDestroy();
+
+        serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
 
         serviceTeaching.onFailingExerciseChanged -= this._onFailingExerciseChanged;
         serviceExercise.onFinishedExercise -= this._onFinishedExercise;
@@ -60,6 +65,13 @@ public class UIControllerTeachingText : Controller {
     {
         this.view.text.text = "Begin!";
         this.view.hide(3f);
+    }
+
+    private void _onFinishedRepetitions(object sender, EventArgs e)
+    {
+
+        this.view.text.text = "COMPLETED";
+        this.view.text.fontSize += 10;
     }
 
     #endregion

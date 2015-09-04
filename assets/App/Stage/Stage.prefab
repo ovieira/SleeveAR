@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490742}
+  - 114: {fileID: 11469252}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -88,6 +89,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 404284}
   - 114: {fileID: 11457750}
+  - 114: {fileID: 11425040}
+  - 114: {fileID: 11425282}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -123,7 +126,6 @@ GameObject:
   - 92: {fileID: 9297264}
   - 124: {fileID: 12431796}
   - 81: {fileID: 8131562}
-  - 114: {fileID: 11468638}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -761,6 +763,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -772,7 +775,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -820,7 +823,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -844,7 +847,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1057,6 +1060,31 @@ MonoBehaviour:
   optiTrackPosMultiplyer: 1
   canTrack: 0
   _toggle: {fileID: 0}
+--- !u!114 &11425040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46eea315e665f854e9e0b481fb36552b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11425282}
+--- !u!114 &11425282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3edd8978481976d43bb3f444dea532bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whitecircleprefab: {fileID: 197910, guid: 2c1dd8991638e9448ae9118452b89c05, type: 2}
+  whitecircle: {fileID: 0}
 --- !u!114 &11432154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1098,21 +1126,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prefab: {fileID: 154004, guid: b3885cf5aa9854d4c87c785c95202956, type: 2}
---- !u!114 &11468638
+--- !u!114 &11469252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133082}
+  m_GameObject: {fileID: 122444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00e4844572e70a4893f013ae4876eee, type: 3}
+  m_Script: {fileID: 11500000, guid: cf11f70fd0249224093a7ae7e5ae9b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameForeground: {fileID: 0}
-  blobTex: {fileID: 2800000, guid: 6c1ea557dea71b149991804679528ada, type: 3}
-  zeroTarg: {x: 0, y: 0, z: 0}
-  cube: {fileID: 0}
+  enableTracking: 32
+  projectFloorJoints: 0
+  test: 116
 --- !u!114 &11481746
 MonoBehaviour:
   m_ObjectHideFlags: 1

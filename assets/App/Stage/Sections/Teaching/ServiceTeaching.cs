@@ -69,7 +69,20 @@ public class ServiceTeaching {
     /// <summary>
     /// Number of repetitions already made
     /// </summary>
-    public int count;
+
+    public event EventHandler<EventArgs> onFinishedRepetitions;
+
+    protected int _count;
+
+    public int count
+    {
+        get { return this._count; }
+        set
+        {
+            this._count = value;
+            if (this._count >= 3) Utils.LaunchEvent(this, onFinishedRepetitions);
+        }
+    }
 
     #endregion
 

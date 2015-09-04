@@ -12,11 +12,16 @@ public class ControllerExercise : Controller {
         serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
         serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
         serviceTeaching.onStartOver += this._onStartOver;
+        serviceTeaching.onFinishedRepetitions += this._onFinishedRepetitions;
     }
+
+ 
 
     protected override void OnDestroy() {
         base.OnDestroy();
         //StopAllCoroutines();
+        serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
+
         serviceTeaching.onStartOver -= this._onStartOver;
 
         serviceTeaching.onReachedInitialPosition -= this._onReachedInitialPosition;
@@ -119,6 +124,10 @@ public class ControllerExercise : Controller {
     private void _onStartOver(object sender, EventArgs e) {
         StopAllCoroutines();
         serviceExercise.start = true;
+    }
+
+    private void _onFinishedRepetitions(object sender, EventArgs e) {
+        StopAllCoroutines();
     }
     #endregion
 

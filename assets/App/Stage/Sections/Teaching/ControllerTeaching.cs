@@ -1,62 +1,54 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
-public class ControllerTeaching : Controller {
+public class ControllerTeaching : Controller
+{
+    protected void instantiatePrefab(GameObject prefab)
+    {
+        var ob = Instantiate(prefab);
+        ob.transform.SetParent(transform);
+    }
+
+    protected void FailingExercise()
+    {
+        serviceTeaching.failingExercise = true;
+    }
 
     #region LifeCycle
+
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
 
-        serviceTeaching.onStartOver += this._onStartOver;
-
+        serviceTeaching.onStartOver += _onStartOver;
         serviceTeaching.initialPositionCompleted = false;
-
-        serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
-
-        serviceExercise.onSelectedExerciseChanged += this._onSelectedExerciseChanged;
-
-        serviceExercise.onStart += this._onStart;
-
-        serviceExercise.onCurrentIndexChanged += this._onCurrentIndexChanged;
-
-        serviceTeaching.onFailingExerciseChanged += this._onFailingExerciseChanged;
-
-        serviceExercise.onFinishedExercise += this._onFinishedExercise;
-        Utils.DestroyAllChildren(this.transform);
-
+        serviceTeaching.onInitialPositionCompleted += _onInitialPositionCompleted;
+        serviceExercise.onSelectedExerciseChanged += _onSelectedExerciseChanged;
+        serviceExercise.onStart += _onStart;
+        serviceExercise.onCurrentIndexChanged += _onCurrentIndexChanged;
+        serviceTeaching.onFailingExerciseChanged += _onFailingExerciseChanged;
+        serviceExercise.onFinishedExercise += _onFinishedExercise;
+        serviceTeaching.onFinishedRepetitions += _onFinishedRepetitions;
+        Utils.DestroyAllChildren(transform);
         if (serviceExercise.selected.parts.Count == 0)
         {
-            serviceExercise.selected.addPart(0, serviceExercise.count-1);
+            serviceExercise.selected.addPart(0, serviceExercise.count - 1);
         }
-
-        Utils.AddChildren(this.transform, initialPositionGuidance);
+        Utils.AddChildren(transform, initialPositionGuidance);
     }
 
-  
-
-   
-
-    
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-
-        serviceExercise.onFinishedExercise -= this._onFinishedExercise;
-
-
-        serviceTeaching.onFailingExerciseChanged -= this._onFailingExerciseChanged;
-
-
-        serviceExercise.onCurrentIndexChanged -= this._onCurrentIndexChanged;
-
-        serviceExercise.onStart -= this._onStart;
-        serviceExercise.onSelectedExerciseChanged -= this._onSelectedExerciseChanged;
-
-        serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;
-
+        serviceExercise.onFinishedExercise -= _onFinishedExercise;
+        serviceTeaching.onFailingExerciseChanged -= _onFailingExerciseChanged;
+        serviceExercise.onCurrentIndexChanged -= _onCurrentIndexChanged;
+        serviceExercise.onStart -= _onStart;
+        serviceExercise.onSelectedExerciseChanged -= _onSelectedExerciseChanged;
+        serviceTeaching.onInitialPositionCompleted -= _onInitialPositionCompleted;
+        serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
 
     }
 
@@ -64,17 +56,18 @@ public class ControllerTeaching : Controller {
 
     #region Service Exercise
 
-    private void _onSelectedExerciseChanged(object sender, System.EventArgs e)
+    private void _onSelectedExerciseChanged(object sender, EventArgs e)
     {
         ServiceTeaching.instance.initialPositionCompleted = false;
     }
 
-    private void _onStart(object sender, System.EventArgs e) {
+    private void _onStart(object sender, EventArgs e)
+    {
         //instantiatePrefab(initialPositionGuidance);
-       // Utils.AddChildren(this.transform, initialPositionGuidance);
+        // Utils.AddChildren(this.transform, initialPositionGuidance);
     }
 
-    private void _onCurrentIndexChanged(object sender, System.EventArgs e)
+    private void _onCurrentIndexChanged(object sender, EventArgs e)
     {
         serviceTeaching.failingExercise = false;
         CancelInvoke("FailingExercise");
@@ -83,28 +76,30 @@ public class ControllerTeaching : Controller {
 
     #endregion
 
-    protected void instantiatePrefab(GameObject prefab)
-    {
-        GameObject ob = Instantiate(prefab);
-        ob.transform.SetParent(this.transform);
-    }
-
     #region Service Teaching
 
-    private void _onStartOver(object sender, System.EventArgs e) {
+    private void _onStartOver(object sender, EventArgs e)
+    {
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.initialPositionCompleted = false;
-        Utils.DestroyAllChildren(this.transform);
-        Utils.AddChildren(this.transform, initialPositionGuidance);
+        Utils.DestroyAllChildren(transform);
+        Utils.AddChildren(transform, initialPositionGuidance);
     }
 
-    private void _onFinishedExercise(object sender, System.EventArgs e)
+    private void _onFinishedExercise(object sender, EventArgs e)
     {
         CancelInvoke("ResetMovement");
-        Utils.DestroyAllChildren(this.transform);
+        Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;
-        switch (serviceTeaching.count) {
+
+        if (serviceTeaching.count >= 3)
+        {
+            return;
+        }
+
+        switch (serviceTeaching.count)
+        {
             case 0:
                 break;
             case 1:
@@ -119,14 +114,15 @@ public class ControllerTeaching : Controller {
         serviceTeaching.startOver();
     }
 
-    private void _onInitialPositionCompleted(object sender, System.EventArgs e) {
+    private void _onInitialPositionCompleted(object sender, EventArgs e)
+    {
         Debug.Log("Start guiding");
-        Utils.DestroyAllChildren(this.transform);
-        Utils.AddChildren(this.transform, MovementGuidance);
-
+        Utils.DestroyAllChildren(transform);
+        Utils.AddChildren(transform, MovementGuidance);
     }
 
-    private void _onFailingExerciseChanged(object sender, System.EventArgs e) {
+    private void _onFailingExerciseChanged(object sender, EventArgs e)
+    {
         if (serviceTeaching.failingExercise)
         {
             serviceAudio.PlayCountDown();
@@ -134,7 +130,7 @@ public class ControllerTeaching : Controller {
         }
         else
         {
-            CancelInvoke("ResetMovement");    
+            CancelInvoke("ResetMovement");
             serviceAudio.StopAudio();
         }
     }
@@ -145,17 +141,20 @@ public class ControllerTeaching : Controller {
         CancelInvoke("FailingExercise");
     }
 
+    private void _onFinishedRepetitions(object sender, EventArgs e)
+    {
+        Debug.Log("Finished Repetitions");
+        CancelInvoke("FailingExercise");
+        CancelInvoke("ResetMovement");
+        Utils.DestroyAllChildren(transform);
+    }
+
     #endregion
 
     #region Guiding Prefabs
 
     public GameObject initialPositionGuidance;
     public GameObject MovementGuidance;
-    #endregion
 
-    protected void FailingExercise()
-    {
-        serviceTeaching.failingExercise = true;
-    }
-   
+    #endregion
 }
