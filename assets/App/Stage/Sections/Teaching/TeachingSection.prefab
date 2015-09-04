@@ -56,10 +56,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPositionTimer: 3
-  angleComparisonThreshold: 3
-  heightComparisonThreshold: .200000003
-  upperArmThreshold: 5
-  foreArmThreshold: 5
 --- !u!114 &11487622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,15 +67,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c369070c7ddafd042bfabccc649c8757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EasyAngle: 0
-  EasyHeight: 0
-  EasyDirection: 0
-  MediumAngle: 0
-  MediumHeight: 0
-  MediumDirection: 0
-  HardAngle: 0
-  HardHeight: 0
-  HardDirection: 0
+  EasyAngle: 8
+  EasyDirection: 8
+  MediumAngle: 5
+  MediumDirection: 5
+  HardAngle: 2
+  HardDirection: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

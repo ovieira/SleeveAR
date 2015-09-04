@@ -75,7 +75,7 @@ public class ControllerFloorArc : Controller {
     private void _onIndexChanged(object sender, System.EventArgs e) {
         //this.view.progress = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, 100);
         int a = (int)Utils.Map(serviceExercise.index, boundaryLeft, boundaryRight, 0, boundaryRight - boundaryLeft);
-        Debug.Log("A" + a);
+        //Debug.Log("A" + a);
         this.view.progress = a;
         //this.view.progress = progress;
     }

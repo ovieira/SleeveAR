@@ -91,7 +91,7 @@ public class ViewFloorArc : MonoBehaviour {
         get { return this._progress; }
         set {
             //int _value = (int)Utils.Map(value, 0, 100, 0, upperArmDirectionsList.Count);
-            Debug.Log("Progress: " + value);
+            //Debug.Log("Progress: " + value);
             _progress = value;
             _progress = Mathf.Clamp(_progress, 0, upperArmDirectionsList.Count - 1);
             //updateCurrentLineRenderer();

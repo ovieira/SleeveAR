@@ -9,6 +9,8 @@ public class ControllerTeaching : Controller {
     {
         base.Start();
 
+        serviceTeaching.onStartOver += this._onStartOver;
+
         serviceTeaching.initialPositionCompleted = false;
 
         serviceTeaching.onInitialPositionCompleted += this._onInitialPositionCompleted;
@@ -31,6 +33,8 @@ public class ControllerTeaching : Controller {
 
         Utils.AddChildren(this.transform, initialPositionGuidance);
     }
+
+  
 
    
 
@@ -87,10 +91,32 @@ public class ControllerTeaching : Controller {
 
     #region Service Teaching
 
+    private void _onStartOver(object sender, System.EventArgs e) {
+        CancelInvoke("FailingExercise");
+        CancelInvoke("ResetMovement");
+        serviceTeaching.initialPositionCompleted = false;
+        Utils.DestroyAllChildren(this.transform);
+        Utils.AddChildren(this.transform, initialPositionGuidance);
+    }
+
     private void _onFinishedExercise(object sender, System.EventArgs e)
     {
-        CancelInvoke("ResetExercise");
+        CancelInvoke("ResetMovement");
         Utils.DestroyAllChildren(this.transform);
+        serviceTeaching.count++;
+        switch (serviceTeaching.count) {
+            case 0:
+                break;
+            case 1:
+                serviceDifficulty.selected = ServiceDifficulty.Difficulty.MEDIUM;
+                break;
+            case 2:
+                serviceDifficulty.selected = ServiceDifficulty.Difficulty.HARD;
+                break;
+            default:
+                break;
+        }
+        serviceTeaching.startOver();
     }
 
     private void _onInitialPositionCompleted(object sender, System.EventArgs e) {
@@ -104,18 +130,19 @@ public class ControllerTeaching : Controller {
         if (serviceTeaching.failingExercise)
         {
             serviceAudio.PlayCountDown();
-            Invoke("ResetExercise", 3f);
+            Invoke("ResetMovement", 3f);
         }
         else
         {
-            CancelInvoke("ResetExercise");    
+            CancelInvoke("ResetMovement");    
             serviceAudio.StopAudio();
         }
     }
 
-    protected void ResetExercise()
+    protected void ResetMovement()
     {
         serviceExercise.index = 0;
+        CancelInvoke("FailingExercise");
     }
 
     #endregion

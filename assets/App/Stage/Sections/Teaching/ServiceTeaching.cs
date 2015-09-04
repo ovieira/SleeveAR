@@ -13,7 +13,6 @@ public class ServiceTeaching {
     public bool initialPositionCompleted {
         get { return this._initialPositionCompleted; }
         set {
-            if (this._initialPositionCompleted == value) return;
             this._initialPositionCompleted = value;
             if (value)
                 Utils.LaunchEvent(this, onInitialPositionCompleted);
@@ -61,6 +60,25 @@ public class ServiceTeaching {
             this._failingExercise = value;
             Utils.LaunchEvent(this, onFailingExerciseChanged);
         }
+    }
+
+    #endregion
+
+    #region Counter
+
+    /// <summary>
+    /// Number of repetitions already made
+    /// </summary>
+    public int count;
+
+    #endregion
+
+    #region Start Over
+    public event EventHandler<EventArgs> onStartOver;
+
+    public void startOver()
+    {
+        Utils.LaunchEvent(this, onStartOver);
     }
 
     #endregion

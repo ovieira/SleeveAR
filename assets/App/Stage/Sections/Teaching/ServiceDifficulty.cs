@@ -10,9 +10,9 @@ public class ServiceDifficulty {
     }
 
     public event EventHandler<EventArgs> onDifficultyChanged; 
-    public Difficulty _selected;
+    protected Difficulty _selected;
 
-    protected Difficulty selected
+    public Difficulty selected
     {
         get { return this._selected; }
         set
@@ -26,8 +26,10 @@ public class ServiceDifficulty {
 
     #region Thresholds
 
-    #endregion
+    public float angleThreshold;
+    public float directionThreshold;
 
+    #endregion
 
     #region Singleton
 

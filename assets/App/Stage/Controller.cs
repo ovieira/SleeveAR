@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour {
         serviceTracking = ServiceTracking.instance;
         serviceAudio = ServiceAudio.instance;
         serviceSection = ServiceSection.instance;
-        ServiceDifficulty = ServiceDifficulty.instance;
+        serviceDifficulty = ServiceDifficulty.instance;
     }
 
     // Use this for initialization
@@ -32,7 +32,7 @@ public class Controller : MonoBehaviour {
     protected ServiceTeaching serviceTeaching;
     protected ServiceAudio serviceAudio;
     protected ServiceSection serviceSection;
-    protected ServiceDifficulty ServiceDifficulty;
+    protected ServiceDifficulty serviceDifficulty;
 
     #endregion
 

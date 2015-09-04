@@ -40,7 +40,7 @@ public class ViewColorArm : MonoBehaviour {
         var diff = Mathf.Abs(current.getUpperArmDirection().y - target.getUpperArmDirection().y);
 
         //diff = Utils.Map(diff, 0, 5, 0, 1);
-        Debug.Log(diff);
+        //Debug.Log(diff);
         upperArmColor = Color.Lerp(correctColor, wrongColor, diff);
 
         upperArm.SetColors(upperArmColor, upperArmColor);

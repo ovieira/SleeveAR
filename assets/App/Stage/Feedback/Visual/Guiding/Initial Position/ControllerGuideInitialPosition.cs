@@ -9,6 +9,10 @@ public class ControllerGuideInitialPosition : Controller {
         ServiceGuideInitialPosition.instance.onModeChanged += _onModeChanged;
         serviceExercise.onStart += _onStart;
 
+        if (serviceExercise.start)
+        {
+            updateChildren();
+        }
     }
 
     private void _onStart(object sender, EventArgs e) {
