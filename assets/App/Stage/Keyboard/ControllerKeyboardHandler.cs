@@ -20,8 +20,13 @@ public class ControllerKeyboardHandler : Controller {
 
         if (Input.GetKeyDown(test))
         {
-            ServiceFileManager.instance.Load("front2");
-           // serviceSection.selected = ServiceSection.Section.TEACHING;
+            
+
+            ExerciseModel exerciseModel = ServiceFileManager.instance.Load("front2");
+            if (exerciseModel != null) {
+                ServiceExercise.instance.selected = exerciseModel;
+                exerciseModel.print();
+            }
             
         }
     }

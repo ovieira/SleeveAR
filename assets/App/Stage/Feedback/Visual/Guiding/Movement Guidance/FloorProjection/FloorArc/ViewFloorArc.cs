@@ -19,7 +19,7 @@ public class ViewFloorArc : MonoBehaviour {
         //path.nodes = new List<Vector3>(upperArmDirectionsList.Count);
         path.Clear();
         for (int i = 0; i < upperArmDirectionsList.Count; i++) {
-            var pos = upperArmDirectionsList[i] * distance;
+            var pos = upperArmDirectionsList[i] * distance ;
             fullMovementLineRenderer.SetPosition(i, pos);
             path.Add(pos + Vector3.up);
         }
@@ -52,7 +52,7 @@ public class ViewFloorArc : MonoBehaviour {
 
         currentLineRenderer.SetVertexCount(this.progress);
         for (int i = 0; i < this.progress; i++) {
-            currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
+            currentLineRenderer.SetPosition(i, path[i]);
         }
 
         
@@ -60,7 +60,7 @@ public class ViewFloorArc : MonoBehaviour {
         var goalupperarmdir = upperArmDirectionsList[progress];
         float directiontDiff = (currentupperarmdir.x - goalupperarmdir.x)*2;
         float heightDiff = (currentupperarmdir.y - goalupperarmdir.y)*2;
-        var circlenextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * distance;
+        var circlenextPos = currentLineRenderer.transform.position + Vector3.up + path[progress];
 
         /** /
         var dottednextPos = currentLineRenderer.transform.position + Vector3.up + upperArmDirectionsList[progress] * (distance+heightDiff) + directiontDiff*Vector3.Cross(upperArmDirectionsList[progress],Vector3.down);
@@ -69,7 +69,7 @@ public class ViewFloorArc : MonoBehaviour {
         /**/
         var dottednextPos = currentLineRenderer.transform.position + Vector3.up + currentupperarmdir * (distance + heightDiff);
         /**/
-        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 5);
+        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 2);
         this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position,dottednextPos, Time.deltaTime*5);
     }
     #endregion
@@ -100,7 +100,7 @@ public class ViewFloorArc : MonoBehaviour {
 
         currentLineRenderer.SetVertexCount(this.progress);
         for (int i = 0; i < this.progress; i++) {
-            currentLineRenderer.SetPosition(i, upperArmDirectionsList[i] * distance);
+            currentLineRenderer.SetPosition(i, path[progress] );
         }
     }
 

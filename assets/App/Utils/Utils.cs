@@ -2,19 +2,18 @@
 using UnityEngine;
 using System.Collections;
 
-public class Utils : MonoBehaviour{
+public class Utils : MonoBehaviour {
 
     #region Events
     public static void LaunchEvent(object _sender, EventHandler<EventArgs> _event) {
         if (_event != null) _event(_sender, new EventArgs());
-    } 
+    }
     #endregion
 
     #region Itween
 
     public static Hashtable HashValueTo(string name, float from, float to, float time, float delay, iTween.EaseType easetype,
-        string onupdate, string oncomplete)
-    {
+        string onupdate, string oncomplete) {
         Hashtable hash = new Hashtable();
         hash.Add("name", name);
         hash.Add("from", from);
@@ -46,8 +45,7 @@ public class Utils : MonoBehaviour{
 
     #region Floats Comparison
 
-    public static bool IsApproximately(float a, float b, float threshold = 0.02f)
-    {
+    public static bool IsApproximately(float a, float b, float threshold = 0.02f) {
         return Mathf.Abs(a - b) <= threshold;
     }
 
@@ -59,19 +57,17 @@ public class Utils : MonoBehaviour{
 
     #region Vectors Comparison
 
- 
-    public static bool isEqual(Vector3 a, Vector3 b, float percentageError = 0.05f)
-    {
+
+    public static bool isEqual(Vector3 a, Vector3 b, float percentageError = 0.05f) {
         //Debug.Log("" + (a - b).sqrMagnitude + "  " + (a * percentageError).sqrMagnitude);
-        if( (a - b).sqrMagnitude <= (a * percentageError).sqrMagnitude) {
-//             Debug.Log( "They are less then 1% different" );
+        if ((a - b).sqrMagnitude <= (a * percentageError).sqrMagnitude) {
+            //             Debug.Log( "They are less then 1% different" );
             return true;
         }
         return false;
     }
 
-    public static bool isEqualByAngle(Vector3 a, Vector3 b, float threshold)
-    {
+    public static bool isEqualByAngle(Vector3 a, Vector3 b, float threshold) {
         var result = Vector3.Angle(a, b);
         return (result <= threshold);
     }
@@ -85,18 +81,27 @@ public class Utils : MonoBehaviour{
 
     #region Transform
 
-    public static void DestroyAllChildren(Transform t)
-    {
+    public static void DestroyAllChildren(Transform t) {
         foreach (Transform childTransform in t) {
             Destroy(childTransform.gameObject);
         }
     }
 
-    public static GameObject AddChildren(Transform t, GameObject prefab, bool worldPositionStays = false)
-    {
+    public static GameObject AddChildren(Transform t, GameObject prefab, bool worldPositionStays = false) {
         GameObject ob = Instantiate(prefab);
-        ob.transform.SetParent(t,worldPositionStays);
+        ob.transform.SetParent(t, worldPositionStays);
         return ob;
+    }
+
+    #endregion
+
+    #region Angle
+
+    public static float Angle(Vector3 a, Vector3 b) {
+        var angle = Vector3.Angle(a, b);
+        var cross = Vector3.Cross(a, b);
+        if (cross.y >= 0) angle = -angle;
+        return angle;
     }
 
     #endregion

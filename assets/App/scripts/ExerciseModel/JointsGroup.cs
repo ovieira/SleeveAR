@@ -89,6 +89,7 @@ public class JointsGroup
         upperArmDirection.Normalize();
         foreArmDirection.Normalize();
         angle = Vector3.Angle(upperArmDirection, foreArmDirection);
+        //angle = Utils.Angle(upperArmDirection, foreArmDirection);
     }
 
     public float getHeight()

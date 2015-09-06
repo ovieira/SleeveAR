@@ -22,8 +22,8 @@ public class ViewElbowAngle : MonoBehaviour {
 
         Vector2 a = new Vector2(armDirection.x, armDirection.z);
         float _extraAngle = Vector2.Angle(Vector2.up, a);
-        currentBar.localEulerAngles = new Vector3(0, -180 - current, 0);
-        targetBar.localEulerAngles = new Vector3(0, -180 - target, 0);
+        currentBar.localEulerAngles = new Vector3(0,  - current - 180 , 0);
+        targetBar.localEulerAngles = new Vector3(0, - target - 180 , 0);
 
         //this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
         this.container.localEulerAngles = new Vector3(0, -90 + _extraAngle, 0);

@@ -19,9 +19,9 @@ public class ControllerElbowAngle : Controller {
 
     public void Update()
     {
-        this.view.armDirection = (serviceTracking.PositionProjectedWithOffset[1] -
-                         serviceTracking.PositionProjectedWithOffset[0]).normalized;
-        this.view.current = serviceTracking.getCurrentJointGroup().angle;
+        var currentJG = serviceTracking.getCurrentJointGroup();
+        this.view.armDirection = currentJG.getUpperArmDirection();
+        this.view.current = currentJG.angle;
     }
 
     protected override void OnDestroy() {

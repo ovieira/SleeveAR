@@ -71,8 +71,8 @@ MonoBehaviour:
   EasyDirection: 8
   MediumAngle: 5
   MediumDirection: 5
-  HardAngle: 2
-  HardDirection: 2
+  HardAngle: 3
+  HardDirection: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -95,6 +95,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: directionComparisonThreshold
       value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HardAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HardDirection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MediumAngle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MediumDirection
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
