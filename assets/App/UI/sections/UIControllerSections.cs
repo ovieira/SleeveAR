@@ -13,7 +13,7 @@ public class UIControllerSections : Controller {
 
     protected override void Start() {
         base.Start();
-        this.createSection(UILearningPrefab);
+        //this.createSection(UILearningPrefab);
     }
 
     protected override void OnDestroy() {
@@ -47,6 +47,7 @@ public class UIControllerSections : Controller {
 
     public GameObject UILearningPrefab;
     public GameObject UITeachingPrefab;
+    public GameObject UITutorialPrefab;
 
     #endregion
 }

@@ -484,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
   m_LocalRotation: {x: -.0165515337, y: -.550355971, z: -.0250935946, w: .834388793}
-  m_LocalPosition: {x: .902735353, y: .768573284, z: .484845847}
+  m_LocalPosition: {x: -.370000005, y: .850000024, z: .639999986}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 440672}
@@ -1084,7 +1084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whitecircleprefab: {fileID: 197910, guid: 2c1dd8991638e9448ae9118452b89c05, type: 2}
-  whitecircle: {fileID: 0}
+  whitecircles: []
+  positions: []
 --- !u!114 &11432154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,6 +1115,9 @@ MonoBehaviour:
     type: 2}
   TeachingSectionPrefab: {fileID: 100622, guid: e824416e23fd8e54ca55186e2ebbe918,
     type: 2}
+  TutorialSectionPrefab: {fileID: 127642, guid: 61e31acc9e8f0524f9989443704b5432,
+    type: 2}
+  initialSection: 3
 --- !u!114 &11457750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,7 +1143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableTracking: 32
   projectFloorJoints: 0
-  test: 116
+  test: 0
 --- !u!114 &11481746
 MonoBehaviour:
   m_ObjectHideFlags: 1

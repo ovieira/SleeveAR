@@ -13,7 +13,7 @@ public class ControllerSection : Controller {
 
     protected override void Start() {
         base.Start();
-        this.createSection(LearningSectionPrefab);
+        serviceSection.selected = initialSection;
     }
 
     protected override void OnDestroy() {
@@ -32,6 +32,9 @@ public class ControllerSection : Controller {
             case ServiceSection.Section.TEACHING:
                 createSection(TeachingSectionPrefab);
                 break;
+                case ServiceSection.Section.TUTORIAL:
+                createSection(TutorialSectionPrefab);
+                break;
             default:
                 break;
         }
@@ -47,6 +50,13 @@ public class ControllerSection : Controller {
 
     public GameObject LearningSectionPrefab;
     public GameObject TeachingSectionPrefab;
+    public GameObject TutorialSectionPrefab;
+
+    #endregion
+
+    #region Initial Section
+
+    [Header("Initial Section")] public ServiceSection.Section initialSection;
 
     #endregion
 }

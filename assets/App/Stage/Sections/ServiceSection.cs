@@ -4,8 +4,10 @@ public class ServiceSection {
 
     #region Section
     public enum Section {
+        NIL,
         LEARNING,
-        TEACHING
+        TEACHING,
+        TUTORIAL
     }
 
 

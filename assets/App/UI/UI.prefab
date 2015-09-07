@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UILearningPrefab: {fileID: 148824, guid: c4ac51e7232f71f47927551fa05ab1ae, type: 2}
   UITeachingPrefab: {fileID: 148916, guid: 50236b4bcee37644ba3a774273074b7d, type: 2}
+  UITutorialPrefab: {fileID: 137978, guid: 97657b4ece8156c4b85e52ef46b2b543, type: 2}
 --- !u!114 &11456258
 MonoBehaviour:
   m_ObjectHideFlags: 1

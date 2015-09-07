@@ -9,9 +9,7 @@ using FullSerializer;
 
 public class ControllerLearning : Controller {
 
-
-
-    #region variables
+    #region Variables
     public ExerciseModel exerciseModel = new ExerciseModel();
 
     public GameObject JointRepresentationPrefab;
