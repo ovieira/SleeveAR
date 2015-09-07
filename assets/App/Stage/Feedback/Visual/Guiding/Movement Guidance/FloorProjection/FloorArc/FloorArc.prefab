@@ -1069,6 +1069,8 @@ MonoBehaviour:
   targetBarSpriteRenderer: {fileID: 21247258}
   currentBarSpriteRenderer: {fileID: 21263704}
   container: {fileID: 476018}
+  rotateLeft: {fileID: 0}
+  rotateRight: {fileID: 0}
 --- !u!120 &12009436
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1099,10 +1101,10 @@ LineRenderer:
     endWidth: .100000001
     m_StartColor:
       serializedVersion: 2
-      rgba: 4278255360
+      rgba: 4288085872
     m_EndColor:
       serializedVersion: 2
-      rgba: 4278255360
+      rgba: 4288085872
   m_UseWorldSpace: 0
 --- !u!120 &12075080
 LineRenderer:
@@ -1134,10 +1136,10 @@ LineRenderer:
     endWidth: .100000001
     m_StartColor:
       serializedVersion: 2
-      rgba: 4278190335
+      rgba: 4285577215
     m_EndColor:
       serializedVersion: 2
-      rgba: 4278190335
+      rgba: 4285577215
   m_UseWorldSpace: 0
 --- !u!135 &13522244
 SphereCollider:

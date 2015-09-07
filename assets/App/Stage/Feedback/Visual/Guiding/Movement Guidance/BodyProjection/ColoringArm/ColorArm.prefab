@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26da5e86417637c4abcc865d421bf2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctColor: {r: 0, g: 1, b: 0, a: 0}
-  wrongColor: {r: 1, g: 0, b: 0, a: 0}
+  correctColor: {r: 0, g: 1, b: 0, a: 1}
+  wrongColor: {r: 1, g: 0, b: 0, a: 1}
   lineRendererPrefab: {fileID: 147662, guid: 5273b7713726d4e40aa82c2520a2816d, type: 2}
   currentArmPosition: []
 --- !u!114 &11471480
@@ -77,6 +77,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: wrongColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: correctColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wrongColor.a
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

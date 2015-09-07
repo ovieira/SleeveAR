@@ -28,6 +28,8 @@ public class ViewElbowAngle : MonoBehaviour {
         //this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
         this.container.localEulerAngles = new Vector3(0, -90 + _extraAngle, 0);
 
+        //this.rotateLeft.transform.Rotate(Vector3.up, -Time.deltaTime);
+        //this.rotateLeft.transform.Rotate(Vector3.up, Time.deltaTime);
     } 
     #endregion
 
@@ -67,5 +69,52 @@ public class ViewElbowAngle : MonoBehaviour {
 
     public Transform container;
 
+    #endregion
+
+    #region Rotate Arrows
+
+    public GameObject rotateLeft, rotateRight;
+
+    protected void showLeft()
+    {
+        Hashtable hash = Utils.HashValueTo(this.name + "showleft", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
+            "oncomplete");
+
+        iTween.ValueTo(this.gameObject,hash);
+    }
+
+    protected void hideLeft() {
+        Hashtable hash = Utils.HashValueTo(this.name + "hideleft", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
+            "oncomplete");
+        iTween.ValueTo(this.gameObject, hash);
+
+    }
+
+    protected void onUpdateLeft(float progress)
+    {
+        var sr = this.rotateLeft.GetComponent<SpriteRenderer>();
+        var colorsr = sr.color;
+        sr.color = new Color(colorsr.r,colorsr.g,colorsr.b,progress);
+    }
+
+    protected void showRight() {
+        Hashtable hash = Utils.HashValueTo(this.name + "showright", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
+            "oncomplete");
+        iTween.ValueTo(this.gameObject, hash);
+
+    }
+
+    protected void hideRight() {
+        Hashtable hash = Utils.HashValueTo(this.name + "hideright", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
+            "oncomplete");
+        iTween.ValueTo(this.gameObject, hash);
+
+    }
+
+    protected void onUpdateRight(float progress) {
+        var sr = this.rotateRight.GetComponent<SpriteRenderer>();
+        var colorsr = sr.color;
+        sr.color = new Color(colorsr.r, colorsr.g, colorsr.b, progress);
+    }
     #endregion
 }

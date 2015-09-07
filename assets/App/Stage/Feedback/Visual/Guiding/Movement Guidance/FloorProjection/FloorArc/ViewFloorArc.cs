@@ -26,23 +26,23 @@ public class ViewFloorArc : MonoBehaviour {
 
         //this.guideline.transform.localPosition = path[0];
 
-        startGuidelineAnimation();
+        //startGuidelineAnimation();
     }
 
-    private void startGuidelineAnimation() {
-        foreach (var o in guideline) {
-            iTween.Stop(o);
-        }
-        for (int i = 0; i < guideline.Length; i++) {
-            var ob = guideline[i];
-            ob.transform.localPosition = path[0];
-            Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i / 10f,
-                iTween.EaseType.easeInSine, true);
-            hashMoveTo.Add("looptype", iTween.LoopType.loop);
-            hashMoveTo.Add("movetopath", false);
-            iTween.MoveTo(ob, hashMoveTo);
-        }
-    }
+    //private void startGuidelineAnimation() {
+    //    foreach (var o in guideline) {
+    //        iTween.Stop(o);
+    //    }
+    //    for (int i = 0; i < guideline.Length; i++) {
+    //        var ob = guideline[i];
+    //        ob.transform.localPosition = path[0];
+    //        Hashtable hashMoveTo = Utils.HashMoveTo(this.name + i, path.ToArray(), true, 15f, i / 10f,
+    //            iTween.EaseType.easeInSine, true);
+    //        hashMoveTo.Add("looptype", iTween.LoopType.loop);
+    //        hashMoveTo.Add("movetopath", false);
+    //        iTween.MoveTo(ob, hashMoveTo);
+    //    }
+    //}
 
     // Update is called once per frame
     void Update() {

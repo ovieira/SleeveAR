@@ -32,6 +32,9 @@ public class UIControllerSections : Controller {
             case ServiceSection.Section.TEACHING:
                 createSection(UITeachingPrefab);
                 break;
+            case ServiceSection.Section.TUTORIAL:
+                createSection(UITutorialPrefab);
+                break;
             default:
                 break;
         }
