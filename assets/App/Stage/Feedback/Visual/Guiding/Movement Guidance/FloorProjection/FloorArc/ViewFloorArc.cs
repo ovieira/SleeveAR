@@ -11,6 +11,7 @@ public class ViewFloorArc : MonoBehaviour {
     void Start() {
         fullMovementLineRenderer.useWorldSpace = currentLineRenderer.useWorldSpace = false;
         // updateViewFloorArc();
+        StartCoroutine("updateHistory");
     }
 
     public void updateViewFloorArc() {
@@ -71,7 +72,11 @@ public class ViewFloorArc : MonoBehaviour {
         /**/
         this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 2);
         this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position,dottednextPos, Time.deltaTime*5);
+        historyList.Add(dottednextPos);
+        
     }
+
+   
     #endregion
 
     #region Full Movement Line Renderer
@@ -82,6 +87,19 @@ public class ViewFloorArc : MonoBehaviour {
     #region Current Movement Line Renderer
 
     public LineRenderer currentLineRenderer;
+    public LineRenderer history;
+    public List<Vector3> historyList = new List<Vector3>();
+
+    IEnumerator updateHistory() {
+        while (true)
+        {
+            history.SetVertexCount(historyList.Count);
+            for (int i = 0; i < historyList.Count; i++) {
+                history.SetPosition(i, historyList[i]);
+            }
+            yield return null;
+        }
+    }
 
     protected int _progress;
 
