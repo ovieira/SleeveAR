@@ -36,6 +36,8 @@ public class ControllerTeaching : Controller
             serviceExercise.selected.addPart(0, serviceExercise.count - 1);
         }
         Utils.AddChildren(transform, initialPositionGuidance);
+
+        
     }
 
 
@@ -63,6 +65,7 @@ public class ControllerTeaching : Controller
 
     private void _onStart(object sender, EventArgs e)
     {
+        serviceTeaching.currentLog = new Log();
         //instantiatePrefab(initialPositionGuidance);
         // Utils.AddChildren(this.transform, initialPositionGuidance);
     }
@@ -83,6 +86,8 @@ public class ControllerTeaching : Controller
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.initialPositionCompleted = false;
+        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        serviceTeaching.currentLog = new Log();
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, initialPositionGuidance);
     }
@@ -157,4 +162,52 @@ public class ControllerTeaching : Controller
     public GameObject MovementGuidance;
 
     #endregion
+
+    #region History
+
+    public Session _session = new Session();
+
+    #endregion
+
+    [ContextMenu("printSession")]
+    public void print()
+    {
+        serviceTeaching.session.print();
+    }
+
+    [ContextMenu("createLog")]
+    public void createLog() {
+        var log = new Log();
+
+        var jg = serviceTracking.getCurrentJointGroup();
+
+        for (int i = 0; i < 100; i++)
+        {
+            var pos = new Vector3(i,i,i);
+            log.AddEntry(jg,pos);
+        }
+        //log.print();
+        serviceTeaching.currentLog = log;
+        serviceTeaching.currentLog.print();
+    }
+
+    [ContextMenu("createSession")]
+    public void createSession() {
+        var log = new Log();
+        var session = new Session();
+        var jg = serviceTracking.getCurrentJointGroup();
+
+        for (int i = 0; i < 100; i++) {
+            var pos = new Vector3(i, i, i);
+            log.AddEntry(jg, pos);
+        }
+        //log.print();
+        //serviceTeaching.currentLog = log;
+
+        //serviceTeaching.currentLog.print();
+        //session.Add(log);
+        serviceTeaching.session.Add(log);
+        log = new Log();
+        serviceTeaching.session.print();
+    }
 }

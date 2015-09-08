@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class ServiceTeaching {
 
@@ -23,16 +23,14 @@ public class ServiceTeaching {
 
     protected bool _isOnInitialPosition;
 
-    public bool isOnInitialPosition
-    {
+    public bool isOnInitialPosition {
         get { return this._isOnInitialPosition; }
-        set
-        {
+        set {
             if (this._isOnInitialPosition == value) return;
-            
-                this._isOnInitialPosition = value;
-                Utils.LaunchEvent(this, onReachedInitialPosition);
-            
+
+            this._isOnInitialPosition = value;
+            Utils.LaunchEvent(this, onReachedInitialPosition);
+
         }
     }
 
@@ -46,16 +44,14 @@ public class ServiceTeaching {
 
     #region Failing
 
-    public event EventHandler<EventArgs> onFailingExerciseChanged; 
+    public event EventHandler<EventArgs> onFailingExerciseChanged;
 
     protected bool _failingExercise;
 
-    public bool failingExercise
-    {
+    public bool failingExercise {
         get { return this._failingExercise; }
 
-        set
-        {
+        set {
             if (this._failingExercise == value) return;
             this._failingExercise = value;
             Utils.LaunchEvent(this, onFailingExerciseChanged);
@@ -74,11 +70,9 @@ public class ServiceTeaching {
 
     protected int _count;
 
-    public int count
-    {
+    public int count {
         get { return this._count; }
-        set
-        {
+        set {
             this._count = value;
             if (this._count >= 3) Utils.LaunchEvent(this, onFinishedRepetitions);
         }
@@ -89,10 +83,17 @@ public class ServiceTeaching {
     #region Start Over
     public event EventHandler<EventArgs> onStartOver;
 
-    public void startOver()
-    {
+    public void startOver() {
         Utils.LaunchEvent(this, onStartOver);
     }
+
+    #endregion
+
+    #region History
+
+    public Session session = new Session();
+
+    public Log currentLog = new Log();
 
     #endregion
 
@@ -112,3 +113,13 @@ public class ServiceTeaching {
 
     #endregion
 }
+
+
+
+//public class Log {
+//    public List<Vector3> positions { get; set; }
+//}
+
+//public class Session : List<Log> {
+//}
+

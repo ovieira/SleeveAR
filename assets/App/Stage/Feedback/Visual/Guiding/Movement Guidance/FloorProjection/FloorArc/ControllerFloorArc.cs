@@ -11,6 +11,7 @@ public class ControllerFloorArc : Controller {
 
     #endregion
 
+    #region LifeCycle
     protected override void Awake() {
         base.Awake();
         if (serviceExercise.selected != null)
@@ -18,50 +19,54 @@ public class ControllerFloorArc : Controller {
 
         serviceExercise.onCurrentIndexChanged += this._onIndexChanged;
         serviceExercise.onCurrentPartChanged += this._onCurrentPartChanged;
+        //serviceTeaching.onStartOver += this._onStartOver;
     }
 
-    public float distanceFactor;
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
         this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
-                             8;
-
+                             8; //TODO: use dynamic distance
         updateFloorArc();
+        
     }
 
-    private void updateFloorArc()
-    {
-        boundaryLeft = (int)serviceExercise.currentPart.x;
-        boundaryRight = (int)serviceExercise.currentPart.y;
-        var _list = new List<Vector3>();
-        var currentPart = serviceExercise.currentPart;
-        for (int i = (int)boundaryLeft; i <= boundaryRight; i++)
-        {
-            _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
-        }
-        this.view.upperArmDirectionsList = new List<Vector3>(_list);
-        this.view.updateViewFloorArc();
-    }
 
-    void Update() {
+
+    protected void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
         this.view.currentJointsGroup = serviceTracking.getCurrentJointGroup();
-        //this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
-        //                     distanceFactor;
-        //this.view.progress = this.progress;
+        serviceTeaching.currentLog.AddEntry(this.view.currentJointsGroup,this.view.dottedCircleGuideLine.transform.position);
     }
 
     protected override void OnDestroy() {
         base.OnDestroy();
 
+        //serviceTeaching.onStartOver -= this._onStartOver;
         serviceExercise.onCurrentIndexChanged -= this._onIndexChanged;
         serviceExercise.onCurrentPartChanged -= this._onCurrentPartChanged;
-    }
+    } 
+    #endregion
 
     #region Boundaries
 
     public int boundaryLeft, boundaryRight;
+
+    #endregion
+
+    #region FloorArc
+
+    private void updateFloorArc() {
+        boundaryLeft = (int)serviceExercise.currentPart.x;
+        boundaryRight = (int)serviceExercise.currentPart.y;
+        var _list = new List<Vector3>();
+        var currentPart = serviceExercise.currentPart;
+        for (int i = (int)boundaryLeft; i <= boundaryRight; i++) {
+            _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
+        }
+        this.view.upperArmDirectionsList = new List<Vector3>(_list);
+        this.view.updateViewFloorArc();
+    }
 
     #endregion
 
@@ -86,4 +91,11 @@ public class ControllerFloorArc : Controller {
         updateFloorArc();
     } 
     #endregion
+
+    #region Service Teaching
+    private void _onStartOver(object sender, System.EventArgs e) {
+        
+    } 
+    #endregion
+
 }
