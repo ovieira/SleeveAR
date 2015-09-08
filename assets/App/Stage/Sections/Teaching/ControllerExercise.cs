@@ -86,7 +86,7 @@ public class ControllerExercise : Controller {
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
         if (checkForeArmAngle(jg, goal, serviceDifficulty.angleThreshold) && CheckUpperArmDirection(jg, goal, serviceDifficulty.directionThreshold)) {
-            Debug.Log("index++");
+            //Debug.Log("index++");
             serviceExercise.index++;
         }
     }
@@ -123,7 +123,7 @@ public class ControllerExercise : Controller {
 
     private void _onStartOver(object sender, EventArgs e) {
         StopAllCoroutines();
-        serviceExercise.start = true;
+        //serviceExercise.start = true;
     }
 
     private void _onFinishedRepetitions(object sender, EventArgs e) {

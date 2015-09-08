@@ -10,7 +10,7 @@ public class ControllerFinishedExerciseAnimation : Controller {
     {
         base.Awake();
 
-        serviceTeaching.onFinishedRepetitions += this._onFinishedRepetitions;
+       // serviceTeaching.onFinishedRepetitions += this._onFinishedRepetitions;
     }
 
 
@@ -22,7 +22,7 @@ public class ControllerFinishedExerciseAnimation : Controller {
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
+        //serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
 
     }
 

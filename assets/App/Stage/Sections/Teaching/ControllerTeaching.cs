@@ -72,6 +72,11 @@ public class ControllerTeaching : Controller
 
     private void _onCurrentIndexChanged(object sender, EventArgs e)
     {
+        if (serviceExercise.index == 0)
+        {
+            CancelInvoke("FailingExercise");
+            return;
+        }
         serviceTeaching.failingExercise = false;
         CancelInvoke("FailingExercise");
         Invoke("FailingExercise", 10f);
@@ -86,10 +91,24 @@ public class ControllerTeaching : Controller
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.initialPositionCompleted = false;
+        Debug.Log("Final entries count:" + serviceTeaching.currentLog.Count);
+        Debug.Log("Adding...");
         serviceTeaching.session.Add(serviceTeaching.currentLog);
+        Debug.Log("Added! current log number: " + serviceTeaching.session.Count);
+        foreach (Log log in serviceTeaching.session)
+        {
+            Debug.Log("Log: " + log.Count);
+        }
+        //serviceTeaching.session.print();
         serviceTeaching.currentLog = new Log();
+        Debug.Log("After cleaning:");
+        foreach (Log log in serviceTeaching.session) {
+            Debug.Log("Log: " + log.Count);
+        }
+        //serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, initialPositionGuidance);
+        serviceExercise.start = true;
     }
 
     private void _onFinishedExercise(object sender, EventArgs e)
@@ -111,7 +130,7 @@ public class ControllerTeaching : Controller
                 serviceDifficulty.selected = ServiceDifficulty.Difficulty.MEDIUM;
                 break;
             case 2:
-                serviceDifficulty.selected = ServiceDifficulty.Difficulty.HARD;
+                //serviceDifficulty.selected = ServiceDifficulty.Difficulty.HARD;
                 break;
             default:
                 break;
@@ -142,6 +161,7 @@ public class ControllerTeaching : Controller
 
     protected void ResetMovement()
     {
+        //todo: count number of reset movements?
         serviceExercise.index = 0;
         CancelInvoke("FailingExercise");
     }
@@ -151,6 +171,8 @@ public class ControllerTeaching : Controller
         Debug.Log("Finished Repetitions");
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
+        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
     }
 
@@ -197,17 +219,17 @@ public class ControllerTeaching : Controller
         var session = new Session();
         var jg = serviceTracking.getCurrentJointGroup();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 2000; i++) {
             var pos = new Vector3(i, i, i);
-            log.AddEntry(jg, pos);
+            serviceTeaching.currentLog.AddEntry(jg, pos);
         }
-        //log.print();
+        //serviceTeaching.currentLog.print();
         //serviceTeaching.currentLog = log;
 
         //serviceTeaching.currentLog.print();
         //session.Add(log);
-        serviceTeaching.session.Add(log);
-        log = new Log();
+        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        serviceTeaching.currentLog = new Log();
         serviceTeaching.session.print();
     }
 }

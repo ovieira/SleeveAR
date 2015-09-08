@@ -5,24 +5,24 @@ using System.Collections.Generic;
 public class ViewFinishedExerciseAnimation : MonoBehaviour {
 
 	#region LifeCycle
-	void Start () {
+    //void Start () {
 
-        for (int i = 0; i < 3; i++) {
-            var ob = Utils.AddChildren(this.transform, whitecircleprefab);
-            ob.transform.localScale = Vector3.zero;
-            whitecircles.Add(ob);
+    //    for (int i = 0; i < 3; i++) {
+    //        var ob = Utils.AddChildren(this.transform, whitecircleprefab);
+    //        ob.transform.localScale = Vector3.zero;
+    //        whitecircles.Add(ob);
 
-        }
-	}
+    //    }
+    //}
 	
-	void Update () {
-	    for (int i = 0; i < whitecircles.Count; i++)
-	    {
-	        var ob = whitecircles[i];
-            var sr = ob.GetComponent<SpriteRenderer>();
-	        sr.color = Color.Lerp(sr.color, _colors[i], Time.deltaTime);
-	    }
-	}
+    //void Update () {
+    //    for (int i = 0; i < whitecircles.Count; i++)
+    //    {
+    //        var ob = whitecircles[i];
+    //        var sr = ob.GetComponent<SpriteRenderer>();
+    //        sr.color = Color.Lerp(sr.color, _colors[i], Time.deltaTime);
+    //    }
+    //}
 	#endregion
 
     #region Sprites

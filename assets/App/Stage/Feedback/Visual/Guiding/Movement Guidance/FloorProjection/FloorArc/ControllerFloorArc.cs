@@ -35,8 +35,10 @@ public class ControllerFloorArc : Controller {
 
     protected void Update() {
         this.view.basePosition = serviceTracking.PositionFloor[0];
-        this.view.currentJointsGroup = serviceTracking.getCurrentJointGroup();
-        serviceTeaching.currentLog.AddEntry(this.view.currentJointsGroup,this.view.dottedCircleGuideLine.transform.position);
+        var jg = serviceTracking.getCurrentJointGroup();
+        this.view.currentJointsGroup = jg;
+        serviceTeaching.currentLog.AddEntry(jg,this.view.dottedCircleGuideLine.transform.position);
+        Debug.Log(serviceTeaching.currentLog.Count);
     }
 
     protected override void OnDestroy() {

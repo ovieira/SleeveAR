@@ -484,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149188}
   m_LocalRotation: {x: -.0165515337, y: -.550355971, z: -.0250935946, w: .834388793}
-  m_LocalPosition: {x: -.370000005, y: .850000024, z: .639999986}
+  m_LocalPosition: {x: .839999974, y: .779999971, z: .660000026}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 440672}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
     type: 2}
   TutorialSectionPrefab: {fileID: 127642, guid: 61e31acc9e8f0524f9989443704b5432,
     type: 2}
-  initialSection: 3
+  initialSection: 1
 --- !u!114 &11457750
 MonoBehaviour:
   m_ObjectHideFlags: 1

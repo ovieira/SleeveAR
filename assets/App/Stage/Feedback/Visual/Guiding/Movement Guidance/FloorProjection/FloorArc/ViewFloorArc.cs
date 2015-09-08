@@ -11,7 +11,7 @@ public class ViewFloorArc : MonoBehaviour {
     void Start() {
         fullMovementLineRenderer.useWorldSpace = currentLineRenderer.useWorldSpace = false;
         // updateViewFloorArc();
-        StartCoroutine("updateHistory");
+        //StartCoroutine("updateHistory");
     }
 
     public void updateViewFloorArc() {
