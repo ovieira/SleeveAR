@@ -91,21 +91,8 @@ public class ControllerTeaching : Controller
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.initialPositionCompleted = false;
-        Debug.Log("Final entries count:" + serviceTeaching.currentLog.Count);
-        Debug.Log("Adding...");
         serviceTeaching.session.Add(serviceTeaching.currentLog);
-        Debug.Log("Added! current log number: " + serviceTeaching.session.Count);
-        foreach (Log log in serviceTeaching.session)
-        {
-            Debug.Log("Log: " + log.Count);
-        }
-        //serviceTeaching.session.print();
         serviceTeaching.currentLog = new Log();
-        Debug.Log("After cleaning:");
-        foreach (Log log in serviceTeaching.session) {
-            Debug.Log("Log: " + log.Count);
-        }
-        //serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, initialPositionGuidance);
         serviceExercise.start = true;
@@ -117,7 +104,7 @@ public class ControllerTeaching : Controller
         Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;
 
-        if (serviceTeaching.count >= 3)
+        if (serviceTeaching.count >= 1)
         {
             return;
         }
@@ -174,6 +161,8 @@ public class ControllerTeaching : Controller
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
+
+        Utils.AddChildren(this.transform, SessionReviewPrefab);
     }
 
     #endregion
@@ -182,7 +171,7 @@ public class ControllerTeaching : Controller
 
     public GameObject initialPositionGuidance;
     public GameObject MovementGuidance;
-
+    public GameObject SessionReviewPrefab;
     #endregion
 
     #region History

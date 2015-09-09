@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 
@@ -40,7 +41,7 @@ public class Log : List<Entry>
 
     public void print()
     {
-        ForEach(printEntry);
+        Debug.Log("log " + logID + ":" + this.Count + " entries");
     }
 
     private void printEntry(Entry obj) {
@@ -64,6 +65,7 @@ public class Session : List<Log>
         obj.print();
     }
 
+   
 }
 
 
