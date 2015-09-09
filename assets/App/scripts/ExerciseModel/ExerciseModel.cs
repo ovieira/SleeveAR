@@ -58,6 +58,16 @@ public class ExerciseModel
 
     #endregion
 
+    public List<Vector3> GetUpperArmDirectionList()
+    {
+        var _list = new List<Vector3>();
+
+        foreach (JointsGroup jointsGroup in exerciseModel)
+        {
+            _list.Add(jointsGroup.getUpperArmDirection());
+        }
+        return _list;
+    } 
 
     public void print()
     {

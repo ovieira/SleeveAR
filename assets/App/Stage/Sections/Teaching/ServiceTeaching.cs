@@ -74,7 +74,8 @@ public class ServiceTeaching {
         get { return this._count; }
         set {
             this._count = value;
-            if (this._count >= 1) Utils.LaunchEvent(this, onFinishedRepetitions);
+            Debug.Log("COUNT " + _count);
+            if (this._count >= 3) Utils.LaunchEvent(this, onFinishedRepetitions);
         }
     }
 

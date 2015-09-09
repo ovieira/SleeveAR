@@ -13,6 +13,11 @@ public class ControllerExercise : Controller {
         serviceTeaching.onReachedInitialPosition += this._onReachedInitialPosition;
         serviceTeaching.onStartOver += this._onStartOver;
         serviceTeaching.onFinishedRepetitions += this._onFinishedRepetitions;
+        serviceExercise.onFinishedExercise += this._onFinishedExercise;
+    }
+
+    private void _onFinishedExercise(object sender, EventArgs e) {
+        StopAllCoroutines();
     }
 
  
@@ -20,6 +25,8 @@ public class ControllerExercise : Controller {
     protected override void OnDestroy() {
         base.OnDestroy();
         //StopAllCoroutines();
+        serviceExercise.onFinishedExercise -= this._onFinishedExercise;
+
         serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
 
         serviceTeaching.onStartOver -= this._onStartOver;
@@ -85,6 +92,8 @@ public class ControllerExercise : Controller {
         JointsGroup jg = serviceTracking.getCurrentJointGroup();
         JointsGroup goal = serviceExercise.currentJointsGroup;
 
+        if (serviceExercise.index > serviceExercise.count) return;
+
         if (checkForeArmAngle(jg, goal, serviceDifficulty.angleThreshold) && CheckUpperArmDirection(jg, goal, serviceDifficulty.directionThreshold)) {
             //Debug.Log("index++");
             serviceExercise.index++;
@@ -125,6 +134,8 @@ public class ControllerExercise : Controller {
         StopAllCoroutines();
         //serviceExercise.start = true;
     }
+
+
 
     private void _onFinishedRepetitions(object sender, EventArgs e) {
         StopAllCoroutines();

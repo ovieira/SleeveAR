@@ -106,6 +106,7 @@ GameObject:
   - 114: {fileID: 11499730}
   - 114: {fileID: 11446630}
   - 114: {fileID: 11437142}
+  - 225: {fileID: 22538192}
   m_Layer: 5
   m_Name: Debug Joints
   m_TagString: Untagged
@@ -615,7 +616,7 @@ CanvasGroup:
   m_GameObject: {fileID: 132742}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!225 &22503806
@@ -628,6 +629,17 @@ CanvasGroup:
   m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22538192
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178216}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:

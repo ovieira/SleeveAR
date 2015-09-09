@@ -29,12 +29,13 @@ public class ControllerSessionReview : Controller {
     }
 
     private void updateFloorArc() {
-        var _list = new List<Vector3>();
-        for (int i = 0; i < serviceExercise.count; i++) {
-            _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
-        }
-        this.view.upperArmDirectionsList = new List<Vector3>(_list);
+        //var _list = new List<Vector3>();
+        //for (int i = 0; i < serviceExercise.count; i++) {
+        //    _list.Add(_exerciseModel.exerciseModel[i].getUpperArmDirection());
+        //}
+        this.view.upperArmDirectionsList = new List<Vector3>(_exerciseModel.GetUpperArmDirectionList());
         this.view.session = serviceTeaching.session;
+        this.view.logid = serviceTeaching.count - 1;
         this.view.StartCoroutine("updateViewFloorArc",.05f);
     }
 

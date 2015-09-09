@@ -91,7 +91,7 @@ public class ControllerTeaching : Controller
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.initialPositionCompleted = false;
-        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        //serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.currentLog = new Log();
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, initialPositionGuidance);
@@ -100,29 +100,19 @@ public class ControllerTeaching : Controller
 
     private void _onFinishedExercise(object sender, EventArgs e)
     {
+        Debug.Log("Finished Exercise");
         CancelInvoke("ResetMovement");
         Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;
 
-        if (serviceTeaching.count >= 1)
+        if (serviceTeaching.count >= 3)
         {
             return;
         }
+        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        Utils.AddChildren(this.transform, SessionReviewPrefab);
 
-        switch (serviceTeaching.count)
-        {
-            case 0:
-                break;
-            case 1:
-                serviceDifficulty.selected = ServiceDifficulty.Difficulty.MEDIUM;
-                break;
-            case 2:
-                //serviceDifficulty.selected = ServiceDifficulty.Difficulty.HARD;
-                break;
-            default:
-                break;
-        }
-        serviceTeaching.startOver();
+        //serviceTeaching.startOver();
     }
 
     private void _onInitialPositionCompleted(object sender, EventArgs e)

@@ -49,28 +49,31 @@ public class ViewSessionReview : MonoBehaviour {
                var pos = upperArmDirectionsList[j] * distance;
                fullMovementLineRenderer.SetPosition(j, pos);
            }
-           Debug.Log("co");
-           yield return new WaitForSeconds(wait);
+           yield return null;
        }  
     }
 
+    public int logid;
 
    public IEnumerator updateSessionsFloorArc(float wait) {
        int i = 0;
-       int logid = 0;
+       //int logid = 0;
        while (true) {
            i++;
            if (i >= session[logid].Count) {
                StopCoroutine("updateSessionsFloorArc");
+               //start score
+               ServiceTeaching.instance.startOver();
                yield return null;
            }
            currentLineRenderer.SetVertexCount(i);
            for (int j = 0; j < i; j++)
            {
-               var pos = session[logid][i].floorArcPosition;
+               var pos = session[logid][j].position.getUpperArmDirection() * distance;
                currentLineRenderer.SetPosition(j, pos);
            }
-           yield return new WaitForSeconds(wait);
+           
+           yield return null;
        }
    }
 
