@@ -26,14 +26,10 @@ public class ControllerExercise : Controller {
         base.OnDestroy();
         //StopAllCoroutines();
         serviceExercise.onFinishedExercise -= this._onFinishedExercise;
-
         serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
-
         serviceTeaching.onStartOver -= this._onStartOver;
-
         serviceTeaching.onReachedInitialPosition -= this._onReachedInitialPosition;
         serviceTeaching.onInitialPositionCompleted -= this._onInitialPositionCompleted;
-
         serviceExercise.onStart -= this._onStart;
 
     }

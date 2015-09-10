@@ -25,7 +25,7 @@ public class UIControllerExerciseSlider : Controller {
 
             this.view.show();
         }
-        else this.view.hide();
+        else this.view.hide(false);
 
         addPartButton.onClicked += this._onAddPartButtonClicked;
     }

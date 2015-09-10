@@ -14,7 +14,7 @@ public class UIControllerScore : Controller {
     protected override void Start()
     {
         base.Start();
-        this.view.hide();
+        this.view.hide(false);
         this.view.onCompletedScoreBoard += this._onCompletedScoreBoard;
     }
 

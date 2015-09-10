@@ -68,4 +68,9 @@ public class UIViewScore : UIView {
     }
     #endregion
 
+
+    internal void hide(bool p)
+    {
+        this.canvasGroup.alpha = 0;
+    }
 }

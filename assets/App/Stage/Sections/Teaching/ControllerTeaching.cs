@@ -79,7 +79,7 @@ public class ControllerTeaching : Controller
         }
         serviceTeaching.failingExercise = false;
         CancelInvoke("FailingExercise");
-        Invoke("FailingExercise", 10f);
+        Invoke("FailingExercise", 10f); 
     }
 
     #endregion
@@ -101,6 +101,7 @@ public class ControllerTeaching : Controller
     private void _onFinishedExercise(object sender, EventArgs e)
     {
         Debug.Log("Finished Exercise");
+        CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;

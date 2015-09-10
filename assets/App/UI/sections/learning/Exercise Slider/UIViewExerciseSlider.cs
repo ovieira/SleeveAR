@@ -58,4 +58,9 @@ public class UIViewExerciseSlider : UIView {
         Utils.DestroyAllChildren(this.DividersArea.transform);
         this.showDividers();
     }
+
+    internal void hide(bool p)
+    {
+        this.canvasGroup.alpha = 0;
+    }
 }
