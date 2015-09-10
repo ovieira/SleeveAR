@@ -94,9 +94,18 @@ public class ControllerExercise : Controller {
 
         if (serviceExercise.index > serviceExercise.count) return;
 
-        if (checkForeArmAngle(jg, goal, serviceDifficulty.angleThreshold) && CheckUpperArmDirection(jg, goal, serviceDifficulty.directionThreshold)) {
+        if (checkForeArmAngle(jg, goal, serviceDifficulty.angleThreshold) &&
+            CheckUpperArmDirection(jg, goal, serviceDifficulty.directionThreshold))
+        {
             //Debug.Log("index++");
+            serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
+            serviceTeaching.currentLog.validCount++;
             serviceExercise.index++;
+        }
+        else
+        {
+            serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
+            serviceTeaching.currentLog.invalidCount++;
         }
     }
 

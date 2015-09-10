@@ -76,7 +76,7 @@ public class ViewSessionReview : MonoBehaviour {
            currentLineRenderer.SetVertexCount(i);
            for (int j = 0; j < i; j++)
            {
-               var pos = session[logid][j].position.getUpperArmDirection() * distance;
+               var pos = session[logid][j].jointsGroup.getUpperArmDirection() * distance;
                currentLineRenderer.SetPosition(j, pos);
            }
            

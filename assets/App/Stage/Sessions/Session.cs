@@ -7,18 +7,23 @@ using System.Runtime.InteropServices;
 
 public class Entry
 {
-    public Entry(JointsGroup position, Vector3 floorArcPosition)
+    public Entry(JointsGroup jointsGroup, Vector3 floorArcPosition)
     {
-        this.position = position;
+        this.jointsGroup = jointsGroup;
         this.floorArcPosition = floorArcPosition;
     }
 
-    public JointsGroup position { get; set; }
+    public Entry(JointsGroup jointsGroup)
+    {
+        this.jointsGroup = jointsGroup;
+    }
+
+    public JointsGroup jointsGroup { get; set; }
     public Vector3 floorArcPosition { get; set; }
 
     public void print()
     {
-        Debug.Log(floorArcPosition);
+        //Debug.Log(floorArcPosition);
     }
 }
 
@@ -43,6 +48,11 @@ public class Log : List<Entry>
         AddEntry(entry);
     }
 
+    public void AddEntry(JointsGroup jg)
+    {
+        var entry = new Entry(jg);
+        AddEntry(entry);
+    }
     public void print()
     {
         Debug.Log("log " + logID + ":" + this.Count + " entries");

@@ -28,7 +28,7 @@ public class ControllerFloorArc : Controller {
         this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
                              8; //TODO: use dynamic distance
         updateFloorArc();
-        InvokeRepeating("capture",0, 1/24f);
+       // InvokeRepeating("capture",0, 1/24f);
     }
 
     protected void capture()
