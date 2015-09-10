@@ -61,9 +61,16 @@ public class ViewSessionReview : MonoBehaviour {
        while (true) {
            i++;
            if (i >= session[logid].Count) {
-               StopCoroutine("updateSessionsFloorArc");
+               
                //start score
-               ServiceTeaching.instance.startOver();
+
+               if (ServiceTeaching.instance.count < 3)
+                   ServiceTeaching.instance.startOver();
+               else
+               {
+                   //showScores....
+               }
+               StopCoroutine("updateSessionsFloorArc");
                yield return null;
            }
            currentLineRenderer.SetVertexCount(i);

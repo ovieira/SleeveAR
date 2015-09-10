@@ -53,7 +53,7 @@ public class ControllerExercise : Controller {
     IEnumerator InitialPositionCoroutine() {
         while (true) {
             checkInitialPosition();
-            yield return null;
+            yield return new WaitForSeconds(1/24f);
         }
     }
 
@@ -67,7 +67,7 @@ public class ControllerExercise : Controller {
             if (initialPositionTimer <= 0)
                 serviceTeaching.initialPositionCompleted = true;
             else {
-                initialPositionTimer -= Time.deltaTime;
+                initialPositionTimer -= (1/24f);
             }
         }
         else {
@@ -83,7 +83,7 @@ public class ControllerExercise : Controller {
     IEnumerator MovementGuidance() {
         while (true) {
             checkCurrentPosition();
-            yield return null;
+            yield return new WaitForSeconds(1 / 24f);
         }
     }
 

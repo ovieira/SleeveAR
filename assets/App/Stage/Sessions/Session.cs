@@ -28,6 +28,10 @@ public class Log : List<Entry>
 
     public string logID { get; set; }
 
+    public int validCount { get; set; }
+
+    public int invalidCount { get; set; }
+
     public void AddEntry(Entry e)
     {
         this.Add(e);

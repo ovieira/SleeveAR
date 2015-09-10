@@ -148,6 +148,7 @@ public class ControllerTeaching : Controller
         Debug.Log("Finished Repetitions");
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
+        serviceTeaching.failingExercise = false;
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
