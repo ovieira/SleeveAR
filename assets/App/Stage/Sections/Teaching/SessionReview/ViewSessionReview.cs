@@ -41,7 +41,7 @@ public class ViewSessionReview : MonoBehaviour {
            i++;
            if (i>=upperArmDirectionsList.Count)
            {
-               StartCoroutine("updateSessionsFloorArc",.05f);
+               StartCoroutine("updateSessionsFloorArc",.02f);
                StopCoroutine("updateViewFloorArc");
                yield return null;
            }
@@ -62,18 +62,6 @@ public class ViewSessionReview : MonoBehaviour {
        while (true) {
            i++;
            if (i >= session[logid].Count) {
-               
-               //start score
-
-               if (ServiceTeaching.instance.count < 3)
-               {
-                   //ServiceTeaching.instance.startOver();
-                   
-               }
-               else
-               {
-                   //showScores....
-               }
                Utils.LaunchEvent(this, onFinishedDrawing);
                StopCoroutine("updateSessionsFloorArc");
                yield return null;

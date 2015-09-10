@@ -104,8 +104,21 @@ public class ControllerExercise : Controller {
         }
         else
         {
-            serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
-            serviceTeaching.currentLog.invalidCount++;
+            var heightdiff = Mathf.Abs(jg.getUpperArmDirection().y - goal.getUpperArmDirection().y);
+            //float anglediff = Mathf.Abs(jg.angle - goal.angle);
+            var anglediff = Utils.Map(Mathf.Abs(jg.angle - goal.angle), 0, jg.angle, 0, 1);
+
+            //Debug.Log("AngleDIFF: " + anglediff + " HeighDIff: " + heightdiff);
+            if (heightdiff > .2f || anglediff > .5f)
+            {
+                serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
+                serviceTeaching.currentLog.invalidCount++;
+            }
+            else
+            {
+                serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
+                //serviceTeaching.currentLog.validCount++;
+            }
         }
     }
 

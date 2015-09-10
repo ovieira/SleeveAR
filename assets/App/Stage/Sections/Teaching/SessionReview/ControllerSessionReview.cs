@@ -23,7 +23,7 @@ public class ControllerSessionReview : Controller {
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
-        this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 1f; //TODO: use dynamic distance
+        this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 1.5f; //TODO: use dynamic distance
 
         updateFloorArc();
 
@@ -37,13 +37,13 @@ public class ControllerSessionReview : Controller {
         this.view.upperArmDirectionsList = new List<Vector3>(_exerciseModel.GetUpperArmDirectionList());
         this.view.session = serviceTeaching.session;
         this.view.logid = serviceTeaching.count - 1;
-        this.view.StartCoroutine("updateViewFloorArc",.05f);
+        this.view.StartCoroutine("updateViewFloorArc",.01f);
     }
 
     private void _onFinishedDrawing(object sender, System.EventArgs e)
     {
         var log = serviceTeaching.session[serviceTeaching.count - 1];
-        var score = Utils.Map(log.validCount, 0, log.Count, 0, 100);
+        var score = Utils.Map(log.validCount, 0, log.validCount+(log.invalidCount*2), 0, 100);
         serviceTeaching.currentScore = score;
         Debug.Log("SCORE: " + score);
     }
