@@ -10,20 +10,21 @@ public class ControllerSessionReview : Controller {
 
     #endregion
 
-
     #region LifeCycle
     protected override void Awake() {
         base.Awake();
         if (serviceExercise.selected != null)
             _exerciseModel = serviceExercise.selected;
-
+        this.view.onFinishedDrawing += this._onFinishedDrawing;
         //serviceTeaching.onStartOver += this._onStartOver;
     }
+
+   
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
-        this.view.distance = Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *
-                             8; //TODO: use dynamic distance
+        this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 1f; //TODO: use dynamic distance
+
         updateFloorArc();
 
     }
@@ -39,18 +40,22 @@ public class ControllerSessionReview : Controller {
         this.view.StartCoroutine("updateViewFloorArc",.05f);
     }
 
-    
+    private void _onFinishedDrawing(object sender, System.EventArgs e)
+    {
+        var log = serviceTeaching.session[serviceTeaching.count - 1];
+        var score = Utils.Map(log.validCount, 0, log.Count, 0, 100);
+        serviceTeaching.currentScore = score;
+        Debug.Log("SCORE: " + score);
+    }
 
     protected override void OnDestroy() {
         base.OnDestroy();
+        this.view.onFinishedDrawing -= this._onFinishedDrawing;
 
         //serviceTeaching.onStartOver -= this._onStartOver;
       
     }
     #endregion
-
-
-    
 
     #region View
 

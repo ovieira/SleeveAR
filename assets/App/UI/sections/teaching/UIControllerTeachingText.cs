@@ -52,6 +52,7 @@ public class UIControllerTeachingText : Controller {
     {
         if (serviceTeaching.isOnInitialPosition)
         {
+            this.view.text.text = "Hold this position";
             this.view.show();
         }
         else
@@ -64,14 +65,12 @@ public class UIControllerTeachingText : Controller {
     private void _onInitialPositionCompleted(object sender, EventArgs e)
     {
         this.view.text.text = "Begin!";
-        this.view.hide(3f);
+        this.view.hide(2f);
     }
 
     private void _onFinishedRepetitions(object sender, EventArgs e)
     {
 
-        this.view.text.text = "COMPLETED";
-        this.view.text.fontSize += 10;
     }
 
     #endregion

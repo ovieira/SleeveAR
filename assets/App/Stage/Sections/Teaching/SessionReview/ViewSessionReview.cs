@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -54,7 +55,7 @@ public class ViewSessionReview : MonoBehaviour {
     }
 
     public int logid;
-
+    public event EventHandler<EventArgs> onFinishedDrawing ;
    public IEnumerator updateSessionsFloorArc(float wait) {
        int i = 0;
        //int logid = 0;
@@ -65,11 +66,15 @@ public class ViewSessionReview : MonoBehaviour {
                //start score
 
                if (ServiceTeaching.instance.count < 3)
-                   ServiceTeaching.instance.startOver();
+               {
+                   //ServiceTeaching.instance.startOver();
+                   
+               }
                else
                {
                    //showScores....
                }
+               Utils.LaunchEvent(this, onFinishedDrawing);
                StopCoroutine("updateSessionsFloorArc");
                yield return null;
            }

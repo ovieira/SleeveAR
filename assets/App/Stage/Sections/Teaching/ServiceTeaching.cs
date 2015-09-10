@@ -98,6 +98,26 @@ public class ServiceTeaching {
 
     #endregion
 
+    #region Score
+
+    public event EventHandler<EventArgs> onChangedCurrentScore; 
+    protected float _currentScore;
+    public float currentScore
+    {
+        get { return this._currentScore; }
+        set
+        {
+            this._currentScore = value;
+            this.scores.Add(value);
+            Utils.LaunchEvent(this, onChangedCurrentScore);
+        }
+    }
+
+
+    public List<float> scores = new List<float>(3);
+
+    #endregion
+
     #region Singleton
 
     private static ServiceTeaching _instance;
