@@ -9,7 +9,8 @@ public class ViewElbowAngle : MonoBehaviour {
     void Start() {
 
         circleSpriteRenderer.color = Color.red;
-
+        setAlpha(rotateLeftSprite, 0f);
+        setAlpha(rotateRightSprite, 0f);
     }
 
     // Update is called once per frame
@@ -28,8 +29,8 @@ public class ViewElbowAngle : MonoBehaviour {
         //this.transform.eulerAngles = new Vector3(0, -90 + _extraAngle, 0);
         this.container.localEulerAngles = new Vector3(0, -90 + _extraAngle, 0);
 
-        //this.rotateLeft.transform.Rotate(Vector3.up, -Time.deltaTime);
-        //this.rotateLeft.transform.Rotate(Vector3.up, Time.deltaTime);
+        this.rotateLeft.transform.Rotate(Vector3.up, -Time.deltaTime*15);
+        this.rotateRight.transform.Rotate(Vector3.up, Time.deltaTime*15);
     } 
     #endregion
 
@@ -60,9 +61,54 @@ public class ViewElbowAngle : MonoBehaviour {
 
     #endregion
 
+    private bool showingLeft, showingRight;
+
     protected float computeLerp() {
-        float diff = Mathf.Abs(target - current);
-        return Utils.Map(diff, 0, target, 0, 1);
+        float diff = target - current;
+        float absDiff = Mathf.Abs(diff);
+        Debug.Log(diff);
+        //if (diff > .3f && !showingLeft)
+        //{
+        //    showingLeft = true;
+
+        //    showLeft();
+        //}
+        //else if (diff < -.3f && !showingRight)
+        //{
+        //    showingRight = true;
+        //    showRight();
+        //}
+        //else
+        //{
+        //    hideBoth();
+        //}
+
+        if (diff > 5f ) {
+            setAlpha(rotateLeftSprite, 1f);
+            setAlpha(rotateRightSprite, 0f);
+        }
+        else if (diff < -5f) {
+            setAlpha(rotateLeftSprite, 0f);
+            setAlpha(rotateRightSprite, 1f);
+        }
+        else
+        {
+            setAlpha(rotateLeftSprite, 0f);
+            setAlpha(rotateRightSprite, 0f);
+        }
+        var map = Utils.Map(absDiff, 0, target, 0, 1);
+        return map;
+    }
+
+    private void setAlpha(SpriteRenderer sr, float alpha) {
+        sr.color = new Color(sr.color.r,sr.color.g, sr.color.b, alpha);
+    }
+
+    private void hideBoth()
+    {
+        showingRight = showingLeft = false;
+        this.hideRight();
+        this.hideLeft();
     }
 
     #region Container
@@ -74,17 +120,21 @@ public class ViewElbowAngle : MonoBehaviour {
     #region Rotate Arrows
 
     public GameObject rotateLeft, rotateRight;
+    public SpriteRenderer rotateLeftSprite, rotateRightSprite;
 
     protected void showLeft()
     {
-        Hashtable hash = Utils.HashValueTo(this.name + "showleft", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
+        showingRight = false;
+        this.hideRight();
+        Hashtable hash = Utils.HashValueTo(this.name + "showleft", rotateLeftSprite.color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
             "oncomplete");
 
         iTween.ValueTo(this.gameObject,hash);
     }
 
     protected void hideLeft() {
-        Hashtable hash = Utils.HashValueTo(this.name + "hideleft", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
+
+        Hashtable hash = Utils.HashValueTo(this.name + "hideleft", rotateLeftSprite.color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateLeft",
             "oncomplete");
         iTween.ValueTo(this.gameObject, hash);
 
@@ -92,29 +142,31 @@ public class ViewElbowAngle : MonoBehaviour {
 
     protected void onUpdateLeft(float progress)
     {
-        var sr = this.rotateLeft.GetComponent<SpriteRenderer>();
-        var colorsr = sr.color;
-        sr.color = new Color(colorsr.r,colorsr.g,colorsr.b,progress);
+        var colorsr = rotateLeftSprite.color;
+        rotateLeftSprite.color = new Color(colorsr.r, colorsr.g, colorsr.b, progress);
     }
 
-    protected void showRight() {
-        Hashtable hash = Utils.HashValueTo(this.name + "showright", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
+    protected void showRight()
+    {
+        showingLeft = false;
+        this.hideLeft();
+        Hashtable hash = Utils.HashValueTo(this.name + "showright", rotateRightSprite.color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
             "oncomplete");
         iTween.ValueTo(this.gameObject, hash);
 
     }
 
     protected void hideRight() {
-        Hashtable hash = Utils.HashValueTo(this.name + "hideright", this.rotateLeft.GetComponent<SpriteRenderer>().color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
+
+        Hashtable hash = Utils.HashValueTo(this.name + "hideright", rotateRightSprite.color.a, 1f, .5f, 0, iTween.EaseType.easeInOutSine, "onUpdateRight",
             "oncomplete");
         iTween.ValueTo(this.gameObject, hash);
 
     }
 
     protected void onUpdateRight(float progress) {
-        var sr = this.rotateRight.GetComponent<SpriteRenderer>();
-        var colorsr = sr.color;
-        sr.color = new Color(colorsr.r, colorsr.g, colorsr.b, progress);
+        var colorsr = rotateRightSprite.color;
+        rotateRightSprite.color = new Color(colorsr.r, colorsr.g, colorsr.b, progress);
     }
     #endregion
 }
