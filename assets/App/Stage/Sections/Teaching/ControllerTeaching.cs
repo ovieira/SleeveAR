@@ -66,6 +66,7 @@ public class ControllerTeaching : Controller
     private void _onStart(object sender, EventArgs e)
     {
         serviceTeaching.currentLog = new Log();
+        serviceTeaching.initialLogTime = Time.time;
         //instantiatePrefab(initialPositionGuidance);
         // Utils.AddChildren(this.transform, initialPositionGuidance);
     }
@@ -93,6 +94,8 @@ public class ControllerTeaching : Controller
         serviceTeaching.initialPositionCompleted = false;
         //serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.currentLog = new Log();
+        serviceTeaching.initialLogTime = Time.time;
+
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, initialPositionGuidance);
         serviceExercise.start = true;
@@ -110,6 +113,9 @@ public class ControllerTeaching : Controller
         {
             return;
         }
+        float totalTime = Time.time - serviceTeaching.initialLogTime;
+        serviceTeaching.currentLog.time = totalTime;
+        Debug.Log("Total Time: " + totalTime);
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         Utils.AddChildren(this.transform, SessionReviewPrefab);
 
@@ -172,9 +178,9 @@ public class ControllerTeaching : Controller
 
     #endregion
 
+    #region Context menu debug
     [ContextMenu("printSession")]
-    public void print()
-    {
+    public void print() {
         serviceTeaching.session.print();
     }
 
@@ -184,10 +190,9 @@ public class ControllerTeaching : Controller
 
         var jg = serviceTracking.getCurrentJointGroup();
 
-        for (int i = 0; i < 100; i++)
-        {
-            var pos = new Vector3(i,i,i);
-            log.AddEntry(jg,pos);
+        for (int i = 0; i < 100; i++) {
+            var pos = new Vector3(i, i, i);
+            log.AddEntry(jg, pos);
         }
         //log.print();
         serviceTeaching.currentLog = log;
@@ -212,5 +217,6 @@ public class ControllerTeaching : Controller
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.currentLog = new Log();
         serviceTeaching.session.print();
-    }
+    } 
+    #endregion
 }

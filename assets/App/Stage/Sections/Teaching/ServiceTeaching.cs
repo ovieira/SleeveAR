@@ -90,12 +90,13 @@ public class ServiceTeaching {
 
     #endregion
 
-    #region History
+    #region Sessions
 
     public Session session = new Session();
 
     public Log currentLog = new Log();
 
+    public float initialLogTime;
     #endregion
 
     #region Score

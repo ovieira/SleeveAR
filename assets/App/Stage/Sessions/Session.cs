@@ -37,6 +37,8 @@ public class Log : List<Entry>
 
     public int invalidCount { get; set; }
 
+    public float time { get; set; }
+
     public void AddEntry(Entry e)
     {
         this.Add(e);

@@ -66,22 +66,6 @@ public class ViewElbowAngle : MonoBehaviour {
     protected float computeLerp() {
         float diff = target - current;
         float absDiff = Mathf.Abs(diff);
-        Debug.Log(diff);
-        //if (diff > .3f && !showingLeft)
-        //{
-        //    showingLeft = true;
-
-        //    showLeft();
-        //}
-        //else if (diff < -.3f && !showingRight)
-        //{
-        //    showingRight = true;
-        //    showRight();
-        //}
-        //else
-        //{
-        //    hideBoth();
-        //}
 
         if (diff > 5f ) {
             setAlpha(rotateLeftSprite, 1f);
