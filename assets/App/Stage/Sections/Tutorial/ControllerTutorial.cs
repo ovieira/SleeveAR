@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class ControllerTutorial : Controller {
 
@@ -102,25 +103,38 @@ public class ControllerTutorial : Controller {
         }
     }
 
-    private void checkExercise(JointsGroup jg, JointsGroup goal, ServiceTutorial.TutorialType _type) {
+    public float timer = 3f;
+    private void checkExercise(JointsGroup jg, JointsGroup goal, ServiceTutorial.TutorialType _type)
+    {
+        if (timer <= 0) { nextDemo();}
         switch (_type) {
             case ServiceTutorial.TutorialType.FOREARM:
                 if (checkForeArmAngle(jg, goal, 3))
                 {
-                    ServiceTutorial.instance.count++;
+                    timer -= Time.deltaTime;
+
+                }
+                else
+                {
+                    timer = 3f;
                 }
                 break;
             case ServiceTutorial.TutorialType.UPPERARM:
                 if (CheckUpperArmDirection(jg, goal, 3)) {
-                    ServiceTutorial.instance.count++;
-
+                    timer -= Time.deltaTime;
+                }
+                else {
+                    timer = 3f;
                 }
                 break;
             case ServiceTutorial.TutorialType.BOTH:
                 if (checkForeArmAngle(jg, goal, 3) &&
                     CheckUpperArmDirection(jg, goal, 3)) {
-                        ServiceTutorial.instance.count++;
+                        timer -= Time.deltaTime;
 
+                }
+                else {
+                    timer = 3f;
                 }
                 break;
             default:
@@ -129,6 +143,10 @@ public class ControllerTutorial : Controller {
         }
     }
 
+    protected void nextDemo()
+    {
+        ServiceTutorial.instance.count++;
+    }
 
     private bool checkForeArmAngle(JointsGroup a, JointsGroup b, float t) {
         return Utils.IsApproximately(a.angle, b.angle, t);
