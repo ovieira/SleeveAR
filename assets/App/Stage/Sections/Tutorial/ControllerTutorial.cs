@@ -26,14 +26,14 @@ public class ControllerTutorial : Controller {
     #region Service Tutorial
 
     private void _onCountChanged(object sender, System.EventArgs e) {
-
         StopCoroutine("DemoExercise");
         if (this.count <= ServiceTutorial.instance.count) {
             Debug.Log("Tutorial Finished");
             serviceSection.selected = ServiceSection.Section.LEARNING;
         }
-        else {
-
+        else
+        {
+            timer = 3f;
             if (ServiceTutorial.instance.count <= 3)
             {
                 ServiceTutorial.instance.selected = ServiceTutorial.TutorialType.FOREARM;
@@ -96,7 +96,9 @@ public class ControllerTutorial : Controller {
                 break;
             case ServiceTutorial.TutorialType.BOTH:
                 Utils.AddChildren(this.exerciseContainer.transform, this.bothPrefab);
-                Utils.AddChildren(this.feedbackContainer.transform, this.bothFeedback);
+                Utils.AddChildren(this.feedbackContainer.transform, this.foreFeedback);
+                Utils.AddChildren(this.feedbackContainer.transform, this.upperFeedback);
+
                 break;
             default:
                 break;
