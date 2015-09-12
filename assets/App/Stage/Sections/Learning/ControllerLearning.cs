@@ -76,7 +76,7 @@ public class ControllerLearning : Controller {
 
     private void _onSelectedExerciseChanged(object sender, EventArgs e) {
         exerciseModel = serviceExercise.selected;
-
+        
         StopAllCoroutines();
         StartCoroutine(UpdateReplayJoints());
 

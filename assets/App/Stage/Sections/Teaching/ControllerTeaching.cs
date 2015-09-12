@@ -21,15 +21,9 @@ public class ControllerTeaching : Controller
     {
         base.Start();
 
-        serviceTeaching.onStartOver += _onStartOver;
-        serviceTeaching.initialPositionCompleted = false;
-        serviceTeaching.onInitialPositionCompleted += _onInitialPositionCompleted;
-        serviceExercise.onSelectedExerciseChanged += _onSelectedExerciseChanged;
-        serviceExercise.onStart += _onStart;
-        serviceExercise.onCurrentIndexChanged += _onCurrentIndexChanged;
-        serviceTeaching.onFailingExerciseChanged += _onFailingExerciseChanged;
-        serviceExercise.onFinishedExercise += _onFinishedExercise;
-        serviceTeaching.onFinishedRepetitions += _onFinishedRepetitions;
+        createServiceTeaching();
+        createServiceExercise();
+        serviceTeaching.count = 0;
         Utils.DestroyAllChildren(transform);
         if (serviceExercise.selected.parts.Count == 0)
         {
@@ -40,18 +34,43 @@ public class ControllerTeaching : Controller
         
     }
 
+    private void createServiceExercise() {
+        serviceExercise.onSelectedExerciseChanged += _onSelectedExerciseChanged;
+        serviceExercise.onStart += _onStart;
+        serviceExercise.onCurrentIndexChanged += _onCurrentIndexChanged;
+        serviceExercise.onFinishedExercise += _onFinishedExercise;
+    }
+
+    private void createServiceTeaching() {
+        serviceTeaching.onStartOver += _onStartOver;
+        serviceTeaching.initialPositionCompleted = false;
+        serviceTeaching.onInitialPositionCompleted += _onInitialPositionCompleted;
+        serviceTeaching.onFailingExerciseChanged += _onFailingExerciseChanged;
+        serviceTeaching.onFinishedRepetitions += _onFinishedRepetitions;
+    }
+
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
+        destroyServiceTeaching();
+        destroyServiceExercise();
+        
+
+    }
+
+    private void destroyServiceExercise() {
         serviceExercise.onFinishedExercise -= _onFinishedExercise;
-        serviceTeaching.onFailingExerciseChanged -= _onFailingExerciseChanged;
         serviceExercise.onCurrentIndexChanged -= _onCurrentIndexChanged;
         serviceExercise.onStart -= _onStart;
         serviceExercise.onSelectedExerciseChanged -= _onSelectedExerciseChanged;
+    }
+
+    private void destroyServiceTeaching() {
+        serviceTeaching.onFailingExerciseChanged -= _onFailingExerciseChanged;
         serviceTeaching.onInitialPositionCompleted -= _onInitialPositionCompleted;
         serviceTeaching.onFinishedRepetitions -= this._onFinishedRepetitions;
-
+        serviceTeaching.onStartOver -= _onStartOver;
     }
 
     #endregion
@@ -87,18 +106,32 @@ public class ControllerTeaching : Controller
 
     #region Service Teaching
 
+    public int exerciseRepetitions;
     private void _onStartOver(object sender, EventArgs e)
     {
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
-        serviceTeaching.initialPositionCompleted = false;
-        //serviceTeaching.session.Add(serviceTeaching.currentLog);
-        serviceTeaching.currentLog = new Log();
-        serviceTeaching.initialLogTime = Time.time;
-
         Utils.DestroyAllChildren(transform);
-        Utils.AddChildren(transform, initialPositionGuidance);
-        serviceExercise.start = true;
+       
+
+        if (serviceTeaching.count >= this.exerciseRepetitions)
+        {
+            Debug.Log("Requesitar ID");
+            Debug.Log("Gravar session");
+            serviceExercise.start = false;
+            
+            serviceSection.selected = ServiceSection.Section.LEARNING;
+        }
+        else
+        {
+
+            //serviceTeaching.session.Add(serviceTeaching.currentLog);
+            serviceTeaching.currentLog = new Log();
+            serviceTeaching.initialLogTime = Time.time;
+            serviceExercise.start = true;
+            serviceTeaching.initialPositionCompleted = false;
+            Utils.AddChildren(transform, initialPositionGuidance);
+        }
     }
 
     private void _onFinishedExercise(object sender, EventArgs e)
@@ -108,16 +141,19 @@ public class ControllerTeaching : Controller
         CancelInvoke("ResetMovement");
         Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;
-
-        if (serviceTeaching.count >= 3)
-        {
-            return;
-        }
         float totalTime = Time.time - serviceTeaching.initialLogTime;
         serviceTeaching.currentLog.time = totalTime;
         Debug.Log("Total Time: " + totalTime);
         serviceTeaching.session.Add(serviceTeaching.currentLog);
-        Utils.AddChildren(this.transform, SessionReviewPrefab);
+        if (serviceTeaching.count < 3)
+        {
+            Utils.AddChildren(this.transform, SessionReviewPrefab);
+        }
+        else
+        {
+            //TODO: review of all recent tries?
+        }
+        
 
         //serviceTeaching.startOver();
     }

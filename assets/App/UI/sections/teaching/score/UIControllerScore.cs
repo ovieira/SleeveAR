@@ -38,7 +38,7 @@ public class UIControllerScore : Controller {
     }
 
     private void _onCompletedScoreBoard(object sender, System.EventArgs e) {
-        Invoke("startOver", 5f);
+        Invoke("startOver", 2f);
     }
 
     protected void startOver()

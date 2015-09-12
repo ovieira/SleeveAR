@@ -21,6 +21,7 @@ public class ControllerTutorial : Controller {
         base.OnDestroy();
         ServiceTutorial.instance.onCountChanged -= this._onCountChanged;
         StopAllCoroutines();
+        serviceExercise.selected = null;
     }
     #endregion
 
@@ -30,6 +31,7 @@ public class ControllerTutorial : Controller {
         StopCoroutine("DemoExercise");
         if (this.count <= ServiceTutorial.instance.count) {
             Debug.Log("Tutorial Finished");
+            serviceExercise.selected = null;
             serviceSection.selected = ServiceSection.Section.LEARNING;
         }
         else

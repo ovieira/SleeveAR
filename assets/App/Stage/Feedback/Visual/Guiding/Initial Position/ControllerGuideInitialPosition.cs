@@ -8,7 +8,7 @@ public class ControllerGuideInitialPosition : Controller {
         base.Start();
         ServiceGuideInitialPosition.instance.onModeChanged += _onModeChanged;
         serviceExercise.onStart += _onStart;
-
+        ServiceGuideInitialPosition.instance.selected = ServiceGuideInitialPosition.Mode.Bidirectional;
         if (serviceExercise.start)
         {
             updateChildren();

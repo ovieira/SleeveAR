@@ -17,17 +17,25 @@ public class ServiceExercise {
             return _loadedExerciseModel;
         }
         set {
-            if (value != null && value != _loadedExerciseModel) {
+            if (value != null && value != _loadedExerciseModel)
+            {
                 _loadedExerciseModel = value;
                 this.count = value.exerciseModel.Count;
                 this.index = 0;
                 currentJointsGroup = _loadedExerciseModel.exerciseModel[index];
                 this.partIndex = 0;
 
-                if (_loadedExerciseModel.parts.Count > 0) {
-                    currentPart = _loadedExerciseModel.parts[this.partIndex]; 
+                if (_loadedExerciseModel.parts.Count > 0)
+                {
+                    currentPart = _loadedExerciseModel.parts[this.partIndex];
                 }
                 Utils.LaunchEvent(this, onSelectedExerciseChanged);
+            }
+            else
+            {
+                if(value == null)
+                _loadedExerciseModel = null;
+
             }
         }
     }
