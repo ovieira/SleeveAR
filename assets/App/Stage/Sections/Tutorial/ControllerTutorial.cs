@@ -13,6 +13,7 @@ public class ControllerTutorial : Controller {
 
     protected override void Start() {
         base.Start();
+        timer = 3f;
         StartCoroutine("DemoExercise");
     }
 
@@ -105,7 +106,7 @@ public class ControllerTutorial : Controller {
         }
     }
 
-    public float timer = 3f;
+    public float timer;
     private void checkExercise(JointsGroup jg, JointsGroup goal, ServiceTutorial.TutorialType _type)
     {
         if (timer <= 0) { nextDemo();}
