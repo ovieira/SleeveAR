@@ -31,4 +31,13 @@ public class UIButton : MonoBehaviour {
     }
 
     #endregion
+
+    #region Text
+
+    public Text text
+    {
+        get { return this.GetComponentInChildren<Text>(); }
+    } 
+
+    #endregion
 }
