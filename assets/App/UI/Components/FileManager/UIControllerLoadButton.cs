@@ -19,6 +19,12 @@ public class UIControllerLoadButton : MonoBehaviour {
     private void _onButtonClicked()
     {
         string filename = InputText.text;
+
+        if (filename == "") {
+            Debug.LogWarning("Please write a filename to load");
+            return;
+        }
+
         ExerciseModel exerciseModel = ServiceFileManager.instance.Load(filename);
         if (exerciseModel != null)
         {
