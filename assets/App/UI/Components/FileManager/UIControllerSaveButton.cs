@@ -25,7 +25,7 @@ public class UIControllerSaveButton : MonoBehaviour {
             return;
         }
 
-        ServiceFileManager.instance.Save(_filename, _exercice);
+        ServiceFileManager.instance.SaveExerciseModel(_filename, _exercice);
     } 
     #endregion
 	

@@ -39,7 +39,7 @@ public class UIControllerShortcuts : Controller {
         var button = (UIButton) sender;
         int i = Int32.Parse(button.text.text);
         var filename = filenames[i - 1];
-        ExerciseModel exerciseModel = ServiceFileManager.instance.Load(filename);
+        ExerciseModel exerciseModel = ServiceFileManager.instance.LoadExerciseModel(filename);
         if (exerciseModel != null) {
             ServiceExercise.instance.selected = exerciseModel;
             exerciseModel.print();

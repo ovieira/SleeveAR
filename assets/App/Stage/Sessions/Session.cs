@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
+using FullSerializer;
 
 public class Entry
 {
@@ -18,7 +18,10 @@ public class Entry
         this.jointsGroup = jointsGroup;
     }
 
+    [fsProperty]
     public JointsGroup jointsGroup { get; set; }
+
+    [fsProperty]
     public Vector3 floorArcPosition { get; set; }
 
     public void print()
@@ -29,7 +32,6 @@ public class Entry
 
 public class Log : List<Entry>
 {
-    private Log l;
 
     public string logID { get; set; }
 

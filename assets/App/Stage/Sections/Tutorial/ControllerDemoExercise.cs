@@ -10,7 +10,7 @@ public class ControllerDemoExercise : Controller {
 
 	    int random = UnityEngine.Random.Range(0, exercises.Length);
 
-	    ExerciseModel em = ServiceFileManager.instance.Load(exercises[random]);
+	    ExerciseModel em = ServiceFileManager.instance.LoadExerciseModel(exercises[random]);
 
 	    ServiceTutorial.instance.goalJointsGroup = em.exerciseModel[0];
 

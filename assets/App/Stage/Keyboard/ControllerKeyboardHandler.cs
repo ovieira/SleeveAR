@@ -22,7 +22,7 @@ public class ControllerKeyboardHandler : Controller {
         {
             
 
-            ExerciseModel exerciseModel = ServiceFileManager.instance.Load("front2");
+            ExerciseModel exerciseModel = ServiceFileManager.instance.LoadExerciseModel("front2");
             if (exerciseModel != null) {
                 ServiceExercise.instance.selected = exerciseModel;
                 exerciseModel.print();

@@ -25,7 +25,7 @@ public class UIControllerLoadButton : MonoBehaviour {
             return;
         }
 
-        ExerciseModel exerciseModel = ServiceFileManager.instance.Load(filename);
+        ExerciseModel exerciseModel = ServiceFileManager.instance.LoadExerciseModel(filename);
         if (exerciseModel != null)
         {
             ServiceExercise.instance.selected = exerciseModel;

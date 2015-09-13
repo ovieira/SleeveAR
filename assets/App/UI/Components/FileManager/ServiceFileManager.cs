@@ -5,8 +5,8 @@ using FullSerializer;
 
 public class ServiceFileManager {
 
-    #region Save
-    public void Save(string _fileName, ExerciseModel exerciseModel) {
+    #region SaveExerciseModel
+    public void SaveExerciseModel(string _fileName, ExerciseModel exerciseModel) {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         try {
             if (File.Exists(fileName + ".json")) {
@@ -34,8 +34,8 @@ public class ServiceFileManager {
     } 
     #endregion
 
-    #region Load
-    public ExerciseModel Load(string _fileName) {
+    #region LoadExerciseModel
+    public ExerciseModel LoadExerciseModel(string _fileName) {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         ExerciseModel exerciseModel;
         Debug.Log("Loading file : " + fileName);
