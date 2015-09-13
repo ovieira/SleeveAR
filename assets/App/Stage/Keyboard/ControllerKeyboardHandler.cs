@@ -2,33 +2,22 @@
 using System.Collections;
 
 public class ControllerKeyboardHandler : Controller {
-    
+
 
     #region LifeCycle
 
-    void Update()
-    {
-        if (Input.GetKeyDown(enableTracking))
-        {
+    void Update() {
+        if (Input.GetKeyDown(enableTracking)) {
             serviceTracking.tracking ^= true;
         }
 
-        if (Input.GetKeyDown(projectFloorJoints))
-        {
-            Debug.Log("not implemented");
+        if (Input.GetKeyDown(startRec)) {
+            ServiceMedia.instance.Record();
+        }
+        if (Input.GetKeyDown(stopRec)) {
+            ServiceMedia.instance.Stop();
         }
 
-        if (Input.GetKeyDown(test))
-        {
-            
-
-            ExerciseModel exerciseModel = ServiceFileManager.instance.LoadExerciseModel("front2");
-            if (exerciseModel != null) {
-                ServiceExercise.instance.selected = exerciseModel;
-                exerciseModel.print();
-            }
-            
-        }
     }
 
     #endregion
@@ -38,8 +27,8 @@ public class ControllerKeyboardHandler : Controller {
     #region Keys
 
     public KeyCode enableTracking;
-    public KeyCode projectFloorJoints;
-    public KeyCode test;
+    public KeyCode startRec;
+    public KeyCode stopRec;
 
     #endregion
 }

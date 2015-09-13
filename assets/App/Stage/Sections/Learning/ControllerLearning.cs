@@ -141,9 +141,15 @@ public class ControllerLearning : Controller {
 
     #region Recording
 
+    public float recordingTime;
+
     private void Record() {
-        if (Time.time - startTime >= 10) {
-            StopRecording();
+        if (recordingTime != 0f)
+        {
+            if (Time.time - startTime >= recordingTime)
+            {
+                StopRecording();
+            }
         }
         exerciseModel.Add(ServiceTracking.instance.getCurrentJointGroup());
         Debug.Log("Recording Data");
