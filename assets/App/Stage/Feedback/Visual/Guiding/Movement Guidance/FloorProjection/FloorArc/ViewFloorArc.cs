@@ -70,7 +70,7 @@ public class ViewFloorArc : MonoBehaviour {
         /**/
         var dottednextPos = currentLineRenderer.transform.position + Vector3.up + currentupperarmdir * (distance + heightDiff);
         /**/
-        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime * 2);
+        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime);
         this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position,dottednextPos, Time.deltaTime*5);
         historyList.Add(dottednextPos);
         
