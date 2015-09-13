@@ -7,49 +7,38 @@ using FullSerializer;
 
 public class Entry
 {
-    public Entry(JointsGroup jointsGroup, Vector3 floorArcPosition)
-    {
-        this.jointsGroup = jointsGroup;
-        this.floorArcPosition = floorArcPosition;
-    }
 
     public Entry(JointsGroup jointsGroup)
     {
         this.jointsGroup = jointsGroup;
     }
 
-    [fsProperty]
+    //[fsProperty]
     public JointsGroup jointsGroup { get; set; }
 
-    [fsProperty]
-    public Vector3 floorArcPosition { get; set; }
-
+    public int LOL;
     public void print()
     {
         //Debug.Log(floorArcPosition);
     }
 }
 
-public class Log : List<Entry>
+public class Log
 {
 
-    public string logID { get; set; }
+    public List<Entry> entries = new List<Entry>();
 
-    public int validCount { get; set; }
+     public string logID;
 
-    public int invalidCount { get; set; }
+    public int validCount;
 
-    public float time { get; set; }
+     public int invalidCount;
+
+     public float time;
 
     public void AddEntry(Entry e)
     {
-        this.Add(e);
-    }
-
-    public void AddEntry(JointsGroup jg, Vector3 floorArcPos)
-    {
-        var entry = new Entry(jg,floorArcPos);
-        AddEntry(entry);
+        this.entries.Add(e);
     }
 
     public void AddEntry(JointsGroup jg)
@@ -59,7 +48,7 @@ public class Log : List<Entry>
     }
     public void print()
     {
-        Debug.Log("log " + logID + ":" + this.Count + " entries");
+        Debug.Log("log " + logID + ":" + this.entries.Count + " entries");
     }
 
     private void printEntry(Entry obj) {
@@ -67,23 +56,35 @@ public class Log : List<Entry>
     }
 }
 
-
-public class Session : List<Log>
+public class Session
 {
-    public string sessionID { get; set;}
-    public string exerciseID { get; set;}
-    public float score { get; set; }
+
+    public List<Log> logs = new List<Log>();
+
+    public string sessionID;
+
+    public string exerciseID;
+
+    public float score;
 
     public void print()
     {
-        ForEach(printLog);
+        //ForEach(printLog);
     }
 
     private void printLog(Log obj) {
         obj.print();
     }
 
-   
+    public void Add(Log l)
+    {
+        logs.Add(l);
+    }
+
+    public Log Get(int i)
+    {
+        return logs[i];
+    }
 }
 
 

@@ -227,8 +227,7 @@ public class ControllerTeaching : Controller
         var jg = serviceTracking.getCurrentJointGroup();
 
         for (int i = 0; i < 100; i++) {
-            var pos = new Vector3(i, i, i);
-            log.AddEntry(jg, pos);
+            log.AddEntry(jg);
         }
         //log.print();
         serviceTeaching.currentLog = log;
@@ -241,10 +240,14 @@ public class ControllerTeaching : Controller
         var session = new Session();
         var jg = serviceTracking.getCurrentJointGroup();
 
-        for (int i = 0; i < 2000; i++) {
+        for (int i = 0; i < 10; i++) {
             var pos = new Vector3(i, i, i);
-            serviceTeaching.currentLog.AddEntry(jg, pos);
+            serviceTeaching.currentLog.AddEntry(jg);
         }
+        serviceTeaching.currentLog.logID = "LOL69";
+        serviceTeaching.currentLog.invalidCount = 44;
+        serviceTeaching.currentLog.validCount = 99;
+        serviceTeaching.currentLog.time = 1.23f;
         //serviceTeaching.currentLog.print();
         //serviceTeaching.currentLog = log;
 
@@ -253,6 +256,13 @@ public class ControllerTeaching : Controller
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.currentLog = new Log();
         serviceTeaching.session.print();
-    } 
+    }
+
+    [ContextMenu("savesession")]
+    public void saveSession()
+    {
+        createSession();
+        ServiceFileManager.instance.SaveSession("testeSession", serviceTeaching.session);
+    }
     #endregion
 }

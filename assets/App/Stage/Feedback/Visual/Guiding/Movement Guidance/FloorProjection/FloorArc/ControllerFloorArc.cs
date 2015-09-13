@@ -32,7 +32,7 @@ public class ControllerFloorArc : Controller {
 
     protected void capture()
     {
-        serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup(), this.view.dottedCircleGuideLine.transform.position - this.view.basePosition);
+        serviceTeaching.currentLog.AddEntry(serviceTracking.getCurrentJointGroup());
         
     }
 

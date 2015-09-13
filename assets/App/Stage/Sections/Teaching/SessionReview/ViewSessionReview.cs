@@ -61,7 +61,7 @@ public class ViewSessionReview : MonoBehaviour {
        //int logid = 0;
        while (true) {
            i++;
-           if (i >= session[logid].Count) {
+           if (i >= session.logs[logid].entries.Count) {
                Utils.LaunchEvent(this, onFinishedDrawing);
                StopCoroutine("updateSessionsFloorArc");
                yield return null;
@@ -69,7 +69,7 @@ public class ViewSessionReview : MonoBehaviour {
            currentLineRenderer.SetVertexCount(i);
            for (int j = 0; j < i; j++)
            {
-               var pos = session[logid][j].jointsGroup.getUpperArmDirection() * distance;
+               var pos = session.logs[logid].entries[j].jointsGroup.getUpperArmDirection() * distance;
                currentLineRenderer.SetPosition(j, pos);
            }
            

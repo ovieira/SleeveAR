@@ -42,7 +42,7 @@ public class ControllerSessionReview : Controller {
 
     private void _onFinishedDrawing(object sender, System.EventArgs e)
     {
-        var log = serviceTeaching.session[serviceTeaching.count - 1];
+        var log = serviceTeaching.session.logs[serviceTeaching.count - 1];
         var score = Utils.Map(log.validCount, 0, log.validCount+(log.invalidCount*2), 0, 100);
         serviceTeaching.currentScore = score;
         Debug.Log("SCORE: " + score);

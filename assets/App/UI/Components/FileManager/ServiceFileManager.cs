@@ -33,6 +33,35 @@ public class ServiceFileManager {
     }
     #endregion
 
+    #region Sessions
+
+    public void SaveSession(string _fileName, Session session) {
+        string fileName = Path.Combine(Application.dataPath + "/Sessions", _fileName);
+        try {
+            if (File.Exists(fileName + ".json")) {
+                int i = 1;
+                while (File.Exists(fileName + i + ".json")) {
+                    i++;
+                }
+                fileName = fileName + i;
+            }
+            Save(fileName, session);
+        }
+        catch (IOException e) {
+            Debug.Log(e.Message);
+        }
+    }
+
+    public Session LoadSession(string _fileName) {
+        string fileName = Path.Combine(Application.dataPath + "/Sessions", _fileName);
+        Session session;
+        Debug.Log("Loading file : " + fileName);
+        session = Load<Session>(fileName);
+        return session;
+    }
+
+    #endregion
+
     #region Generic Save/Load
 
     public static T Load<T>(string filename)
