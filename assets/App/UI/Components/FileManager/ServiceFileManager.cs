@@ -35,6 +35,12 @@ public class ServiceFileManager {
 
     #region Sessions
 
+    public void SaveSession(Session session)
+    {
+        string filename = session.sessionID + "_" + session.exerciseID;
+        SaveSession(filename,session);
+    }
+
     public void SaveSession(string _fileName, Session session) {
         string fileName = Path.Combine(Application.dataPath + "/Sessions", _fileName);
         try {

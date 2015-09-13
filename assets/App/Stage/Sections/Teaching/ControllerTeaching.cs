@@ -123,7 +123,7 @@ public class ControllerTeaching : Controller
             serviceTeaching.session.calculateSessionScore();
             serviceTeaching.session.sessionID = sessionID;
             serviceTeaching.session.exerciseID = serviceExercise.selected.exerciseID;
-            ServiceFileManager.instance.SaveSession("session", serviceTeaching.session);
+            ServiceFileManager.instance.SaveSession(serviceTeaching.session);
             Debug.Log("logs count"+serviceTeaching.session.logs.Count);
             serviceSection.selected = ServiceSection.Section.LEARNING;
         }
