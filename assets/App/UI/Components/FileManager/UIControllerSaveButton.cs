@@ -18,12 +18,12 @@ public class UIControllerSaveButton : MonoBehaviour {
     private void _onButtonClicked() {
         ExerciseModel _exercice = ServiceExercise.instance.selected;
         String _filename = InputText.text;
-
         if (_filename == "")
         {
             Debug.LogWarning("Please write a filename to save");
             return;
         }
+        _exercice.exerciseID = _filename;
 
         ServiceFileManager.instance.SaveExerciseModel(_filename, _exercice);
     } 

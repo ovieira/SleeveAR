@@ -49,7 +49,7 @@ public class ViewColorArm : MonoBehaviour {
 
     private void updateForeArmColor()
     {
-        float anglediff = current.angle - target.angle;
+        //float anglediff = current.angle - target.angle;
         foreArmColor = Color.Lerp(correctColor, wrongColor, computeLerp());
 
         foreArm.SetColors(foreArmColor, foreArmColor);

@@ -7,7 +7,7 @@ using UnityEngine;
 public class ExerciseModel
 {
     #region Label
-    public String label; 
+    public String exerciseID; 
     #endregion
 
     #region Exercise Model List
@@ -71,7 +71,7 @@ public class ExerciseModel
 
     public void print()
     {
-        Debug.Log("Name: " + this.label);
+        Debug.Log("Name: " + this.exerciseID);
         Debug.Log("Entries: " + this.exerciseModel.Count );
         Debug.Log("Exercise Parts: ");
         for (int i = 0; i < parts.Count; i++)

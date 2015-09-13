@@ -36,7 +36,9 @@ public class ControllerSessionReview : Controller {
         //}
         this.view.upperArmDirectionsList = new List<Vector3>(_exerciseModel.GetUpperArmDirectionList());
         this.view.session = serviceTeaching.session;
-        this.view.logid = serviceTeaching.count - 1;
+        int logid = serviceTeaching.count - 1;
+        this.view.logid = logid;
+        serviceTeaching.session.logs[logid].logID = logid.ToString();
         this.view.StartCoroutine("updateViewFloorArc",.01f);
     }
 
@@ -45,6 +47,7 @@ public class ControllerSessionReview : Controller {
         var log = serviceTeaching.session.logs[serviceTeaching.count - 1];
         var score = Utils.Map(log.validCount, 0, log.validCount+(log.invalidCount*2), 0, 100);
         serviceTeaching.currentScore = score;
+        serviceTeaching.session.logs[serviceTeaching.count - 1].logScore = score;
         Debug.Log("SCORE: " + score);
     }
 

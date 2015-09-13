@@ -61,7 +61,7 @@ public class ControllerTutorial : Controller {
     IEnumerator DemoExercise() {
         ServiceTutorial.TutorialType _type = ServiceTutorial.instance.selected;
 
-        JointsGroup currentjg, goaljg;
+        JointsGroup currentjg;
         Utils.DestroyAllChildren(this.exerciseContainer.transform);
         Utils.DestroyAllChildren(this.feedbackContainer.transform);
         float time = 1f;

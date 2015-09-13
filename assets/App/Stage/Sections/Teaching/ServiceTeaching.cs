@@ -92,6 +92,7 @@ public class ServiceTeaching {
 
     #region Sessions
 
+
     public Session session = new Session();
 
     public Log currentLog = new Log();

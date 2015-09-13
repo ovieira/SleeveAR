@@ -1,22 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using FullSerializer;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Entry
 {
-
     public Entry(JointsGroup jointsGroup)
     {
         this.jointsGroup = jointsGroup;
     }
 
-    //[fsProperty]
     public JointsGroup jointsGroup { get; set; }
 
-    public int LOL;
     public void print()
     {
         //Debug.Log(floorArcPosition);
@@ -25,20 +18,17 @@ public class Entry
 
 public class Log
 {
-
     public List<Entry> entries = new List<Entry>();
-
-     public string logID;
-
+    public string logID;
+    public float totaltime;
+    public float initialPositionTime;
     public int validCount;
-
-     public int invalidCount;
-
-     public float time;
+    public int invalidCount;
+    public float logScore;
 
     public void AddEntry(Entry e)
     {
-        this.entries.Add(e);
+        entries.Add(e);
     }
 
     public void AddEntry(JointsGroup jg)
@@ -46,33 +36,32 @@ public class Log
         var entry = new Entry(jg);
         AddEntry(entry);
     }
+
     public void print()
     {
-        Debug.Log("log " + logID + ":" + this.entries.Count + " entries");
+        Debug.Log("log " + logID + ":" + entries.Count + " entries");
     }
 
-    private void printEntry(Entry obj) {
+    private void printEntry(Entry obj)
+    {
         obj.print();
     }
 }
 
 public class Session
 {
-
-    public List<Log> logs = new List<Log>();
-
-    public string sessionID;
-
     public string exerciseID;
-
-    public float score;
+    public List<Log> logs = new List<Log>(3);
+    public float sessionScore;
+    public string sessionID;
 
     public void print()
     {
         //ForEach(printLog);
     }
 
-    private void printLog(Log obj) {
+    private void printLog(Log obj)
+    {
         obj.print();
     }
 
@@ -85,8 +74,16 @@ public class Session
     {
         return logs[i];
     }
+
+    public void calculateSessionScore()
+    {
+        float i = 0;
+
+        foreach (var log in logs)
+        {
+            i += log.logScore;
+        }
+
+        this.sessionScore = i/logs.Count;
+    }
 }
-
-
-
-

@@ -185,7 +185,7 @@ public class ControllerLearning : Controller {
         }
 
         ServiceTracking.instance.setTracking(false);
-        print("playing exercise: " + exerciseModel.label);
+        print("playing exercise: " + exerciseModel.exerciseID);
         //IterateExercise();
         //CancelInvoke("IterateExercise");
         //InvokeRepeating("IterateExercise", 0f, 1f / capturesPerSecond);

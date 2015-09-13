@@ -47,6 +47,7 @@ public class ControllerTeaching : Controller
         serviceTeaching.onInitialPositionCompleted += _onInitialPositionCompleted;
         serviceTeaching.onFailingExerciseChanged += _onFailingExerciseChanged;
         serviceTeaching.onFinishedRepetitions += _onFinishedRepetitions;
+        serviceTeaching.session = new Session();
     }
 
 
@@ -119,13 +120,16 @@ public class ControllerTeaching : Controller
             Debug.Log("Requesitar ID");
             Debug.Log("Gravar session");
             serviceExercise.start = false;
-            
+            serviceTeaching.session.calculateSessionScore();
+            serviceTeaching.session.sessionID = sessionID;
+            serviceTeaching.session.exerciseID = serviceExercise.selected.exerciseID;
+            ServiceFileManager.instance.SaveSession("session", serviceTeaching.session);
+            Debug.Log("logs count"+serviceTeaching.session.logs.Count);
             serviceSection.selected = ServiceSection.Section.LEARNING;
         }
         else
         {
 
-            //serviceTeaching.session.Add(serviceTeaching.currentLog);
             serviceTeaching.currentLog = new Log();
             serviceTeaching.initialLogTime = Time.time;
             serviceExercise.start = true;
@@ -142,7 +146,7 @@ public class ControllerTeaching : Controller
         Utils.DestroyAllChildren(transform);
         serviceTeaching.count++;
         float totalTime = Time.time - serviceTeaching.initialLogTime;
-        serviceTeaching.currentLog.time = totalTime;
+        serviceTeaching.currentLog.totaltime = totalTime;
         Debug.Log("Total Time: " + totalTime);
         serviceTeaching.session.Add(serviceTeaching.currentLog);
         if (serviceTeaching.count < 3)
@@ -160,6 +164,7 @@ public class ControllerTeaching : Controller
 
     private void _onInitialPositionCompleted(object sender, EventArgs e)
     {
+        serviceTeaching.currentLog.initialPositionTime = Time.time - serviceTeaching.initialLogTime;
         Debug.Log("Start guiding");
         Utils.DestroyAllChildren(transform);
         Utils.AddChildren(transform, MovementGuidance);
@@ -192,7 +197,7 @@ public class ControllerTeaching : Controller
         CancelInvoke("FailingExercise");
         CancelInvoke("ResetMovement");
         serviceTeaching.failingExercise = false;
-        serviceTeaching.session.Add(serviceTeaching.currentLog);
+        //serviceTeaching.session.Add(serviceTeaching.currentLog);
         serviceTeaching.session.print();
         Utils.DestroyAllChildren(transform);
 
@@ -208,61 +213,67 @@ public class ControllerTeaching : Controller
     public GameObject SessionReviewPrefab;
     #endregion
 
-    #region History
+    #region Session
 
     public Session _session = new Session();
+
+
+    [Header("SESSION ID")] 
+    public string sessionID;
 
     #endregion
 
     #region Context menu debug
-    [ContextMenu("printSession")]
-    public void print() {
-        serviceTeaching.session.print();
-    }
 
-    [ContextMenu("createLog")]
-    public void createLog() {
-        var log = new Log();
+    //[ContextMenu("printSession")]
+    //public void print() {
+    //    serviceTeaching.session.print();
+    //}
 
-        var jg = serviceTracking.getCurrentJointGroup();
+    //[ContextMenu("createLog")]
+    //public void createLog() {
+    //    var log = new Log();
 
-        for (int i = 0; i < 100; i++) {
-            log.AddEntry(jg);
-        }
-        //log.print();
-        serviceTeaching.currentLog = log;
-        serviceTeaching.currentLog.print();
-    }
+    //    var jg = serviceTracking.getCurrentJointGroup();
 
-    [ContextMenu("createSession")]
-    public void createSession() {
-        var log = new Log();
-        var session = new Session();
-        var jg = serviceTracking.getCurrentJointGroup();
+    //    for (int i = 0; i < 100; i++) {
+    //        log.AddEntry(jg);
+    //    }
+    //    //log.print();
+    //    serviceTeaching.currentLog = log;
+    //    serviceTeaching.currentLog.print();
+    //}
 
-        for (int i = 0; i < 10; i++) {
-            var pos = new Vector3(i, i, i);
-            serviceTeaching.currentLog.AddEntry(jg);
-        }
-        serviceTeaching.currentLog.logID = "LOL69";
-        serviceTeaching.currentLog.invalidCount = 44;
-        serviceTeaching.currentLog.validCount = 99;
-        serviceTeaching.currentLog.time = 1.23f;
-        //serviceTeaching.currentLog.print();
-        //serviceTeaching.currentLog = log;
+    //[ContextMenu("createSession")]
+    //public void createSession() {
+    //    var log = new Log();
+    //    var session = new Session();
+    //    var jg = serviceTracking.getCurrentJointGroup();
 
-        //serviceTeaching.currentLog.print();
-        //session.Add(log);
-        serviceTeaching.session.Add(serviceTeaching.currentLog);
-        serviceTeaching.currentLog = new Log();
-        serviceTeaching.session.print();
-    }
+    //    for (int i = 0; i < 10; i++) {
+    //        var pos = new Vector3(i, i, i);
+    //        serviceTeaching.currentLog.AddEntry(jg);
+    //    }
+    //    serviceTeaching.currentLog.logID = "LOL69";
+    //    serviceTeaching.currentLog.invalidCount = 44;
+    //    serviceTeaching.currentLog.validCount = 99;
+    //    serviceTeaching.currentLog.totaltime = 1.23f;
+    //    //serviceTeaching.currentLog.print();
+    //    //serviceTeaching.currentLog = log;
 
-    [ContextMenu("savesession")]
-    public void saveSession()
-    {
-        createSession();
-        ServiceFileManager.instance.SaveSession("testeSession", serviceTeaching.session);
-    }
+    //    //serviceTeaching.currentLog.print();
+    //    //session.Add(log);
+    //    serviceTeaching.session.Add(serviceTeaching.currentLog);
+    //    serviceTeaching.currentLog = new Log();
+    //    serviceTeaching.session.print();
+    //}
+
+    //[ContextMenu("savesession")]
+    //public void saveSession()
+    //{
+    //    createSession();
+    //    ServiceFileManager.instance.SaveSession("testeSession", serviceTeaching.session);
+    //}
+
     #endregion
 }
