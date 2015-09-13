@@ -5,7 +5,7 @@ using FullSerializer;
 
 public class ServiceFileManager {
 
-    #region SaveExerciseModel
+    #region ExerciseModel
     public void SaveExerciseModel(string _fileName, ExerciseModel exerciseModel) {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         try {
@@ -16,31 +16,31 @@ public class ServiceFileManager {
                 }
                 fileName = fileName + i;
             }
-
-            using (FileStream stream = new FileStream(fileName + ".json", FileMode.CreateNew)) {
-                using (StreamWriter writer = new StreamWriter(stream)) {
-                    fsSerializer _serializer = new fsSerializer();
-                    fsData data;
-                    _serializer.TrySerialize(typeof(ExerciseModel), exerciseModel, out data).AssertSuccessWithoutWarnings();
-                    writer.Write(data.ToString());
-                    Debug.Log("Saved! : " + fileName);
-                    writer.Flush();
-                }
-            }
+            Save(fileName,exerciseModel);
         }
         catch (IOException e) {
             Debug.Log(e.Message);
         }
-    } 
-    #endregion
+    }
 
-    #region LoadExerciseModel
     public ExerciseModel LoadExerciseModel(string _fileName) {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         ExerciseModel exerciseModel;
         Debug.Log("Loading file : " + fileName);
-        using (FileStream stream = new FileStream(fileName + ".json", FileMode.Open)) {
-            using (StreamReader reader = new StreamReader(stream)) {
+        exerciseModel = Load<ExerciseModel>(fileName);
+        return exerciseModel;
+
+    }
+    #endregion
+
+    #region Generic Save/Load
+
+    public static T Load<T>(string filename)
+    {
+        using (FileStream stream = new FileStream(filename + ".json", FileMode.Open))
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
                 fsSerializer _serializer = new fsSerializer();
 
                 // step 1: parse the JSON data
@@ -48,16 +48,27 @@ public class ServiceFileManager {
 
                 // step 2: deserialize the data
                 object deserialized = null;
-                _serializer.TryDeserialize(data, typeof(ExerciseModel), ref deserialized).AssertSuccessWithoutWarnings();
+                _serializer.TryDeserialize(data, typeof (T), ref deserialized).AssertSuccessWithoutWarnings();
 
-                exerciseModel =  (ExerciseModel)deserialized;
+                return (T) deserialized;
             }
         }
-
-        //ServiceExercise.instance.selected = exerciseModel;
-        return exerciseModel;
-
     }
+
+    public static void Save<T>(string filename, T obj)
+    {
+        using (FileStream stream = new FileStream(filename + ".json", FileMode.CreateNew)) {
+            using (StreamWriter writer = new StreamWriter(stream)) {
+                fsSerializer _serializer = new fsSerializer();
+                fsData data;
+                _serializer.TrySerialize(typeof(T), obj, out data).AssertSuccessWithoutWarnings();
+                writer.Write(data.ToString());
+                Debug.Log("Saved! : " + filename);
+                writer.Flush();
+            }
+        }
+    }
+
     #endregion
 
     #region Singleton
