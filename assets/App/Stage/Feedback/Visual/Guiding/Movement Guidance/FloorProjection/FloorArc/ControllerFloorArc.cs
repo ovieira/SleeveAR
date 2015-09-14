@@ -25,7 +25,7 @@ public class ControllerFloorArc : Controller {
     protected override void Start() {
         base.Start();
         if (serviceExercise.selected == null) return;
-        this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 2f; //TODO: use dynamic distance
+        this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 1.5f; //TODO: use dynamic distance
         updateFloorArc();
        // InvokeRepeating("capture",0, 1/24f);
     }
