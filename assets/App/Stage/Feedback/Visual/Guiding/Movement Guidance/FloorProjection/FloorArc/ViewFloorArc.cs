@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ViewFloorArc : MonoBehaviour {
 
     public List<Vector3> upperArmDirectionsList = new List<Vector3>();
-
+    public float circleSpeed;
     #region LifeCycle
     // Use this for initialization
     void Start() {
@@ -25,11 +25,19 @@ public class ViewFloorArc : MonoBehaviour {
             path.Add(pos + Vector3.up);
         }
 
+        circleSpeed = 50;
+        Invoke("lowerSpeed", 1f);
+
+
         //this.guideline.transform.localPosition = path[0];
 
         //startGuidelineAnimation();
     }
 
+    public void lowerSpeed()
+    {
+        circleSpeed = 1f;
+    }
     //private void startGuidelineAnimation() {
     //    foreach (var o in guideline) {
     //        iTween.Stop(o);
@@ -70,7 +78,7 @@ public class ViewFloorArc : MonoBehaviour {
         /**/
         var dottednextPos = currentLineRenderer.transform.position + Vector3.up + currentupperarmdir * (distance + heightDiff);
         /**/
-        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime);
+        this.circleGuideLine.transform.position = Vector3.Lerp(this.circleGuideLine.transform.position, circlenextPos, Time.deltaTime*circleSpeed);
         this.dottedCircleGuideLine.transform.position = Vector3.Lerp(this.dottedCircleGuideLine.transform.position,dottednextPos, Time.deltaTime*5);
         historyList.Add(dottednextPos);
         

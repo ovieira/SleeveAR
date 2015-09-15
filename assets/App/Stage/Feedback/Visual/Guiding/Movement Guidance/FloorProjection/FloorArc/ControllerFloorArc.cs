@@ -26,6 +26,7 @@ public class ControllerFloorArc : Controller {
         base.Start();
         if (serviceExercise.selected == null) return;
         this.view.distance =/*Vector3.Distance(serviceTracking.PositionFloor[0], serviceTracking.PositionFloor[1]) *8;*/ 1.5f; //TODO: use dynamic distance
+        this.view.currentJointsGroup = serviceTracking.getCurrentJointGroup();
         updateFloorArc();
        // InvokeRepeating("capture",0, 1/24f);
     }
