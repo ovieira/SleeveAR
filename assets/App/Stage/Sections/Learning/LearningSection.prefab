@@ -112,10 +112,10 @@ MonoBehaviour:
   JointRepresentationPrefab: {fileID: 170558, guid: 8c24e262b7d6b4d43b97f3faf05f34d6,
     type: 2}
   greenMat: {fileID: 2100000, guid: d63e718ae3913fe49ba25fbca832be7b, type: 2}
-  _CountdownTime: 15
+  _CountdownTime: 0
   capturesPerSecond: 24
   OneTwoThree: {fileID: 8300000, guid: 0808b546b287b644eb67b356ac2c23cf, type: 3}
-  recordingTime: 10
+  recordingTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -125,11 +125,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _CountdownTime
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: recordingTime
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -46,6 +46,7 @@ MonoBehaviour:
     type: 2}
   MovementGuidance: {fileID: 161804, guid: 997b3a6b6379d6b4d835d4cdd62d7350, type: 2}
   SessionReviewPrefab: {fileID: 143114, guid: 3c17f11a2a5e2dd478df133e503c713a, type: 2}
+  sessionID: 1
 --- !u!114 &11431884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +119,10 @@ Prefab:
       propertyPath: SessionAnalizer
       value: 
       objectReference: {fileID: 143114, guid: 3c17f11a2a5e2dd478df133e503c713a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: sessionID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100622}
