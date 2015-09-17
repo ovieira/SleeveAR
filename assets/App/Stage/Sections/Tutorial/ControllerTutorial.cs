@@ -114,7 +114,7 @@ public class ControllerTutorial : Controller {
         if (timer <= 0) { nextDemo();}
         switch (_type) {
             case ServiceTutorial.TutorialType.FOREARM:
-                if (checkForeArmAngle(jg, goal, 3))
+                if (checkForeArmAngle(jg, goal, 5))
                 {
                     timer -= Time.deltaTime;
 
@@ -133,7 +133,7 @@ public class ControllerTutorial : Controller {
                 }
                 break;
             case ServiceTutorial.TutorialType.BOTH:
-                if (checkForeArmAngle(jg, goal, 3) &&
+                if (checkForeArmAngle(jg, goal, 5) &&
                     CheckUpperArmDirection(jg, goal, 3)) {
                         timer -= Time.deltaTime;
 
