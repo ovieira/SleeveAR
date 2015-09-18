@@ -106,4 +106,35 @@ public class CSVExporter : MonoBehaviour
         }
     }
     #endregion
+
+    [ContextMenu("sumdistOriginalSession")]
+    public void sumdistorisess()
+    {
+        var sessionlst = sessions[0].logs[2].LogToJointsGroupsList();
+        comparePaths(exercises[0].exerciseModel,sessionlst);
+    }
+
+    [ContextMenu("sumdistOriginalVideo")]
+    public void sumdistorivideo() {
+        comparePaths(exercises[0].exerciseModel, videos[0].exerciseModel);
+    }
+
+    public void comparePaths(List<JointsGroup> original, List<JointsGroup> copy)
+    {
+        float distSum = 0f;
+
+        for (int i = 0; i < copy.Count; i++)
+        {
+            var copyUpperDir = copy[i].getUpperArmDirection();
+            float dist = float.MaxValue;
+            for (int j = 0; j < original.Count; j++)
+            {
+                var originalUpperDir = original[j].getUpperArmDirection();
+                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                if (d < dist) dist = d;
+            }
+            distSum += dist;
+        }
+        Debug.Log("Sum of minimum distances: " + distSum );
+    }
 }

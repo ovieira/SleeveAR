@@ -46,6 +46,17 @@ public class Log
     {
         obj.print();
     }
+
+    public List<JointsGroup> LogToJointsGroupsList()
+    {
+        var list = new List<JointsGroup>();
+
+        foreach (var entry in entries)
+        {
+            list.Add(entry.jointsGroup);
+        }
+        return list;
+    }
 }
 
 public class Session
