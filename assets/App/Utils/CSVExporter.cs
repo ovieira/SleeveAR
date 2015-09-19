@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class CSVExporter : MonoBehaviour
 {
 
+    public int maxID;
+
     #region Filenames
     public string[] Sessionfilenames;
     public string[] VideoFilenames;
@@ -36,10 +38,9 @@ public class CSVExporter : MonoBehaviour
 	}
 	#endregion
 
-    protected void LoadSessions(string[] paths, List<Session> list)
-    {
-        foreach (var path in paths)
-        {
+    #region Loading
+    protected void LoadSessions(string[] paths, List<Session> list) {
+        foreach (var path in paths) {
             var session = ServiceFileManager.instance.LoadSession(path);
             list.Add(session);
         }
@@ -59,7 +60,8 @@ public class CSVExporter : MonoBehaviour
 
         System.IO.File.WriteAllText(newpath, s);
 
-    }
+    } 
+    #endregion
 
 
     #region Visualize
@@ -119,22 +121,21 @@ public class CSVExporter : MonoBehaviour
         comparePaths(exercises[0].exerciseModel, videos[0].exerciseModel);
     }
 
-    public void comparePaths(List<JointsGroup> original, List<JointsGroup> copy)
-    {
+    #region Sum of Minimum Distances
+    public float comparePaths(List<JointsGroup> original, List<JointsGroup> copy) {
         float distSum = 0f;
-
-        for (int i = 0; i < copy.Count; i++)
-        {
+        for (int i = 0; i < copy.Count; i++) {
             var copyUpperDir = copy[i].getUpperArmDirection();
             float dist = float.MaxValue;
-            for (int j = 0; j < original.Count; j++)
-            {
+            for (int j = 0; j < original.Count; j++) {
                 var originalUpperDir = original[j].getUpperArmDirection();
                 var d = Vector3.Distance(copyUpperDir, originalUpperDir);
                 if (d < dist) dist = d;
             }
             distSum += dist;
         }
-        Debug.Log("Sum of minimum distances: " + distSum );
-    }
+        Debug.Log("Sum of minimum distances: " + distSum);
+        return distSum;
+    } 
+    #endregion
 }
