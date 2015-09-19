@@ -148,7 +148,7 @@ public class CSVExporter : MonoBehaviour
 
         for (int i = 1; i <= maxID; i++)
         {
-            Debug.Log("Writing session " + i);
+            print("Writing session " + i);
             string entry = sumofmindistentry(i);
             csvString += (entry + "\n");
 
