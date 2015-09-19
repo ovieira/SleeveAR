@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using FullSerializer;
@@ -16,7 +17,7 @@ public class ServiceFileManager {
                 }
                 fileName = fileName + i;
             }
-            Save(fileName,exerciseModel);
+            JSONSave(fileName,exerciseModel);
         }
         catch (IOException e) {
             Debug.Log(e.Message);
@@ -27,7 +28,7 @@ public class ServiceFileManager {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         ExerciseModel exerciseModel;
         Debug.Log("Loading file : " + fileName);
-        exerciseModel = Load<ExerciseModel>(fileName);
+        exerciseModel = JSONLoad<ExerciseModel>(fileName);
         return exerciseModel;
 
     }
@@ -51,7 +52,7 @@ public class ServiceFileManager {
                 }
                 fileName = fileName + i;
             }
-            Save(fileName, session);
+            JSONSave(fileName, session);
         }
         catch (IOException e) {
             Debug.Log(e.Message);
@@ -62,15 +63,15 @@ public class ServiceFileManager {
         string fileName = Path.Combine(Application.dataPath + "/Sessions", _fileName);
         Session session;
         Debug.Log("Loading file : " + fileName);
-        session = Load<Session>(fileName);
+        session = JSONLoad<Session>(fileName);
         return session;
     }
 
     #endregion
 
-    #region Generic Save/Load
+    #region Generic JSON Save/Load
 
-    public static T Load<T>(string filename)
+    public static T JSONLoad<T>(string filename)
     {
         using (FileStream stream = new FileStream(filename + ".json", FileMode.Open))
         {
@@ -90,7 +91,7 @@ public class ServiceFileManager {
         }
     }
 
-    public static void Save<T>(string filename, T obj)
+    public static void JSONSave<T>(string filename, T obj)
     {
         using (FileStream stream = new FileStream(filename + ".json", FileMode.CreateNew)) {
             using (StreamWriter writer = new StreamWriter(stream)) {
@@ -102,6 +103,19 @@ public class ServiceFileManager {
                 writer.Flush();
             }
         }
+    }
+
+    #endregion
+
+    #region Generic Text Save
+
+    public void WriteToFile(string filename, string content) {
+        string newpath = Application.dataPath + "/CSV/" + 
+               filename;
+
+        System.IO.File.WriteAllText(newpath, content);
+
+        Debug.Log(filename + " has been created.");
     }
 
     #endregion
@@ -122,5 +136,4 @@ public class ServiceFileManager {
 
     #endregion
 
-   
 }

@@ -25,12 +25,12 @@ public class CSVExporter : MonoBehaviour
 	#region LifeCycle
 	void Start () {
 
-        LoadExerciseModels(ExerciseFilenames,exercises);
+        LoadExerciseModels(ExerciseFilenames, exercises);
         Debug.Log("Loaded Original Exercises " + exercises.Count);
-        LoadSessions(Sessionfilenames, sessions);
-        Debug.Log("Loaded Sessions " + sessions.Count);
-        LoadExerciseModels(VideoFilenames, videos);
-        Debug.Log("Loaded Original Exercises " + videos.Count);
+        /* LoadSessions(Sessionfilenames, sessions);
+         Debug.Log("Loaded Sessions " + sessions.Count);
+         LoadExerciseModels(VideoFilenames, videos);
+         Debug.Log("Loaded Original Exercises " + videos.Count);*/
 	}
 	
 	void Update () {
@@ -113,16 +113,16 @@ public class CSVExporter : MonoBehaviour
     public void sumdistorisess()
     {
         var sessionlst = sessions[0].logs[2].LogToJointsGroupsList();
-        comparePaths(exercises[0].exerciseModel,sessionlst);
+        SumOfMinimumDistances(exercises[0].exerciseModel,sessionlst);
     }
 
     [ContextMenu("sumdistOriginalVideo")]
     public void sumdistorivideo() {
-        comparePaths(exercises[0].exerciseModel, videos[0].exerciseModel);
+        SumOfMinimumDistances(exercises[0].exerciseModel, videos[0].exerciseModel);
     }
 
     #region Sum of Minimum Distances
-    public float comparePaths(List<JointsGroup> original, List<JointsGroup> copy) {
+    public float SumOfMinimumDistances(List<JointsGroup> original, List<JointsGroup> copy) {
         float distSum = 0f;
         for (int i = 0; i < copy.Count; i++) {
             var copyUpperDir = copy[i].getUpperArmDirection();
@@ -134,8 +134,60 @@ public class CSVExporter : MonoBehaviour
             }
             distSum += dist;
         }
-        Debug.Log("Sum of minimum distances: " + distSum);
+       // Debug.Log("Sum of minimum distances: " + distSum);
         return distSum;
     } 
     #endregion
+
+
+    [ContextMenu("test")]
+    public void generateSumofMinDistSession()
+    {
+        string csvString =
+            "id;ex1_try1;ex1_try2;ex1_try3;ex2_try1;ex2_try2;ex2_try3;ex3_try1;ex3_try2;ex3_try3;ex4_try1;ex4_try2;ex4_try3;ex5_try1;ex5_try2;ex5_try3\n";
+
+        for (int i = 1; i <= maxID; i++)
+        {
+            Debug.Log("Writing session " + i);
+            string entry = sumofmindistentry(i);
+            csvString += (entry + "\n");
+
+        }
+
+        ServiceFileManager.instance.WriteToFile("test.csv",csvString);
+    }
+
+    private string sumofmindistentry(int i)
+    {
+        string s = "";
+        List<Session> listsessions = new List<Session>();
+        getSessionsFromID(listsessions, i);
+        s += (i+";");
+
+        foreach (var listsession in listsessions)
+        {
+            int exID = Int32.Parse(listsession.exerciseID);
+            foreach (var log in listsession.logs)
+            {
+                var result = SumOfMinimumDistances(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
+                s += (result+";");
+            }
+        }
+
+        return s;
+    }
+
+    private void getSessionsFromID(List<Session> listsessions, int i) {
+
+        for (int j = 1; j <= 5; j++)
+        {
+            var s = ServiceFileManager.instance.LoadSession("" + i + "_" + j);
+            listsessions.Add(s);
+        }
+
+    }
+
+    
+
+    
 }
