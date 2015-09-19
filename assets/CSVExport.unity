@@ -179,20 +179,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c39c364e48b71c41adec140ed7a7229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxID: 10
-  Sessionfilenames:
-  - 16_1
-  VideoFilenames:
-  - video16_1
+  maxID: 18
   ExerciseFilenames:
   - 1
   - 2
   - 3
   - 4
   - 5
-  original: {fileID: 140060678}
-  session: {fileID: 1697899775}
-  video: {fileID: 1091079752}
 --- !u!4 &494398967
 Transform:
   m_ObjectHideFlags: 0
