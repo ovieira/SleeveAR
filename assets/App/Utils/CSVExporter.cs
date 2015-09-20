@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -8,14 +9,15 @@ public class CSVExporter : MonoBehaviour
     public int maxID;
 
     #region Filenames
-    //public string[] Sessionfilenames;
-    //public string[] VideoFilenames;
     public string[] ExerciseFilenames; 
     #endregion
 
-    #region Objects List
+    #region Lists
 
     protected List<ExerciseModel> exercises = new List<ExerciseModel>();
+    protected Dictionary<string, ExerciseModel> videos = new Dictionary<string, ExerciseModel>();
+    protected Dictionary<string, Session> sessions = new Dictionary<string, Session>();
+  
     //protected List<Session> sessions = new List<Session>();
     //protected List<ExerciseModel> videos = new List<ExerciseModel>();
     
@@ -27,15 +29,33 @@ public class CSVExporter : MonoBehaviour
 
         LoadExerciseModels(ExerciseFilenames, exercises);
         Debug.Log("Loaded Original Exercises " + exercises.Count);
-
-
-
-
-        /* LoadSessions(Sessionfilenames, sessions);
-         Debug.Log("Loaded Sessions " + sessions.Count);
-         LoadExerciseModels(VideoFilenames, videos);
-         Debug.Log("Loaded Original Exercises " + videos.Count);*/
+        LoadSessions();
+        Debug.Log("Loaded Sessions " + sessions.Count);
+	    LoadVideos();
+        Debug.Log("Loaded Videos " + videos.Count);
 	}
+
+    private void LoadVideos() {
+        for (int i = 1; i <= maxID; i++) {
+            for (int j = 1; j <= 5; j++) {
+                var name = "video" + i + "_" + j;
+                var _video = ServiceFileManager.instance.LoadExerciseModel(name,false);
+                videos.Add(name, _video);
+            }
+        }
+    }
+
+    private void LoadSessions() {
+        for (int i = 1; i <= maxID; i++)
+        {
+            for (int j = 1; j <= 5; j++)
+            {
+                var name = i + "_" + j;
+                var _session = ServiceFileManager.instance.LoadSession(name,false);
+                sessions.Add(name,_session);
+            }
+        }
+    }
 	
 	#endregion
 
@@ -110,8 +130,8 @@ public class CSVExporter : MonoBehaviour
     //}
     //#endregion
 
-    #region Sum of Minimum Distances
-    public float SumOfMinimumDistances(List<JointsGroup> original, List<JointsGroup> copy) {
+    #region UpperArm Sum of Minimum Distances
+    public float UpperArmSOMD(List<JointsGroup> original, List<JointsGroup> copy) {
         float distSum = 0f;
         for (int i = 0; i < copy.Count; i++) {
             var copyUpperDir = copy[i].getUpperArmDirection();
@@ -125,9 +145,58 @@ public class CSVExporter : MonoBehaviour
         }
        // Debug.Log("Sum of minimum distances: " + distSum);
         return distSum;
+    }
+
+    public float UpperArmSOMD(List<JointsGroup> original, Log copy) {
+        float distSum = 0f;
+        for (int i = 0; i < copy.entries.Count; i++) {
+            var copyUpperDir = copy.entries[i].jointsGroup.getUpperArmDirection();
+            float dist = float.MaxValue;
+            for (int j = 0; j < original.Count; j++) {
+                var originalUpperDir = original[j].getUpperArmDirection();
+                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                if (d < dist) dist = d;
+            }
+            distSum += dist;
+        }
+        // Debug.Log("Sum of minimum distances: " + distSum);
+        return distSum;
     } 
     #endregion
 
+    #region ForeArm Sum of Minimum Distances
+    public float ForeArmSOMD(List<JointsGroup> original, List<JointsGroup> copy) {
+        float distSum = 0f;
+        for (int i = 0; i < copy.Count; i++) {
+            var copyUpperDir = copy[i].getForeArmDirection();
+            float dist = float.MaxValue;
+            for (int j = 0; j < original.Count; j++) {
+                var originalUpperDir = original[j].getForeArmDirection();
+                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                if (d < dist) dist = d;
+            }
+            distSum += dist;
+        }
+        // Debug.Log("Sum of minimum distances: " + distSum);
+        return distSum;
+    }
+
+    public float ForeArmSOMD(List<JointsGroup> original, Log copy) {
+        float distSum = 0f;
+        for (int i = 0; i < copy.entries.Count; i++) {
+            var copyUpperDir = copy.entries[i].jointsGroup.getForeArmDirection();
+            float dist = float.MaxValue;
+            for (int j = 0; j < original.Count; j++) {
+                var originalUpperDir = original[j].getForeArmDirection();
+                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                if (d < dist) dist = d;
+            }
+            distSum += dist;
+        }
+        // Debug.Log("Sum of minimum distances: " + distSum);
+        return distSum;
+    }
+    #endregion
 
     #region Session Table
     [ContextMenu("Session Table")]
@@ -154,7 +223,7 @@ public class CSVExporter : MonoBehaviour
         foreach (var listsession in listsessions) {
             int exID = Int32.Parse(listsession.exerciseID);
             foreach (var log in listsession.logs) {
-                var result = SumOfMinimumDistances(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
+                var result = UpperArmSOMD(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
                 s += (result + ";");
             }
         }
@@ -165,7 +234,8 @@ public class CSVExporter : MonoBehaviour
     private void getSessionsFromID(List<Session> listsessions, int i) {
 
         for (int j = 1; j <= 5; j++) {
-            var s = ServiceFileManager.instance.LoadSession("" + i + "_" + j);
+            //var s = ServiceFileManager.instance.LoadSession("" + i + "_" + j);
+            var s = sessions[i + "_" + j];
             listsessions.Add(s);
         }
 
@@ -197,7 +267,7 @@ public class CSVExporter : MonoBehaviour
             int exID = Int32.Parse(listsession.exerciseID);
             float f = avgSOMD(listsession, exercises[exID - 1]);
             //foreach (var log in listsession.logs) {
-            //    var result = SumOfMinimumDistances(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
+            //    var result = UpperArmSOMD(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
             //    f += result;
             //}
             //f = f/3f;
@@ -231,7 +301,7 @@ public class CSVExporter : MonoBehaviour
         s += (i + ";");
 
         for (int j = 0; j < videoslist.Count; j++) {
-            var sum = SumOfMinimumDistances(exercises[j].exerciseModel, videoslist[j].exerciseModel);
+            var sum = UpperArmSOMD(exercises[j].exerciseModel, videoslist[j].exerciseModel);
             s += (sum + ";");
         }
 
@@ -266,7 +336,7 @@ public class CSVExporter : MonoBehaviour
             var _video = _videos[i];
 
             var avgSession = avgSOMD(_session, exercises[i]);
-            var videosodm = SumOfMinimumDistances(exercises[i].exerciseModel, _videos[i].exerciseModel);
+            var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
 
             s+=(avgSession+";"+videosodm+";");
         }
@@ -293,7 +363,7 @@ public class CSVExporter : MonoBehaviour
                 var _video = _videos[i];
 
                 var avgSession = avgSOMD(_session, exercises[i]);
-                var videosodm = SumOfMinimumDistances(exercises[i].exerciseModel, _videos[i].exerciseModel);
+                var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
 
                 s += (avgSession + ";" + videosodm + ";");
             }
@@ -305,7 +375,7 @@ public class CSVExporter : MonoBehaviour
     private float avgSOMD(Session _session, ExerciseModel exerciseModel) {
         float f = 0;
         foreach (var log in _session.logs) {
-            var result = SumOfMinimumDistances(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
+            var result = UpperArmSOMD(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
             f += result;
             //s += (result + ";");
         }

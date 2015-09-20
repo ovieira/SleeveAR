@@ -24,10 +24,10 @@ public class ServiceFileManager {
         }
     }
 
-    public ExerciseModel LoadExerciseModel(string _fileName) {
+    public ExerciseModel LoadExerciseModel(string _fileName, bool printlog = true) {
         string fileName = Path.Combine(Application.dataPath + "/Recordings", _fileName);
         ExerciseModel exerciseModel;
-        Debug.Log("Loading file : " + fileName);
+        if(printlog)Debug.Log("Loading file : " + fileName);
         exerciseModel = JSONLoad<ExerciseModel>(fileName);
         return exerciseModel;
 
@@ -59,10 +59,10 @@ public class ServiceFileManager {
         }
     }
 
-    public Session LoadSession(string _fileName) {
+    public Session LoadSession(string _fileName, bool printlog = true) {
         string fileName = Path.Combine(Application.dataPath + "/Sessions", _fileName);
         Session session;
-        Debug.Log("Loading file : " + fileName);
+        if(printlog)Debug.Log("Loading file : " + fileName);
         session = JSONLoad<Session>(fileName);
         return session;
     }
