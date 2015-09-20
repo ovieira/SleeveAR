@@ -27,6 +27,10 @@ public class CSVExporter : MonoBehaviour
 
         LoadExerciseModels(ExerciseFilenames, exercises);
         Debug.Log("Loaded Original Exercises " + exercises.Count);
+
+
+
+
         /* LoadSessions(Sessionfilenames, sessions);
          Debug.Log("Loaded Sessions " + sessions.Count);
          LoadExerciseModels(VideoFilenames, videos);
@@ -191,13 +195,12 @@ public class CSVExporter : MonoBehaviour
 
         foreach (var listsession in listsessions) {
             int exID = Int32.Parse(listsession.exerciseID);
-            float f = 0;
-            foreach (var log in listsession.logs) {
-                var result = SumOfMinimumDistances(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
-                f += result;
-                //s += (result + ";");
-            }
-            f = f/3f;
+            float f = avgSOMD(listsession, exercises[exID - 1]);
+            //foreach (var log in listsession.logs) {
+            //    var result = SumOfMinimumDistances(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
+            //    f += result;
+            //}
+            //f = f/3f;
             s += (f + ";");
         }
 
@@ -205,7 +208,6 @@ public class CSVExporter : MonoBehaviour
     }
 
     #endregion
-
 
     #region Video Table
     [ContextMenu("Video Table")]
@@ -244,5 +246,81 @@ public class CSVExporter : MonoBehaviour
     } 
     #endregion
 
-  
+    #region Individual SOMD(SUM OF MINIMUM DISTANCES) Table
+    //ID:avg1:video1:avg2:video2:avg3:video3:avg4:video4:avg5:video5
+
+    public void IndividualTable(int id)
+    {
+        string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+
+        List<Session> _sessionList = new List<Session>();
+        List<ExerciseModel> _videos = new List<ExerciseModel>();
+
+        getSessionsFromID(_sessionList,id);
+        getVideosFromID(_videos,id);
+
+        s += (id + ";");
+        for (int i = 0; i < _sessionList.Count; i++)
+        {
+            var _session = _sessionList[i];
+            var _video = _videos[i];
+
+            var avgSession = avgSOMD(_session, exercises[i]);
+            var videosodm = SumOfMinimumDistances(exercises[i].exerciseModel, _videos[i].exerciseModel);
+
+            s+=(avgSession+";"+videosodm+";");
+        }
+
+        ServiceFileManager.instance.WriteToFile("user"+id+".csv", s);
+    }
+
+    [ContextMenu("avg and video")]
+    public void avgandvideo()
+    {
+        string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+
+        for (int id = 1; id <= maxID; id++)
+        {
+            List<Session> _sessionList = new List<Session>();
+            List<ExerciseModel> _videos = new List<ExerciseModel>();
+
+            getSessionsFromID(_sessionList, id);
+            getVideosFromID(_videos, id);
+
+            s += (id + ";");
+            for (int i = 0; i < _sessionList.Count; i++) {
+                var _session = _sessionList[i];
+                var _video = _videos[i];
+
+                var avgSession = avgSOMD(_session, exercises[i]);
+                var videosodm = SumOfMinimumDistances(exercises[i].exerciseModel, _videos[i].exerciseModel);
+
+                s += (avgSession + ";" + videosodm + ";");
+            }
+            s += "\n";
+        }
+        ServiceFileManager.instance.WriteToFile("SessionsAndVideo.csv",s);
+    }
+
+    private float avgSOMD(Session _session, ExerciseModel exerciseModel) {
+        float f = 0;
+        foreach (var log in _session.logs) {
+            var result = SumOfMinimumDistances(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
+            f += result;
+            //s += (result + ";");
+        }
+        f = f / 3f;
+        return f;
+    }
+
+    #endregion
+
+    [ContextMenu("individual")]
+    public void individual()
+    {
+        for (int i = 1; i <= maxID; i++)
+        {
+            IndividualTable(i);
+        }
+    }
 }
