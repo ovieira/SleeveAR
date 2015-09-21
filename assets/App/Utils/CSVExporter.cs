@@ -8,7 +8,7 @@ public class CSVExporter : MonoBehaviour
 
     public int maxID;
 
-    #region Filenames
+    #region Exercise names
     public string[] ExerciseFilenames; 
     #endregion
 
@@ -17,16 +17,11 @@ public class CSVExporter : MonoBehaviour
     protected List<ExerciseModel> exercises = new List<ExerciseModel>();
     protected Dictionary<string, ExerciseModel> videos = new Dictionary<string, ExerciseModel>();
     protected Dictionary<string, Session> sessions = new Dictionary<string, Session>();
-  
-    //protected List<Session> sessions = new List<Session>();
-    //protected List<ExerciseModel> videos = new List<ExerciseModel>();
-    
 
     #endregion
 
 	#region LifeCycle
 	void Start () {
-
         LoadExerciseModels(ExerciseFilenames, exercises);
         Debug.Log("Loaded Original Exercises " + exercises.Count);
         LoadSessions();
@@ -34,32 +29,29 @@ public class CSVExporter : MonoBehaviour
 	    LoadVideos();
         Debug.Log("Loaded Videos " + videos.Count);
 	}
+	#endregion
 
+    #region Loading
     private void LoadVideos() {
         for (int i = 1; i <= maxID; i++) {
             for (int j = 1; j <= 5; j++) {
                 var name = "video" + i + "_" + j;
-                var _video = ServiceFileManager.instance.LoadExerciseModel(name,false);
+                var _video = ServiceFileManager.instance.LoadExerciseModel(name, false);
                 videos.Add(name, _video);
             }
         }
     }
 
     private void LoadSessions() {
-        for (int i = 1; i <= maxID; i++)
-        {
-            for (int j = 1; j <= 5; j++)
-            {
+        for (int i = 1; i <= maxID; i++) {
+            for (int j = 1; j <= 5; j++) {
                 var name = i + "_" + j;
-                var _session = ServiceFileManager.instance.LoadSession(name,false);
-                sessions.Add(name,_session);
+                var _session = ServiceFileManager.instance.LoadSession(name, false);
+                sessions.Add(name, _session);
             }
         }
     }
-	
-	#endregion
 
-    #region Loading
     protected void LoadSessions(string[] paths, List<Session> list) {
         foreach (var path in paths) {
             var session = ServiceFileManager.instance.LoadSession(path);
@@ -83,8 +75,7 @@ public class CSVExporter : MonoBehaviour
 
     } 
     #endregion
-
-
+    
     //#region Visualize
 
     //public LineRenderer original;
@@ -168,53 +159,59 @@ public class CSVExporter : MonoBehaviour
     public float ForeArmSOMD(List<JointsGroup> original, List<JointsGroup> copy) {
         float distSum = 0f;
         for (int i = 0; i < copy.Count; i++) {
-            var copyUpperDir = copy[i].getForeArmDirection();
+            var copyforearmdir = copy[i].getForeArmDirection();
             float dist = float.MaxValue;
             for (int j = 0; j < original.Count; j++) {
                 var originalUpperDir = original[j].getForeArmDirection();
-                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                var d = Vector3.Distance(copyforearmdir, originalUpperDir);
                 if (d < dist) dist = d;
             }
             distSum += dist;
         }
-        // Debug.Log("Sum of minimum distances: " + distSum);
         return distSum;
     }
 
     public float ForeArmSOMD(List<JointsGroup> original, Log copy) {
         float distSum = 0f;
         for (int i = 0; i < copy.entries.Count; i++) {
-            var copyUpperDir = copy.entries[i].jointsGroup.getForeArmDirection();
+            var copyForeDir = copy.entries[i].jointsGroup.getForeArmDirection();
             float dist = float.MaxValue;
             for (int j = 0; j < original.Count; j++) {
-                var originalUpperDir = original[j].getForeArmDirection();
-                var d = Vector3.Distance(copyUpperDir, originalUpperDir);
+                var originalForeDir = original[j].getForeArmDirection();
+                var d = Vector3.Distance(copyForeDir, originalForeDir);
                 if (d < dist) dist = d;
             }
             distSum += dist;
         }
-        // Debug.Log("Sum of minimum distances: " + distSum);
         return distSum;
     }
     #endregion
 
     #region Session Table
-    [ContextMenu("Session Table")]
+    [ContextMenu("Session Table (all tries with sleeveAR")]
     public void generateSumofMinDistSession() {
-        string csvString =
+        string csvString ="upperArm\n\n"+
             "id;ex1_try1;ex1_try2;ex1_try3;ex2_try1;ex2_try2;ex2_try3;ex3_try1;ex3_try2;ex3_try3;ex4_try1;ex4_try2;ex4_try3;ex5_try1;ex5_try2;ex5_try3\n";
 
         for (int i = 1; i <= maxID; i++) {
             print("Writing session " + i);
-            string entry = LogEntrySOMDSession(i);
+            string entry = UpperArmLogEntrySOMDSession(i);
             csvString += (entry + "\n");
+        }
 
+        csvString += ("foreArm\n\n" +
+                      "id;ex1_try1;ex1_try2;ex1_try3;ex2_try1;ex2_try2;ex2_try3;ex3_try1;ex3_try2;ex3_try3;ex4_try1;ex4_try2;ex4_try3;ex5_try1;ex5_try2;ex5_try3\n");
+
+        for (int i = 1; i <= maxID; i++) {
+            print("Writing session " + i);
+            string entry = ForeArmLogEntrySOMDSession(i);
+            csvString += (entry + "\n");
         }
 
         ServiceFileManager.instance.WriteToFile("Sessions.csv", csvString);
     }
 
-    private string LogEntrySOMDSession(int i) {
+    private string UpperArmLogEntrySOMDSession(int i) {
         string s = "";
         List<Session> listsessions = new List<Session>();
         getSessionsFromID(listsessions, i);
@@ -231,15 +228,24 @@ public class CSVExporter : MonoBehaviour
         return s;
     }
 
-    private void getSessionsFromID(List<Session> listsessions, int i) {
+    private string ForeArmLogEntrySOMDSession(int i) {
+        string s = "";
+        List<Session> listsessions = new List<Session>();
+        getSessionsFromID(listsessions, i);
+        s += (i + ";");
 
-        for (int j = 1; j <= 5; j++) {
-            //var s = ServiceFileManager.instance.LoadSession("" + i + "_" + j);
-            var s = sessions[i + "_" + j];
-            listsessions.Add(s);
+        foreach (var listsession in listsessions) {
+            int exID = Int32.Parse(listsession.exerciseID);
+            foreach (var log in listsession.logs) {
+                var result = ForeArmSOMD(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
+                s += (result + ";");
+            }
         }
 
-    } 
+        return s;
+    }
+
+    
     #endregion
 
     #region AVG Session Table
@@ -265,7 +271,7 @@ public class CSVExporter : MonoBehaviour
 
         foreach (var listsession in listsessions) {
             int exID = Int32.Parse(listsession.exerciseID);
-            float f = avgSOMD(listsession, exercises[exID - 1]);
+            float f = UpperAVGSOMD(listsession, exercises[exID - 1]);
             //foreach (var log in listsession.logs) {
             //    var result = UpperArmSOMD(exercises[exID - 1].exerciseModel, log.LogToJointsGroupsList());
             //    f += result;
@@ -308,44 +314,16 @@ public class CSVExporter : MonoBehaviour
         return s;
     }
 
-    private void getVideosFromID(List<ExerciseModel> videoslist, int i) {
-        for (int j = 1; j <= 5; j++) {
-            var v = ServiceFileManager.instance.LoadExerciseModel("video" + i + "_" + j);
-            videoslist.Add(v);
-        }
-    } 
+   
     #endregion
 
     #region Individual SOMD(SUM OF MINIMUM DISTANCES) Table
     //ID:avg1:video1:avg2:video2:avg3:video3:avg4:video4:avg5:video5
 
-    public void IndividualTable(int id)
-    {
-        string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+    
 
-        List<Session> _sessionList = new List<Session>();
-        List<ExerciseModel> _videos = new List<ExerciseModel>();
-
-        getSessionsFromID(_sessionList,id);
-        getVideosFromID(_videos,id);
-
-        s += (id + ";");
-        for (int i = 0; i < _sessionList.Count; i++)
-        {
-            var _session = _sessionList[i];
-            var _video = _videos[i];
-
-            var avgSession = avgSOMD(_session, exercises[i]);
-            var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
-
-            s+=(avgSession+";"+videosodm+";");
-        }
-
-        ServiceFileManager.instance.WriteToFile("user"+id+".csv", s);
-    }
-
-    [ContextMenu("avg and video")]
-    public void avgandvideo()
+    [ContextMenu("upper avg and video")]
+    public string upperavgandvideo()
     {
         string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
 
@@ -362,17 +340,45 @@ public class CSVExporter : MonoBehaviour
                 var _session = _sessionList[i];
                 var _video = _videos[i];
 
-                var avgSession = avgSOMD(_session, exercises[i]);
+                var avgSession = UpperAVGSOMD(_session, exercises[i]);
                 var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
 
                 s += (avgSession + ";" + videosodm + ";");
             }
             s += "\n";
         }
-        ServiceFileManager.instance.WriteToFile("SessionsAndVideo.csv",s);
+        ServiceFileManager.instance.WriteToFile("UpperArmAVGSession_VS_Video.csv", s);
+        return s;
     }
 
-    private float avgSOMD(Session _session, ExerciseModel exerciseModel) {
+    [ContextMenu("fore avg and video")]
+    public string foreavgandvideo() {
+        string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+
+        for (int id = 1; id <= maxID; id++) {
+            List<Session> _sessionList = new List<Session>();
+            List<ExerciseModel> _videos = new List<ExerciseModel>();
+
+            getSessionsFromID(_sessionList, id);
+            getVideosFromID(_videos, id);
+
+            s += (id + ";");
+            for (int i = 0; i < _sessionList.Count; i++) {
+                var _session = _sessionList[i];
+                var _video = _videos[i];
+
+                var avgSession = ForeAVGSOMD(_session, exercises[i]);
+                var videosodm = ForeArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
+
+                s += (avgSession + ";" + videosodm + ";");
+            }
+            s += "\n";
+        }
+        ServiceFileManager.instance.WriteToFile("ForeArmAVGSession_VS_Video.csv", s);
+        return s;
+    }
+
+    private float UpperAVGSOMD(Session _session, ExerciseModel exerciseModel) {
         float f = 0;
         foreach (var log in _session.logs) {
             var result = UpperArmSOMD(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
@@ -383,14 +389,65 @@ public class CSVExporter : MonoBehaviour
         return f;
     }
 
+    private float ForeAVGSOMD(Session _session, ExerciseModel exerciseModel) {
+        float f = 0;
+        foreach (var log in _session.logs) {
+            var result = ForeArmSOMD(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
+            f += result;
+            //s += (result + ";");
+        }
+        f = f / 3f;
+        return f;
+    }
+
     #endregion
 
+    
+    #region Individual
+    public void IndividualTable(int id) {
+        string s = "id;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+
+        List<Session> _sessionList = new List<Session>();
+        List<ExerciseModel> _videos = new List<ExerciseModel>();
+
+        getSessionsFromID(_sessionList, id);
+        getVideosFromID(_videos, id);
+
+        s += (id + ";");
+        for (int i = 0; i < _sessionList.Count; i++) {
+            var _session = _sessionList[i];
+            var _video = _videos[i];
+
+            var avgSession = UpperAVGSOMD(_session, exercises[i]);
+            var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
+
+            s += (avgSession + ";" + videosodm + ";");
+        }
+
+        ServiceFileManager.instance.WriteToFile("user" + id + ".csv", s);
+    }
+
     [ContextMenu("individual")]
-    public void individual()
-    {
-        for (int i = 1; i <= maxID; i++)
-        {
+    public void individual() {
+        for (int i = 1; i <= maxID; i++) {
             IndividualTable(i);
         }
+    } 
+    #endregion
+
+    private void getSessionsFromID(List<Session> listsessions, int i) {
+
+        for (int j = 1; j <= 5; j++) {
+            //var s = ServiceFileManager.instance.LoadSession("" + i + "_" + j);
+            var s = sessions[i + "_" + j];
+            listsessions.Add(s);
+        }
     }
+
+    private void getVideosFromID(List<ExerciseModel> videoslist, int i) {
+        for (int j = 1; j <= 5; j++) {
+            var v = videos["video" + i + "_" + j];
+            videoslist.Add(v);
+        }
+    } 
 }
