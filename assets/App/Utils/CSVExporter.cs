@@ -341,12 +341,37 @@ public class CSVExporter : MonoBehaviour
                 var _video = _videos[i];
 
                 var avgSession = UpperAVGSOMD(_session, exercises[i]);
-                var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _videos[i].exerciseModel);
+                var videosodm = UpperArmSOMD(exercises[i].exerciseModel, _video.exerciseModel);
 
                 s += (avgSession + ";" + videosodm + ";");
             }
             s += "\n";
+
         }
+
+        s += "\n\n\n\n\n\n\nid;avg1;video1;avg2;video2;avg3;video3;avg4;video4;avg5;video5\n";
+
+        for (int id = 1; id <= maxID; id++) {
+            List<Session> _sessionList = new List<Session>();
+            List<ExerciseModel> _videos = new List<ExerciseModel>();
+
+            getSessionsFromID(_sessionList, id);
+            getVideosFromID(_videos, id);
+
+            s += (id + ";");
+            for (int i = 0; i < _sessionList.Count; i++) {
+                var _session = _sessionList[i];
+                var _video = _videos[i];
+
+                var avgSession = Upper_DTW_AVG_SOMD(_session, exercises[i]);
+                var videosodm = Upper_DTW_SOMD(exercises[i].exerciseModel, _video.exerciseModel);
+
+                s += (avgSession + ";" + videosodm + ";");
+            }
+            s += "\n";
+
+        }
+
         ServiceFileManager.instance.WriteToFile("UpperArmAVGSession_VS_Video.csv", s);
         return s;
     }
@@ -389,10 +414,23 @@ public class CSVExporter : MonoBehaviour
         return f;
     }
 
+
+
     private float ForeAVGSOMD(Session _session, ExerciseModel exerciseModel) {
         float f = 0;
         foreach (var log in _session.logs) {
             var result = ForeArmSOMD(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
+            f += result;
+            //s += (result + ";");
+        }
+        f = f / 3f;
+        return f;
+    }
+
+    private float Upper_DTW_AVG_SOMD(Session _session, ExerciseModel exerciseModel) {
+        float f = 0;
+        foreach (var log in _session.logs) {
+            var result = Upper_DTW_SOMD(exerciseModel.exerciseModel, log.LogToJointsGroupsList());
             f += result;
             //s += (result + ";");
         }
@@ -449,5 +487,169 @@ public class CSVExporter : MonoBehaviour
             var v = videos["video" + i + "_" + j];
             videoslist.Add(v);
         }
-    } 
+    }
+
+    protected float Upper_DTW_SOMD(List<JointsGroup> original, List<JointsGroup> copy )
+    {
+        float result = 0f;
+        int copyMaxPosition = copy.Count-1;
+        int originalMaxPosition = original.Count - 1;
+        for (int i = 0; i < original.Count; i++)
+        {
+            var copyPosition = (int) Utils.Map(i, 0, originalMaxPosition, 0, copyMaxPosition);
+
+            var jgOriginal = original[i];
+            var jgCopy = copy[i];
+
+            var dist = Vector3.Distance(jgOriginal.getUpperArmDirection(), jgCopy.getUpperArmDirection());
+            result += dist;
+        }
+
+        return result;
+    }
+
+
+    [ContextMenu("dtw Sleeve")]
+    public void DTWTestSleeve()
+    {
+        JointsGroup[] vec1;
+        JointsGroup[] svec;
+        JointsGroup[] vvec;
+        //
+        var ex = exercises[0].exerciseModel;
+        var sleeve = sessions["2_1"];
+        var video = videos["video2_1"];
+        //
+        vec1 = ex.ToArray();
+        svec = sleeve.logs[2].LogToJointsGroupsList().ToArray();
+        vvec = video.exerciseModel.ToArray();
+        //
+
+        int start = System.DateTime.Now.Millisecond;
+        Debug.Log("Start at " + start);
+        DTW dtw = new DTW(new mIndex[] { new mIndex(1, 1), new mIndex(1, 2), new mIndex(2, 1) });
+        List<mIndex> wres = dtw.warpSubsequenceDTW(vec1, svec,false);
+        Debug.Log("-- Time " + (System.DateTime.Now.Millisecond - start));
+
+        //mDebug.printMatrix(dtw.CostMatrix);
+        //mDebug.printMatrix(dtw.AccumCostMatrix);
+
+        //foreach (mIndex step in wres) {
+        //    print(step + " " + dtw.AccumCostMatrix[step.y][step.x]);
+        //}
+
+        Debug.Log("Warp Path Cost" + dtw.getWarpPathCost());
+
+    }
+
+    [ContextMenu("dtw Video")]
+    public void DTWTestVideo() {
+        JointsGroup[] jg1;
+        JointsGroup[] jg2;
+        //
+        var ex = exercises[0].exerciseModel;
+        var sleeve = sessions["2_1"];
+        var video = videos["video2_1"];
+        //
+        jg1 = ex.ToArray();
+        //svec = sleeve.logs[2].LogToJointsGroupsList().ToArray();
+        jg2 = video.exerciseModel.ToArray();
+        //
+
+        int start = System.DateTime.Now.Millisecond;
+        Debug.Log("Start at " + start);
+        DTW dtw = new DTW(new mIndex[] { new mIndex(1, 1), new mIndex(1, 2), new mIndex(2, 1) });
+        List<mIndex> wres = dtw.warpSubsequenceDTW(jg1, jg2,true);
+        Debug.Log("-- Time " + (System.DateTime.Now.Millisecond - start));
+
+        //mDebug.printMatrix(dtw.CostMatrix);
+        //mDebug.printMatrix(dtw.AccumCostMatrix);
+
+        //foreach (mIndex step in wres) {
+        //    print(step + " " + dtw.AccumCostMatrix[step.y][step.x]);
+        //}
+
+        Debug.Log("Warp Path Cost" + dtw.getWarpPathCost());
+
+    }
+
+    [ContextMenu("dtw ex1")]
+    public void dtwex1()
+    {
+        DTWExercise(0);
+    }
+
+    [ContextMenu("DTW ALL EXERCISES")]
+    public void dtwAllExercises() {
+        for (int i = 0; i < 5; i++)
+        {
+            DTWExercise(i);
+        }
+    }
+
+    public void DTWExercise(int i)
+    {
+        var exercise = exercises[i];
+
+        string s = "id;upperTry1;upperTry2;upperTry3;upperVideo;foreTry1;foreTry2;foreTry3;foreVideo\n";
+
+        for (int j = 1; j <= maxID; j++)
+        {
+            //get sessions from id j
+            List<Session> _sessions = new List<Session>();
+            getSessionsFromID(_sessions, j);
+
+            //get videos from id j
+            List<ExerciseModel> _videos = new List<ExerciseModel>();
+            getVideosFromID(_videos, j);
+
+            //get session from exercise i 
+            var _session = _sessions[i];
+
+            //get video from exercise i 
+            var _video = _videos[i];
+
+            s += (j + ";");
+
+            foreach (var log in _session.logs)
+            {
+                var uppersleeveardtwcost = DTWCost(exercise.exerciseModel.ToArray(), log.LogToJointsGroupsList().ToArray(), true);
+                s += (uppersleeveardtwcost + ";");
+            }
+
+            var uppervideodtwcost = DTWCost(exercise.exerciseModel.ToArray(), _video.exerciseModel.ToArray(), true);
+            s += (uppervideodtwcost + ";");
+
+            foreach (var log in _session.logs) {
+                var foresleeveardtwcost = DTWCost(exercise.exerciseModel.ToArray(), log.LogToJointsGroupsList().ToArray(), false);
+                s += (foresleeveardtwcost + ";");
+            }
+
+            var forevideodtwcost = DTWCost(exercise.exerciseModel.ToArray(), _video.exerciseModel.ToArray(), false);
+            s += (forevideodtwcost + ";");
+
+            s += ("\n");
+        }
+
+        ServiceFileManager.instance.WriteToFile("DTW_Exercise"+(i+1)+".csv",s);
+
+    }
+
+    private float DTWCost(JointsGroup[] jg1, JointsGroup[] jg2, bool upper) {
+        //int start = System.DateTime.Now.Millisecond;
+        //Debug.Log("Start at " + start);
+        DTW dtw = new DTW(new mIndex[] { new mIndex(1, 1), new mIndex(1, 2), new mIndex(2, 1) });
+        List<mIndex> wres = dtw.warpSubsequenceDTW(jg1, jg2, upper);
+        //Debug.Log("-- Time " + (System.DateTime.Now.Millisecond - start));
+
+        //mDebug.printMatrix(dtw.CostMatrix);
+        //mDebug.printMatrix(dtw.AccumCostMatrix);
+
+        //foreach (mIndex step in wres) {
+        //    print(step + " " + dtw.AccumCostMatrix[step.y][step.x]);
+        //}
+
+        Debug.Log("Warp Path Cost" + dtw.getWarpPathCost());
+        return dtw.getWarpPathCost();
+    }
 }

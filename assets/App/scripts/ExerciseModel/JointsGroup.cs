@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 ///     Represents a single instant of a group of Joints.
 /// </summary>
-public class JointsGroup
+public class JointsGroup :mDistanceMeasurable
 {
     #region Public Variables
 
@@ -110,5 +110,23 @@ public class JointsGroup
         if (foreArmDirection == Vector3.zero)
             foreArmDirection = (jointsList[2].position - jointsList[1].position).normalized;
         return foreArmDirection;
+    }
+
+    public float getDistance(mDistanceMeasurable other, bool upper)
+    {
+        JointsGroup otherJG = (JointsGroup) other;
+
+        if (upper)
+        {
+            var thisUpperDir = getUpperArmDirection();
+            var otherUpperDir = otherJG.getUpperArmDirection();
+            return Vector3.Distance(thisUpperDir, otherUpperDir);
+        }
+        else
+        {
+            var thisUpperDir = getForeArmDirection();
+            var otherUpperDir = otherJG.getForeArmDirection();
+            return Vector3.Distance(thisUpperDir, otherUpperDir);
+        }
     }
 }
