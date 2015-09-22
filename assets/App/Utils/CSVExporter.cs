@@ -76,50 +76,7 @@ public class CSVExporter : MonoBehaviour
     } 
     #endregion
     
-    //#region Visualize
-
-    //public LineRenderer original;
-    //public LineRenderer session;
-    //public LineRenderer video;
-
-    //[ContextMenu("draworiginal")]
-    //public void drawOriginal()
-    //{
-    //    var em = exercises[0];
-    //    original.SetVertexCount(em.exerciseModel.Count);
-    //    for (int i = 0; i < em.exerciseModel.Count; i++)
-    //    {
-    //        var jg = em.exerciseModel[i];
-    //        var upperDir = jg.getUpperArmDirection();
-
-    //        original.SetPosition(i, upperDir*5);
-    //    }
-    //}
-
-    //[ContextMenu("drawsession")]
-    //public void drawSession() {
-    //    var sess = sessions[0].logs[2].entries;
-    //    session.SetVertexCount(sess.Count);
-    //    for (int i = 0; i < sess.Count; i++) {
-    //        var jg = sess[i].jointsGroup;
-    //        var upperDir = jg.getUpperArmDirection();
-
-    //        session.SetPosition(i, upperDir * 5);
-    //    }
-    //}
-
-    //[ContextMenu("drawvideo")]
-    //public void drawVideo() {
-    //    var em = videos[0];
-    //    video.SetVertexCount(em.exerciseModel.Count);
-    //    for (int i = 0; i < em.exerciseModel.Count; i++) {
-    //        var jg = em.exerciseModel[i];
-    //        var upperDir = jg.getUpperArmDirection();
-
-    //        video.SetPosition(i, upperDir * 5);
-    //    }
-    //}
-    //#endregion
+    
 
     #region UpperArm Sum of Minimum Distances
     public float UpperArmSOMD(List<JointsGroup> original, List<JointsGroup> copy) {
@@ -652,4 +609,83 @@ public class CSVExporter : MonoBehaviour
         Debug.Log("Warp Path Cost" + dtw.getWarpPathCost());
         return dtw.getWarpPathCost();
     }
+
+
+
+    #region Visualiser
+
+    public bool drawUpper;
+
+    public string[] view;
+
+
+    public LineRenderer[] lines;
+
+    [ContextMenu("Draw Lines")]
+    public void draw()
+    {
+        var _exercise = exercises[Int32.Parse(view[0])];
+        drawLine(lines[0],_exercise.exerciseModel,drawUpper);
+
+        var _sleeve = sessions[view[1]];
+        drawLine(lines[1], _sleeve.logs[2].LogToJointsGroupsList(), drawUpper);
+
+        var _video = videos[view[2]];
+        drawLine(lines[2], _video.exerciseModel,drawUpper);
+    }
+
+
+    protected void drawLine(LineRenderer line, List<JointsGroup> _list, bool upper)
+    {
+        line.SetVertexCount(_list.Count);
+        for (int i = 0; i < _list.Count; i++)
+        {
+            var jg = _list[i];
+            Vector3 dir;
+            if (upper) dir = jg.getUpperArmDirection();
+            else dir = jg.getForeArmDirection();
+
+            line.SetPosition(i, dir*5);
+        }
+    }
+
+    //[ContextMenu("draworiginal")]
+    //public void drawOriginal()
+    //{
+    //    var em = exercises[0];
+    //    original.SetVertexCount(em.exerciseModel.Count);
+    //    for (int i = 0; i < em.exerciseModel.Count; i++)
+    //    {
+    //        var jg = em.exerciseModel[i];
+    //        var upperDir = jg.getUpperArmDirection();
+
+    //        original.SetPosition(i, upperDir*5);
+    //    }
+    //}
+
+    //[ContextMenu("drawsession")]
+    //public void drawSession() {
+    //    var sess = sessions[0].logs[2].entries;
+    //    session.SetVertexCount(sess.Count);
+    //    for (int i = 0; i < sess.Count; i++) {
+    //        var jg = sess[i].jointsGroup;
+    //        var upperDir = jg.getUpperArmDirection();
+
+    //        session.SetPosition(i, upperDir * 5);
+    //    }
+    //}
+
+    //[ContextMenu("drawvideo")]
+    //public void drawVideo() {
+    //    var em = videos[0];
+    //    video.SetVertexCount(em.exerciseModel.Count);
+    //    for (int i = 0; i < em.exerciseModel.Count; i++) {
+    //        var jg = em.exerciseModel[i];
+    //        var upperDir = jg.getUpperArmDirection();
+
+    //        video.SetPosition(i, upperDir * 5);
+    //    }
+    //}
+
+    #endregion
 }

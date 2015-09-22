@@ -186,6 +186,15 @@ MonoBehaviour:
   - 3
   - 4
   - 5
+  drawUpper: 1
+  view:
+  - 1
+  - 8_1
+  - video8_1
+  lines:
+  - {fileID: 140060678}
+  - {fileID: 1697899775}
+  - {fileID: 1091079752}
 --- !u!4 &494398967
 Transform:
   m_ObjectHideFlags: 0
